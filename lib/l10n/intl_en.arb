@@ -1,0 +1,39 @@
+{
+  "firstName": "First name",
+  "lastName": "Last name",
+  "email": "Email",
+  "phoneNumber": "Phone number",
+  "dateOfBirth": "Date of birth",
+  "male": "Male",
+  "female": "Female",
+  "sex": "Biological sex",
+  "residence": "Residential address",
+  "address": "Street and number",
+  "postalCode": "Postal code",
+  "country": "Country",
+  "city": "City",
+  "state": "State",
+
+  "createHeader": "Let's create your digital Identity!",
+  "createSuccessMessage": "Digital Identity successfully created.",
+  "createErrorMessage": "Your digital identity creation failed.",
+  "noCountriesFound": "No Countries found",
+
+  "introductionAction": "Create digital identity",
+
+  "next": "Next",
+  "back": "Back",
+  "submit": "Submit",
+
+  "missingFirstName": "Please input your first Name.",
+  "missingLastName": "Please input your last name.",
+  "missingEmail": "Please input your email.",
+  "invalidEmail": "Not a valid Email.",
+  "missingPhoneNumber": "Please input your phone Number.",
+  "missingStreetNumber": "Please input your street and number.",
+  "missingCity": "Please input your city.",
+  "missingState": "Please input your state.",
+  "missingPostalCode": "Please input your postal code.",
+  "missingCountry": "Please input your country."
+
+}

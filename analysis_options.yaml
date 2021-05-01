@@ -1,0 +1,12 @@
+include: package:lint/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - "**/i18next.dart"
+    - "**/intl/*"
+
+linter:
+  rules:
+    sort_constructors_first: true
+    avoid_print: false
+    file_names: false
