@@ -1,9 +1,173 @@
+import 'package:did/blocs/createDid/createDidBloc.dart';
+import 'package:did/blocs/createDid/createDidEvent.dart';
+import 'package:did/blocs/createDid/createDidState.dart';
+import 'package:did/blocs/createDid/formSubmissionStatus.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class Creation extends StatelessWidget {
+import '../../generated/l10n.dart';
+import 'components/customSteps.dart';
+import 'components/page1.dart';
+import 'components/page2.dart';
+import 'components/page3.dart';
+
+class Creation extends StatefulWidget {
+  @override
+  _CreationState createState() => _CreationState();
+}
+
+class _CreationState extends State<Creation> {
+  final TextEditingController dateController = TextEditingController();
+  final PageController _pageController = PageController();
+  List<GlobalKey<FormState>> formKeys = [
+    GlobalKey<FormState>(),
+    GlobalKey<FormState>(),
+    GlobalKey<FormState>()
+  ];
+
+  int currentStep = 0;
+  bool complete = false;
+
+  Future next() async {
+    final validationSuccess = formKeys[currentStep].currentState?.validate();
+    if (validationSuccess != null) {
+      if (validationSuccess) {
+        if (currentStep == 2) {
+          context.read<CreateDidBloc>().add(CreateDidSubmitted());
+        } else {
+          currentStep != 2
+              ? goTo(currentStep + 1)
+              : setState(() => complete = true);
+        }
+      }
+    } else {
+      print("could not submit");
+    }
+  }
+
+  void goTo(int step) {
+    _pageController.animateToPage(step,
+        duration: const Duration(milliseconds: 400), curve: Curves.easeInOut);
+  }
+
+  void cancel() {
+    print("Cancel");
+    if (currentStep > 0) {
+      goTo(currentStep - 1);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-        child: Scaffold(body: Text("Create digital Identity")));
+    final Size size = MediaQuery.of(context).size;
+    return SafeArea(
+        child: Scaffold(
+            body: Column(
+      children: [
+        Expanded(
+          child: PageView(
+            physics: const NeverScrollableScrollPhysics(),
+            controller: _pageController,
+            onPageChanged: (index) {
+              setState(() => currentStep = index);
+            },
+            children: [
+              Page1(formKeys: formKeys),
+              Page2(formKeys: formKeys, dateController: dateController),
+              Page3(formKeys: formKeys),
+              Column(children: [Step3(), Text("Lorem Ipsum 3")])
+            ],
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              if (currentStep == 0)
+                BlocBuilder<CreateDidBloc, CreateDidState>(
+                  builder: (context, state) {
+                    return SizedBox(
+                      width: size.width - 20,
+                      child: ElevatedButton(
+                          onPressed: !state.isValidFirstName ||
+                                  !state.isValidlastName ||
+                                  !state.isValidEmail ||
+                                  !state.isValidPhoneNumber
+                              ? null
+                              : next,
+                          child: Text(L.of(context).next)),
+                    );
+                  },
+                ),
+              if (currentStep == 1)
+                Column(
+                  children: [
+                    BlocBuilder<CreateDidBloc, CreateDidState>(
+                      builder: (context, state) {
+                        return SizedBox(
+                          width: size.width - 20,
+                          child: ElevatedButton(
+                              onPressed:
+                                  !state.isValidDateOfBirth || !state.isValidSex
+                                      ? null
+                                      : next,
+                              child: Text(L.of(context).next)),
+                        );
+                      },
+                    ),
+                    BlocBuilder<CreateDidBloc, CreateDidState>(
+                      builder: (context, state) {
+                        return SizedBox(
+                          width: size.width - 20,
+                          child: OutlinedButton(
+                              onPressed: state.formStatus is FormSubmitting
+                                  ? null
+                                  : cancel,
+                              child: Text(L.of(context).back)),
+                        );
+                      },
+                    )
+                  ],
+                ),
+              if (currentStep == 2)
+                Column(
+                  children: [
+                    BlocBuilder<CreateDidBloc, CreateDidState>(
+                      builder: (context, state) {
+                        return SizedBox(
+                          width: size.width - 20,
+                          child: ElevatedButton(
+                              onPressed: state.formStatus is FormSubmitting ||
+                                      !state.isValidAddress ||
+                                      !state.isValidCity ||
+                                      !state.isValidState ||
+                                      !state.isValidCountry ||
+                                      !state.isValidPostalCode
+                                  ? null
+                                  : next,
+                              child: Text(L.of(context).next)),
+                        );
+                      },
+                    ),
+                    BlocBuilder<CreateDidBloc, CreateDidState>(
+                      builder: (context, state) {
+                        return SizedBox(
+                          width: size.width - 20,
+                          child: OutlinedButton(
+                              onPressed: state.formStatus is FormSubmitting
+                                  ? null
+                                  : cancel,
+                              child: Text(L.of(context).back)),
+                        );
+                      },
+                    )
+                  ],
+                ),
+            ],
+          ),
+        ),
+      ],
+    )));
   }
 }

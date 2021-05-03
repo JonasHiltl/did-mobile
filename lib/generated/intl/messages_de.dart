@@ -21,8 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "address":
-            MessageLookupByLibrary.simpleMessage("Straße und Hausnummer"),
+        "address": MessageLookupByLibrary.simpleMessage("Adresszeile"),
         "back": MessageLookupByLibrary.simpleMessage("Zurück"),
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
@@ -33,7 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erfolgreich erstellt."),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Geburtsdatum"),
-        "email": MessageLookupByLibrary.simpleMessage("E-Mail Adresse"),
+        "email": MessageLookupByLibrary.simpleMessage("E-Mail"),
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
         "firstName": MessageLookupByLibrary.simpleMessage("Vorname"),
         "introductionAction": MessageLookupByLibrary.simpleMessage(

@@ -17,7 +17,7 @@ class CreateDidRepository {
       String state,
       String postalCode,
       String country) async {
-    final res = await dio.post("http://did-backend.herokuapp.com/create",
+    final res = await dio.post("https://did-backend.herokuapp.com/create",
         data: {
           "firstName": firstName.trim(),
           "lastName": lastName.trim(),

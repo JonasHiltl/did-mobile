@@ -1,9 +1,9 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../data/createDidRepository.dart';
 import 'createDidEvent.dart';
 import 'createDidState.dart';
 import 'formSubmissionStatus.dart';
-import '../../data/createDidRepository.dart';
 
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
   CreateDidBloc({required this.repo}) : super(CreateDidState());

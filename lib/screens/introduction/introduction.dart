@@ -3,10 +3,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../creation/creation.dart';
 import '../../components/minimalChangeLanguage.dart';
 import '../../generated/l10n.dart';
 import '../../models/carousel.dart';
+import '../creation/creation.dart';
 
 class Introduction extends StatefulWidget {
   @override
@@ -17,7 +17,6 @@ class _IntroductionState extends State<Introduction>
     with TickerProviderStateMixin {
   final CarouselController _controller = CarouselController();
   late AnimationController _animationController;
-  late AnimationController _positionController;
   late AnimationController _scaleController;
   late AnimationController _widthController;
   late AnimationController _moveController;
@@ -109,8 +108,6 @@ class _IntroductionState extends State<Introduction>
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-
     return SafeArea(
         child: Scaffold(
             body: Column(
@@ -142,32 +139,29 @@ class _IntroductionState extends State<Introduction>
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      FadeTransition(
+                child: Column(children: [
+                  FadeTransition(
+                    opacity: _animationController,
+                    child: Text(
+                      carouselList[_current].title,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: FadeTransition(
                         opacity: _animationController,
-                        child: Text(
-                          carouselList[_current].title,
-                          textAlign: TextAlign.center,
-                          style: Theme.of(context).textTheme.headline5,
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: FadeTransition(
-                            opacity: _animationController,
-                            child: RichText(
-                                textAlign: TextAlign.center,
-                                text: TextSpan(children: <TextSpan>[
-                                  TextSpan(
-                                    text: carouselList[_current].paragraph,
-                                    style:
-                                        Theme.of(context).textTheme.bodyText2,
-                                  )
-                                ]))),
-                      )
-                    ]),
+                        child: RichText(
+                            textAlign: TextAlign.center,
+                            text: TextSpan(children: <TextSpan>[
+                              TextSpan(
+                                text: carouselList[_current].paragraph,
+                                style: Theme.of(context).textTheme.bodyText2,
+                              )
+                            ]))),
+                  )
+                ]),
               ),
               CarouselSlider(
                 options: CarouselOptions(
@@ -243,7 +237,8 @@ class _IntroductionState extends State<Introduction>
                                 value: (_current + 1) / (carouselList.length),
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                     Theme.of(context)
-                                        .primaryColor
+                                        .colorScheme
+                                        .primaryVariant
                                         .withOpacity(0.4)),
                               )),
                         ),
@@ -258,7 +253,8 @@ class _IntroductionState extends State<Introduction>
                               borderRadius: BorderRadius.circular(30),
                               color: hideProgessIndicator
                                   ? Theme.of(context)
-                                      .primaryColor
+                                      .colorScheme
+                                      .primaryVariant
                                       .withOpacity(0.4)
                                   : Colors.transparent,
                             ),
@@ -269,7 +265,6 @@ class _IntroductionState extends State<Introduction>
                                       hideProgessIndicator = true;
                                     });
                                     _scaleController.forward();
-                                    print("go to new page");
                                   } else {
                                     _controller.nextPage();
                                   }
