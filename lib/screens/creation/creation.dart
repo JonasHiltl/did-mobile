@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../generated/l10n.dart';
-import 'components/customSteps.dart';
 import 'components/page1.dart';
 import 'components/page2.dart';
 import 'components/page3.dart';
@@ -75,7 +74,6 @@ class _CreationState extends State<Creation> {
               Page1(formKeys: formKeys),
               Page2(formKeys: formKeys, dateController: dateController),
               Page3(formKeys: formKeys),
-              Column(children: [Step3(), Text("Lorem Ipsum 3")])
             ],
           ),
         ),
@@ -136,8 +134,8 @@ class _CreationState extends State<Creation> {
                     BlocBuilder<CreateDidBloc, CreateDidState>(
                       builder: (context, state) {
                         return SizedBox(
-                          width: size.width - 20,
-                          child: ElevatedButton(
+                            width: size.width - 20,
+                            child: ElevatedButton(
                               onPressed: state.formStatus is FormSubmitting ||
                                       !state.isValidAddress ||
                                       !state.isValidCity ||
@@ -146,8 +144,20 @@ class _CreationState extends State<Creation> {
                                       !state.isValidPostalCode
                                   ? null
                                   : next,
-                              child: Text(L.of(context).next)),
-                        );
+                              child: state.formStatus is FormSubmitting
+                                  ? Container(
+                                      height: 19,
+                                      width: 19,
+                                      margin:
+                                          const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                                      child: const CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                Color(0xFFD9D9D9)),
+                                      ))
+                                  : Text(L.of(context).submit),
+                            ));
                       },
                     ),
                     BlocBuilder<CreateDidBloc, CreateDidState>(

@@ -42,7 +42,8 @@ class _FirstNameFieldState extends State<FirstNameField>
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             border: const OutlineInputBorder(),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              borderSide: BorderSide(
+                  color: Theme.of(context).colorScheme.primaryVariant),
             ),
             enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
@@ -94,7 +95,8 @@ class _LastNameFieldState extends State<LastNameField>
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                  borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.primaryVariant),
                 ),
                 enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -151,7 +153,8 @@ class _EmailFieldState extends State<EmailField>
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                  borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.primaryVariant),
                 ),
                 enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -204,7 +207,8 @@ class _PhoneNumberFieldState extends State<PhoneNumberField>
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                  borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.primaryVariant),
                 ),
                 enabledBorder: const OutlineInputBorder(
                     borderSide: BorderSide(
@@ -245,7 +249,8 @@ Widget addressField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primaryVariant),
               ),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
@@ -284,7 +289,8 @@ Widget cityField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primaryVariant),
               ),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
@@ -322,7 +328,8 @@ Widget stateField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primaryVariant),
               ),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
@@ -361,7 +368,8 @@ Widget postalCodeField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
+                borderSide: BorderSide(
+                    color: Theme.of(context).colorScheme.primaryVariant),
               ),
               enabledBorder: const OutlineInputBorder(
                   borderSide: BorderSide(
@@ -417,8 +425,8 @@ class _CountryFieldState extends State<CountryField> {
                       const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                   border: const OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
-                    borderSide:
-                        BorderSide(color: Theme.of(context).primaryColor),
+                    borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.primaryVariant),
                   ),
                   enabledBorder: const OutlineInputBorder(
                       borderSide: BorderSide(

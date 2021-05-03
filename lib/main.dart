@@ -22,12 +22,10 @@ void main() async {
 }
 
 const ColorScheme colorScheme = ColorScheme.light(
-    primary: Color(0xFF0B0C10),
+    primary: Color(0xFF3861FB),
     secondary: Color(0xFF1890FF),
-    primaryVariant: Color(0xFF1890FF),
-    secondaryVariant: Color(0xFF1890FF),
-    surface: Color(0xFFFFFFFF),
-    background: Color(0xFFFFFFFF),
+    primaryVariant: Color(0xFF0B0C10),
+    secondaryVariant: Color(0xFF0B0C10),
     onSecondary: Color(0xFFFFFFFF),
     onError: Color(0xFFFF4D4F));
 
@@ -89,13 +87,13 @@ class MyApp extends StatelessWidget {
                                   MaterialStateProperty.resolveWith<Color>(
                                       (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.focused)) {
-                                  return const Color(0xFF101422);
+                                  return const Color(0xFF40A9FF);
                                 }
                                 if (states.contains(MaterialState.hovered)) {
-                                  return const Color(0xFF101422);
+                                  return const Color(0xFF40A9FF);
                                 }
                                 if (states.contains(MaterialState.pressed)) {
-                                  return const Color(0xFF2a2d39);
+                                  return const Color(0xFF2C54E9);
                                 }
                                 if (states.contains(MaterialState.disabled)) {
                                   return const Color(0xFFF5F5F5);
@@ -106,13 +104,13 @@ class MyApp extends StatelessWidget {
                                   MaterialStateProperty.resolveWith<Color>(
                                       (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.focused)) {
-                                  return const Color(0xFF101422);
+                                  return const Color(0xFF40A9FF);
                                 }
                                 if (states.contains(MaterialState.hovered)) {
-                                  return const Color(0xFF101422);
+                                  return const Color(0xFF40A9FF);
                                 }
                                 if (states.contains(MaterialState.pressed)) {
-                                  return const Color(0xFF2a2d39);
+                                  return const Color(0xFF2C54E9);
                                 }
                                 if (states.contains(MaterialState.disabled)) {
                                   return Colors.black.withOpacity(0.03);

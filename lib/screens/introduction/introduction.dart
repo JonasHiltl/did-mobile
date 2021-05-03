@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../components/minimalChangeLanguage.dart';
-import '../../generated/l10n.dart';
 import '../../models/carousel.dart';
 import '../creation/creation.dart';
 
@@ -40,12 +39,12 @@ class _IntroductionState extends State<Introduction>
         title: "Health",
         paragraph:
             "Lorem ipsum dolor , sed diam nonumy eirmod tempor invidunt ut labore et dolore magna erat, sed diam voluptua. At",
-        imagePath: 'assets/images/undraw_healthy_options.svg'),
+        imagePath: 'assets/images/undraw_Private_data.svg'),
     Carousel(
         title: "Privacy",
         paragraph:
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmo magna aliquyam erat, sed diam voluptua. At",
-        imagePath: 'assets/images/undraw_Private_data.svg'),
+        imagePath: 'assets/images/undraw_doctor.svg'),
   ];
 
   @override
@@ -208,12 +207,12 @@ class _IntroductionState extends State<Introduction>
                             width: 8,
                             decoration: BoxDecoration(
                                 color: _current == pageIndex
-                                    ? const Color(0xFF188FFF)
+                                    ? Theme.of(context).primaryColor
                                     : Colors.transparent,
                                 borderRadius:
                                     const BorderRadius.all(Radius.circular(12)),
                                 border: Border.all(
-                                    color: const Color(0xFF188FFF)))),
+                                    color: Theme.of(context).primaryColor))),
                       ),
                     ),
                   ]),
@@ -237,8 +236,7 @@ class _IntroductionState extends State<Introduction>
                                 value: (_current + 1) / (carouselList.length),
                                 valueColor: AlwaysStoppedAnimation<Color>(
                                     Theme.of(context)
-                                        .colorScheme
-                                        .primaryVariant
+                                        .primaryColor
                                         .withOpacity(0.4)),
                               )),
                         ),
@@ -253,8 +251,7 @@ class _IntroductionState extends State<Introduction>
                               borderRadius: BorderRadius.circular(30),
                               color: hideProgessIndicator
                                   ? Theme.of(context)
-                                      .colorScheme
-                                      .primaryVariant
+                                      .primaryColor
                                       .withOpacity(0.4)
                                   : Colors.transparent,
                             ),
