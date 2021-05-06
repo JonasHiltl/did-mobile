@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/createDidRepository.dart';
+import '../../data/dataRepository.dart';
 import 'createDidEvent.dart';
 import 'createDidState.dart';
 import 'formSubmissionStatus.dart';
@@ -8,6 +11,7 @@ import 'formSubmissionStatus.dart';
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
   CreateDidBloc({required this.repo}) : super(CreateDidState());
   final CreateDidRepository repo;
+  final SecureStorage secureStorage = SecureStorage();
 
   @override
   Stream<CreateDidState> mapEventToState(CreateDidEvent event) async* {
@@ -28,11 +32,11 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
     } else if (event is CreateDidCityChanged) {
       yield state.copyWith(city: event.city);
     } else if (event is CreateDidStateChanged) {
+      print(event.state);
       yield state.copyWith(state: event.state);
     } else if (event is CreateDidPostalCodeChanged) {
       yield state.copyWith(postalCode: event.postalCode);
     } else if (event is CreateDidCountryChanged) {
-      print(event.country);
       yield state.copyWith(country: event.country);
     } else if (event is CreateDidSubmitted) {
       yield state.copyWith(formStatus: FormSubmitting());
@@ -50,11 +54,18 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
             state.state,
             state.postalCode,
             state.country);
-        print(res.message);
-        if (res.success == true) {
-          yield state.copyWith(formStatus: SubmissionSuccess(res, res.message));
+        print(res);
+        if (res.credential.id.isNotEmpty) {
+          await secureStorage.deleteAll();
+          await secureStorage.write("did", jsonEncode(res));
+          final savedId = await secureStorage.read("did");
+
+          print(savedId);
+          print(await secureStorage.read("did"));
+          yield state.copyWith(formStatus: SubmissionSuccess(res));
         } else {
-          yield state.copyWith(formStatus: SubmissionFailed(res.message));
+          yield state.copyWith(
+              formStatus: SubmissionFailed("Backend error creating Did"));
         }
       } catch (e) {
         print(e);

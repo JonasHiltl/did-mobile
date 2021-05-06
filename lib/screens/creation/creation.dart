@@ -9,6 +9,7 @@ import '../../generated/l10n.dart';
 import 'components/page1.dart';
 import 'components/page2.dart';
 import 'components/page3.dart';
+import '../../components/noti.dart';
 
 class Creation extends StatefulWidget {
   @override
@@ -50,7 +51,6 @@ class _CreationState extends State<Creation> {
   }
 
   void cancel() {
-    print("Cancel");
     if (currentStep > 0) {
       goTo(currentStep - 1);
     }
@@ -63,18 +63,32 @@ class _CreationState extends State<Creation> {
         child: Scaffold(
             body: Column(
       children: [
-        Expanded(
-          child: PageView(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: _pageController,
-            onPageChanged: (index) {
-              setState(() => currentStep = index);
-            },
-            children: [
-              Page1(formKeys: formKeys),
-              Page2(formKeys: formKeys, dateController: dateController),
-              Page3(formKeys: formKeys),
-            ],
+        BlocListener<CreateDidBloc, CreateDidState>(
+          listener: (context, state) {
+            if (state.formStatus is SubmissionSuccess) {
+              showSuccessNoti(
+                  message: L
+                      .of(context)
+                      .createSuccessMessage, //TODO: make mesasge dynamic and display message of formstatus
+                  context: context);
+            } else if (state.formStatus is SubmissionFailed) {
+              showErrorNoti(
+                  message: L.of(context).createErrorMessage, context: context);
+            }
+          },
+          child: Expanded(
+            child: PageView(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() => currentStep = index);
+              },
+              children: [
+                Page1(formKeys: formKeys),
+                Page2(formKeys: formKeys, dateController: dateController),
+                Page3(formKeys: formKeys),
+              ],
+            ),
           ),
         ),
         Padding(

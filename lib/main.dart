@@ -187,6 +187,9 @@ class MyApp extends StatelessWidget {
                           if (states.any(interactiveStates.contains)) {
                             return BorderSide(color: colorScheme.primary);
                           }
+                          if (states.contains(MaterialState.disabled)) {
+                            return const BorderSide(color: Color(0xFFD9D9D9));
+                          }
                           return const BorderSide(color: Color(0xFFACB6C5));
                         }),
                         padding: MaterialStateProperty.all(

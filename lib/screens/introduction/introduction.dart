@@ -36,12 +36,12 @@ class _IntroductionState extends State<Introduction>
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt, sed diam voluptua.",
         imagePath: 'assets/images/undraw_doctors.svg'),
     Carousel(
-        title: "Health",
+        title: "Privacy",
         paragraph:
             "Lorem ipsum dolor , sed diam nonumy eirmod tempor invidunt ut labore et dolore magna erat, sed diam voluptua. At",
         imagePath: 'assets/images/undraw_Private_data.svg'),
     Carousel(
-        title: "Privacy",
+        title: "Health",
         paragraph:
             "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmo magna aliquyam erat, sed diam voluptua. At",
         imagePath: 'assets/images/undraw_doctor.svg'),

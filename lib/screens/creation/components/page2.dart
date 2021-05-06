@@ -91,7 +91,12 @@ class _Page2State extends State<Page2>
                             );
                         dateController.text = DateFormat.yMMMd().format(date);
                       },
-                      currentTime: DateTime.now(),
+                      currentTime: context
+                              .read<CreateDidBloc>()
+                              .state
+                              .dateOfBirth is DateTime
+                          ? context.read<CreateDidBloc>().state.dateOfBirth
+                          : DateTime.now(),
                       theme: DatePickerTheme(
                           itemStyle: const TextStyle(
                               color: Colors.black, fontSize: 16),
@@ -123,12 +128,13 @@ class _Page2State extends State<Page2>
                         contentPadding: const EdgeInsets.symmetric(
                             vertical: 15, horizontal: 10),
                         border: const OutlineInputBorder(),
-                        focusedBorder: const OutlineInputBorder(
-                          borderSide: BorderSide(color: Color(0xFFACB6C5)),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(
+                              color: const Color(0xFFACB6C5).withOpacity(0.6)),
                         ),
-                        enabledBorder: const OutlineInputBorder(
+                        enabledBorder: OutlineInputBorder(
                             borderSide: BorderSide(
-                          color: Color(0xFFACB6C5),
+                          color: const Color(0xFFACB6C5).withOpacity(0.6),
                         )),
                         filled: true,
                         fillColor: const Color(0xFFF1F5F9)),

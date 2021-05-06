@@ -42,13 +42,12 @@ class _FirstNameFieldState extends State<FirstNameField>
                 const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             border: const OutlineInputBorder(),
             focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                  color: Theme.of(context).colorScheme.primaryVariant),
+              borderSide:
+                  BorderSide(color: Theme.of(context).colorScheme.primary),
             ),
-            enabledBorder: const OutlineInputBorder(
+            enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-              color: Color(0xFFACB6C5),
-            )),
+                    color: const Color(0xFFACB6C5).withOpacity(0.6))),
             filled: true,
             fillColor: const Color(0xFFF1F5F9)),
         validator: (value) =>
@@ -95,12 +94,12 @@ class _LastNameFieldState extends State<LastNameField>
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary),
                 ),
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: Color(0xFFACB6C5),
+                  color: const Color(0xFFACB6C5).withOpacity(0.6),
                 )),
                 filled: true,
                 fillColor: const Color(0xFFF1F5F9)),
@@ -153,12 +152,12 @@ class _EmailFieldState extends State<EmailField>
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary),
                 ),
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: Color(0xFFACB6C5),
+                  color: const Color(0xFFACB6C5).withOpacity(0.6),
                 )),
                 filled: true,
                 fillColor: const Color(0xFFF1F5F9)),
@@ -207,12 +206,12 @@ class _PhoneNumberFieldState extends State<PhoneNumberField>
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 border: const OutlineInputBorder(),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                      color: Theme.of(context).colorScheme.primaryVariant),
+                  borderSide:
+                      BorderSide(color: Theme.of(context).colorScheme.primary),
                 ),
-                enabledBorder: const OutlineInputBorder(
+                enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                  color: Color(0xFFACB6C5),
+                  color: const Color(0xFFACB6C5).withOpacity(0.6),
                 )),
                 filled: true,
                 fillColor: const Color(0xFFF1F5F9)),
@@ -249,12 +248,12 @@ Widget addressField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primaryVariant),
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                color: Color(0xFFACB6C5),
+                color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
               fillColor: const Color(0xFFF1F5F9)),
@@ -289,12 +288,12 @@ Widget cityField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primaryVariant),
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                color: Color(0xFFACB6C5),
+                color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
               fillColor: const Color(0xFFF1F5F9)),
@@ -328,12 +327,12 @@ Widget stateField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primaryVariant),
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                color: Color(0xFFACB6C5),
+                color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
               fillColor: const Color(0xFFF1F5F9)),
@@ -368,12 +367,12 @@ Widget postalCodeField() {
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
               border: const OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(
-                    color: Theme.of(context).colorScheme.primaryVariant),
+                borderSide:
+                    BorderSide(color: Theme.of(context).colorScheme.primary),
               ),
-              enabledBorder: const OutlineInputBorder(
+              enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(
-                color: Color(0xFFACB6C5),
+                color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
               fillColor: const Color(0xFFF1F5F9)),
@@ -404,7 +403,7 @@ class _CountryFieldState extends State<CountryField> {
           textFieldConfiguration: TextFieldConfiguration(
               controller: txt,
               cursorWidth: 1,
-              style: Theme.of(context).textTheme.bodyText1,
+              style: Theme.of(context).textTheme.bodyText2,
               decoration: InputDecoration(
                   isDense: true,
                   prefixIcon: Padding(
@@ -426,11 +425,11 @@ class _CountryFieldState extends State<CountryField> {
                   border: const OutlineInputBorder(),
                   focusedBorder: OutlineInputBorder(
                     borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primaryVariant),
+                        color: Theme.of(context).colorScheme.primary),
                   ),
-                  enabledBorder: const OutlineInputBorder(
+                  enabledBorder: OutlineInputBorder(
                       borderSide: BorderSide(
-                    color: Color(0xFFACB6C5),
+                    color: const Color(0xFFACB6C5).withOpacity(0.6),
                   )),
                   filled: true,
                   fillColor: const Color(0xFFF1F5F9)),

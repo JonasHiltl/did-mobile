@@ -140,10 +140,10 @@ class L {
     );
   }
 
-  /// `Street and number`
+  /// `Address`
   String get address {
     return Intl.message(
-      'Street and number',
+      'Address',
       name: 'address',
       desc: '',
       args: [],

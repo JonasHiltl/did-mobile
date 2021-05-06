@@ -1,4 +1,4 @@
-import "../../models/did.dart";
+import "../../models/did/did.dart";
 
 abstract class FormSubmissionStatus {
   const FormSubmissionStatus();
@@ -11,10 +11,9 @@ class InitialFormStatus extends FormSubmissionStatus {
 class FormSubmitting extends FormSubmissionStatus {}
 
 class SubmissionSuccess extends FormSubmissionStatus {
-  SubmissionSuccess(this.did, this.successMessage);
+  SubmissionSuccess(this.did);
 
   final Did did;
-  final String successMessage;
 }
 
 class SubmissionFailed extends FormSubmissionStatus {

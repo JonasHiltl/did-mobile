@@ -23,7 +23,6 @@ environment:
 dependencies:
   carousel_slider: ^4.0.0-nullsafety.0
   cupertino_icons: ^1.0.2
-  dio: ^4.0.0
   flash: ^1.5.1
   flutter:
     sdk: flutter
@@ -31,13 +30,13 @@ dependencies:
   flutter_datetime_picker: ^1.5.1
   flutter_localizations:
     sdk: flutter
+  flutter_secure_storage: ^4.2.0
   flutter_svg: ^0.22.0
   flutter_typeahead: ^3.1.1
-  hive: ^2.0.4
-  hive_flutter: ^1.0.0
+  http: ^0.13.3
   intl: ^0.17.0
+  json_annotation: ^4.0.1
   page_transition: ^2.0.1-nullsafety.0
-  path_provider: ^2.0.1
   shared_preferences: ^2.0.5
 
 
@@ -45,9 +44,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
 
 dev_dependencies:
-  apn_json2model: ^2.2.5
+  build_runner: ^2.0.2
   flutter_test:
     sdk: flutter
+  json_serializable: ^4.1.1
   lint: ^1.5.3
 
 # For information on the generic Dart part of this file, see the

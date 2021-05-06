@@ -8,7 +8,7 @@
   "female": "Female",
   "sex": "Biological sex",
   "residence": "Residential address",
-  "address": "Street and number",
+  "address": "Address",
   "postalCode": "Postal code",
   "country": "Country",
   "city": "City",
