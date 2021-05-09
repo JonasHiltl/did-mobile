@@ -1,16 +1,20 @@
+import 'package:did/blocs/appScreenState/appNavigator.dart';
+import 'package:did/blocs/appScreenState/authFlow/authCubit.dart';
+import 'package:did/blocs/appScreenState/sessionFlow/sessionCubit.dart';
 import "package:did/screens/introduction/introduction.dart";
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
+import "package:page_transition/page_transition.dart";
 
-import 'blocs/createDid/createDidBloc.dart';
+import "blocs/createDid/createDidBloc.dart";
 import "blocs/language/languageBloc.dart";
 import "blocs/language/languageState.dart";
 import "blocs/language/storageUtils.dart";
-import 'data/createDidRepository.dart';
+import "data/createDidRepository.dart";
 import "generated/l10n.dart";
-import 'screens/creation/creation.dart';
+import "screens/creation/creation.dart";
 
 // ignore: avoid_void_async
 void main() async {
@@ -39,9 +43,14 @@ class MyApp extends StatelessWidget {
               BlocProvider<LanguageBloc>(
                   create: (context) =>
                       LanguageBloc(LanguagePreference.getLanguage())),
+              // the session cubit needs to be above the AuthCubit because the AuthCubit needs the sessionCubit to launch the session flow after successfull authentification
+              BlocProvider(create: (context) => SessionCubit()),
+              BlocProvider(
+                  create: (context) => AuthCubit(context.read<SessionCubit>())),
               BlocProvider<CreateDidBloc>(
-                  create: (context) =>
-                      CreateDidBloc(repo: context.read<CreateDidRepository>()))
+                  create: (context) => CreateDidBloc(
+                      repo: context.read<CreateDidRepository>(),
+                      authCubit: context.read<AuthCubit>())),
             ],
             child: BlocBuilder<LanguageBloc, LanguageState>(
               builder: (context, state) {
@@ -225,7 +234,7 @@ class MyApp extends StatelessWidget {
                   ],
                   supportedLocales: L.delegate.supportedLocales,
                   locale: Locale(state.language),
-                  initialRoute: "/introduction",
+                  home: AppNavigator(),
                   routes: {
                     "/introduction": (context) => Introduction(),
                     "/create": (context) => Creation(),

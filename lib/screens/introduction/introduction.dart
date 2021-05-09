@@ -1,11 +1,11 @@
+import 'package:did/blocs/appScreenState/authFlow/authCubit.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:page_transition/page_transition.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../components/minimalChangeLanguage.dart';
 import '../../models/carousel.dart';
-import '../creation/creation.dart';
 
 class Introduction extends StatefulWidget {
   @override
@@ -86,14 +86,8 @@ class _IntroductionState extends State<Introduction>
         }
       });
 
-    _scale2Animation = Tween<double>(begin: 1.0, end: 42.0).animate(
-        _scale2Controller)
-      ..addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          Navigator.push(context,
-              PageTransition(type: PageTransitionType.fade, child: Creation()));
-        }
-      });
+    _scale2Animation =
+        Tween<double>(begin: 1.0, end: 42.0).animate(_scale2Controller);
 
     _animationController.forward();
     super.initState();
@@ -256,12 +250,18 @@ class _IntroductionState extends State<Introduction>
                                   : Colors.transparent,
                             ),
                             child: InkWell(
-                                onTap: () {
+                                onTap: () async {
                                   if (_current + 1 == carouselList.length) {
                                     setState(() {
                                       hideProgessIndicator = true;
                                     });
                                     _scaleController.forward();
+                                    //TODO wait time and push new page
+                                    await Future.delayed(
+                                        const Duration(milliseconds: 2200),
+                                        () => context
+                                            .read<AuthCubit>()
+                                            .showCreation());
                                   } else {
                                     _controller.nextPage();
                                   }

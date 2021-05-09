@@ -58,6 +58,7 @@ void showErrorNoti({
                   blurRadius: 8)
             ],
             alignment: Alignment.topCenter,
+            margin: const EdgeInsets.all(20),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
               child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[

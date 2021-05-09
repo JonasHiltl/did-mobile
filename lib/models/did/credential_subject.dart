@@ -19,7 +19,7 @@ class CredentialSubject {
 
   final String id;
   final Address address;
-  final String dateOfBirth;
+  final DateTime dateOfBirth;
   final String email;
   final String firstName;
   final String lastName;

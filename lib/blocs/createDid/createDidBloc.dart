@@ -1,16 +1,19 @@
 import 'dart:convert';
 
+import 'package:did/blocs/appScreenState/authFlow/authCubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/createDidRepository.dart';
-import '../../data/dataRepository.dart';
+import '../../data/secureStorage.dart';
 import 'createDidEvent.dart';
 import 'createDidState.dart';
 import 'formSubmissionStatus.dart';
 
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
-  CreateDidBloc({required this.repo}) : super(CreateDidState());
+  CreateDidBloc({required this.repo, required this.authCubit})
+      : super(CreateDidState());
   final CreateDidRepository repo;
+  final AuthCubit authCubit;
   final SecureStorage secureStorage = SecureStorage();
 
   @override
@@ -32,7 +35,6 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
     } else if (event is CreateDidCityChanged) {
       yield state.copyWith(city: event.city);
     } else if (event is CreateDidStateChanged) {
-      print(event.state);
       yield state.copyWith(state: event.state);
     } else if (event is CreateDidPostalCodeChanged) {
       yield state.copyWith(postalCode: event.postalCode);
@@ -63,6 +65,9 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
           print(savedId);
           print(await secureStorage.read("did"));
           yield state.copyWith(formStatus: SubmissionSuccess(res));
+
+          // launch the session flow with the returned Did object
+          authCubit.launchSession(res);
         } else {
           yield state.copyWith(
               formStatus: SubmissionFailed("Backend error creating Did"));
