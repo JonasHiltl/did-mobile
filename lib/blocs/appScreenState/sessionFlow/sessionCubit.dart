@@ -32,8 +32,8 @@ class SessionCubit extends Cubit<SessionState> {
     emit(Verified(did: did));
   }
 
-  void clearDid() {
-    //TODO: clear the did with the dataRepo
+  Future<void> clearDid() async {
+    await secureStorage.delete("did");
     emit(Unverified());
   }
 }
