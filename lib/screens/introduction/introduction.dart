@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../components/minimalChangeLanguage.dart';
+import '../../globalComponents/minimalChangeLanguage.dart';
 import '../../models/carousel.dart';
 
 class Introduction extends StatefulWidget {
@@ -142,7 +142,7 @@ class _IntroductionState extends State<Introduction>
                     child: Text(
                       carouselList[_current].title,
                       textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline5,
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   ),
                   Padding(

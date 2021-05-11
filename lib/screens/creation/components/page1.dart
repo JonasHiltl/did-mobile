@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:did/components/CustomTextFields.dart';
-import 'package:did/components/minimalChangeLanguage.dart';
+import 'package:did/globalComponents/minimalChangeLanguage.dart';
 import 'package:did/generated/l10n.dart';
 
 import 'customSteps.dart';
+import 'customTextFields.dart';
 
 class Page1 extends StatelessWidget {
   const Page1({required this.formKeys});
@@ -36,7 +36,7 @@ class Page1 extends StatelessWidget {
                   Text(
                     L.of(context).createHeader,
                     textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headline3,
                   ),
                   SizedBox(
                     height: size.height * 0.1,

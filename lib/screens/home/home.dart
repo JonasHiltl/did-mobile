@@ -4,7 +4,7 @@ import 'package:did/screens/home/components/createFirstQuestionnaire.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class SessionView extends StatelessWidget {
+class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +21,7 @@ class SessionView extends StatelessWidget {
                       "Hi, ${state.did.credential.credentialSubject.firstName}",
                       style: Theme.of(context).textTheme.headline2,
                     ),
-                    CreateFirstQuestionnaire()
+                    CreateFirstQuestionnaire(),
                   ]);
             } else if (state is UnkownSessionState) {
               return const Center(

@@ -73,7 +73,7 @@ class _Page2State extends State<Page2>
                   Text(
                     L.of(context).createHeader,
                     textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headline5,
+                    style: Theme.of(context).textTheme.headline3,
                   ),
                   SizedBox(
                     height: size.height * 0.1,

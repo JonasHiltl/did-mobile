@@ -16,7 +16,6 @@ class SessionCubit extends Cubit<SessionState> {
 
   Future<void> attemptGettingDid() async {
     try {
-      print("attempting auto login");
       //await secureStorage.delete("did");
       if (await secureStorage.contains("did")) {
         final encodedDid = await secureStorage.read("did");

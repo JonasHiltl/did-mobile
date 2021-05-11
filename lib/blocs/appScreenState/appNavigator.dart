@@ -1,4 +1,4 @@
-import 'package:did/screens/sessionView.dart';
+import 'package:did/screens/home/home.dart';
 import 'package:did/screens/startupScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,7 +25,7 @@ class AppNavigator extends StatelessWidget {
                 child: AuthNavigator(),
               )),
             //show session flow
-            if (state is Verified) MaterialPage(child: SessionView())
+            if (state is Verified) MaterialPage(child: Home())
           ],
           onPopPage: (route, result) => route.didPop(result),
         );

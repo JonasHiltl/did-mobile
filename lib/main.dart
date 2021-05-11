@@ -67,13 +67,69 @@ class MyApp extends StatelessWidget {
                       accentColor: colorScheme.secondary,
                       backgroundColor: colorScheme.background,
                       textTheme: TextTheme(
+                        headline1: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.85),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 46,
+                            height: 1.2),
+                        headline2: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onSurface
+                                .withOpacity(0.85),
+                            fontWeight: FontWeight.w600,
+                            fontSize: 38,
+                            height: 1.23),
+                        headline3: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.85),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 30,
+                          height: 1.35,
+                        ),
+                        headline4: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.85),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 24,
+                          height: 1.35,
+                        ),
+                        headline5: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.85),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20,
+                          height: 1.4,
+                        ),
+                        headline6: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.85),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                          height: 1.5,
+                        ),
                         bodyText1: TextStyle(
-                            color: Colors.black.withOpacity(0.85),
-                            fontWeight: FontWeight.normal,
-                            fontSize: 16),
+                          color: Colors.black.withOpacity(0.85),
+                          fontWeight: FontWeight.normal,
+                          fontSize: 16,
+                          height: 1.5,
+                        ),
                         bodyText2: TextStyle(
-                            color: Colors.black.withOpacity(0.85),
-                            fontSize: 14),
+                          color: Colors.black.withOpacity(0.85),
+                          fontSize: 14,
+                          height: 1.5,
+                        ),
                       ),
                       elevatedButtonTheme: ElevatedButtonThemeData(
                           style: ButtonStyle(

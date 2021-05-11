@@ -5,8 +5,8 @@ import 'package:did/blocs/createDid/formSubmissionStatus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../components/noti.dart';
 import '../../generated/l10n.dart';
+import '../../globalComponents/noti.dart';
 import 'components/page1.dart';
 import 'components/page2.dart';
 import 'components/page3.dart';
@@ -54,6 +54,13 @@ class _CreationState extends State<Creation> {
     if (currentStep > 0) {
       goTo(currentStep - 1);
     }
+  }
+
+  @override
+  void dispose() {
+    dateController.dispose();
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
