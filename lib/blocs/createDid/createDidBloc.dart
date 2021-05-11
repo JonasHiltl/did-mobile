@@ -56,14 +56,11 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
             state.state,
             state.postalCode,
             state.country);
-        print(res);
         if (res.credential.id.isNotEmpty) {
-          await secureStorage.deleteAll();
           await secureStorage.write("did", jsonEncode(res));
           final savedId = await secureStorage.read("did");
 
           print(savedId);
-          print(await secureStorage.read("did"));
           yield state.copyWith(formStatus: SubmissionSuccess(res));
 
           // launch the session flow with the returned Did object

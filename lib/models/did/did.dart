@@ -12,6 +12,7 @@ class Did {
     required this.credential,
   });
 
+  @JsonKey(name: "did")
   final Identity identity;
   final Credential credential;
 

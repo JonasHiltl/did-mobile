@@ -30,7 +30,10 @@ class CreateDidRepository {
     final _uri = Uri.https("did-backend.herokuapp.com", "/create");
     final res = await http.post(
       _uri,
-      body: {
+      headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
+      },
+      body: jsonEncode({
         "firstName": firstName.trim(),
         "lastName": lastName.trim(),
         "email": email.trim(),
@@ -42,14 +45,12 @@ class CreateDidRepository {
         "state": state.trim(),
         "postalCode": postalCode.trim(),
         "country": country.trim()
-      },
+      }),
     );
     if (res.statusCode == 200) {
-      final didMap = jsonDecode(res.body) as Map<String, dynamic>;
+      final didJson = jsonDecode(res.body) as Map<String, dynamic>;
 
-      print(didMap["credential"]["credentialSubject"]["address"]);
-
-      return Did.fromJson(didMap);
+      return Did.fromJson(didJson);
     } else {
       throw "Error calling creation backend";
     }
