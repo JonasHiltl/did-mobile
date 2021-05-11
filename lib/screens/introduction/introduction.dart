@@ -96,6 +96,10 @@ class _IntroductionState extends State<Introduction>
   @override
   void dispose() {
     _animationController.dispose();
+    _scaleController.dispose();
+    _widthController.dispose();
+    _moveController.dispose();
+    _scale2Controller.dispose();
     super.dispose();
   }
 

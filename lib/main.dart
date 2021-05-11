@@ -12,6 +12,7 @@ import "blocs/language/languageBloc.dart";
 import "blocs/language/languageState.dart";
 import "blocs/language/storageUtils.dart";
 import "data/createDidRepository.dart";
+import "data/commonBackendRepo.dart";
 import "generated/l10n.dart";
 import "screens/creation/creation.dart";
 
@@ -35,15 +36,19 @@ const ColorScheme colorScheme = ColorScheme.light(
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-        create: (context) => CreateDidRepository(),
+    return MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider(create: (context) => CreateDidRepository()),
+          RepositoryProvider(create: (context) => CommonBackendRepo())
+        ],
         child: MultiBlocProvider(
             providers: [
               BlocProvider<LanguageBloc>(
                   create: (context) =>
                       LanguageBloc(LanguagePreference.getLanguage())),
               // the session cubit needs to be above the AuthCubit because the AuthCubit needs the sessionCubit to launch the session flow after successfull authentification
-              BlocProvider(create: (context) => SessionCubit()),
+              BlocProvider(
+                  create: (context) => SessionCubit(CommonBackendRepo())),
               BlocProvider(
                   create: (context) => AuthCubit(context.read<SessionCubit>())),
               BlocProvider<CreateDidBloc>(

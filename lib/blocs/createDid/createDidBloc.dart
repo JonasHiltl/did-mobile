@@ -10,11 +10,12 @@ import 'createDidState.dart';
 import 'formSubmissionStatus.dart';
 
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
-  CreateDidBloc({required this.repo, required this.authCubit})
-      : super(CreateDidState());
   final CreateDidRepository repo;
   final AuthCubit authCubit;
   final SecureStorage secureStorage = SecureStorage();
+
+  CreateDidBloc({required this.repo, required this.authCubit})
+      : super(CreateDidState());
 
   @override
   Stream<CreateDidState> mapEventToState(CreateDidEvent event) async* {
@@ -58,21 +59,22 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
             state.country);
         if (res.credential.id.isNotEmpty) {
           await secureStorage.write("did", jsonEncode(res));
-          final savedId = await secureStorage.read("did");
 
-          print(savedId);
-          yield state.copyWith(formStatus: SubmissionSuccess(res));
+          yield state.copyWith(formStatus: SubmissionSuccess());
+          yield state.copyWith(formStatus: const InitialFormStatus());
 
           // launch the session flow with the returned Did object
           authCubit.launchSession(res);
         } else {
           yield state.copyWith(
               formStatus: SubmissionFailed("Backend error creating Did"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
         }
       } catch (e) {
         print(e);
-        //TODO: figure out why this catch returns Object instead of exception
         yield state.copyWith(formStatus: SubmissionFailed(e));
+        //yield initial state to counter the reappearing of noti after state changes (For example when keyboard gets closed or input changes)
+        yield state.copyWith(formStatus: const InitialFormStatus());
       }
     }
   }

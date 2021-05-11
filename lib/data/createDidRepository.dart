@@ -4,17 +4,6 @@ import 'package:http/http.dart' as http;
 import "../models/did/did.dart";
 
 class CreateDidRepository {
-  Future<String> verifyDid(String id) async {
-    final _uri = Uri.https("did-backend.herokuapp.com", "/verify");
-    final res = await http.post(_uri, body: {"id": id});
-    if (res.statusCode == 200) {
-      print("Did is valid");
-      return res.body.toString();
-    }
-    print("Did is not Valid");
-    return "Did is not Valid";
-  }
-
   Future<Did> createDid(
       String firstName,
       String lastName,

@@ -1,9 +1,7 @@
-import 'package:did/screens/creation/creation.dart';
-import 'package:did/screens/loadingView.dart';
 import 'package:did/screens/sessionView.dart';
+import 'package:did/screens/startupScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'authFlow/authCubit.dart';
 import 'authFlow/authNavigator.dart';
@@ -17,7 +15,8 @@ class AppNavigator extends StatelessWidget {
       builder: (context, state) {
         return Navigator(
           pages: [
-            if (state is UnkownSessionState) MaterialPage(child: LoadingView()),
+            if (state is UnkownSessionState)
+              MaterialPage(child: StartupScreen()),
             //show auth flow
             if (state is Unverified)
               MaterialPage(
@@ -28,17 +27,6 @@ class AppNavigator extends StatelessWidget {
             //show session flow
             if (state is Verified) MaterialPage(child: SessionView())
           ],
-          onGenerateRoute: (settings) {
-            switch (settings.name) {
-              case "/create":
-                return PageTransition(
-                  child: Creation(),
-                  type: PageTransitionType.fade,
-                );
-              default:
-                return null;
-            }
-          },
           onPopPage: (route, result) => route.didPop(result),
         );
       },

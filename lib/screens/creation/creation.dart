@@ -5,11 +5,11 @@ import 'package:did/blocs/createDid/formSubmissionStatus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../components/noti.dart';
 import '../../generated/l10n.dart';
 import 'components/page1.dart';
 import 'components/page2.dart';
 import 'components/page3.dart';
-import '../../components/noti.dart';
 
 class Creation extends StatefulWidget {
   @override

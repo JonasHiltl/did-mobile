@@ -7,6 +7,5 @@ analyzer:
 
 linter:
   rules:
-    sort_constructors_first: true
     avoid_print: false
     file_names: false
