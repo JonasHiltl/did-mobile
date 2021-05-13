@@ -1,7 +1,7 @@
-import 'package:did/screens/page2/page2.dart';
-import 'package:did/screens/home/home.dart';
-import 'package:did/screens/page3/page3.dart';
-import 'package:flutter/material.dart';
+import "package:did/screens/page2/page2.dart";
+import "package:did/screens/home/home.dart";
+import 'package:did/screens/profile/profile.dart';
+import "package:flutter/material.dart";
 
 class SessionNavigator extends StatefulWidget {
   @override
@@ -10,11 +10,11 @@ class SessionNavigator extends StatefulWidget {
 
 class _SessionNavigatorState extends State<SessionNavigator> {
   String _currentPage = "Home";
-  List<String> pageKeys = ["Home", "Page2", "Page3"];
+  List<String> pageKeys = ["Home", "Page2", "Profile"];
   final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
     "Home": GlobalKey<NavigatorState>(),
     "Page2": GlobalKey<NavigatorState>(),
-    "Page3": GlobalKey<NavigatorState>(),
+    "Profile": GlobalKey<NavigatorState>(),
   };
   int _selectedIndex = 0;
 
@@ -42,7 +42,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
             return false;
           }
         }
-        // let system handle back button if we're on the first route
+        // let system handle back button if we"re on the first route
         return isFirstRouteInCurrentTab;
       },
       child: Scaffold(
@@ -50,27 +50,41 @@ class _SessionNavigatorState extends State<SessionNavigator> {
           children: [
             _buildOffstageNavigator("Home"),
             _buildOffstageNavigator("Page2"),
-            _buildOffstageNavigator("Page3"),
+            _buildOffstageNavigator("Profile"),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
           onTap: (int index) {
             _selectTab(pageKeys[index], index);
           },
+          backgroundColor: Colors.white,
           currentIndex: _selectedIndex,
+          showUnselectedLabels: false,
+          showSelectedLabels: false,
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_outlined),
-              activeIcon: Icon(Icons.home_rounded),
-              label: 'Page1',
+              icon: Icon(
+                Icons.home_outlined,
+              ),
+              activeIcon: Icon(
+                Icons.home_rounded,
+              ),
+              label: "Home",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.looks_two),
-              label: 'Page2',
+              icon: Icon(
+                Icons.looks_two,
+              ),
+              label: "Page2",
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.looks_3),
-              label: 'Page3',
+              icon: Icon(
+                Icons.person_outline,
+              ),
+              activeIcon: Icon(
+                Icons.person_rounded,
+              ),
+              label: "Profile",
             ),
           ],
           type: BottomNavigationBarType.fixed,
@@ -103,7 +117,7 @@ class TabNavigator extends StatelessWidget {
     } else if (tabItem == "Page2") {
       child = Page2();
     } else {
-      child = Page3();
+      child = Profile();
     }
 
     return Navigator(

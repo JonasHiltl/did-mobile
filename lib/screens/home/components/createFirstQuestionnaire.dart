@@ -43,7 +43,7 @@ class CreateFirstQuestionnaire extends StatelessWidget {
                     height: 6,
                   ),
                   Text(
-                    "Let's create your first patient questionnaire to reuse for any doctor.",
+                    "Let's create your first patient questionnaire to share with any doctor.",
                     style: Theme.of(context)
                         .textTheme
                         .bodyText2!

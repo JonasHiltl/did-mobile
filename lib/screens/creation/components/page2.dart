@@ -148,25 +148,59 @@ class _Page2State extends State<Page2>
                         Text(L.of(context).sex),
                         Row(
                           children: <Widget>[
-                            Radio(
-                              value: "female",
-                              groupValue:
-                                  context.read<CreateDidBloc>().state.sex,
-                              onChanged: setSex,
-                              activeColor: Theme.of(context).primaryColor,
+                            Expanded(
+                              child: Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFF1F5F9),
+                                      borderRadius: BorderRadius.circular(4.0),
+                                      border: Border.all(
+                                          color: const Color(0xFFACB6C5)
+                                              .withOpacity(0.6))),
+                                  child: Row(children: [
+                                    Radio(
+                                      value: "female",
+                                      groupValue: context
+                                          .read<CreateDidBloc>()
+                                          .state
+                                          .sex,
+                                      onChanged: setSex,
+                                      activeColor:
+                                          Theme.of(context).primaryColor,
+                                    ),
+                                    Text(L.of(context).female),
+                                  ])),
                             ),
-                            Text(L.of(context).female),
                             const SizedBox(
-                              width: 30,
+                              width: 20,
                             ),
-                            Radio(
-                              value: "male",
-                              groupValue:
-                                  context.read<CreateDidBloc>().state.sex,
-                              onChanged: setSex,
-                              activeColor: Theme.of(context).primaryColor,
-                            ),
-                            Text(L.of(context).male),
+                            Expanded(
+                              child: Container(
+                                padding: const EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                decoration: BoxDecoration(
+                                    color: const Color(0xFFF1F5F9),
+                                    borderRadius: BorderRadius.circular(4.0),
+                                    border: Border.all(
+                                        color: const Color(0xFFACB6C5)
+                                            .withOpacity(0.6))),
+                                child: Row(
+                                  children: [
+                                    Radio(
+                                      value: "male",
+                                      groupValue: context
+                                          .read<CreateDidBloc>()
+                                          .state
+                                          .sex,
+                                      onChanged: setSex,
+                                      activeColor:
+                                          Theme.of(context).primaryColor,
+                                    ),
+                                    Text(L.of(context).male),
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
                       ])

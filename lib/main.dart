@@ -7,13 +7,13 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
 
+import "data/commonBackendRepo.dart";
+import "data/createDidRepository.dart";
+import "generated/l10n.dart";
 import "providers/createDid/createDidBloc.dart";
 import "providers/language/languageBloc.dart";
 import "providers/language/languageState.dart";
 import "providers/language/storageUtils.dart";
-import "data/commonBackendRepo.dart";
-import "data/createDidRepository.dart";
-import "generated/l10n.dart";
 import "screens/creation/creation.dart";
 
 // ignore: avoid_void_async
@@ -30,6 +30,7 @@ const ColorScheme colorScheme = ColorScheme.light(
     secondary: Color(0xFF1890FF),
     primaryVariant: Color(0xFF0B0C10),
     secondaryVariant: Color(0xFF0B0C10),
+    onBackground: Color(0xFF0B0C10),
     onSecondary: Color(0xFFFFFFFF),
     onError: Color(0xFFFF4D4F));
 
