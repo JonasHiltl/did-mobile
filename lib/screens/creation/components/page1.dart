@@ -23,7 +23,7 @@ class Page1 extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [Center(child: MinimalChangeLanguage()), Step1()]),
           const SizedBox(
-            height: 60,
+            height: 40,
           ),
           Padding(
             padding: const EdgeInsets.all(10),
@@ -39,7 +39,7 @@ class Page1 extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   SizedBox(
-                    height: size.height * 0.1,
+                    height: size.height * 0.05,
                   ),
                   FirstNameField(),
                   SizedBox(

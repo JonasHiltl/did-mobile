@@ -2,11 +2,11 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../blocs/createDid/createDidBloc.dart';
-import '../../../blocs/createDid/createDidEvent.dart';
-import '../../../blocs/createDid/createDidState.dart';
 import '../../../data/countries.dart';
 import '../../../generated/l10n.dart';
+import '../../../providers/createDid/createDidBloc.dart';
+import '../../../providers/createDid/createDidEvent.dart';
+import '../../../providers/createDid/createDidState.dart';
 
 class FirstNameField extends StatefulWidget {
   @override

@@ -1,4 +1,3 @@
-import 'package:did/screens/home/home.dart';
 import 'package:did/screens/startupScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'authFlow/authCubit.dart';
 import 'authFlow/authNavigator.dart';
 import 'sessionFlow/sessionCubit.dart';
+import 'sessionFlow/sessionNavigator.dart';
 import 'sessionFlow/sessionState.dart';
 
 class AppNavigator extends StatelessWidget {
@@ -25,7 +25,7 @@ class AppNavigator extends StatelessWidget {
                 child: AuthNavigator(),
               )),
             //show session flow
-            if (state is Verified) MaterialPage(child: Home())
+            if (state is Verified) MaterialPage(child: SessionNavigator())
           ],
           onPopPage: (route, result) => route.didPop(result),
         );

@@ -1,18 +1,18 @@
-import 'package:did/blocs/appScreenState/appNavigator.dart';
-import 'package:did/blocs/appScreenState/authFlow/authCubit.dart';
-import 'package:did/blocs/appScreenState/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/appScreenState/appNavigator.dart';
+import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
+import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import "package:did/screens/introduction/introduction.dart";
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
 
-import "blocs/createDid/createDidBloc.dart";
-import "blocs/language/languageBloc.dart";
-import "blocs/language/languageState.dart";
-import "blocs/language/storageUtils.dart";
-import "data/createDidRepository.dart";
+import "providers/createDid/createDidBloc.dart";
+import "providers/language/languageBloc.dart";
+import "providers/language/languageState.dart";
+import "providers/language/storageUtils.dart";
 import "data/commonBackendRepo.dart";
+import "data/createDidRepository.dart";
 import "generated/l10n.dart";
 import "screens/creation/creation.dart";
 

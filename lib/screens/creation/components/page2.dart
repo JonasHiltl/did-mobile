@@ -1,6 +1,6 @@
-import 'package:did/blocs/createDid/createDidBloc.dart';
-import 'package:did/blocs/createDid/createDidEvent.dart';
-import 'package:did/blocs/language/languageBloc.dart';
+import 'package:did/providers/createDid/createDidBloc.dart';
+import 'package:did/providers/createDid/createDidEvent.dart';
+import 'package:did/providers/language/languageBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:did/generated/l10n.dart';
 import 'package:intl/intl.dart';
@@ -60,7 +60,7 @@ class _Page2State extends State<Page2>
           ),
           Step2(),
           const SizedBox(
-            height: 60,
+            height: 40,
           ),
           Padding(
             padding: const EdgeInsets.all(10),
@@ -76,7 +76,7 @@ class _Page2State extends State<Page2>
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   SizedBox(
-                    height: size.height * 0.1,
+                    height: size.height * 0.05,
                   ),
                   TextFormField(
                     onTap: () => DatePicker.showDatePicker(

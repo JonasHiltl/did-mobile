@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
-import "../blocs/language/languageBloc.dart";
-import '../blocs/language/languageEvent.dart';
-import "../blocs/language/languageState.dart";
+import "../providers/language/languageBloc.dart";
+import '../providers/language/languageEvent.dart';
+import "../providers/language/languageState.dart";
 
 class MinimalChangeLanguage extends StatelessWidget {
   @override

@@ -1,4 +1,4 @@
-import 'package:did/blocs/appScreenState/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/models/did/did.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

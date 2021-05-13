@@ -30,7 +30,7 @@ class _Page3State extends State<Page3>
           ),
           Step3(),
           const SizedBox(
-            height: 60,
+            height: 40,
           ),
           Padding(
             padding: const EdgeInsets.all(10),
@@ -46,7 +46,7 @@ class _Page3State extends State<Page3>
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   SizedBox(
-                    height: size.height * 0.1,
+                    height: size.height * 0.05,
                   ),
                   addressField(),
                   SizedBox(

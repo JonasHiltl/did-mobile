@@ -1,7 +1,7 @@
-import 'package:did/blocs/createDid/createDidBloc.dart';
-import 'package:did/blocs/createDid/createDidEvent.dart';
-import 'package:did/blocs/createDid/createDidState.dart';
-import 'package:did/blocs/createDid/formSubmissionStatus.dart';
+import 'package:did/providers/createDid/createDidBloc.dart';
+import 'package:did/providers/createDid/createDidEvent.dart';
+import 'package:did/providers/createDid/createDidState.dart';
+import 'package:did/providers/createDid/formSubmissionStatus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
