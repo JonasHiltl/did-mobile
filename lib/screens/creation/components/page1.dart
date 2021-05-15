@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:did/globalComponents/minimalChangeLanguage.dart';
+import 'package:did/global_components/minimalChangeLanguage.dart';
 import 'package:did/generated/l10n.dart';
 
 import 'customSteps.dart';

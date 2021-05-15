@@ -1,5 +1,5 @@
-import 'package:did/globalComponents/changeSingleValueWithExpandIcon.dart';
-import 'package:did/globalComponents/credential.dart';
+import 'package:did/global_components/change_single_value_with_expand_icon.dart';
+import 'package:did/global_components/credential.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

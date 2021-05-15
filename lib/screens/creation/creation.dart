@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../generated/l10n.dart';
-import '../../globalComponents/noti.dart';
+import '../../global_components/noti.dart';
 import 'components/page1.dart';
 import 'components/page2.dart';
 import 'components/page3.dart';
