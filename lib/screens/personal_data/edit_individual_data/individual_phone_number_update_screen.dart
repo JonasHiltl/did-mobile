@@ -80,7 +80,7 @@ class _IndividualPhoneNumberUpdateScreenState
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
                     showErrorNoti(
-                        message: L.of(context).createErrorMessage,
+                        message: L.of(context).updateErrorMessage,
                         context: context);
                   }
                 }, builder: (context, state) {

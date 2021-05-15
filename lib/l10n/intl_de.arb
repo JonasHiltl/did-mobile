@@ -15,8 +15,8 @@
   "state": "Bundesland",
 
   "createHeader": "Erstelle deine digitale Identität!",
-  "createSuccessMessage": "Digitale Identität erfolgreich erstellt.",
-  "createErrorMessage": "Erstellung deiner digitalen Identität fehlgeschlagen.",
+  "createSuccessMessage": "Digitale Identität erfolgreich erstellt",
+  "createErrorMessage": "Erstellung deiner digitalen Identität fehlgeschlagen",
   "noCountriesFound": "Keine Länder gefunden",
 
   "introductionAction": "Digitale Identität erstellen",
@@ -27,7 +27,7 @@
 
   "createdAt": "Erstellt am: ",
   "personalData": "Persönliche Daten",
-
+  
   "updateFirstName": "Vornamen aktualisieren",
   "updateLastName": "Nachname aktualisieren",
   "updateEmail": "Email Adresse aktualisieren",
@@ -40,6 +40,7 @@
   "updatePostalCode": "Postleitzahl aktualisieren",
   "updateCountry": "Land aktualisieren",
 
+  "updateErrorMessage": "Update of your personal data failed",
   "updateSuccessFirstName": "Dein Vorname wurde aktualisiert",
   "updateSuccessLastName": "Dein Nachname wurde aktualisiert",
   "updateSuccessEmail": "Deine E-Mail wurde aktualisiert",

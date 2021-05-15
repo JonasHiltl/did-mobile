@@ -80,6 +80,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update Date of Birth"),
         "updateEmail":
             MessageLookupByLibrary.simpleMessage("Update Email Address"),
+        "updateErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Aktualisierung deiner persönlichen Daten fehlgeschlagen"),
         "updateFirstName":
             MessageLookupByLibrary.simpleMessage("Update First Name"),
         "updateLastName":

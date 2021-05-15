@@ -40,6 +40,7 @@
   "updatePostalCode": "Update Postal Code",
   "updateCountry": "Update Country",
 
+  "updateErrorMessage": "Aktualisierung deiner persönlichen Daten fehlgeschlagen",
   "updateSuccessFirstName": "First name has been updated",
   "updateSuccessLastName": "Last name has been updated",
   "updateSuccessEmail": "Email has been updated",

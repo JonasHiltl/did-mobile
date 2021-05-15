@@ -400,6 +400,16 @@ class L {
     );
   }
 
+  /// `Aktualisierung deiner persönlichen Daten fehlgeschlagen`
+  String get updateErrorMessage {
+    return Intl.message(
+      'Aktualisierung deiner persönlichen Daten fehlgeschlagen',
+      name: 'updateErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `First name has been updated`
   String get updateSuccessFirstName {
     return Intl.message(

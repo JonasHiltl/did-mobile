@@ -7,7 +7,7 @@ void showSuccessNoti({
 }) {
   showFlash(
       context: context,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 3),
       builder: (context, controller) {
         return Flash.dialog(
             controller: controller,

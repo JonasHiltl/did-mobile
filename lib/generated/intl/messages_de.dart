@@ -26,11 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Erstellung deiner digitalen Identität fehlgeschlagen."),
+            "Erstellung deiner digitalen Identität fehlgeschlagen"),
         "createHeader": MessageLookupByLibrary.simpleMessage(
             "Erstelle deine digitale Identität!"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
-            "Digitale Identität erfolgreich erstellt."),
+            "Digitale Identität erfolgreich erstellt"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Geburtsdatum"),
         "email": MessageLookupByLibrary.simpleMessage("E-Mail"),
@@ -81,6 +81,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Geburtsdatum aktualisieren"),
         "updateEmail":
             MessageLookupByLibrary.simpleMessage("Email Adresse aktualisieren"),
+        "updateErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Update of your personal data failed"),
         "updateFirstName":
             MessageLookupByLibrary.simpleMessage("Vornamen aktualisieren"),
         "updateLastName":
