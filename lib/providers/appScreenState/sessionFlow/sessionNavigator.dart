@@ -1,5 +1,5 @@
-import "package:did/screens/page2/page2.dart";
-import "package:did/screens/home/home.dart";
+import "package:did/screens/session/page2/page2.dart";
+import "package:did/screens/session/home/home.dart";
 import 'package:did/screens/Settings/Settings.dart';
 import "package:flutter/material.dart";
 

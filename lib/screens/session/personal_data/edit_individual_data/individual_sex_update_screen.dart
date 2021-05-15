@@ -1,6 +1,7 @@
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
@@ -9,19 +10,16 @@ import 'package:did/providers/updatePersonalData/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualAddressUpdateScreen extends StatefulWidget {
+class IndividualSexUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualAddressUpdateScreen({required this.initialValue});
+  const IndividualSexUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualAddressUpdateScreenState createState() =>
-      _IndividualAddressUpdateScreenState();
+  _IndividualSexUpdateScreenState createState() =>
+      _IndividualSexUpdateScreenState();
 }
 
-class _IndividualAddressUpdateScreenState
-    extends State<IndividualAddressUpdateScreen> {
+class _IndividualSexUpdateScreenState extends State<IndividualSexUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +64,7 @@ class _IndividualAddressUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updateAddress,
+                    L.of(context).updateSex,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +73,7 @@ class _IndividualAddressUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessAddress,
+                        message: L.of(context).updateSuccessSex,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -89,54 +87,77 @@ class _IndividualAddressUpdateScreenState
                     child: Column(
                       children: [
                         Expanded(
-                            child: TextFormField(
-                                style: Theme.of(context).textTheme.bodyText2,
-                                cursorWidth: 1,
-                                controller: _controller,
-                                decoration: InputDecoration(
-                                    isDense: true,
-                                    prefixIcon: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 15, horizontal: 10),
-                                        child: Text(
-                                          L.of(context).address,
-                                          style: TextStyle(
-                                              color: Colors.black
-                                                  .withOpacity(0.6)),
-                                        )),
-                                    prefixIconConstraints: const BoxConstraints(
-                                      minWidth: 120,
-                                    ),
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 10),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              Expanded(
+                                child: Container(
+                                    padding:
+                                        const EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                    decoration: BoxDecoration(
+                                        color: const Color(0xFFF1F3FD),
+                                        borderRadius:
+                                            BorderRadius.circular(4.0),
+                                        border: Border.all(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidAddress
-                                        ? null
-                                        : L.of(context).missingAddress,
-                                    filled: true,
-                                    fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidAddress
-                                    ? null
-                                    : L.of(context).missingAddress,
-                                onChanged: (value) =>
-                                    context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalAddressChanged(
-                                              address: value),
-                                        ))),
+                                    child: Row(children: [
+                                      Radio(
+                                        value: "female",
+                                        groupValue: context
+                                            .read<UpdatePersonalBloc>()
+                                            .state
+                                            .sex,
+                                        onChanged: (value) => context
+                                            .read<UpdatePersonalBloc>()
+                                            .add(UpdatePersonalSexChanged(
+                                                sex: value.toString())),
+                                        activeColor:
+                                            Theme.of(context).primaryColor,
+                                      ),
+                                      Text(L.of(context).female),
+                                    ])),
+                              ),
+                              const SizedBox(
+                                width: 20,
+                              ),
+                              Expanded(
+                                child: Container(
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFF1F3FD),
+                                      borderRadius: BorderRadius.circular(4.0),
+                                      border: Border.all(
+                                          color: const Color(0xFFACB6C5)
+                                              .withOpacity(0.6))),
+                                  child: Row(
+                                    children: [
+                                      Radio(
+                                        value: "male",
+                                        groupValue: context
+                                            .read<UpdatePersonalBloc>()
+                                            .state
+                                            .sex,
+                                        onChanged: (value) => context
+                                            .read<UpdatePersonalBloc>()
+                                            .add(UpdatePersonalSexChanged(
+                                                sex: value.toString())),
+                                        activeColor:
+                                            Theme.of(context).primaryColor,
+                                      ),
+                                      Text(L.of(context).male),
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidAddress ||
+                              onPressed: !state.isValidSex ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +175,7 @@ class _IndividualAddressUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updateAddress),
+                                  : Text(L.of(context).updateSex),
                             ))
                       ],
                     ),

@@ -1,5 +1,5 @@
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
-import 'package:did/screens/home/components/createFirstQuestionnaire.dart';
+import 'package:did/screens/session/home/components/createFirstQuestionnaire.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';

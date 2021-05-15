@@ -1,6 +1,7 @@
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
@@ -9,19 +10,17 @@ import 'package:did/providers/updatePersonalData/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualPhoneNumberUpdateScreen extends StatefulWidget {
+class IndividualLastNameUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualPhoneNumberUpdateScreen({required this.initialValue});
+  const IndividualLastNameUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualPhoneNumberUpdateScreenState createState() =>
-      _IndividualPhoneNumberUpdateScreenState();
+  _IndividualLastNameUpdateScreenState createState() =>
+      _IndividualLastNameUpdateScreenState();
 }
 
-class _IndividualPhoneNumberUpdateScreenState
-    extends State<IndividualPhoneNumberUpdateScreen> {
+class _IndividualLastNameUpdateScreenState
+    extends State<IndividualLastNameUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class _IndividualPhoneNumberUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updatePhoneNumber,
+                    L.of(context).updateLastName,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +74,7 @@ class _IndividualPhoneNumberUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessPhoneNumber,
+                        message: L.of(context).updateSuccessLastName,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -99,7 +98,7 @@ class _IndividualPhoneNumberUpdateScreenState
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 15, horizontal: 10),
                                         child: Text(
-                                          L.of(context).phoneNumber,
+                                          L.of(context).lastName,
                                           style: TextStyle(
                                               color: Colors.black
                                                   .withOpacity(0.6)),
@@ -120,23 +119,23 @@ class _IndividualPhoneNumberUpdateScreenState
                                         borderSide: BorderSide(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidPhoneNumber
+                                    errorText: state.isValidlastName
                                         ? null
-                                        : L.of(context).missingPhoneNumber,
+                                        : L.of(context).missingLastName,
                                     filled: true,
                                     fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidPhoneNumber
+                                validator: (value) => state.isValidlastName
                                     ? null
-                                    : L.of(context).missingPhoneNumber,
+                                    : L.of(context).missingLastName,
                                 onChanged: (value) =>
                                     context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalPhoneNumberChanged(
-                                              phoneNumber: value),
+                                          UpdatePersonalLastNameChanged(
+                                              lastName: value),
                                         ))),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidPhoneNumber ||
+                              onPressed: !state.isValidlastName ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +153,7 @@ class _IndividualPhoneNumberUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updatePhoneNumber),
+                                  : Text(L.of(context).updateLastName),
                             ))
                       ],
                     ),

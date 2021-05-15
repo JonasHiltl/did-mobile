@@ -1,6 +1,6 @@
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
-import 'package:did/screens/personal_data/personalData.dart';
+import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';

@@ -2,6 +2,7 @@ import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:did/providers/language/languageBloc.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
@@ -11,8 +12,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:intl/intl.dart';
-
-import '../../../generated/l10n.dart';
 
 class IndividualDateOfBirthUpdateScreen extends StatefulWidget {
   final String initialValue;

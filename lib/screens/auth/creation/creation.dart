@@ -1,3 +1,4 @@
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/createDid/createDidBloc.dart';
 import 'package:did/providers/createDid/createDidEvent.dart';
 import 'package:did/providers/createDid/createDidState.dart';
@@ -5,8 +6,7 @@ import 'package:did/providers/createDid/formSubmissionStatus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../generated/l10n.dart';
-import '../../global_components/noti.dart';
+import '../../../global_components/noti.dart';
 import 'components/page1.dart';
 import 'components/page2.dart';
 import 'components/page3.dart';

@@ -1,3 +1,4 @@
+import 'package:did/generated/l10n.dart';
 import 'package:did/global_components/change_single_value_with_expand_icon.dart';
 import 'package:did/global_components/credential.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
@@ -6,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../../../generated/l10n.dart';
 import '../edit_individual_data/individual_address_update_screen.dart';
 import '../edit_individual_data/individual_city_update_screen.dart';
 import '../edit_individual_data/individual_country_update_screen.dart';

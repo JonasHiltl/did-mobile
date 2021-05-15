@@ -6,22 +6,21 @@ import 'package:did/providers/updatePersonalData/repository/update_personal_data
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
 import 'package:did/providers/updatePersonalData/update_personal_event.dart';
 import 'package:did/providers/updatePersonalData/update_personal_state.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualStateUpdateScreen extends StatefulWidget {
+class IndividualAddressUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualStateUpdateScreen({required this.initialValue});
+  const IndividualAddressUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualStateUpdateScreenState createState() =>
-      _IndividualStateUpdateScreenState();
+  _IndividualAddressUpdateScreenState createState() =>
+      _IndividualAddressUpdateScreenState();
 }
 
-class _IndividualStateUpdateScreenState
-    extends State<IndividualStateUpdateScreen> {
+class _IndividualAddressUpdateScreenState
+    extends State<IndividualAddressUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class _IndividualStateUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updateState,
+                    L.of(context).updateAddress,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +74,7 @@ class _IndividualStateUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessSex,
+                        message: L.of(context).updateSuccessAddress,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -99,7 +98,7 @@ class _IndividualStateUpdateScreenState
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 15, horizontal: 10),
                                         child: Text(
-                                          L.of(context).state,
+                                          L.of(context).address,
                                           style: TextStyle(
                                               color: Colors.black
                                                   .withOpacity(0.6)),
@@ -120,23 +119,23 @@ class _IndividualStateUpdateScreenState
                                         borderSide: BorderSide(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidState
+                                    errorText: state.isValidAddress
                                         ? null
-                                        : L.of(context).missingState,
+                                        : L.of(context).missingAddress,
                                     filled: true,
                                     fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidState
+                                validator: (value) => state.isValidAddress
                                     ? null
-                                    : L.of(context).missingState,
-                                onChanged: (value) => context
-                                    .read<UpdatePersonalBloc>()
-                                    .add(
-                                      UpdatePersonalStateChanged(state: value),
-                                    ))),
+                                    : L.of(context).missingAddress,
+                                onChanged: (value) =>
+                                    context.read<UpdatePersonalBloc>().add(
+                                          UpdatePersonalAddressChanged(
+                                              address: value),
+                                        ))),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidState ||
+                              onPressed: !state.isValidAddress ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +153,7 @@ class _IndividualStateUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updateState),
+                                  : Text(L.of(context).updateAddress),
                             ))
                       ],
                     ),

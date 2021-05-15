@@ -1,6 +1,7 @@
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
@@ -9,19 +10,17 @@ import 'package:did/providers/updatePersonalData/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualFirstNameUpdateScreen extends StatefulWidget {
+class IndividualCountryUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualFirstNameUpdateScreen({required this.initialValue});
+  const IndividualCountryUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualFirstNameUpdateScreenState createState() =>
-      _IndividualFirstNameUpdateScreenState();
+  _IndividualCountryUpdateScreenState createState() =>
+      _IndividualCountryUpdateScreenState();
 }
 
-class _IndividualFirstNameUpdateScreenState
-    extends State<IndividualFirstNameUpdateScreen> {
+class _IndividualCountryUpdateScreenState
+    extends State<IndividualCountryUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class _IndividualFirstNameUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updateFirstName,
+                    L.of(context).updateCountry,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +74,7 @@ class _IndividualFirstNameUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessFirstName,
+                        message: L.of(context).updateSuccessCountry,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -99,7 +98,7 @@ class _IndividualFirstNameUpdateScreenState
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 15, horizontal: 10),
                                         child: Text(
-                                          L.of(context).firstName,
+                                          L.of(context).country,
                                           style: TextStyle(
                                               color: Colors.black
                                                   .withOpacity(0.6)),
@@ -120,23 +119,23 @@ class _IndividualFirstNameUpdateScreenState
                                         borderSide: BorderSide(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidFirstName
+                                    errorText: state.isValidCountry
                                         ? null
-                                        : L.of(context).missingFirstName,
+                                        : L.of(context).missingCountry,
                                     filled: true,
                                     fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidFirstName
+                                validator: (value) => state.isValidCountry
                                     ? null
-                                    : L.of(context).missingFirstName,
+                                    : L.of(context).missingCountry,
                                 onChanged: (value) =>
                                     context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalFirstNameChanged(
-                                              firstName: value),
+                                          UpdatePersonalCountryChanged(
+                                              country: value),
                                         ))),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidFirstName ||
+                              onPressed: !state.isValidCountry ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +153,7 @@ class _IndividualFirstNameUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updateFirstName),
+                                  : Text(L.of(context).updateCountry),
                             ))
                       ],
                     ),

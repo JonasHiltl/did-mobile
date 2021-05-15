@@ -1,6 +1,7 @@
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
@@ -9,19 +10,17 @@ import 'package:did/providers/updatePersonalData/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualLastNameUpdateScreen extends StatefulWidget {
+class IndividualFirstNameUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualLastNameUpdateScreen({required this.initialValue});
+  const IndividualFirstNameUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualLastNameUpdateScreenState createState() =>
-      _IndividualLastNameUpdateScreenState();
+  _IndividualFirstNameUpdateScreenState createState() =>
+      _IndividualFirstNameUpdateScreenState();
 }
 
-class _IndividualLastNameUpdateScreenState
-    extends State<IndividualLastNameUpdateScreen> {
+class _IndividualFirstNameUpdateScreenState
+    extends State<IndividualFirstNameUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class _IndividualLastNameUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updateLastName,
+                    L.of(context).updateFirstName,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +74,7 @@ class _IndividualLastNameUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessLastName,
+                        message: L.of(context).updateSuccessFirstName,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -99,7 +98,7 @@ class _IndividualLastNameUpdateScreenState
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 15, horizontal: 10),
                                         child: Text(
-                                          L.of(context).lastName,
+                                          L.of(context).firstName,
                                           style: TextStyle(
                                               color: Colors.black
                                                   .withOpacity(0.6)),
@@ -120,23 +119,23 @@ class _IndividualLastNameUpdateScreenState
                                         borderSide: BorderSide(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidlastName
+                                    errorText: state.isValidFirstName
                                         ? null
-                                        : L.of(context).missingLastName,
+                                        : L.of(context).missingFirstName,
                                     filled: true,
                                     fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidlastName
+                                validator: (value) => state.isValidFirstName
                                     ? null
-                                    : L.of(context).missingLastName,
+                                    : L.of(context).missingFirstName,
                                 onChanged: (value) =>
                                     context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalLastNameChanged(
-                                              lastName: value),
+                                          UpdatePersonalFirstNameChanged(
+                                              firstName: value),
                                         ))),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidlastName ||
+                              onPressed: !state.isValidFirstName ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +153,7 @@ class _IndividualLastNameUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updateLastName),
+                                  : Text(L.of(context).updateFirstName),
                             ))
                       ],
                     ),

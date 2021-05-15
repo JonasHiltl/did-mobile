@@ -1,7 +1,7 @@
 import 'package:did/providers/appScreenState/appNavigator.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
-import "package:did/screens/introduction/introduction.dart";
+import "package:did/screens/auth/introduction/introduction.dart";
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
@@ -14,7 +14,7 @@ import "providers/createDid/createDidBloc.dart";
 import "providers/language/languageBloc.dart";
 import "providers/language/languageState.dart";
 import "providers/language/storageUtils.dart";
-import "screens/creation/creation.dart";
+import "screens/auth/creation/creation.dart";
 
 // ignore: avoid_void_async
 void main() async {

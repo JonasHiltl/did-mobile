@@ -4,7 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../global_components/minimalChangeLanguage.dart';
+import '../../../global_components/minimalChangeLanguage.dart';
 import 'carousel.dart';
 
 class Introduction extends StatefulWidget {

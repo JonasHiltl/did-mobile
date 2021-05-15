@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../generated/l10n.dart';
+import '../../../generated/l10n.dart';
 import 'components/credentialDetailsView.dart';
 
 class PersonalData extends StatefulWidget {

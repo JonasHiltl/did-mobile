@@ -1,6 +1,7 @@
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
@@ -9,19 +10,17 @@ import 'package:did/providers/updatePersonalData/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualPostalCodeUpdateScreen extends StatefulWidget {
+class IndividualEmailUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualPostalCodeUpdateScreen({required this.initialValue});
+  const IndividualEmailUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualPostalCodeUpdateScreenState createState() =>
-      _IndividualPostalCodeUpdateScreenState();
+  _IndividualEmailUpdateScreenState createState() =>
+      _IndividualEmailUpdateScreenState();
 }
 
-class _IndividualPostalCodeUpdateScreenState
-    extends State<IndividualPostalCodeUpdateScreen> {
+class _IndividualEmailUpdateScreenState
+    extends State<IndividualEmailUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class _IndividualPostalCodeUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updatePostalCode,
+                    L.of(context).updateEmail,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +74,7 @@ class _IndividualPostalCodeUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessPostalCode,
+                        message: L.of(context).updateSuccessEmail,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -99,7 +98,7 @@ class _IndividualPostalCodeUpdateScreenState
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 15, horizontal: 10),
                                         child: Text(
-                                          L.of(context).postalCode,
+                                          L.of(context).email,
                                           style: TextStyle(
                                               color: Colors.black
                                                   .withOpacity(0.6)),
@@ -120,23 +119,23 @@ class _IndividualPostalCodeUpdateScreenState
                                         borderSide: BorderSide(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidPostalCode
+                                    errorText: state.isValidEmail
                                         ? null
-                                        : L.of(context).missingPostalCode,
+                                        : L.of(context).missingEmail,
                                     filled: true,
                                     fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidPostalCode
+                                validator: (value) => state.isValidEmail
                                     ? null
-                                    : L.of(context).missingPostalCode,
-                                onChanged: (value) =>
-                                    context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalPostalCodeChanged(
-                                              postalCode: value),
-                                        ))),
+                                    : L.of(context).missingEmail,
+                                onChanged: (value) => context
+                                    .read<UpdatePersonalBloc>()
+                                    .add(
+                                      UpdatePersonalEmailChanged(email: value),
+                                    ))),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidPostalCode ||
+                              onPressed: !state.isValidEmail ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +153,7 @@ class _IndividualPostalCodeUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updatePostalCode),
+                                  : Text(L.of(context).updateEmail),
                             ))
                       ],
                     ),

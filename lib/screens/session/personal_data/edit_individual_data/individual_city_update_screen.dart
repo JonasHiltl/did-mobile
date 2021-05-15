@@ -6,22 +6,21 @@ import 'package:did/providers/updatePersonalData/repository/update_personal_data
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
 import 'package:did/providers/updatePersonalData/update_personal_event.dart';
 import 'package:did/providers/updatePersonalData/update_personal_state.dart';
+import 'package:did/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../generated/l10n.dart';
-
-class IndividualEmailUpdateScreen extends StatefulWidget {
+class IndividualCityUpdateScreen extends StatefulWidget {
   final String initialValue;
-  const IndividualEmailUpdateScreen({required this.initialValue});
+  const IndividualCityUpdateScreen({required this.initialValue});
 
   @override
-  _IndividualEmailUpdateScreenState createState() =>
-      _IndividualEmailUpdateScreenState();
+  _IndividualCityUpdateScreenState createState() =>
+      _IndividualCityUpdateScreenState();
 }
 
-class _IndividualEmailUpdateScreenState
-    extends State<IndividualEmailUpdateScreen> {
+class _IndividualCityUpdateScreenState
+    extends State<IndividualCityUpdateScreen> {
   final TextEditingController _controller = TextEditingController();
 
   @override
@@ -66,7 +65,7 @@ class _IndividualEmailUpdateScreenState
                     color: Colors.black,
                   ),
                   title: Text(
-                    L.of(context).updateEmail,
+                    L.of(context).updateCity,
                     style: Theme.of(context).textTheme.headline5,
                   ),
                   centerTitle: true,
@@ -75,7 +74,7 @@ class _IndividualEmailUpdateScreenState
                     listener: (context, state) {
                   if (state.formStatus is SubmissionSuccess) {
                     showSuccessNoti(
-                        message: L.of(context).updateSuccessEmail,
+                        message: L.of(context).updateSuccessCity,
                         context: context);
                     Navigator.pop(context);
                   } else if (state.formStatus is SubmissionFailed) {
@@ -99,7 +98,7 @@ class _IndividualEmailUpdateScreenState
                                         padding: const EdgeInsets.symmetric(
                                             vertical: 15, horizontal: 10),
                                         child: Text(
-                                          L.of(context).email,
+                                          L.of(context).city,
                                           style: TextStyle(
                                               color: Colors.black
                                                   .withOpacity(0.6)),
@@ -120,23 +119,23 @@ class _IndividualEmailUpdateScreenState
                                         borderSide: BorderSide(
                                             color: const Color(0xFFACB6C5)
                                                 .withOpacity(0.6))),
-                                    errorText: state.isValidEmail
+                                    errorText: state.isValidCity
                                         ? null
-                                        : L.of(context).missingEmail,
+                                        : L.of(context).missingCity,
                                     filled: true,
                                     fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidEmail
+                                validator: (value) => state.isValidCity
                                     ? null
-                                    : L.of(context).missingEmail,
+                                    : L.of(context).missingCity,
                                 onChanged: (value) => context
                                     .read<UpdatePersonalBloc>()
                                     .add(
-                                      UpdatePersonalEmailChanged(email: value),
+                                      UpdatePersonalCityChanged(city: value),
                                     ))),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                              onPressed: !state.isValidEmail ||
+                              onPressed: !state.isValidCity ||
                                       state.formStatus is FormSubmitting
                                   ? null
                                   : () => context
@@ -154,7 +153,7 @@ class _IndividualEmailUpdateScreenState
                                             AlwaysStoppedAnimation<Color>(
                                                 Color(0xFFD9D9D9)),
                                       ))
-                                  : Text(L.of(context).updateEmail),
+                                  : Text(L.of(context).updateCity),
                             ))
                       ],
                     ),
