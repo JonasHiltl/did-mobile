@@ -15,8 +15,8 @@
   "state": "State",
 
   "createHeader": "Let's create your digital Identity!",
-  "createSuccessMessage": "Digital Identity successfully created.",
-  "createErrorMessage": "Your digital identity creation failed.",
+  "createSuccessMessage": "Digital Identity successfully created",
+  "createErrorMessage": "Your digital identity creation failed",
   "noCountriesFound": "No Countries found",
 
   "introductionAction": "Create digital identity",
@@ -39,6 +39,18 @@
   "updateState": "Update State",
   "updatePostalCode": "Update Postal Code",
   "updateCountry": "Update Country",
+
+  "updateSuccessFirstName": "First name has been updated",
+  "updateSuccessLastName": "Last name has been updated",
+  "updateSuccessEmail": "Email has been updated",
+  "updateSuccessPhoneNumber": "Phone number has been updated",
+  "updateSuccessDateOfBirth": "Date of Birth has been updated",
+  "updateSuccessSex": "Biological sex has been updated",
+  "updateSuccessAddress": "Address has been updated",
+  "updateSuccessCity": "City has been updated",
+  "updateSuccessState": "State has been updated",
+  "updateSuccessPostalCode": "Postal code has been updated",
+  "updateSuccessCountry": "Country has been updated",
 
   "missingInput": "The field must not be empty.",
   "missingFirstName": "Please input your first Name.",

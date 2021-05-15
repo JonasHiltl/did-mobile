@@ -16,6 +16,7 @@ class UpdatePersonalBloc
   UpdatePersonalBloc({
     required this.repo,
     required this.authCubit,
+    required this.id,
     required this.firstName,
     required this.lastName,
     required this.email,
@@ -45,6 +46,7 @@ class UpdatePersonalBloc
   final AuthCubit authCubit;
   final SecureStorage secureStorage = SecureStorage();
 
+  final String id;
   final String firstName;
   final String lastName;
   final String email;
@@ -61,25 +63,18 @@ class UpdatePersonalBloc
   Stream<UpdatePersonalState> mapEventToState(
       UpdatePersonalEvent event) async* {
     if (event is UpdatePersonalFirstNameChanged) {
-      print("First Name changed: ${event.firstName}");
       yield state.copyWith(firstname: event.firstName);
     } else if (event is UpdatePersonalLastNameChanged) {
-      print("Last Name changed: ${event.lastName}");
       yield state.copyWith(lastName: event.lastName);
     } else if (event is UpdatePersonalEmailChanged) {
-      print("Email changed: ${event.email}");
       yield state.copyWith(email: event.email);
     } else if (event is UpdatePersonalPhoneNumberChanged) {
-      print("phoneNumber changed: ${event.phoneNumber}");
       yield state.copyWith(phoneNumber: event.phoneNumber);
     } else if (event is UpdatePersonalDateOfBirthChanged) {
-      print("dateOfBirth changed: ${event.dateOfBirth}");
       yield state.copyWith(dateOfBirth: event.dateOfBirth);
     } else if (event is UpdatePersonalSexChanged) {
-      print("Sex changed: ${event.sex}");
       yield state.copyWith(sex: event.sex);
     } else if (event is UpdatePersonalAddressChanged) {
-      print("Address changed: ${event.address}");
       yield state.copyWith(address: event.address);
     } else if (event is UpdatePersonalCityChanged) {
       yield state.copyWith(city: event.city);
@@ -88,13 +83,13 @@ class UpdatePersonalBloc
     } else if (event is UpdatePersonalPostalCodeChanged) {
       yield state.copyWith(postalCode: event.postalCode);
     } else if (event is UpdatePersonalCountryChanged) {
-      print("Country changed: ${event.country}");
       yield state.copyWith(country: event.country);
     } else if (event is UpdatePersonalSubmitted) {
       yield state.copyWith(formStatus: FormSubmitting());
 
       try {
-        final res = await repo.createDid(
+        final res = await repo.updatePersonalVc(
+            id,
             state.firstName,
             state.lastName,
             state.email,

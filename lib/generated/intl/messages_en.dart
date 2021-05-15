@@ -26,11 +26,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
-            "Your digital identity creation failed."),
+            "Your digital identity creation failed"),
         "createHeader": MessageLookupByLibrary.simpleMessage(
             "Let\'s create your digital Identity!"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
-            "Digital Identity successfully created."),
+            "Digital Identity successfully created"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Created at: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
@@ -90,6 +90,28 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Update Postal Code"),
         "updateSex":
             MessageLookupByLibrary.simpleMessage("Update Biological Sex"),
-        "updateState": MessageLookupByLibrary.simpleMessage("Update State")
+        "updateState": MessageLookupByLibrary.simpleMessage("Update State"),
+        "updateSuccessAddress":
+            MessageLookupByLibrary.simpleMessage("Address has been updated"),
+        "updateSuccessCity":
+            MessageLookupByLibrary.simpleMessage("City has been updated"),
+        "updateSuccessCountry":
+            MessageLookupByLibrary.simpleMessage("Country has been updated"),
+        "updateSuccessDateOfBirth": MessageLookupByLibrary.simpleMessage(
+            "Date of Birth has been updated"),
+        "updateSuccessEmail":
+            MessageLookupByLibrary.simpleMessage("Email has been updated"),
+        "updateSuccessFirstName":
+            MessageLookupByLibrary.simpleMessage("First name has been updated"),
+        "updateSuccessLastName":
+            MessageLookupByLibrary.simpleMessage("Last name has been updated"),
+        "updateSuccessPhoneNumber": MessageLookupByLibrary.simpleMessage(
+            "Phone number has been updated"),
+        "updateSuccessPostalCode": MessageLookupByLibrary.simpleMessage(
+            "Postal code has been updated"),
+        "updateSuccessSex": MessageLookupByLibrary.simpleMessage(
+            "Biological sex has been updated"),
+        "updateSuccessState":
+            MessageLookupByLibrary.simpleMessage("State has been updated")
       };
 }

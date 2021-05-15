@@ -21,7 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "address": MessageLookupByLibrary.simpleMessage("Adresszeile"),
+        "address": MessageLookupByLibrary.simpleMessage("Addresse"),
         "back": MessageLookupByLibrary.simpleMessage("Zurück"),
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
@@ -92,6 +92,28 @@ class MessageLookup extends MessageLookupByLibrary {
         "updateSex":
             MessageLookupByLibrary.simpleMessage("Geschlecht aktualisieren"),
         "updateState":
-            MessageLookupByLibrary.simpleMessage("Bundesland aktualisieren")
+            MessageLookupByLibrary.simpleMessage("Bundesland aktualisieren"),
+        "updateSuccessAddress": MessageLookupByLibrary.simpleMessage(
+            "Deine Addresse wurde aktualisiert"),
+        "updateSuccessCity": MessageLookupByLibrary.simpleMessage(
+            "Deine Stadt wurde aktualisiert"),
+        "updateSuccessCountry": MessageLookupByLibrary.simpleMessage(
+            "Dein Land wurde aktualisiert"),
+        "updateSuccessDateOfBirth": MessageLookupByLibrary.simpleMessage(
+            "Dein Geburtsdatum wurde aktualisiert"),
+        "updateSuccessEmail": MessageLookupByLibrary.simpleMessage(
+            "Deine E-Mail wurde aktualisiert"),
+        "updateSuccessFirstName": MessageLookupByLibrary.simpleMessage(
+            "Dein Vorname wurde aktualisiert"),
+        "updateSuccessLastName": MessageLookupByLibrary.simpleMessage(
+            "Dein Nachname wurde aktualisiert"),
+        "updateSuccessPhoneNumber": MessageLookupByLibrary.simpleMessage(
+            "Deine Telefonnummer wurde aktualisiert"),
+        "updateSuccessPostalCode": MessageLookupByLibrary.simpleMessage(
+            "Deine Postleitzahl wurde aktualisiert"),
+        "updateSuccessSex": MessageLookupByLibrary.simpleMessage(
+            "Dein Geschlecht wurde aktualisiert"),
+        "updateSuccessState": MessageLookupByLibrary.simpleMessage(
+            "Dein Bundesland wurde aktualisiert")
       };
 }

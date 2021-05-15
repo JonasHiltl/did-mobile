@@ -1,6 +1,7 @@
+import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
-import 'package:did/providers/createDid/formSubmissionStatus.dart';
+import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
 import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
 import 'package:did/providers/updatePersonalData/update_personal_event.dart';
@@ -34,12 +35,14 @@ class _IndividualCityUpdateScreenState
     final Size size = MediaQuery.of(context).size;
     final credential =
         context.watch<Verified>().personalDataVc.credentialSubject;
+    final identity = context.watch<Verified>().identity;
     return RepositoryProvider(
       create: (context) => UpdatePersonalDataRepo(),
       child: BlocProvider<UpdatePersonalBloc>(
         create: (context) => UpdatePersonalBloc(
           repo: context.read<UpdatePersonalDataRepo>(),
           authCubit: context.read<AuthCubit>(),
+          id: identity.doc.id,
           firstName: credential.firstName,
           lastName: credential.lastName,
           email: credential.email,
@@ -68,8 +71,19 @@ class _IndividualCityUpdateScreenState
                   ),
                   centerTitle: true,
                 ),
-                body: BlocBuilder<UpdatePersonalBloc, UpdatePersonalState>(
-                    builder: (context, state) {
+                body: BlocConsumer<UpdatePersonalBloc, UpdatePersonalState>(
+                    listener: (context, state) {
+                  if (state.formStatus is SubmissionSuccess) {
+                    showSuccessNoti(
+                        message: L.of(context).updateSuccessCity,
+                        context: context);
+                    Navigator.pop(context);
+                  } else if (state.formStatus is SubmissionFailed) {
+                    showErrorNoti(
+                        message: L.of(context).createErrorMessage,
+                        context: context);
+                  }
+                }, builder: (context, state) {
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
@@ -122,11 +136,26 @@ class _IndividualCityUpdateScreenState
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(
-                                onPressed: !state.isValidCity ||
-                                        state.formStatus is FormSubmitting
-                                    ? null
-                                    : () => print("Submit form"),
-                                child: Text(L.of(context).updateCity)))
+                              onPressed: !state.isValidCity ||
+                                      state.formStatus is FormSubmitting
+                                  ? null
+                                  : () => context
+                                      .read<UpdatePersonalBloc>()
+                                      .add(UpdatePersonalSubmitted()),
+                              child: state.formStatus is FormSubmitting
+                                  ? Container(
+                                      height: 19,
+                                      width: 19,
+                                      margin:
+                                          const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                                      child: const CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        valueColor:
+                                            AlwaysStoppedAnimation<Color>(
+                                                Color(0xFFD9D9D9)),
+                                      ))
+                                  : Text(L.of(context).updateCity),
+                            ))
                       ],
                     ),
                   );

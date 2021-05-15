@@ -200,20 +200,20 @@ class L {
     );
   }
 
-  /// `Digital Identity successfully created.`
+  /// `Digital Identity successfully created`
   String get createSuccessMessage {
     return Intl.message(
-      'Digital Identity successfully created.',
+      'Digital Identity successfully created',
       name: 'createSuccessMessage',
       desc: '',
       args: [],
     );
   }
 
-  /// `Your digital identity creation failed.`
+  /// `Your digital identity creation failed`
   String get createErrorMessage {
     return Intl.message(
-      'Your digital identity creation failed.',
+      'Your digital identity creation failed',
       name: 'createErrorMessage',
       desc: '',
       args: [],
@@ -395,6 +395,116 @@ class L {
     return Intl.message(
       'Update Country',
       name: 'updateCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `First name has been updated`
+  String get updateSuccessFirstName {
+    return Intl.message(
+      'First name has been updated',
+      name: 'updateSuccessFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last name has been updated`
+  String get updateSuccessLastName {
+    return Intl.message(
+      'Last name has been updated',
+      name: 'updateSuccessLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email has been updated`
+  String get updateSuccessEmail {
+    return Intl.message(
+      'Email has been updated',
+      name: 'updateSuccessEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone number has been updated`
+  String get updateSuccessPhoneNumber {
+    return Intl.message(
+      'Phone number has been updated',
+      name: 'updateSuccessPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth has been updated`
+  String get updateSuccessDateOfBirth {
+    return Intl.message(
+      'Date of Birth has been updated',
+      name: 'updateSuccessDateOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Biological sex has been updated`
+  String get updateSuccessSex {
+    return Intl.message(
+      'Biological sex has been updated',
+      name: 'updateSuccessSex',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address has been updated`
+  String get updateSuccessAddress {
+    return Intl.message(
+      'Address has been updated',
+      name: 'updateSuccessAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `City has been updated`
+  String get updateSuccessCity {
+    return Intl.message(
+      'City has been updated',
+      name: 'updateSuccessCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `State has been updated`
+  String get updateSuccessState {
+    return Intl.message(
+      'State has been updated',
+      name: 'updateSuccessState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Postal code has been updated`
+  String get updateSuccessPostalCode {
+    return Intl.message(
+      'Postal code has been updated',
+      name: 'updateSuccessPostalCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Country has been updated`
+  String get updateSuccessCountry {
+    return Intl.message(
+      'Country has been updated',
+      name: 'updateSuccessCountry',
       desc: '',
       args: [],
     );

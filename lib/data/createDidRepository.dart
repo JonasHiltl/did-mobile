@@ -41,14 +41,10 @@ class CreateDidRepository {
     if (res.statusCode == 200) {
       final resJson = jsonDecode(res.body);
       final didJson = resJson["did"] as Map<String, dynamic>;
-      print("Json did $didJson");
       final credentialJson = resJson["credential"] as Map<String, dynamic>;
-      print("Credential did $credentialJson");
 
       final personalDataVc = PersonalDataVc.fromJson(credentialJson);
-      print(personalDataVc);
       final identity = Identity.fromJson(didJson);
-      print(identity);
 
       return DidVcCombination(
           identity: identity, personalDataVc: personalDataVc);
