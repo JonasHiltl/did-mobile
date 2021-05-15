@@ -33,7 +33,7 @@ class _Page3State extends State<Page3>
             height: 40,
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             child: Form(
               key: widget.formKeys[2],
               child: Column(

@@ -37,6 +37,7 @@ dependencies:
   intl: ^0.17.0
   json_annotation: ^4.0.1
   page_transition: ^2.0.1-nullsafety.0
+  provider: ^5.0.0
   shared_preferences: ^2.0.5
 
 

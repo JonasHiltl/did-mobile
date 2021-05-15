@@ -1,13 +1,13 @@
 import 'package:json_annotation/json_annotation.dart';
 
-import '../personal_data_vc/credential_subject.dart';
-import '../personal_data_vc/proof.dart';
+import 'credential_subject.dart';
+import 'proof.dart';
 
-part 'credential.g.dart';
+part 'personal_data_vc.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class Credential {
-  Credential({
+class PersonalDataVc {
+  PersonalDataVc({
     required this.context,
     required this.id,
     required this.type,
@@ -26,8 +26,8 @@ class Credential {
   final String issuanceDate;
   final Proof proof;
 
-  factory Credential.fromJson(Map<String, dynamic> data) =>
-      _$CredentialFromJson(data);
+  factory PersonalDataVc.fromJson(Map<String, dynamic> data) =>
+      _$PersonalDataVcFromJson(data);
 
-  Map<String, dynamic> toJson() => _$CredentialToJson(this);
+  Map<String, dynamic> toJson() => _$PersonalDataVcToJson(this);
 }

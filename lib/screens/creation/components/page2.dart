@@ -21,20 +21,6 @@ class Page2 extends StatefulWidget {
 class _Page2State extends State<Page2>
     with AutomaticKeepAliveClientMixin<Page2> {
   final TextEditingController dateController = TextEditingController();
-  Future pickDate(BuildContext context) async {
-    final initialDate = DateTime.now();
-    final newDate = await showDatePicker(
-        context: context,
-        initialDate: initialDate,
-        firstDate: DateTime(DateTime.now().year - 100),
-        lastDate: DateTime.now());
-    if (newDate == null) return;
-    //context.read is an extension method from Provider. import flutter_bloc to use with Bloc
-    context.read<CreateDidBloc>().add(
-          CreateDidDateOfBirthChanged(dateOfBirth: newDate),
-        );
-    widget.dateController.text = DateFormat.yMMMd().format(newDate);
-  }
 
   void setSex(String? value) {
     setState(() {
@@ -63,7 +49,7 @@ class _Page2State extends State<Page2>
             height: 40,
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             child: Form(
               key: widget.formKeys[1],
               child: Column(
@@ -137,7 +123,7 @@ class _Page2State extends State<Page2>
                           color: const Color(0xFFACB6C5).withOpacity(0.6),
                         )),
                         filled: true,
-                        fillColor: const Color(0xFFF1F5F9)),
+                        fillColor: const Color(0xFFF1F3FD)),
                   ),
                   SizedBox(
                     height: size.height * 0.02,
@@ -145,7 +131,6 @@ class _Page2State extends State<Page2>
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(L.of(context).sex),
                         Row(
                           children: <Widget>[
                             Expanded(
@@ -153,7 +138,7 @@ class _Page2State extends State<Page2>
                                   padding:
                                       const EdgeInsets.fromLTRB(0, 0, 18, 0),
                                   decoration: BoxDecoration(
-                                      color: const Color(0xFFF1F5F9),
+                                      color: const Color(0xFFF1F3FD),
                                       borderRadius: BorderRadius.circular(4.0),
                                       border: Border.all(
                                           color: const Color(0xFFACB6C5)
@@ -172,14 +157,14 @@ class _Page2State extends State<Page2>
                                     Text(L.of(context).female),
                                   ])),
                             ),
-                            const SizedBox(
-                              width: 20,
+                            SizedBox(
+                              width: size.height * 0.02,
                             ),
                             Expanded(
                               child: Container(
                                 padding: const EdgeInsets.fromLTRB(0, 0, 18, 0),
                                 decoration: BoxDecoration(
-                                    color: const Color(0xFFF1F5F9),
+                                    color: const Color(0xFFF1F3FD),
                                     borderRadius: BorderRadius.circular(4.0),
                                     border: Border.all(
                                         color: const Color(0xFFACB6C5)

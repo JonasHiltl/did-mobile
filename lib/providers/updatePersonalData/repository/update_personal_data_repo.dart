@@ -1,12 +1,9 @@
 import 'dart:convert';
+import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:http/http.dart' as http;
 
-import "../models/did/did_vc_combination.dart";
-import "../models/did/identity.dart";
-import "../models/personal_data_vc/personal_data_vc.dart";
-
-class CreateDidRepository {
-  Future<DidVcCombination> createDid(
+class UpdatePersonalDataRepo {
+  Future<PersonalDataVc> createDid(
       String firstName,
       String lastName,
       String email,
@@ -18,7 +15,8 @@ class CreateDidRepository {
       String state,
       String postalCode,
       String country) async {
-    final _uri = Uri.https("did-backend.herokuapp.com", "/create");
+    final _uri =
+        Uri.https("did-backend.herokuapp.com", "/updatePersonalDataVc");
     final res = await http.post(
       _uri,
       headers: <String, String>{
@@ -39,19 +37,9 @@ class CreateDidRepository {
       }),
     );
     if (res.statusCode == 200) {
-      final resJson = jsonDecode(res.body);
-      final didJson = resJson["did"] as Map<String, dynamic>;
-      print("Json did $didJson");
-      final credentialJson = resJson["credential"] as Map<String, dynamic>;
-      print("Credential did $credentialJson");
+      final didJson = jsonDecode(res.body) as Map<String, dynamic>;
 
-      final personalDataVc = PersonalDataVc.fromJson(credentialJson);
-      print(personalDataVc);
-      final identity = Identity.fromJson(didJson);
-      print(identity);
-
-      return DidVcCombination(
-          identity: identity, personalDataVc: personalDataVc);
+      return PersonalDataVc.fromJson(didJson);
     } else {
       throw "Error calling creation backend";
     }

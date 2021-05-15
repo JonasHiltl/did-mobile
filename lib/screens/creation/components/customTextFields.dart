@@ -49,7 +49,7 @@ class _FirstNameFieldState extends State<FirstNameField>
                 borderSide: BorderSide(
                     color: const Color(0xFFACB6C5).withOpacity(0.6))),
             filled: true,
-            fillColor: const Color(0xFFF1F5F9)),
+            fillColor: const Color(0xFFf1f3fd)),
         validator: (value) =>
             state.isValidFirstName ? null : L.of(context).missingFirstName,
         onChanged: (value) => context.read<CreateDidBloc>().add(
@@ -102,7 +102,7 @@ class _LastNameFieldState extends State<LastNameField>
                   color: const Color(0xFFACB6C5).withOpacity(0.6),
                 )),
                 filled: true,
-                fillColor: const Color(0xFFF1F5F9)),
+                fillColor: const Color(0xFFF1F3FD)),
             validator: (value) =>
                 state.isValidlastName ? null : L.of(context).missingLastName,
             onChanged: (value) => context.read<CreateDidBloc>().add(
@@ -160,7 +160,7 @@ class _EmailFieldState extends State<EmailField>
                   color: const Color(0xFFACB6C5).withOpacity(0.6),
                 )),
                 filled: true,
-                fillColor: const Color(0xFFF1F5F9)),
+                fillColor: const Color(0xFFF1F3FD)),
             validator: (value) =>
                 state.isValidEmail ? null : L.of(context).missingEmail,
             onChanged: (value) => context.read<CreateDidBloc>().add(
@@ -214,7 +214,7 @@ class _PhoneNumberFieldState extends State<PhoneNumberField>
                   color: const Color(0xFFACB6C5).withOpacity(0.6),
                 )),
                 filled: true,
-                fillColor: const Color(0xFFF1F5F9)),
+                fillColor: const Color(0xFFF1F3FD)),
             validator: (value) => state.isValidPhoneNumber
                 ? null
                 : L.of(context).missingPhoneNumber,
@@ -256,7 +256,7 @@ Widget addressField() {
                 color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
-              fillColor: const Color(0xFFF1F5F9)),
+              fillColor: const Color(0xFFF1F3FD)),
           validator: (value) =>
               state.isValidAddress ? null : L.of(context).address,
           onChanged: (value) => context.read<CreateDidBloc>().add(
@@ -296,7 +296,7 @@ Widget cityField() {
                 color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
-              fillColor: const Color(0xFFF1F5F9)),
+              fillColor: const Color(0xFFF1F3FD)),
           validator: (value) => state.isValidCity ? null : L.of(context).city,
           onChanged: (value) => context.read<CreateDidBloc>().add(
                 CreateDidCityChanged(city: value),
@@ -335,7 +335,7 @@ Widget stateField() {
                 color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
-              fillColor: const Color(0xFFF1F5F9)),
+              fillColor: const Color(0xFFF1F3FD)),
           validator: (value) => state.isValidState ? null : L.of(context).state,
           onChanged: (value) => context.read<CreateDidBloc>().add(
                 CreateDidStateChanged(state: value),
@@ -375,7 +375,7 @@ Widget postalCodeField() {
                 color: const Color(0xFFACB6C5).withOpacity(0.6),
               )),
               filled: true,
-              fillColor: const Color(0xFFF1F5F9)),
+              fillColor: const Color(0xFFF1F3FD)),
           validator: (value) =>
               state.isValidPostalCode ? null : L.of(context).postalCode,
           onChanged: (value) => context.read<CreateDidBloc>().add(
@@ -432,7 +432,7 @@ class _CountryFieldState extends State<CountryField> {
                     color: const Color(0xFFACB6C5).withOpacity(0.6),
                   )),
                   filled: true,
-                  fillColor: const Color(0xFFF1F5F9)),
+                  fillColor: const Color(0xFFF1F3FD)),
               onChanged: (value) => context.read<CreateDidBloc>().add(
                     CreateDidCountryChanged(country: value),
                   )),

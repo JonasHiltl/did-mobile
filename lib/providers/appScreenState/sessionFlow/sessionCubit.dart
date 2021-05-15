@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:did/data/commonBackendRepo.dart';
 import 'package:did/data/secureStorage.dart';
-import 'package:did/models/did/did.dart';
+import 'package:did/models/did/identity.dart';
+import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'sessionState.dart';
@@ -16,15 +17,23 @@ class SessionCubit extends Cubit<SessionState> {
 
   Future<void> attemptGettingDid() async {
     try {
-      //await secureStorage.delete("did");
-      if (await secureStorage.contains("did")) {
-        final encodedDid = await secureStorage.read("did");
+      //await secureStorage.delete("identity");
+      if (await secureStorage.contains("identity") &&
+          await secureStorage.contains("personal_data_vc")) {
+        final encodedDid = await secureStorage.read("identity");
         final decodedDid =
             jsonDecode(encodedDid.toString()) as Map<String, dynamic>;
+        final identity = Identity.fromJson(decodedDid);
 
-        final did = Did.fromJson(decodedDid);
-        if (await commonBackendRepo.verifyDid(did.identity.doc.id)) {
-          emit(Verified(did: did));
+        final encodedPersonalDataVc =
+            await secureStorage.read("personal_data_vc");
+        final decodedPersonalDataVc =
+            jsonDecode(encodedPersonalDataVc.toString())
+                as Map<String, dynamic>;
+        final personalDataVc = PersonalDataVc.fromJson(decodedPersonalDataVc);
+
+        if (await commonBackendRepo.verifyDid(identity.doc.id)) {
+          emit(Verified(identity: identity, personalDataVc: personalDataVc));
         } else {
           emit(Unverified());
         }
@@ -38,13 +47,12 @@ class SessionCubit extends Cubit<SessionState> {
   }
 
   void showUnverified() => emit(Unverified());
-  void showSession(Did did) {
-    print("showing session");
-    emit(Verified(did: did));
+  void showSession(Identity identity, PersonalDataVc personalDataVc) {
+    emit(Verified(identity: identity, personalDataVc: personalDataVc));
   }
 
   Future<void> clearDid() async {
-    await secureStorage.delete("did");
+    await secureStorage.delete("identity");
     emit(Unverified());
   }
 }

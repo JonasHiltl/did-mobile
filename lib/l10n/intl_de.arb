@@ -24,7 +24,23 @@
   "back": "Zurück",
   "next": "Weiter",
   "submit": "Fertig",
+
+  "createdAt": "Erstellt am: ",
+  "personalData": "Persönliche Daten",
+
+  "updateFirstName": "Vornamen aktualisieren",
+  "updateLastName": "Nachname aktualisieren",
+  "updateEmail": "Email Adresse aktualisieren",
+  "updatePhoneNumber": "Telefonnummer aktualisieren",
+  "updateDateOfBirth": "Geburtsdatum aktualisieren",
+  "updateSex": "Geschlecht aktualisieren",
+  "updateAddress": "Adresszeile aktualisieren",
+  "updateCity": "Stadt aktualisieren",
+  "updateState": "Bundesland aktualisieren",
+  "updatePostalCode": "Postleitzahl aktualisieren",
+  "updateCountry": "Land aktualisieren",
   
+  "missingInput": "Das Feld darf nicht lehr sein.",
   "missingFirstName": "Bitte gib deinen Vornamen ein.",
   "missingLastName": "Bitte gib deinen Nachname ein.",
   "missingEmail": "Bitte gib deine E-Mail ein.",

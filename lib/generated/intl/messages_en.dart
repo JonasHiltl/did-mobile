@@ -31,16 +31,19 @@ class MessageLookup extends MessageLookupByLibrary {
             "Let\'s create your digital Identity!"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digital Identity successfully created."),
-        "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of birth"),
+        "createdAt": MessageLookupByLibrary.simpleMessage("Created at: "),
+        "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
-        "firstName": MessageLookupByLibrary.simpleMessage("First name"),
+        "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "introductionAction":
             MessageLookupByLibrary.simpleMessage("Create digital identity"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Not a valid Email."),
-        "lastName": MessageLookupByLibrary.simpleMessage("Last name"),
+        "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "missingAddress": MessageLookupByLibrary.simpleMessage(
+            "Please input your street and number."),
         "missingCity":
             MessageLookupByLibrary.simpleMessage("Please input your city."),
         "missingCountry":
@@ -49,6 +52,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please input your email."),
         "missingFirstName": MessageLookupByLibrary.simpleMessage(
             "Please input your first Name."),
+        "missingInput": MessageLookupByLibrary.simpleMessage(
+            "The field must not be empty."),
         "missingLastName": MessageLookupByLibrary.simpleMessage(
             "Please input your last name."),
         "missingPhoneNumber": MessageLookupByLibrary.simpleMessage(
@@ -57,17 +62,34 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please input your postal code."),
         "missingState":
             MessageLookupByLibrary.simpleMessage("Please input your state."),
-        "missingStreetNumber": MessageLookupByLibrary.simpleMessage(
-            "Please input your street and number."),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("No Countries found"),
-        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone number"),
-        "postalCode": MessageLookupByLibrary.simpleMessage("Postal code"),
+        "personalData": MessageLookupByLibrary.simpleMessage("Personal Data"),
+        "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "residence":
-            MessageLookupByLibrary.simpleMessage("Residential address"),
-        "sex": MessageLookupByLibrary.simpleMessage("Biological sex"),
+            MessageLookupByLibrary.simpleMessage("Residential Address"),
+        "sex": MessageLookupByLibrary.simpleMessage("Biological Sex"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
-        "submit": MessageLookupByLibrary.simpleMessage("Submit")
+        "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "updateAddress": MessageLookupByLibrary.simpleMessage("Update Address"),
+        "updateCity": MessageLookupByLibrary.simpleMessage("Update City"),
+        "updateCountry": MessageLookupByLibrary.simpleMessage("Update Country"),
+        "updateDateOfBirth":
+            MessageLookupByLibrary.simpleMessage("Update Date of Birth"),
+        "updateEmail":
+            MessageLookupByLibrary.simpleMessage("Update Email Address"),
+        "updateFirstName":
+            MessageLookupByLibrary.simpleMessage("Update First Name"),
+        "updateLastName":
+            MessageLookupByLibrary.simpleMessage("Update Last Name"),
+        "updatePhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Update Phone Number"),
+        "updatePostalCode":
+            MessageLookupByLibrary.simpleMessage("Update Postal Code"),
+        "updateSex":
+            MessageLookupByLibrary.simpleMessage("Update Biological Sex"),
+        "updateState": MessageLookupByLibrary.simpleMessage("Update State")
       };
 }

@@ -50,20 +50,20 @@ class L {
     return Localizations.of<L>(context, L);
   }
 
-  /// `First name`
+  /// `First Name`
   String get firstName {
     return Intl.message(
-      'First name',
+      'First Name',
       name: 'firstName',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last name`
+  /// `Last Name`
   String get lastName {
     return Intl.message(
-      'Last name',
+      'Last Name',
       name: 'lastName',
       desc: '',
       args: [],
@@ -80,20 +80,20 @@ class L {
     );
   }
 
-  /// `Phone number`
+  /// `Phone Number`
   String get phoneNumber {
     return Intl.message(
-      'Phone number',
+      'Phone Number',
       name: 'phoneNumber',
       desc: '',
       args: [],
     );
   }
 
-  /// `Date of birth`
+  /// `Date of Birth`
   String get dateOfBirth {
     return Intl.message(
-      'Date of birth',
+      'Date of Birth',
       name: 'dateOfBirth',
       desc: '',
       args: [],
@@ -120,20 +120,20 @@ class L {
     );
   }
 
-  /// `Biological sex`
+  /// `Biological Sex`
   String get sex {
     return Intl.message(
-      'Biological sex',
+      'Biological Sex',
       name: 'sex',
       desc: '',
       args: [],
     );
   }
 
-  /// `Residential address`
+  /// `Residential Address`
   String get residence {
     return Intl.message(
-      'Residential address',
+      'Residential Address',
       name: 'residence',
       desc: '',
       args: [],
@@ -150,10 +150,10 @@ class L {
     );
   }
 
-  /// `Postal code`
+  /// `Postal Code`
   String get postalCode {
     return Intl.message(
-      'Postal code',
+      'Postal Code',
       name: 'postalCode',
       desc: '',
       args: [],
@@ -270,6 +270,146 @@ class L {
     );
   }
 
+  /// `Created at: `
+  String get createdAt {
+    return Intl.message(
+      'Created at: ',
+      name: 'createdAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Data`
+  String get personalData {
+    return Intl.message(
+      'Personal Data',
+      name: 'personalData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update First Name`
+  String get updateFirstName {
+    return Intl.message(
+      'Update First Name',
+      name: 'updateFirstName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Last Name`
+  String get updateLastName {
+    return Intl.message(
+      'Update Last Name',
+      name: 'updateLastName',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Email Address`
+  String get updateEmail {
+    return Intl.message(
+      'Update Email Address',
+      name: 'updateEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Phone Number`
+  String get updatePhoneNumber {
+    return Intl.message(
+      'Update Phone Number',
+      name: 'updatePhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Date of Birth`
+  String get updateDateOfBirth {
+    return Intl.message(
+      'Update Date of Birth',
+      name: 'updateDateOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Biological Sex`
+  String get updateSex {
+    return Intl.message(
+      'Update Biological Sex',
+      name: 'updateSex',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Address`
+  String get updateAddress {
+    return Intl.message(
+      'Update Address',
+      name: 'updateAddress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update City`
+  String get updateCity {
+    return Intl.message(
+      'Update City',
+      name: 'updateCity',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update State`
+  String get updateState {
+    return Intl.message(
+      'Update State',
+      name: 'updateState',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Postal Code`
+  String get updatePostalCode {
+    return Intl.message(
+      'Update Postal Code',
+      name: 'updatePostalCode',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update Country`
+  String get updateCountry {
+    return Intl.message(
+      'Update Country',
+      name: 'updateCountry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The field must not be empty.`
+  String get missingInput {
+    return Intl.message(
+      'The field must not be empty.',
+      name: 'missingInput',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please input your first Name.`
   String get missingFirstName {
     return Intl.message(
@@ -321,10 +461,10 @@ class L {
   }
 
   /// `Please input your street and number.`
-  String get missingStreetNumber {
+  String get missingAddress {
     return Intl.message(
       'Please input your street and number.',
-      name: 'missingStreetNumber',
+      name: 'missingAddress',
       desc: '',
       args: [],
     );

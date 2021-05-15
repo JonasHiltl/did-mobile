@@ -32,6 +32,8 @@ const ColorScheme colorScheme = ColorScheme.light(
     secondaryVariant: Color(0xFF0B0C10),
     onBackground: Color(0xFF0B0C10),
     onSecondary: Color(0xFFFFFFFF),
+    background: Color(0xFFf7fbff),
+    surface: Color(0xFFFFFFFF),
     onError: Color(0xFFFF4D4F));
 
 class MyApp extends StatelessWidget {
@@ -63,6 +65,7 @@ class MyApp extends StatelessWidget {
                   title: "Flutter Demo",
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
+                      scaffoldBackgroundColor: colorScheme.background,
                       colorScheme: colorScheme,
                       primaryColor: colorScheme.primary,
                       accentColor: colorScheme.secondary,

@@ -26,7 +26,7 @@ class Page1 extends StatelessWidget {
             height: 40,
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.all(20),
             child: Form(
               key: formKeys[0],
               child: Column(

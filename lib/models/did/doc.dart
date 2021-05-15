@@ -1,7 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../personal_data_vc/proof.dart';
 import 'authentication.dart';
-import 'proof.dart';
 
 part 'doc.g.dart';
 

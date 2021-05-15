@@ -1,6 +1,6 @@
 import "package:did/screens/page2/page2.dart";
 import "package:did/screens/home/home.dart";
-import 'package:did/screens/profile/profile.dart';
+import 'package:did/screens/Settings/Settings.dart';
 import "package:flutter/material.dart";
 
 class SessionNavigator extends StatefulWidget {
@@ -10,11 +10,11 @@ class SessionNavigator extends StatefulWidget {
 
 class _SessionNavigatorState extends State<SessionNavigator> {
   String _currentPage = "Home";
-  List<String> pageKeys = ["Home", "Page2", "Profile"];
+  List<String> pageKeys = ["Home", "Page2", "Settings"];
   final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
     "Home": GlobalKey<NavigatorState>(),
     "Page2": GlobalKey<NavigatorState>(),
-    "Profile": GlobalKey<NavigatorState>(),
+    "Settings": GlobalKey<NavigatorState>(),
   };
   int _selectedIndex = 0;
 
@@ -50,7 +50,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
           children: [
             _buildOffstageNavigator("Home"),
             _buildOffstageNavigator("Page2"),
-            _buildOffstageNavigator("Profile"),
+            _buildOffstageNavigator("Settings"),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -79,12 +79,12 @@ class _SessionNavigatorState extends State<SessionNavigator> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.person_outline,
+                Icons.settings_outlined,
               ),
               activeIcon: Icon(
-                Icons.person_rounded,
+                Icons.settings_rounded,
               ),
-              label: "Profile",
+              label: "Settings",
             ),
           ],
           type: BottomNavigationBarType.fixed,
@@ -117,7 +117,7 @@ class TabNavigator extends StatelessWidget {
     } else if (tabItem == "Page2") {
       child = Page2();
     } else {
-      child = Profile();
+      child = Settings();
     }
 
     return Navigator(

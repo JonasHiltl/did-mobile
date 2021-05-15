@@ -31,6 +31,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Erstelle deine digitale Identität!"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erfolgreich erstellt."),
+        "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Geburtsdatum"),
         "email": MessageLookupByLibrary.simpleMessage("E-Mail"),
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
@@ -49,6 +50,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bitte gib deine E-Mail ein."),
         "missingFirstName": MessageLookupByLibrary.simpleMessage(
             "Bitte gib deinen Vornamen ein."),
+        "missingInput": MessageLookupByLibrary.simpleMessage(
+            "Das Feld darf nicht lehr sein."),
         "missingLastName": MessageLookupByLibrary.simpleMessage(
             "Bitte gib deinen Nachname ein."),
         "missingPhoneNumber": MessageLookupByLibrary.simpleMessage(
@@ -57,16 +60,38 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bitte gib deine Postleitzahl ein."),
         "missingState": MessageLookupByLibrary.simpleMessage(
             "Bitte gib dein Bundesland ein."),
-        "missingStreetNumber": MessageLookupByLibrary.simpleMessage(
-            "Bitte gib deine Straße und Hausnummer ein."),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("Keine Länder gefunden"),
+        "personalData":
+            MessageLookupByLibrary.simpleMessage("Persönliche Daten"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
         "residence": MessageLookupByLibrary.simpleMessage("Wohnadresse"),
         "sex": MessageLookupByLibrary.simpleMessage("Biologisches Geschlecht"),
         "state": MessageLookupByLibrary.simpleMessage("Bundesland"),
-        "submit": MessageLookupByLibrary.simpleMessage("Fertig")
+        "submit": MessageLookupByLibrary.simpleMessage("Fertig"),
+        "updateAddress":
+            MessageLookupByLibrary.simpleMessage("Adresszeile aktualisieren"),
+        "updateCity":
+            MessageLookupByLibrary.simpleMessage("Stadt aktualisieren"),
+        "updateCountry":
+            MessageLookupByLibrary.simpleMessage("Land aktualisieren"),
+        "updateDateOfBirth":
+            MessageLookupByLibrary.simpleMessage("Geburtsdatum aktualisieren"),
+        "updateEmail":
+            MessageLookupByLibrary.simpleMessage("Email Adresse aktualisieren"),
+        "updateFirstName":
+            MessageLookupByLibrary.simpleMessage("Vornamen aktualisieren"),
+        "updateLastName":
+            MessageLookupByLibrary.simpleMessage("Nachname aktualisieren"),
+        "updatePhoneNumber":
+            MessageLookupByLibrary.simpleMessage("Telefonnummer aktualisieren"),
+        "updatePostalCode":
+            MessageLookupByLibrary.simpleMessage("Postleitzahl aktualisieren"),
+        "updateSex":
+            MessageLookupByLibrary.simpleMessage("Geschlecht aktualisieren"),
+        "updateState":
+            MessageLookupByLibrary.simpleMessage("Bundesland aktualisieren")
       };
 }
