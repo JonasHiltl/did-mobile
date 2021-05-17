@@ -1,6 +1,6 @@
 import "package:did/screens/session/page2/page2.dart";
 import "package:did/screens/session/home/home.dart";
-import 'package:did/screens/Settings/Settings.dart';
+import 'package:did/screens/session/manage_app/manage_app.dart';
 import "package:flutter/material.dart";
 
 class SessionNavigator extends StatefulWidget {
@@ -79,10 +79,10 @@ class _SessionNavigatorState extends State<SessionNavigator> {
             ),
             BottomNavigationBarItem(
               icon: Icon(
-                Icons.settings_outlined,
+                Icons.admin_panel_settings_outlined,
               ),
               activeIcon: Icon(
-                Icons.settings_rounded,
+                Icons.admin_panel_settings_rounded,
               ),
               label: "Settings",
             ),
@@ -117,7 +117,7 @@ class TabNavigator extends StatelessWidget {
     } else if (tabItem == "Page2") {
       child = Page2();
     } else {
-      child = Settings();
+      child = ManageApp();
     }
 
     return Navigator(

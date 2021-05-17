@@ -21,9 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-        "address": MessageLookupByLibrary.simpleMessage("Addresse"),
+        "address": MessageLookupByLibrary.simpleMessage("Adresse"),
         "back": MessageLookupByLibrary.simpleMessage("Zurück"),
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
+        "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
+            "Bist du sicher, dass du alle Daten unwiderruflich löschen willst?"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Erstellung deiner digitalen Identität fehlgeschlagen"),
@@ -33,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Digitale Identität erfolgreich erstellt"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Geburtsdatum"),
+        "deleteAll": MessageLookupByLibrary.simpleMessage("Alle Daten löschen"),
+        "deleteData": MessageLookupByLibrary.simpleMessage("Daten löschen"),
         "email": MessageLookupByLibrary.simpleMessage("E-Mail"),
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
         "firstName": MessageLookupByLibrary.simpleMessage("Vorname"),
@@ -61,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "missingState": MessageLookupByLibrary.simpleMessage(
             "Bitte gib dein Bundesland ein."),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
+        "no": MessageLookupByLibrary.simpleMessage("Nein"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("Keine Länder gefunden"),
         "personalData":
@@ -68,11 +73,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
         "residence": MessageLookupByLibrary.simpleMessage("Wohnadresse"),
+        "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
         "sex": MessageLookupByLibrary.simpleMessage("Biologisches Geschlecht"),
+        "simpleSex": MessageLookupByLibrary.simpleMessage("Geschlecht"),
         "state": MessageLookupByLibrary.simpleMessage("Bundesland"),
         "submit": MessageLookupByLibrary.simpleMessage("Fertig"),
         "updateAddress":
-            MessageLookupByLibrary.simpleMessage("Adresszeile aktualisieren"),
+            MessageLookupByLibrary.simpleMessage("Adresse aktualisieren"),
         "updateCity":
             MessageLookupByLibrary.simpleMessage("Stadt aktualisieren"),
         "updateCountry":
@@ -96,7 +103,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "updateState":
             MessageLookupByLibrary.simpleMessage("Bundesland aktualisieren"),
         "updateSuccessAddress": MessageLookupByLibrary.simpleMessage(
-            "Deine Addresse wurde aktualisiert"),
+            "Deine Adresse wurde aktualisiert"),
         "updateSuccessCity": MessageLookupByLibrary.simpleMessage(
             "Deine Stadt wurde aktualisiert"),
         "updateSuccessCountry": MessageLookupByLibrary.simpleMessage(
@@ -116,6 +123,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "updateSuccessSex": MessageLookupByLibrary.simpleMessage(
             "Dein Geschlecht wurde aktualisiert"),
         "updateSuccessState": MessageLookupByLibrary.simpleMessage(
-            "Dein Bundesland wurde aktualisiert")
+            "Dein Bundesland wurde aktualisiert"),
+        "yes": MessageLookupByLibrary.simpleMessage("Ja")
       };
 }

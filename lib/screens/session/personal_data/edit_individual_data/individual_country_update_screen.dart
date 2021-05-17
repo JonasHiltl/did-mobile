@@ -1,3 +1,4 @@
+import 'package:did/data/countries.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
@@ -9,6 +10,7 @@ import 'package:did/providers/updatePersonalData/update_personal_event.dart';
 import 'package:did/providers/updatePersonalData/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 class IndividualCountryUpdateScreen extends StatefulWidget {
   final String initialValue;
@@ -86,52 +88,92 @@ class _IndividualCountryUpdateScreenState
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                            child: TextFormField(
-                                style: Theme.of(context).textTheme.bodyText2,
-                                cursorWidth: 1,
-                                controller: _controller,
-                                decoration: InputDecoration(
-                                    isDense: true,
-                                    prefixIcon: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 15, horizontal: 10),
-                                        child: Text(
-                                          L.of(context).country,
-                                          style: TextStyle(
-                                              color: Colors.black
-                                                  .withOpacity(0.6)),
-                                        )),
-                                    prefixIconConstraints: const BoxConstraints(
-                                      minWidth: 120,
-                                    ),
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 10),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
+                        TypeAheadField(
+                          suggestionsBoxDecoration:
+                              const SuggestionsBoxDecoration(
+                                  elevation: 2, hasScrollbar: false),
+                          textFieldConfiguration: TextFieldConfiguration(
+                              controller: _controller,
+                              cursorWidth: 1,
+                              style: Theme.of(context).textTheme.bodyText2,
+                              decoration: InputDecoration(
+                                  isDense: true,
+                                  prefixIcon: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 15, horizontal: 10),
+                                      child: Text(
+                                        L.of(context).country,
+                                        style: TextStyle(
+                                            color:
+                                                Colors.black.withOpacity(0.6)),
+                                      )),
+                                  prefixIconConstraints: const BoxConstraints(
+                                    minWidth: 100,
+                                  ),
+                                  suffixIcon: const Icon(
+                                    Icons.expand_more,
+                                    size: 28,
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 10),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: const Color(0xFFACB6C5)
-                                                .withOpacity(0.6))),
-                                    errorText: state.isValidCountry
-                                        ? null
-                                        : L.of(context).missingCountry,
-                                    filled: true,
-                                    fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidCountry
-                                    ? null
-                                    : L.of(context).missingCountry,
-                                onChanged: (value) =>
-                                    context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalCountryChanged(
-                                              country: value),
-                                        ))),
+                                    color: const Color(0xFFACB6C5)
+                                        .withOpacity(0.6),
+                                  )),
+                                  filled: true,
+                                  fillColor: const Color(0xFFF1F3FD)),
+                              onChanged: (value) =>
+                                  context.read<UpdatePersonalBloc>().add(
+                                        UpdatePersonalCountryChanged(
+                                            country: value),
+                                      )),
+                          suggestionsCallback: (value) {
+                            return CountryService.getSuggestions(value);
+                          },
+                          itemBuilder: (context, CustomCountry suggestion) {
+                            final country = suggestion;
+
+                            return ListTile(
+                              leading: SizedBox(
+                                height: 25,
+                                width: 40,
+                                child: Image.network(
+                                  country.flagUrl,
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                              title: Text(
+                                country.name,
+                                style: Theme.of(context).textTheme.bodyText2,
+                              ),
+                            );
+                          },
+                          noItemsFoundBuilder: (context) => SizedBox(
+                            height: 50,
+                            child: Center(
+                              child: Text(L.of(context).noCountriesFound),
+                            ),
+                          ),
+                          onSuggestionSelected: (CustomCountry? suggestion) {
+                            final country = suggestion!;
+
+                            _controller.text = country.name;
+                            context.read<UpdatePersonalBloc>().add(
+                                  UpdatePersonalCountryChanged(
+                                      country: country.name),
+                                );
+                          },
+                        ),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(

@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
+        "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
+            "Are you sure to irrevocably delete all of your data?"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
         "createErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Your digital identity creation failed"),
@@ -33,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Digital Identity successfully created"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Created at: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
+        "deleteAll": MessageLookupByLibrary.simpleMessage("Delete all data"),
+        "deleteData": MessageLookupByLibrary.simpleMessage("Delete Data"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
@@ -63,6 +67,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "missingState":
             MessageLookupByLibrary.simpleMessage("Please input your state."),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("No Countries found"),
         "personalData": MessageLookupByLibrary.simpleMessage("Personal Data"),
@@ -70,7 +75,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "residence":
             MessageLookupByLibrary.simpleMessage("Residential Address"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sex": MessageLookupByLibrary.simpleMessage("Biological Sex"),
+        "simpleSex": MessageLookupByLibrary.simpleMessage("Sex"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "updateAddress": MessageLookupByLibrary.simpleMessage("Update Address"),
@@ -114,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "updateSuccessSex": MessageLookupByLibrary.simpleMessage(
             "Biological sex has been updated"),
         "updateSuccessState":
-            MessageLookupByLibrary.simpleMessage("State has been updated")
+            MessageLookupByLibrary.simpleMessage("State has been updated"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes")
       };
 }

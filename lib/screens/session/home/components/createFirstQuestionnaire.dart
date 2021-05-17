@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+
+import '../../create_patient_questionnaire/create_patient_questionnaire.dart';
 
 class CreateFirstQuestionnaire extends StatelessWidget {
   @override
@@ -9,7 +12,12 @@ class CreateFirstQuestionnaire extends StatelessWidget {
       child: InkWell(
         highlightColor: const Color(0xFF2C54E9),
         borderRadius: BorderRadius.circular(6),
-        onTap: () => print("navigate to patient questionnarie creation"),
+        onTap: () => Navigator.push(
+            context,
+            PageTransition(
+                type: PageTransitionType.bottomToTop,
+                curve: Curves.easeInOut,
+                child: CreatePatientQuestionnaire())),
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),

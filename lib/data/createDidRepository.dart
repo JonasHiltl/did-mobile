@@ -49,6 +49,7 @@ class CreateDidRepository {
       return DidVcCombination(
           identity: identity, personalDataVc: personalDataVc);
     } else {
+      print(res.body);
       throw "Error calling creation backend";
     }
   }

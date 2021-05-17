@@ -34,7 +34,7 @@ const ColorScheme colorScheme = ColorScheme.light(
     onSecondary: Color(0xFFFFFFFF),
     background: Color(0xFFf7fbff),
     surface: Color(0xFFFFFFFF),
-    onError: Color(0xFFFF4D4F));
+    error: Color(0xFFef2b2d));
 
 class MyApp extends StatelessWidget {
   @override
@@ -69,6 +69,7 @@ class MyApp extends StatelessWidget {
                       colorScheme: colorScheme,
                       primaryColor: colorScheme.primary,
                       accentColor: colorScheme.secondary,
+                      errorColor: colorScheme.error,
                       backgroundColor: colorScheme.background,
                       textTheme: TextTheme(
                         headline1: TextStyle(
@@ -124,13 +125,19 @@ class MyApp extends StatelessWidget {
                           height: 1.5,
                         ),
                         bodyText1: TextStyle(
-                          color: Colors.black.withOpacity(0.85),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.85),
                           fontWeight: FontWeight.normal,
                           fontSize: 16,
                           height: 1.5,
                         ),
                         bodyText2: TextStyle(
-                          color: Colors.black.withOpacity(0.85),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onSurface
+                              .withOpacity(0.85),
                           fontSize: 14,
                           height: 1.5,
                         ),

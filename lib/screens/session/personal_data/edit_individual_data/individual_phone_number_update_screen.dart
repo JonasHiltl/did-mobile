@@ -86,52 +86,51 @@ class _IndividualPhoneNumberUpdateScreenState
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                            child: TextFormField(
-                                style: Theme.of(context).textTheme.bodyText2,
-                                cursorWidth: 1,
-                                controller: _controller,
-                                decoration: InputDecoration(
-                                    isDense: true,
-                                    prefixIcon: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 15, horizontal: 10),
-                                        child: Text(
-                                          L.of(context).phoneNumber,
-                                          style: TextStyle(
-                                              color: Colors.black
-                                                  .withOpacity(0.6)),
-                                        )),
-                                    prefixIconConstraints: const BoxConstraints(
-                                      minWidth: 120,
-                                    ),
-                                    contentPadding: const EdgeInsets.symmetric(
+                        TextFormField(
+                            style: Theme.of(context).textTheme.bodyText2,
+                            cursorWidth: 1,
+                            controller: _controller,
+                            decoration: InputDecoration(
+                                isDense: true,
+                                prefixIcon: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 15, horizontal: 10),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: const Color(0xFFACB6C5)
-                                                .withOpacity(0.6))),
-                                    errorText: state.isValidPhoneNumber
-                                        ? null
-                                        : L.of(context).missingPhoneNumber,
-                                    filled: true,
-                                    fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidPhoneNumber
+                                    child: Text(
+                                      L.of(context).phoneNumber,
+                                      style: TextStyle(
+                                          color: Colors.black.withOpacity(0.6)),
+                                    )),
+                                prefixIconConstraints: const BoxConstraints(
+                                  minWidth: 120,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 10),
+                                border: const OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color(0xFFACB6C5)
+                                            .withOpacity(0.6))),
+                                errorText: state.isValidPhoneNumber
                                     ? null
                                     : L.of(context).missingPhoneNumber,
-                                onChanged: (value) =>
-                                    context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalPhoneNumberChanged(
-                                              phoneNumber: value),
-                                        ))),
+                                filled: true,
+                                fillColor: const Color(0xFFf1f3fd)),
+                            validator: (value) => state.isValidPhoneNumber
+                                ? null
+                                : L.of(context).missingPhoneNumber,
+                            onChanged: (value) =>
+                                context.read<UpdatePersonalBloc>().add(
+                                      UpdatePersonalPhoneNumberChanged(
+                                          phoneNumber: value),
+                                    )),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(

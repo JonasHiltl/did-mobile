@@ -51,8 +51,8 @@ class SessionCubit extends Cubit<SessionState> {
     emit(Verified(identity: identity, personalDataVc: personalDataVc));
   }
 
-  Future<void> clearDid() async {
-    await secureStorage.delete("identity");
+  Future<void> deleteAll() async {
+    await secureStorage.deleteAll();
     emit(Unverified());
   }
 }

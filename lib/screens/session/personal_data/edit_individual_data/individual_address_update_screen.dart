@@ -86,52 +86,51 @@ class _IndividualAddressUpdateScreenState
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                            child: TextFormField(
-                                style: Theme.of(context).textTheme.bodyText2,
-                                cursorWidth: 1,
-                                controller: _controller,
-                                decoration: InputDecoration(
-                                    isDense: true,
-                                    prefixIcon: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            vertical: 15, horizontal: 10),
-                                        child: Text(
-                                          L.of(context).address,
-                                          style: TextStyle(
-                                              color: Colors.black
-                                                  .withOpacity(0.6)),
-                                        )),
-                                    prefixIconConstraints: const BoxConstraints(
-                                      minWidth: 120,
-                                    ),
-                                    contentPadding: const EdgeInsets.symmetric(
+                        TextFormField(
+                            style: Theme.of(context).textTheme.bodyText2,
+                            cursorWidth: 1,
+                            controller: _controller,
+                            decoration: InputDecoration(
+                                isDense: true,
+                                prefixIcon: Padding(
+                                    padding: const EdgeInsets.symmetric(
                                         vertical: 15, horizontal: 10),
-                                    border: const OutlineInputBorder(),
-                                    focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .primary),
-                                    ),
-                                    enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: const Color(0xFFACB6C5)
-                                                .withOpacity(0.6))),
-                                    errorText: state.isValidAddress
-                                        ? null
-                                        : L.of(context).missingAddress,
-                                    filled: true,
-                                    fillColor: const Color(0xFFf1f3fd)),
-                                validator: (value) => state.isValidAddress
+                                    child: Text(
+                                      L.of(context).address,
+                                      style: TextStyle(
+                                          color: Colors.black.withOpacity(0.6)),
+                                    )),
+                                prefixIconConstraints: const BoxConstraints(
+                                  minWidth: 120,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 10),
+                                border: const OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color(0xFFACB6C5)
+                                            .withOpacity(0.6))),
+                                errorText: state.isValidAddress
                                     ? null
                                     : L.of(context).missingAddress,
-                                onChanged: (value) =>
-                                    context.read<UpdatePersonalBloc>().add(
-                                          UpdatePersonalAddressChanged(
-                                              address: value),
-                                        ))),
+                                filled: true,
+                                fillColor: const Color(0xFFf1f3fd)),
+                            validator: (value) => state.isValidAddress
+                                ? null
+                                : L.of(context).missingAddress,
+                            onChanged: (value) => context
+                                .read<UpdatePersonalBloc>()
+                                .add(
+                                  UpdatePersonalAddressChanged(address: value),
+                                )),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(

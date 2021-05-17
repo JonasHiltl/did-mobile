@@ -7,6 +7,7 @@
   "male": "Male",
   "female": "Female",
   "sex": "Biological Sex",
+  "simpleSex": "Sex",
   "residence": "Residential Address",
   "address": "Address",
   "postalCode": "Postal Code",
@@ -24,9 +25,16 @@
   "next": "Next",
   "back": "Back",
   "submit": "Submit",
+  "yes": "Yes",
+  "no": "No",
+
+  "deleteData": "Delete Data",
+  "confirmDataDeletion": "Are you sure to irrevocably delete all of your data?",
 
   "createdAt": "Created at: ",
   "personalData": "Personal Data",
+  "settings": "Settings",
+  "deleteAll": "Delete all data",
 
   "updateFirstName": "Update First Name",
   "updateLastName": "Update Last Name",

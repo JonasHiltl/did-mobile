@@ -130,6 +130,16 @@ class L {
     );
   }
 
+  /// `Sex`
+  String get simpleSex {
+    return Intl.message(
+      'Sex',
+      name: 'simpleSex',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Residential Address`
   String get residence {
     return Intl.message(
@@ -270,6 +280,46 @@ class L {
     );
   }
 
+  /// `Yes`
+  String get yes {
+    return Intl.message(
+      'Yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No`
+  String get no {
+    return Intl.message(
+      'No',
+      name: 'no',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete Data`
+  String get deleteData {
+    return Intl.message(
+      'Delete Data',
+      name: 'deleteData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure to irrevocably delete all of your data?`
+  String get confirmDataDeletion {
+    return Intl.message(
+      'Are you sure to irrevocably delete all of your data?',
+      name: 'confirmDataDeletion',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Created at: `
   String get createdAt {
     return Intl.message(
@@ -285,6 +335,26 @@ class L {
     return Intl.message(
       'Personal Data',
       name: 'personalData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete all data`
+  String get deleteAll {
+    return Intl.message(
+      'Delete all data',
+      name: 'deleteAll',
       desc: '',
       args: [],
     );

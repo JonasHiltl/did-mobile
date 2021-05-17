@@ -89,77 +89,84 @@ class _IndividualDateOfBirthUpdateScreenState
                   return Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
-                          child: TextFormField(
-                            onTap: () => DatePicker.showDatePicker(
-                              context,
-                              locale:
-                                  context.read<LanguageBloc>().state.language ==
-                                          "en"
-                                      ? LocaleType.en
-                                      : LocaleType.de,
-                              onConfirm: (date) {
-                                context.read<UpdatePersonalBloc>().add(
-                                      UpdatePersonalDateOfBirthChanged(
-                                          dateOfBirth: date),
-                                    );
-                                dateController.text =
-                                    DateFormat.yMMMd().format(date);
-                              },
-                              currentTime: context
-                                      .read<UpdatePersonalBloc>()
-                                      .state
-                                      .dateOfBirth is DateTime
-                                  ? context
-                                      .read<UpdatePersonalBloc>()
-                                      .state
-                                      .dateOfBirth
-                                  : DateTime.now(),
-                              theme: DatePickerTheme(
-                                  itemStyle: const TextStyle(
-                                      color: Colors.black, fontSize: 16),
-                                  doneStyle: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 16)),
-                            ),
-                            controller: dateController,
-                            cursorWidth: 1,
-                            readOnly: true,
-                            style: const TextStyle(fontSize: 14),
-                            decoration: InputDecoration(
-                                isDense: true,
-                                prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 10),
-                                    child: Text(
-                                      L.of(context).dateOfBirth,
-                                      style: TextStyle(
-                                          color: Colors.black.withOpacity(0.6)),
-                                    )),
-                                prefixIconConstraints: const BoxConstraints(
-                                  minWidth: 100,
-                                ),
-                                suffixIcon: Icon(
-                                  Icons.calendar_today,
-                                  color: Colors.black.withOpacity(0.6),
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 10),
-                                border: const OutlineInputBorder(),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: const Color(0xFFACB6C5)
-                                          .withOpacity(0.6)),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                  color:
-                                      const Color(0xFFACB6C5).withOpacity(0.6),
-                                )),
-                                filled: true,
-                                fillColor: const Color(0xFFF1F3FD)),
+                        TextFormField(
+                          onTap: () => DatePicker.showDatePicker(
+                            context,
+                            locale:
+                                context.read<LanguageBloc>().state.language ==
+                                        "en"
+                                    ? LocaleType.en
+                                    : LocaleType.de,
+                            onConfirm: (date) {
+                              context.read<UpdatePersonalBloc>().add(
+                                    UpdatePersonalDateOfBirthChanged(
+                                        dateOfBirth: date),
+                                  );
+                              dateController.text =
+                                  DateFormat.yMMMd().format(date);
+                            },
+                            currentTime: context
+                                    .read<UpdatePersonalBloc>()
+                                    .state
+                                    .dateOfBirth is DateTime
+                                ? context
+                                    .read<UpdatePersonalBloc>()
+                                    .state
+                                    .dateOfBirth
+                                : DateTime.now(),
+                            theme: DatePickerTheme(
+                                itemStyle: const TextStyle(
+                                    color: Colors.black, fontSize: 16),
+                                doneStyle: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 16),
+                                cancelStyle: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.85),
+                                    fontSize: 16,
+                                    height: 1.5),
+                                backgroundColor:
+                                    Theme.of(context).backgroundColor),
                           ),
+                          controller: dateController,
+                          cursorWidth: 1,
+                          readOnly: true,
+                          style: const TextStyle(fontSize: 14),
+                          decoration: InputDecoration(
+                              isDense: true,
+                              prefixIcon: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 10),
+                                  child: Text(
+                                    L.of(context).dateOfBirth,
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.6)),
+                                  )),
+                              prefixIconConstraints: const BoxConstraints(
+                                minWidth: 100,
+                              ),
+                              suffixIcon: Icon(
+                                Icons.calendar_today,
+                                color: Colors.black.withOpacity(0.6),
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 10),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: const Color(0xFFACB6C5)
+                                        .withOpacity(0.6)),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                color: const Color(0xFFACB6C5).withOpacity(0.6),
+                              )),
+                              filled: true,
+                              fillColor: const Color(0xFFF1F3FD)),
                         ),
                         SizedBox(
                             width: size.width - 20,
