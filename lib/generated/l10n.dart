@@ -200,6 +200,66 @@ class L {
     );
   }
 
+  /// `Allergies`
+  String get allergies {
+    return Intl.message(
+      'Allergies',
+      name: 'allergies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Allergy`
+  String get allergy {
+    return Intl.message(
+      'Allergy',
+      name: 'allergy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medication`
+  String get medication {
+    return Intl.message(
+      'Medication',
+      name: 'medication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Medication`
+  String get pluralMedication {
+    return Intl.message(
+      'Medication',
+      name: 'pluralMedication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Information Credential`
+  String get personalInfoVC {
+    return Intl.message(
+      'Personal Information Credential',
+      name: 'personalInfoVC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Patient Questionnaire`
+  String get patientQuestionnaire {
+    return Intl.message(
+      'Patient Questionnaire',
+      name: 'patientQuestionnaire',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Let's create your digital Identity!`
   String get createHeader {
     return Intl.message(
@@ -235,6 +295,26 @@ class L {
     return Intl.message(
       'No Countries found',
       name: 'noCountriesFound',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No allergies added yet`
+  String get noAllergiesAdded {
+    return Intl.message(
+      'No allergies added yet',
+      name: 'noAllergiesAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No medication added yet`
+  String get noMedicationAdded {
+    return Intl.message(
+      'No medication added yet',
+      name: 'noMedicationAdded',
       desc: '',
       args: [],
     );
@@ -330,10 +410,10 @@ class L {
     );
   }
 
-  /// `Personal Data`
+  /// `Personal Information`
   String get personalData {
     return Intl.message(
-      'Personal Data',
+      'Personal Information',
       name: 'personalData',
       desc: '',
       args: [],

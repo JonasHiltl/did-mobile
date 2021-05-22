@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "address": MessageLookupByLibrary.simpleMessage("Adresse"),
+        "allergies": MessageLookupByLibrary.simpleMessage("Allergien"),
+        "allergy": MessageLookupByLibrary.simpleMessage("Allergie"),
         "back": MessageLookupByLibrary.simpleMessage("Zurück"),
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Dies ist keine gültige E-Mail."),
         "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
         "male": MessageLookupByLibrary.simpleMessage("Männlich"),
+        "medication": MessageLookupByLibrary.simpleMessage("Medikament"),
         "missingCity":
             MessageLookupByLibrary.simpleMessage("Bitte gib deine Stadt ein."),
         "missingCountry":
@@ -66,11 +69,20 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bitte gib dein Bundesland ein."),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
         "no": MessageLookupByLibrary.simpleMessage("Nein"),
+        "noAllergiesAdded": MessageLookupByLibrary.simpleMessage(
+            "Noch keine Allergie hinzugefügt"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("Keine Länder gefunden"),
+        "noMedicationAdded": MessageLookupByLibrary.simpleMessage(
+            "Noch kein Medikament hinzugefügt"),
+        "patientQuestionnaire":
+            MessageLookupByLibrary.simpleMessage("Patienten Fragebogen"),
         "personalData":
             MessageLookupByLibrary.simpleMessage("Persönliche Daten"),
+        "personalInfoVC": MessageLookupByLibrary.simpleMessage(
+            "Persönliche Information Credential"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
+        "pluralMedication": MessageLookupByLibrary.simpleMessage("Medikamente"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
         "residence": MessageLookupByLibrary.simpleMessage("Wohnadresse"),
         "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),

@@ -14,11 +14,20 @@
   "country": "Country",
   "city": "City",
   "state": "State",
+  "allergies": "Allergies",
+  "allergy": "Allergy",
+  "medication": "Medication",
+  "pluralMedication": "Medication",
+  "personalInfoVC": "Personal Information Credential",
+  "patientQuestionnaire": "Patient Questionnaire",
 
   "createHeader": "Let's create your digital Identity!",
   "createSuccessMessage": "Digital Identity successfully created",
   "createErrorMessage": "Your digital identity creation failed",
+
   "noCountriesFound": "No Countries found",
+  "noAllergiesAdded": "No allergies added yet",
+  "noMedicationAdded": "No medication added yet",
 
   "introductionAction": "Create digital identity",
 
@@ -32,7 +41,7 @@
   "confirmDataDeletion": "Are you sure to irrevocably delete all of your data?",
 
   "createdAt": "Created at: ",
-  "personalData": "Personal Data",
+  "personalData": "Personal Information",
   "settings": "Settings",
   "deleteAll": "Delete all data",
 

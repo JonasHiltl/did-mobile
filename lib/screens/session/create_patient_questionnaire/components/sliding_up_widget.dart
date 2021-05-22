@@ -1,5 +1,9 @@
+import 'package:did/global_components/empty.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
+
+import '../../../../generated/l10n.dart';
 
 class SlidingUpWidget extends StatefulWidget {
   final Widget body;
@@ -42,21 +46,42 @@ class PanelWidget extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ListView(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-      children: [
-        buildDragHandle(),
-        const SizedBox(
-          height: 2,
-        ),
-        const Text(
-            "nulla facilisi etiam dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in ornare quam viverra orci sagittis eu volutpat odio facilisis mauris sit amet massa vitae tortor condimentum lacinia quis vel eros donec ac odio tempor orci dapibus ultrices in iaculis nunc sed augue lacus viverra vitae congue eu"),
-        const SizedBox(
-          height: 14,
-        ),
-        const Text(
-            "eleifend quam adipiscing vitae proin sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec ultrices dui sapien eget mi"),
-      ],
+      child: Column(
+        children: [
+          buildDragHandle(),
+          const SizedBox(
+            height: 2,
+          ),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                L.of(context).allergies,
+                style: Theme.of(context).textTheme.headline6,
+                textAlign: TextAlign.center,
+              ),
+              Empty(text: L.of(context).noAllergiesAdded),
+              Container()
+            ],
+          )),
+          Expanded(
+              child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                L.of(context).pluralMedication,
+                style: Theme.of(context).textTheme.headline6,
+                textAlign: TextAlign.center,
+              ),
+              Empty(text: L.of(context).noMedicationAdded),
+              Container()
+            ],
+          )),
+        ],
+      ),
     );
   }
 
@@ -67,7 +92,7 @@ class PanelWidget extends StatelessWidget {
             padding: const EdgeInsets.all(4.0),
             child: Container(
               width: 50,
-              height: 4,
+              height: 5,
               decoration: BoxDecoration(
                   color: Colors.grey.withOpacity(0.25),
                   borderRadius: BorderRadius.circular(2)),
@@ -75,6 +100,7 @@ class PanelWidget extends StatelessWidget {
           ),
         ),
       );
+
   void togglePanel() => panelController.isPanelOpen
       ? panelController.close()
       : panelController.open();

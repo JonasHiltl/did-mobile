@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "allergies": MessageLookupByLibrary.simpleMessage("Allergies"),
+        "allergy": MessageLookupByLibrary.simpleMessage("Allergy"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
@@ -46,6 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Not a valid Email."),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "medication": MessageLookupByLibrary.simpleMessage("Medication"),
         "missingAddress": MessageLookupByLibrary.simpleMessage(
             "Please input your street and number."),
         "missingCity":
@@ -68,10 +71,20 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please input your state."),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noAllergiesAdded":
+            MessageLookupByLibrary.simpleMessage("No allergies added yet"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("No Countries found"),
-        "personalData": MessageLookupByLibrary.simpleMessage("Personal Data"),
+        "noMedicationAdded":
+            MessageLookupByLibrary.simpleMessage("No medication added yet"),
+        "patientQuestionnaire":
+            MessageLookupByLibrary.simpleMessage("Patient Questionnaire"),
+        "personalData":
+            MessageLookupByLibrary.simpleMessage("Personal Information"),
+        "personalInfoVC": MessageLookupByLibrary.simpleMessage(
+            "Personal Information Credential"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
+        "pluralMedication": MessageLookupByLibrary.simpleMessage("Medication"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "residence":
             MessageLookupByLibrary.simpleMessage("Residential Address"),

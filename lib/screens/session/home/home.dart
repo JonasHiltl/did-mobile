@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
           // if it's false the appbar is only visible if completly scrolled back to top
           floating: true,
           expandedHeight: 60.0,
-          backgroundColor: Colors.white,
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 credential.firstName,

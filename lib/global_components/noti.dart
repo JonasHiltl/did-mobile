@@ -10,6 +10,7 @@ void showSuccessNoti({
       duration: const Duration(seconds: 3),
       builder: (context, controller) {
         return Flash.dialog(
+            barrierColor: Colors.transparent,
             controller: controller,
             borderRadius: const BorderRadius.all(Radius.circular(2)),
             boxShadows: [
@@ -49,6 +50,7 @@ void showErrorNoti({
       duration: const Duration(seconds: 5),
       builder: (context, controller) {
         return Flash.dialog(
+            barrierColor: Colors.transparent,
             controller: controller,
             borderRadius: const BorderRadius.all(Radius.circular(2)),
             boxShadows: [

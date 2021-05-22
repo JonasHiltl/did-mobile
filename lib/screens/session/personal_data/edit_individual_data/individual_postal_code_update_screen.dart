@@ -89,6 +89,7 @@ class _IndividualPostalCodeUpdateScreenState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextFormField(
+                            keyboardType: TextInputType.number,
                             style: Theme.of(context).textTheme.bodyText2,
                             cursorWidth: 1,
                             controller: _controller,
