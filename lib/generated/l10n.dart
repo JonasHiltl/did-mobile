@@ -230,6 +230,56 @@ class L {
     );
   }
 
+  /// `Symptom`
+  String get symptom {
+    return Intl.message(
+      'Symptom',
+      name: 'symptom',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Symptoms`
+  String get symptoms {
+    return Intl.message(
+      'Symptoms',
+      name: 'symptoms',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Condition`
+  String get condition {
+    return Intl.message(
+      'Condition',
+      name: 'condition',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Frequency`
+  String get frequency {
+    return Intl.message(
+      'Frequency',
+      name: 'frequency',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dose`
+  String get dose {
+    return Intl.message(
+      'Dose',
+      name: 'dose',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medication`
   String get pluralMedication {
     return Intl.message(
@@ -255,6 +305,106 @@ class L {
     return Intl.message(
       'Patient Questionnaire',
       name: 'patientQuestionnaire',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Allergy`
+  String get addAllergy {
+    return Intl.message(
+      'Add Allergy',
+      name: 'addAllergy',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add Medication`
+  String get addMedication {
+    return Intl.message(
+      'Add Medication',
+      name: 'addMedication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Pollen`
+  String get examplePollen {
+    return Intl.message(
+      'e.g. Pollen',
+      name: 'examplePollen',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Sneezing`
+  String get exampleSneezing {
+    return Intl.message(
+      'e.g. Sneezing',
+      name: 'exampleSneezing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Aspirin`
+  String get exampleAspirin {
+    return Intl.message(
+      'e.g. Aspirin',
+      name: 'exampleAspirin',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. Headaches`
+  String get exampleHeadaches {
+    return Intl.message(
+      'e.g. Headaches',
+      name: 'exampleHeadaches',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. once daily`
+  String get exampleOnceDaily {
+    return Intl.message(
+      'e.g. once daily',
+      name: 'exampleOnceDaily',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `e.g. 75 mg`
+  String get example75mg {
+    return Intl.message(
+      'e.g. 75 mg',
+      name: 'example75mg',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You can only edit this data in settings`
+  String get editProfile {
+    return Intl.message(
+      'You can only edit this data in settings',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you have any allergies?`
+  String get anyAllergies {
+    return Intl.message(
+      'Do you have any allergies?',
+      name: 'anyAllergies',
       desc: '',
       args: [],
     );
@@ -410,10 +560,10 @@ class L {
     );
   }
 
-  /// `Personal Information`
+  /// `Personal Data`
   String get personalData {
     return Intl.message(
-      'Personal Information',
+      'Personal Data',
       name: 'personalData',
       desc: '',
       args: [],

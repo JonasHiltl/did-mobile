@@ -21,11 +21,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "addAllergy": MessageLookupByLibrary.simpleMessage("Add Allergy"),
+        "addMedication": MessageLookupByLibrary.simpleMessage("Add Medication"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
         "allergies": MessageLookupByLibrary.simpleMessage("Allergies"),
         "allergy": MessageLookupByLibrary.simpleMessage("Allergy"),
+        "anyAllergies":
+            MessageLookupByLibrary.simpleMessage("Do you have any allergies?"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
+        "condition": MessageLookupByLibrary.simpleMessage("Condition"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
             "Are you sure to irrevocably delete all of your data?"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
@@ -39,9 +44,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Delete all data"),
         "deleteData": MessageLookupByLibrary.simpleMessage("Delete Data"),
+        "dose": MessageLookupByLibrary.simpleMessage("Dose"),
+        "editProfile": MessageLookupByLibrary.simpleMessage(
+            "You can only edit this data in settings"),
         "email": MessageLookupByLibrary.simpleMessage("Email"),
+        "example75mg": MessageLookupByLibrary.simpleMessage("e.g. 75 mg"),
+        "exampleAspirin": MessageLookupByLibrary.simpleMessage("e.g. Aspirin"),
+        "exampleHeadaches":
+            MessageLookupByLibrary.simpleMessage("e.g. Headaches"),
+        "exampleOnceDaily":
+            MessageLookupByLibrary.simpleMessage("e.g. once daily"),
+        "examplePollen": MessageLookupByLibrary.simpleMessage("e.g. Pollen"),
+        "exampleSneezing":
+            MessageLookupByLibrary.simpleMessage("e.g. Sneezing"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
+        "frequency": MessageLookupByLibrary.simpleMessage("Frequency"),
         "introductionAction":
             MessageLookupByLibrary.simpleMessage("Create digital identity"),
         "invalidEmail":
@@ -79,8 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No medication added yet"),
         "patientQuestionnaire":
             MessageLookupByLibrary.simpleMessage("Patient Questionnaire"),
-        "personalData":
-            MessageLookupByLibrary.simpleMessage("Personal Information"),
+        "personalData": MessageLookupByLibrary.simpleMessage("Personal Data"),
         "personalInfoVC": MessageLookupByLibrary.simpleMessage(
             "Personal Information Credential"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
@@ -93,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simpleSex": MessageLookupByLibrary.simpleMessage("Sex"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
+        "symptom": MessageLookupByLibrary.simpleMessage("Symptom"),
+        "symptoms": MessageLookupByLibrary.simpleMessage("Symptoms"),
         "updateAddress": MessageLookupByLibrary.simpleMessage("Update Address"),
         "updateCity": MessageLookupByLibrary.simpleMessage("Update City"),
         "updateCountry": MessageLookupByLibrary.simpleMessage("Update Country"),

@@ -1,13 +1,73 @@
-import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/global_components/universal_text_field.dart';
+import 'package:did/models/allergy/allergy.dart';
+import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
+import 'package:did/providers/createPatientQuestionnaire/create_PQ_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 
 import '../../../../generated/l10n.dart';
 
-class Step2 extends StatelessWidget {
+class Step2 extends StatefulWidget {
+  @override
+  _Step2State createState() => _Step2State();
+}
+
+class _Step2State extends State<Step2> {
+  final TextEditingController allergyNameController = TextEditingController();
+  final TextEditingController allergySymptomController =
+      TextEditingController();
+
+  String _allergyName = "";
+  String _symptom = "";
+
   @override
   Widget build(BuildContext context) {
-    return const Text("Step 2");
+    final Size size = MediaQuery.of(context).size;
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(L.of(context).anyAllergies,
+            style: Theme.of(context).textTheme.headline5),
+        Column(
+          children: [
+            UniversalTextField(
+              prefixText: L.of(context).allergy,
+              hintText: L.of(context).examplePollen,
+              controller: allergyNameController,
+              onChanged: (value) => setState(() {
+                _allergyName = value;
+              }),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            UniversalTextField(
+                prefixText: L.of(context).symptom,
+                hintText: L.of(context).exampleSneezing,
+                controller: allergySymptomController,
+                onChanged: (value) => setState(() {
+                      _symptom = value;
+                    })),
+            const SizedBox(
+              height: 10,
+            ),
+            SizedBox(
+                width: size.width - 40,
+                child: OutlinedButton(
+                    onPressed: _allergyName.isEmpty || _symptom.isEmpty
+                        ? null
+                        : () =>
+                            context.read<CreatePQBloc>().add(CreatePQAddAllergy(
+                                    allergy: Allergy(
+                                  name: allergyNameController.text,
+                                  symptoms: allergySymptomController.text,
+                                ))),
+                    child: Text(L.of(context).addAllergy)))
+          ],
+        ),
+        Container()
+      ],
+    );
   }
 }
