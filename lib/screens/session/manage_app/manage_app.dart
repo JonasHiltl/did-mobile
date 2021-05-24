@@ -20,6 +20,7 @@ class ManageApp extends StatelessWidget {
     return BlocBuilder<SessionCubit, SessionState>(builder: (context, state) {
       if (state is Verified) {
         return CustomScrollView(
+          physics: const BouncingScrollPhysics(),
           slivers: <Widget>[
             SliverAppBar(
               // if floating is true the appbar becomes instantly visible if scrolled towards top

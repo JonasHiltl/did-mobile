@@ -30,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "allergy": MessageLookupByLibrary.simpleMessage("Allergie"),
         "anyAllergies": MessageLookupByLibrary.simpleMessage(
             "Hast du irgendwelche Allergien?"),
+        "anyMedication": MessageLookupByLibrary.simpleMessage(
+            "Nimmst du irgendwelche Medikamente?"),
         "back": MessageLookupByLibrary.simpleMessage("Zurück"),
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
         "condition": MessageLookupByLibrary.simpleMessage("Beschwerden"),
@@ -40,6 +42,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Erstellung deiner digitalen Identität fehlgeschlagen"),
         "createHeader": MessageLookupByLibrary.simpleMessage(
             "Erstelle deine digitale Identität!"),
+        "createPQ": MessageLookupByLibrary.simpleMessage(
+            "Patientenfragebogen erstellen"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erfolgreich erstellt"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
@@ -61,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
         "firstName": MessageLookupByLibrary.simpleMessage("Vorname"),
         "frequency": MessageLookupByLibrary.simpleMessage("Häufigkeit"),
+        "givePQName": MessageLookupByLibrary.simpleMessage(
+            "Gib deinem Patientenfragebogen einen Namen!"),
         "introductionAction": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erstellen"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
@@ -86,6 +92,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Bitte gib deine Postleitzahl ein."),
         "missingState": MessageLookupByLibrary.simpleMessage(
             "Bitte gib dein Bundesland ein."),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
         "no": MessageLookupByLibrary.simpleMessage("Nein"),
         "noAllergiesAdded": MessageLookupByLibrary.simpleMessage(

@@ -8,9 +8,11 @@ import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
 
 import "data/commonBackendRepo.dart";
-import "data/createDidRepository.dart";
+import 'providers/createDid/repo/createDidRepository.dart';
 import "generated/l10n.dart";
 import "providers/createDid/createDidBloc.dart";
+import 'providers/createPatientQuestionnaire/create_PQ_bloc.dart';
+import 'providers/createPatientQuestionnaire/repo/create_pq_repo.dart';
 import "providers/language/languageBloc.dart";
 import "providers/language/languageState.dart";
 import "providers/language/storageUtils.dart";
@@ -42,7 +44,7 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
         providers: [
           RepositoryProvider(create: (context) => CreateDidRepository()),
-          RepositoryProvider(create: (context) => CommonBackendRepo())
+          RepositoryProvider(create: (context) => CommonBackendRepo()),
         ],
         child: MultiBlocProvider(
             providers: [

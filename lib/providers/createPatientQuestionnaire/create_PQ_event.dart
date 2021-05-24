@@ -26,3 +26,13 @@ class CreatePQRemoveMedication extends CreatePQEvent {
 
   CreatePQRemoveMedication({required this.index});
 }
+
+class CreatePQDocumentNameChanged extends CreatePQEvent {
+  final String documentName;
+
+  CreatePQDocumentNameChanged({required this.documentName});
+}
+
+class CreatePQResetDocumentName extends CreatePQEvent {}
+
+class CreatePQSubmitted extends CreatePQEvent {}

@@ -1,6 +1,7 @@
 {
   "firstName": "Vorname",
   "lastName": "Nachname",
+  "name": "Name",
   "email": "E-Mail",
   "phoneNumber": "Telefonnummer",
   "dateOfBirth": "Geburtsdatum",
@@ -36,6 +37,9 @@
   "example75mg": "Bsp. 75 mg",
   "editProfile": "Informationen nur in den Einstellungen bearbeitbar",
   "anyAllergies": "Hast du irgendwelche Allergien?",
+  "anyMedication": "Nimmst du irgendwelche Medikamente?",
+  "createPQ": "Patientenfragebogen erstellen",
+  "givePQName": "Gib deinem Patientenfragebogen einen Namen!",
 
   "createHeader": "Erstelle deine digitale Identität!",
   "createSuccessMessage": "Digitale Identität erfolgreich erstellt",

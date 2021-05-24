@@ -61,7 +61,7 @@ class _Step2State extends State<Step2> {
                             context.read<CreatePQBloc>().add(CreatePQAddAllergy(
                                     allergy: Allergy(
                                   name: allergyNameController.text,
-                                  symptoms: allergySymptomController.text,
+                                  symptom: allergySymptomController.text,
                                 ))),
                     child: Text(L.of(context).addAllergy)))
           ],

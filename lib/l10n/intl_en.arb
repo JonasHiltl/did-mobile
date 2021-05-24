@@ -1,6 +1,7 @@
 {
   "firstName": "First Name",
   "lastName": "Last Name",
+  "name": "Name",
   "email": "Email",
   "phoneNumber": "Phone Number",
   "dateOfBirth": "Date of Birth",
@@ -36,6 +37,9 @@
   "example75mg": "e.g. 75 mg",
   "editProfile": "You can only edit this data in settings",
   "anyAllergies": "Do you have any allergies?",
+  "anyMedication": "Do you take any medication?",
+  "createPQ": "Create Patient Questionnaire",
+  "givePQName": "Give your patient Questionnaire a name!",
 
   "createHeader": "Let's create your digital Identity!",
   "createSuccessMessage": "Digital Identity successfully created",

@@ -70,6 +70,16 @@ class L {
     );
   }
 
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Email`
   String get email {
     return Intl.message(
@@ -405,6 +415,36 @@ class L {
     return Intl.message(
       'Do you have any allergies?',
       name: 'anyAllergies',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Do you take any medication?`
+  String get anyMedication {
+    return Intl.message(
+      'Do you take any medication?',
+      name: 'anyMedication',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create Patient Questionnaire`
+  String get createPQ {
+    return Intl.message(
+      'Create Patient Questionnaire',
+      name: 'createPQ',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Give your patient Questionnaire a name!`
+  String get givePQName {
+    return Intl.message(
+      'Give your patient Questionnaire a name!',
+      name: 'givePQName',
       desc: '',
       args: [],
     );

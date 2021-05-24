@@ -3,11 +3,11 @@ import 'dart:convert';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/createDidRepository.dart';
 import '../../data/secureStorage.dart';
 import 'createDidEvent.dart';
 import 'createDidState.dart';
 import 'formSubmissionStatus.dart';
+import 'repo/createDidRepository.dart';
 
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
   final CreateDidRepository repo;
@@ -74,7 +74,7 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
         }
       } catch (e) {
         print(e);
-        yield state.copyWith(formStatus: SubmissionFailed(e));
+        yield state.copyWith(formStatus: SubmissionFailed(e.toString()));
         //yield initial state to counter the reappearing of noti after state changes (For example when keyboard gets closed or input changes)
         yield state.copyWith(formStatus: const InitialFormStatus());
       }

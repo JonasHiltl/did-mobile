@@ -34,7 +34,7 @@ class _Step3State extends State<Step3> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Do you have any allergies?",
+        Text(L.of(context).anyMedication,
             style: Theme.of(context).textTheme.headline5),
         Column(
           children: [

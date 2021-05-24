@@ -28,6 +28,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "allergy": MessageLookupByLibrary.simpleMessage("Allergy"),
         "anyAllergies":
             MessageLookupByLibrary.simpleMessage("Do you have any allergies?"),
+        "anyMedication":
+            MessageLookupByLibrary.simpleMessage("Do you take any medication?"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "condition": MessageLookupByLibrary.simpleMessage("Condition"),
@@ -38,6 +40,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Your digital identity creation failed"),
         "createHeader": MessageLookupByLibrary.simpleMessage(
             "Let\'s create your digital Identity!"),
+        "createPQ": MessageLookupByLibrary.simpleMessage(
+            "Create Patient Questionnaire"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digital Identity successfully created"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Created at: "),
@@ -60,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "frequency": MessageLookupByLibrary.simpleMessage("Frequency"),
+        "givePQName": MessageLookupByLibrary.simpleMessage(
+            "Give your patient Questionnaire a name!"),
         "introductionAction":
             MessageLookupByLibrary.simpleMessage("Create digital identity"),
         "invalidEmail":
@@ -87,6 +93,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Please input your postal code."),
         "missingState":
             MessageLookupByLibrary.simpleMessage("Please input your state."),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAllergiesAdded":

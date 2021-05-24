@@ -15,6 +15,7 @@ class _HomeState extends State<Home> {
     final credential =
         context.watch<Verified>().personalDataVc.credentialSubject;
     return CustomScrollView(
+      physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
         SliverAppBar(
           // if floating is true the appbar becomes instantly visible if scrolled towards top

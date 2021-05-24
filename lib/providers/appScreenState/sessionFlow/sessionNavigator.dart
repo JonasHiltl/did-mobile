@@ -1,7 +1,11 @@
+import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
+import 'package:did/providers/createPatientQuestionnaire/repo/create_pq_repo.dart';
 import "package:did/screens/session/page2/page2.dart";
 import "package:did/screens/session/home/home.dart";
 import 'package:did/screens/session/manage_app/manage_app.dart';
 import "package:flutter/material.dart";
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SessionNavigator extends StatefulWidget {
   @override
@@ -31,6 +35,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
 
   @override
   Widget build(BuildContext context) {
+    final Verified sessionState = context.watch<Verified>();
     return WillPopScope(
       onWillPop: () async {
         final isFirstRouteInCurrentTab =
@@ -45,49 +50,56 @@ class _SessionNavigatorState extends State<SessionNavigator> {
         // let system handle back button if we"re on the first route
         return isFirstRouteInCurrentTab;
       },
-      child: Scaffold(
-        body: Stack(
-          children: [
-            _buildOffstageNavigator("Home"),
-            _buildOffstageNavigator("Page2"),
-            _buildOffstageNavigator("Settings"),
-          ],
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: (int index) {
-            _selectTab(pageKeys[index], index);
-          },
-          backgroundColor: Colors.white,
-          currentIndex: _selectedIndex,
-          showUnselectedLabels: false,
-          showSelectedLabels: false,
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home_outlined,
-              ),
-              activeIcon: Icon(
-                Icons.home_rounded,
-              ),
-              label: "Home",
+      child: RepositoryProvider(
+        create: (context) => CreatePQRepository(),
+        child: BlocProvider<CreatePQBloc>(
+          create: (context) => CreatePQBloc(
+              repo: CreatePQRepository(), sessionState: sessionState),
+          child: Scaffold(
+            body: Stack(
+              children: [
+                _buildOffstageNavigator("Home"),
+                _buildOffstageNavigator("Page2"),
+                _buildOffstageNavigator("Settings"),
+              ],
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.looks_two,
-              ),
-              label: "Page2",
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: (int index) {
+                _selectTab(pageKeys[index], index);
+              },
+              backgroundColor: Colors.white,
+              currentIndex: _selectedIndex,
+              showUnselectedLabels: false,
+              showSelectedLabels: false,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.home_outlined,
+                  ),
+                  activeIcon: Icon(
+                    Icons.home_rounded,
+                  ),
+                  label: "Home",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.looks_two,
+                  ),
+                  label: "Page2",
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(
+                    Icons.admin_panel_settings_outlined,
+                  ),
+                  activeIcon: Icon(
+                    Icons.admin_panel_settings_rounded,
+                  ),
+                  label: "Settings",
+                ),
+              ],
+              type: BottomNavigationBarType.fixed,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.admin_panel_settings_outlined,
-              ),
-              activeIcon: Icon(
-                Icons.admin_panel_settings_rounded,
-              ),
-              label: "Settings",
-            ),
-          ],
-          type: BottomNavigationBarType.fixed,
+          ),
         ),
       ),
     );

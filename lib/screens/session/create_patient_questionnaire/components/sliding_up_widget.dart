@@ -64,7 +64,8 @@ class PanelWidget extends StatelessWidget {
                 slivers: <Widget>[
                   if (state.allergies.isEmpty) ...[
                     SliverToBoxAdapter(
-                      child: _buildEmptyState(context, L.of(context).allergies),
+                      child: _buildEmptyState(context, L.of(context).allergies,
+                          L.of(context).noAllergiesAdded),
                     )
                   ],
                   SliverList(
@@ -119,8 +120,7 @@ class PanelWidget extends StatelessWidget {
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 2.0),
-                                        child:
-                                            Text(state.allergies[i].symptoms),
+                                        child: Text(state.allergies[i].symptom),
                                       ),
                                       GestureDetector(
                                         onTap: () => context
@@ -139,7 +139,8 @@ class PanelWidget extends StatelessWidget {
                         ),
                     ],
                     if (state.medications.isEmpty) ...[
-                      _buildEmptyState(context, L.of(context).pluralMedication)
+                      _buildEmptyState(context, L.of(context).pluralMedication,
+                          L.of(context).noMedicationAdded)
                     ],
                     if (state.medications.isNotEmpty) ...[
                       const SizedBox(
@@ -236,20 +237,20 @@ class PanelWidget extends StatelessWidget {
     });
   }
 
-  SizedBox _buildEmptyState(BuildContext context, String text) {
+  SizedBox _buildEmptyState(BuildContext context, String title, String text) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.35,
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
         Text(
-          text,
+          title,
           textAlign: TextAlign.center,
           style: Theme.of(context).textTheme.bodyText2!.copyWith(
                 fontWeight: FontWeight.bold,
               ),
         ),
         Empty(
-          text: L.of(context).noAllergiesAdded,
+          text: text,
         ),
         Container()
       ]),

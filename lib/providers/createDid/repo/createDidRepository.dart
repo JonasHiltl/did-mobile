@@ -1,23 +1,24 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-import "../models/did/did_vc_combination.dart";
-import "../models/did/identity.dart";
-import "../models/personal_data_vc/personal_data_vc.dart";
+import '../../../models/did/did_vc_combination.dart';
+import '../../../models/did/identity.dart';
+import '../../../models/personal_data_vc/personal_data_vc.dart';
 
 class CreateDidRepository {
   Future<DidVcCombination> createDid(
-      String firstName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      DateTime? dateOfBirth,
-      String sex,
-      String address,
-      String city,
-      String state,
-      String postalCode,
-      String country) async {
+    String firstName,
+    String lastName,
+    String email,
+    String phoneNumber,
+    DateTime? dateOfBirth,
+    String sex,
+    String address,
+    String city,
+    String state,
+    String postalCode,
+    String country,
+  ) async {
     final _uri = Uri.https("did-backend.herokuapp.com", "/create");
     final res = await http.post(
       _uri,
