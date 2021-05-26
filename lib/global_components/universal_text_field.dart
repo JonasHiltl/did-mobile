@@ -6,17 +6,20 @@ class UniversalTextField extends StatelessWidget {
   final String? hintText;
   final ValueChanged<String>? onChanged;
   final String prefixText;
+  final String? initialValue;
   const UniversalTextField({
     this.errorText,
     this.hintText,
     this.controller,
     this.onChanged,
+    this.initialValue,
     required this.prefixText,
   });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+        initialValue: initialValue,
         style: Theme.of(context).textTheme.bodyText2,
         cursorWidth: 1,
         controller: controller,

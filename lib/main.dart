@@ -1,18 +1,19 @@
+import 'package:device_preview/device_preview.dart';
+import 'package:device_preview/plugins.dart';
 import 'package:did/providers/appScreenState/appNavigator.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import "package:did/screens/auth/introduction/introduction.dart";
+import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
 
 import "data/commonBackendRepo.dart";
-import 'providers/createDid/repo/createDidRepository.dart';
 import "generated/l10n.dart";
 import "providers/createDid/createDidBloc.dart";
-import 'providers/createPatientQuestionnaire/create_PQ_bloc.dart';
-import 'providers/createPatientQuestionnaire/repo/create_pq_repo.dart';
+import 'providers/createDid/repo/createDidRepository.dart';
 import "providers/language/languageBloc.dart";
 import "providers/language/languageState.dart";
 import "providers/language/storageUtils.dart";
@@ -24,7 +25,11 @@ void main() async {
   await LanguagePreference.init();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(MyApp());
+  runApp(DevicePreview(
+    plugins: const [FileExplorerPlugin(), ScreenshotPlugin()],
+    builder: (context) => MyApp(),
+    enabled: !kReleaseMode,
+  ));
 }
 
 const ColorScheme colorScheme = ColorScheme.light(
@@ -65,6 +70,7 @@ class MyApp extends StatelessWidget {
               builder: (context, state) {
                 return MaterialApp(
                   title: "Flutter Demo",
+                  builder: DevicePreview.appBuilder,
                   debugShowCheckedModeBanner: false,
                   theme: ThemeData(
                       scaffoldBackgroundColor: colorScheme.background,

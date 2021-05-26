@@ -51,6 +51,13 @@ class SessionCubit extends Cubit<SessionState> {
     emit(Verified(identity: identity, personalDataVc: personalDataVc));
   }
 
+  void startSessionWithVerifiedStateObj(Verified verified) {
+    emit(Verified(
+        identity: verified.identity,
+        personalDataVc: verified.personalDataVc,
+        patientQuestionnaires: verified.patientQuestionnaires));
+  }
+
   Future<void> deleteAll() async {
     await secureStorage.deleteAll();
     emit(Unverified());

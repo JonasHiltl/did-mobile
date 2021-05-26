@@ -1,7 +1,15 @@
+import 'dart:convert';
+
+import 'package:did/data/secureStorage.dart';
 import 'package:did/models/allergy/allergy.dart';
+import 'package:did/models/did/identity.dart';
 import 'package:did/models/medication/medication.dart';
+import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
+import 'package:did/models/personal_data_vc/personal_data_vc.dart';
+import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'create_PQ_event.dart';
@@ -11,9 +19,14 @@ import 'repo/create_pq_repo.dart';
 
 class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
   final CreatePQRepository repo;
+  final SessionCubit sessionCubit;
   final Verified sessionState;
-  CreatePQBloc({required this.repo, required this.sessionState})
-      : super(CreatePQState(allergies: [], medications: []));
+  CreatePQBloc({
+    required this.repo,
+    required this.sessionState,
+    required this.sessionCubit,
+  }) : super(CreatePQState(allergies: [], medications: []));
+  final SecureStorage secureStorage = SecureStorage();
 
   @override
   Stream<CreatePQState> mapEventToState(CreatePQEvent event) async* {
@@ -55,12 +68,34 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
             state.documentName,
             state.allergies,
             state.medications);
-        print(res);
         if (res.id.isNotEmpty) {
+          if (await secureStorage.contains("patient_questionnaire")) {
+            final encodedPQ = await secureStorage.read("patient_questionnaire");
+            final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
+
+            //convert saved list of patient questionnaires to List<PatientQuestionnaireVc> and add newly created one
+            final List<PatientQuestionnaireVc> listPQ = [];
+            decodedPQ.map((e) {
+              listPQ.add(
+                  PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
+            }).toList();
+            listPQ.add(res);
+
+            secureStorage.write("patient_questionnaire", jsonEncode(listPQ));
+
+            final newSessionState =
+                sessionState.copyWith(patientQuestionnaires: listPQ);
+            sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
+          } else {
+            //when first patient questionnaire just save and
+            final newSessionState =
+                sessionState.copyWith(patientQuestionnaires: [res]);
+            await secureStorage.write(
+                "patient_questionnaire", jsonEncode([res]));
+            sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
+          }
           yield state.copyWith(formStatus: SubmissionSuccess());
           yield state.copyWith(formStatus: const InitialFormStatus());
-
-          print(res);
         } else {
           yield state.copyWith(
               formStatus: SubmissionFailed(

@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:did/models/did/identity.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
+import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/secureStorage.dart';
@@ -15,7 +17,8 @@ class UpdatePersonalBloc
   //I'm passing these values inside the class to define the initial values of the already created VC to update them afterwards
   UpdatePersonalBloc({
     required this.repo,
-    required this.authCubit,
+    required this.sessionCubit,
+    required this.sessionState,
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -43,7 +46,8 @@ class UpdatePersonalBloc
         ));
 
   final UpdatePersonalDataRepo repo;
-  final AuthCubit authCubit;
+  final SessionCubit sessionCubit;
+  final Verified sessionState;
   final SecureStorage secureStorage = SecureStorage();
 
   final String id;
@@ -104,16 +108,12 @@ class UpdatePersonalBloc
         if (res.id.isNotEmpty) {
           await secureStorage.write("personal_data_vc", jsonEncode(res));
 
-          final encodedIdentity = await secureStorage.read("identity");
-          final decodedDid =
-              jsonDecode(encodedIdentity.toString()) as Map<String, dynamic>;
-          final identity = Identity.fromJson(decodedDid);
-
           yield state.copyWith(formStatus: SubmissionSuccess());
           yield state.copyWith(formStatus: const InitialFormStatus());
 
           // launch the session flow with the returned Did object
-          authCubit.launchSession(identity, res);
+          final newSessionState = sessionState.copyWith(personalDataVc: res);
+          sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
         } else {
           yield state.copyWith(
               formStatus: SubmissionFailed("Backend error creating Did"));

@@ -14,6 +14,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final credential =
         context.watch<Verified>().personalDataVc.credentialSubject;
+    final sessionState = context.watch<Verified>();
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
@@ -35,6 +36,14 @@ class _HomeState extends State<Home> {
             child: Padding(
           padding: const EdgeInsets.all(20.0),
           child: CreateFirstQuestionnaire(),
+        )),
+        SliverToBoxAdapter(
+            child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+              children: sessionState.patientQuestionnaires
+                  .map((e) => Text(e.credentialSubject.documentName))
+                  .toList()),
         ))
       ],
     );

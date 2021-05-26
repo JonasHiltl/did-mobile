@@ -29,13 +29,14 @@ class _Step3State extends State<Step3> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(L.of(context).anyMedication,
             style: Theme.of(context).textTheme.headline5),
+        const SizedBox(
+          height: 10,
+        ),
         Column(
           children: [
             UniversalTextField(
@@ -64,9 +65,11 @@ class _Step3State extends State<Step3> {
               prefixText: L.of(context).frequency,
               hintText: L.of(context).exampleOnceDaily,
               controller: medicationFrequencyController,
-              onChanged: (value) => setState(() {
-                _frequency = value;
-              }),
+              onChanged: (value) => setState(
+                () {
+                  _frequency = value;
+                },
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -75,34 +78,38 @@ class _Step3State extends State<Step3> {
               prefixText: L.of(context).dose,
               hintText: L.of(context).example75mg,
               controller: medicationDoseController,
-              onChanged: (value) => setState(() {
-                _dose = value;
-              }),
+              onChanged: (value) => setState(
+                () {
+                  _dose = value;
+                },
+              ),
             ),
             const SizedBox(
-              height: 10,
+              height: 4,
             ),
             SizedBox(
-                width: size.width - 40,
-                child: OutlinedButton(
-                    onPressed: _medicationName.isEmpty ||
-                            _condition.isEmpty ||
-                            _frequency.isEmpty ||
-                            _dose.isEmpty
-                        ? null
-                        : () => context
-                            .read<CreatePQBloc>()
-                            .add(CreatePQAddMedication(
-                                medication: Medication(
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: _medicationName.isEmpty ||
+                        _condition.isEmpty ||
+                        _frequency.isEmpty ||
+                        _dose.isEmpty
+                    ? null
+                    : () => context.read<CreatePQBloc>().add(
+                          CreatePQAddMedication(
+                            medication: Medication(
                               name: medicationNameController.text,
                               condition: medicationConditionController.text,
                               frequency: medicationFrequencyController.text,
                               dose: medicationDoseController.text,
-                            ))),
-                    child: Text(L.of(context).addMedication)))
+                            ),
+                          ),
+                        ),
+                child: Text(L.of(context).addMedication),
+              ),
+            ),
           ],
         ),
-        Container()
       ],
     );
   }

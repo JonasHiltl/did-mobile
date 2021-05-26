@@ -22,51 +22,57 @@ class _Step2State extends State<Step2> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(L.of(context).anyAllergies,
             style: Theme.of(context).textTheme.headline5),
+        const SizedBox(
+          height: 10,
+        ),
         Column(
           children: [
             UniversalTextField(
               prefixText: L.of(context).allergy,
               hintText: L.of(context).examplePollen,
               controller: allergyNameController,
-              onChanged: (value) => setState(() {
-                _allergyName = value;
-              }),
+              onChanged: (value) => setState(
+                () {
+                  _allergyName = value;
+                },
+              ),
             ),
             const SizedBox(
               height: 10,
             ),
             UniversalTextField(
-                prefixText: L.of(context).symptom,
-                hintText: L.of(context).exampleSneezing,
-                controller: allergySymptomController,
-                onChanged: (value) => setState(() {
-                      _symptom = value;
-                    })),
+              prefixText: L.of(context).symptom,
+              hintText: L.of(context).exampleSneezing,
+              controller: allergySymptomController,
+              onChanged: (value) => setState(
+                () {
+                  _symptom = value;
+                },
+              ),
+            ),
             const SizedBox(
-              height: 10,
+              height: 4,
             ),
             SizedBox(
-                width: size.width - 40,
-                child: OutlinedButton(
-                    onPressed: _allergyName.isEmpty || _symptom.isEmpty
-                        ? null
-                        : () =>
-                            context.read<CreatePQBloc>().add(CreatePQAddAllergy(
-                                    allergy: Allergy(
-                                  name: allergyNameController.text,
-                                  symptom: allergySymptomController.text,
-                                ))),
-                    child: Text(L.of(context).addAllergy)))
+              width: double.infinity,
+              child: OutlinedButton(
+                onPressed: _allergyName.isEmpty || _symptom.isEmpty
+                    ? null
+                    : () => context.read<CreatePQBloc>().add(CreatePQAddAllergy(
+                            allergy: Allergy(
+                          name: allergyNameController.text,
+                          symptom: allergySymptomController.text,
+                        ))),
+                child: Text(L.of(context).addAllergy),
+              ),
+            ),
           ],
         ),
-        Container()
       ],
     );
   }

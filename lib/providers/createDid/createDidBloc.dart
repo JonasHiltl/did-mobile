@@ -65,7 +65,6 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
           yield state.copyWith(formStatus: SubmissionSuccess());
           yield state.copyWith(formStatus: const InitialFormStatus());
 
-          // launch the session flow with the returned Did object
           authCubit.launchSession(res.identity, res.personalDataVc);
         } else {
           yield state.copyWith(

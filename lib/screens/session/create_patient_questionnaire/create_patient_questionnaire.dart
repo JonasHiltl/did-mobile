@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:did/global_components/universal_text_field.dart';
+import 'package:did/providers/createPatientQuestionnaire/formSubmissionStatus.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_event.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_state.dart';
@@ -46,6 +47,7 @@ class _CreatePatientQuestionnaireState
                   child: Text(L.of(context).givePQName),
                 ),
                 UniversalTextField(
+                  initialValue: context.read<CreatePQBloc>().state.documentName,
                   prefixText: L.of(context).name,
                   onChanged: (value) => context
                       .read<CreatePQBloc>()
@@ -81,7 +83,7 @@ class _CreatePatientQuestionnaireState
             content: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: 8.0),
                   child: Text(L.of(context).givePQName),
                 ),
                 CupertinoTextField(
@@ -129,78 +131,117 @@ class _CreatePatientQuestionnaireState
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BlocBuilder<CreatePQBloc, CreatePQState>(
+      builder: (context, state) => SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-              automaticallyImplyLeading: false,
-              elevation: 0.0,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              iconTheme: const IconThemeData(
-                color: Colors.black,
-              ),
-              actions: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.cancel,
-                    size: 18,
-                  ),
-                  onPressed: () => Navigator.pop(context),
-                ),
-              ],
-              title: Text(
-                L.of(context).patientQuestionnaire,
-                style: Theme.of(context).textTheme.headline5,
-              ),
-              centerTitle: true,
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            elevation: 0.0,
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            iconTheme: const IconThemeData(
+              color: Colors.black,
             ),
-            body: SlidingUpWidget(
-                body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: CustomStepper(
-                    currentStep: currentStep,
-                  ),
+            actions: [
+              IconButton(
+                icon: const Icon(
+                  Icons.cancel,
+                  size: 18,
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(children: [
-                      Expanded(
-                        child: IndexedStack(
-                          index: currentStep,
-                          children: <Widget>[Step1(), Step2(), Step3()],
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+            title: Text(
+              L.of(context).patientQuestionnaire,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            centerTitle: true,
+          ),
+          body: Stack(
+            children: [
+              Positioned.fill(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: CustomStepper(
+                        currentStep: currentStep,
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.all(20.0),
+                        child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          child: Column(
+                            children: [
+                              IndexedStack(
+                                index: currentStep,
+                                children: <Widget>[Step1(), Step2(), Step3()],
+                              ),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: ElevatedButton(
+                                            onPressed: state.formStatus
+                                                    is FormSubmitting
+                                                ? null
+                                                : () => increseSubmit(context),
+                                            child: state.formStatus
+                                                    is FormSubmitting
+                                                ? Container(
+                                                    height: 19,
+                                                    width: 19,
+                                                    margin: const EdgeInsets
+                                                        .fromLTRB(7, 0, 7, 0),
+                                                    child:
+                                                        const CircularProgressIndicator(
+                                                      strokeWidth: 2,
+                                                      valueColor:
+                                                          AlwaysStoppedAnimation<
+                                                                  Color>(
+                                                              Color(
+                                                                  0xFFD9D9D9)),
+                                                    ))
+                                                : Text(currentStep == 2
+                                                    ? L.of(context).submit
+                                                    : L.of(context).next)),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      Expanded(
+                                        child: OutlinedButton(
+                                            onPressed: currentStep == 0
+                                                ? null
+                                                : decreaseUntil0,
+                                            child: Text(L.of(context).back)),
+                                      ),
+                                    ],
+                                  ),
+                                  Container(
+                                    height: MediaQuery.of(context).size.height *
+                                        0.1,
+                                  )
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: ElevatedButton(
-                                onPressed: () => increseSubmit(context),
-                                child: Text(currentStep == 2
-                                    ? L.of(context).submit
-                                    : L.of(context).next)),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Expanded(
-                            child: OutlinedButton(
-                                onPressed:
-                                    currentStep == 0 ? null : decreaseUntil0,
-                                child: Text(L.of(context).back)),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.height * 0.1 + 159,
-                      )
-                    ]),
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ))));
+              ),
+              SlidingUpWidget(),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

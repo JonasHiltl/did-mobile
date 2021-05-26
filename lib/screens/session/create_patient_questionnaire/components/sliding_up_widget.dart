@@ -9,8 +9,6 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 import '../../../../generated/l10n.dart';
 
 class SlidingUpWidget extends StatefulWidget {
-  final Widget body;
-  const SlidingUpWidget({required this.body});
   @override
   _SlidingUpWidgetState createState() => _SlidingUpWidgetState();
 }
@@ -21,22 +19,22 @@ class _SlidingUpWidgetState extends State<SlidingUpWidget> {
   @override
   Widget build(BuildContext context) {
     return SlidingUpPanel(
-        boxShadow: [
-          BoxShadow(
-              color: (Colors.grey[400])!,
-              offset: const Offset(0, 8),
-              blurRadius: 20,
-              spreadRadius: 1.0)
-        ],
-        controller: panelController,
-        minHeight: MediaQuery.of(context).size.height * 0.1,
-        maxHeight: MediaQuery.of(context).size.height * 0.75,
-        panelBuilder: (controller) => PanelWidget(
-              controller: controller,
-              panelController: panelController,
-            ),
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
-        body: widget.body);
+      boxShadow: [
+        BoxShadow(
+            color: (Colors.grey[400])!,
+            offset: const Offset(0, 8),
+            blurRadius: 20,
+            spreadRadius: 1.0)
+      ],
+      controller: panelController,
+      minHeight: MediaQuery.of(context).size.height * 0.1,
+      maxHeight: MediaQuery.of(context).size.height * 0.75,
+      panelBuilder: (controller) => PanelWidget(
+        controller: controller,
+        panelController: panelController,
+      ),
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
+    );
   }
 }
 

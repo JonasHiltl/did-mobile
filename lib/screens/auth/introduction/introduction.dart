@@ -87,7 +87,7 @@ class _IntroductionState extends State<Introduction>
       });
 
     _scale2Animation =
-        Tween<double>(begin: 1.0, end: 42.0).animate(_scale2Controller);
+        Tween<double>(begin: 1.0, end: 100.0).animate(_scale2Controller);
 
     _animationController.forward();
     super.initState();

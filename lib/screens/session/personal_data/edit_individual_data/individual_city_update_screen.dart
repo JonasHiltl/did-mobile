@@ -1,5 +1,6 @@
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
+import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:did/providers/updatePersonalData/form_submission_status.dart';
 import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
@@ -35,12 +36,14 @@ class _IndividualCityUpdateScreenState
     final credential =
         context.watch<Verified>().personalDataVc.credentialSubject;
     final identity = context.watch<Verified>().identity;
+    final sessionState = context.watch<Verified>();
     return RepositoryProvider(
       create: (context) => UpdatePersonalDataRepo(),
       child: BlocProvider<UpdatePersonalBloc>(
         create: (context) => UpdatePersonalBloc(
           repo: context.read<UpdatePersonalDataRepo>(),
-          authCubit: context.read<AuthCubit>(),
+          sessionCubit: context.read<SessionCubit>(),
+          sessionState: sessionState,
           id: identity.doc.id,
           firstName: credential.firstName,
           lastName: credential.lastName,

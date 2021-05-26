@@ -59,6 +59,7 @@
 
   "deleteData": "Daten löschen",
   "confirmDataDeletion": "Bist du sicher, dass du alle Daten unwiderruflich löschen willst?",
+  "changeLanguage": "Sprache ändern",
 
   "createdAt": "Erstellt am: ",
   "personalData": "Persönliche Daten",

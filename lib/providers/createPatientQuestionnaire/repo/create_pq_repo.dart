@@ -47,10 +47,10 @@ class CreatePQRepository {
       }),
     );
     if (res.statusCode == 200) {
-      final resJson = jsonDecode(res.body) as Map<String, dynamic>;
-      final patientQuestionnaire = PatientQuestionnaireVc.fromJson(resJson);
+      final resJson = jsonDecode(res.body);
+      final pqJson = resJson["patientQuestionnaire"] as Map<String, dynamic>;
 
-      print(res.body);
+      final patientQuestionnaire = PatientQuestionnaireVc.fromJson(pqJson);
       return patientQuestionnaire;
     } else {
       print(res.body);

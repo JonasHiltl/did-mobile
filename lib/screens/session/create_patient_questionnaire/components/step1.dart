@@ -15,7 +15,6 @@ class Step1 extends StatelessWidget {
         context.watch<Verified>().personalDataVc.credentialSubject;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
@@ -38,6 +37,9 @@ class Step1 extends StatelessWidget {
               ),
             ),
           ],
+        ),
+        const SizedBox(
+          height: 10,
         ),
         Column(
           children: [

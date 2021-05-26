@@ -590,6 +590,16 @@ class L {
     );
   }
 
+  /// `Change Language`
+  String get changeLanguage {
+    return Intl.message(
+      'Change Language',
+      name: 'changeLanguage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Created at: `
   String get createdAt {
     return Intl.message(

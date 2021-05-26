@@ -31,6 +31,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "anyMedication":
             MessageLookupByLibrary.simpleMessage("Do you take any medication?"),
         "back": MessageLookupByLibrary.simpleMessage("Back"),
+        "changeLanguage":
+            MessageLookupByLibrary.simpleMessage("Change Language"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "condition": MessageLookupByLibrary.simpleMessage("Condition"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
