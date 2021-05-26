@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:did/data/commonBackendRepo.dart';
 import 'package:did/data/secureStorage.dart';
 import 'package:did/models/did/identity.dart';
+import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,10 +33,31 @@ class SessionCubit extends Cubit<SessionState> {
                 as Map<String, dynamic>;
         final personalDataVc = PersonalDataVc.fromJson(decodedPersonalDataVc);
 
-        if (await commonBackendRepo.verifyDid(identity.doc.id)) {
-          emit(Verified(identity: identity, personalDataVc: personalDataVc));
+        // if patient questionnaire is already created launch session with these patient questionnaires
+        if (await secureStorage.contains("patient_questionnaire")) {
+          final encodedPQ = await secureStorage.read("patient_questionnaire");
+          final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
+
+          //convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
+          final List<PatientQuestionnaireVc> listPQ = [];
+          decodedPQ.map((e) {
+            listPQ.add(
+                PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
+          }).toList();
+          if (await commonBackendRepo.verifyDid(identity.doc.id)) {
+            emit(Verified(
+                identity: identity,
+                personalDataVc: personalDataVc,
+                patientQuestionnaires: listPQ));
+          } else {
+            emit(Unverified());
+          }
         } else {
-          emit(Unverified());
+          if (await commonBackendRepo.verifyDid(identity.doc.id)) {
+            emit(Verified(identity: identity, personalDataVc: personalDataVc));
+          } else {
+            emit(Unverified());
+          }
         }
       } else {
         emit(Unverified());
@@ -43,6 +65,24 @@ class SessionCubit extends Cubit<SessionState> {
     } catch (e) {
       print("Sessioncubit error: $e");
       emit(Unverified());
+    }
+  }
+
+  Future<void> attemptGettingPatientQuestionnaire() async {
+    try {
+      if (await secureStorage.contains("patient_questionnaire")) {
+        final encodedPQ = await secureStorage.read("patient_questionnaire");
+        final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
+
+        //convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
+        final List<PatientQuestionnaireVc> listPQ = [];
+        decodedPQ.map((e) {
+          listPQ
+              .add(PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
+        }).toList();
+      }
+    } catch (e) {
+      print(e);
     }
   }
 
