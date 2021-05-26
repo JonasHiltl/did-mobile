@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
-import '../generated/l10n.dart';
 import '../providers/language/languageBloc.dart';
 import '../providers/language/languageEvent.dart';
 import '../providers/language/languageState.dart';

@@ -1,8 +1,7 @@
-import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
 import 'package:did/providers/createPatientQuestionnaire/repo/create_pq_repo.dart';
-import "package:did/screens/session/page2/page2.dart";
+import "package:did/screens/session/documents/manage_documents.dart";
 import "package:did/screens/session/home/home.dart";
 import 'package:did/screens/session/manage_app/manage_app.dart';
 import "package:flutter/material.dart";
@@ -89,8 +88,9 @@ class _SessionNavigatorState extends State<SessionNavigator> {
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
-                    Icons.looks_two,
+                    Icons.folder_outlined,
                   ),
+                  activeIcon: Icon(Icons.folder),
                   label: "Page2",
                 ),
                 BottomNavigationBarItem(
@@ -133,7 +133,7 @@ class TabNavigator extends StatelessWidget {
     if (tabItem == "Home") {
       child = Home();
     } else if (tabItem == "Page2") {
-      child = Page2();
+      child = ManageDocuments();
     } else {
       child = ManageApp();
     }

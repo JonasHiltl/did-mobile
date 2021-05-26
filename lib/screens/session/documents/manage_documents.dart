@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Page2 extends StatelessWidget {
+class ManageDocuments extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScrollView(
@@ -10,14 +10,12 @@ class Page2 extends StatelessWidget {
           // if it's false the appbar is only visible if completly scrolled back to top
           floating: true,
           expandedHeight: 60.0,
-          backgroundColor: Colors.white,
-          flexibleSpace: FlexibleSpaceBar(
-              title: Text(
-                "Page 2",
-                style: Theme.of(context).textTheme.headline6,
-              ),
-              titlePadding:
-                  const EdgeInsetsDirectional.only(start: 20, bottom: 16)),
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          title: Text(
+            "Manage Documents",
+            style: TextStyle(color: Theme.of(context).colorScheme.onBackground),
+          ),
+          centerTitle: true,
         ),
       ],
     );

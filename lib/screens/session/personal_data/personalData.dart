@@ -1,4 +1,9 @@
+import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
+import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
 import 'components/credentialDetailsView.dart';
@@ -11,6 +16,10 @@ class PersonalData extends StatefulWidget {
 class _PersonalDataState extends State<PersonalData> {
   @override
   Widget build(BuildContext context) {
+    final credential =
+        context.watch<Verified>().personalDataVc.credentialSubject;
+    final identity = context.watch<Verified>().identity;
+    final sessionState = context.watch<Verified>();
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[
@@ -30,10 +39,33 @@ class _PersonalDataState extends State<PersonalData> {
           centerTitle: true,
         ),
         SliverToBoxAdapter(
-            child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: CredentialDetailsView(),
-        ))
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: RepositoryProvider(
+              create: (context) => UpdatePersonalDataRepo(),
+              child: BlocProvider<UpdatePersonalBloc>(
+                create: (context) => UpdatePersonalBloc(
+                  repo: context.read<UpdatePersonalDataRepo>(),
+                  sessionCubit: context.read<SessionCubit>(),
+                  sessionState: sessionState,
+                  id: identity.doc.id,
+                  firstName: credential.firstName,
+                  lastName: credential.lastName,
+                  email: credential.email,
+                  phoneNumber: credential.phoneNumber,
+                  dateOfBirth: credential.dateOfBirth,
+                  sex: credential.sex,
+                  address: credential.address.street,
+                  city: credential.address.city,
+                  locationState: credential.address.state,
+                  postalCode: credential.address.postalCode,
+                  country: credential.address.country,
+                ),
+                child: CredentialDetailsView(),
+              ),
+            ),
+          ),
+        ),
       ],
     );
   }

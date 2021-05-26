@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:did/models/did/identity.dart';
-import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

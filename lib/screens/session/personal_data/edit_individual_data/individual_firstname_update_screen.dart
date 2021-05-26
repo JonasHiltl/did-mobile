@@ -1,5 +1,4 @@
 import 'package:did/global_components/noti.dart';
-import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:did/generated/l10n.dart';
@@ -92,48 +91,48 @@ class _IndividualFirstNameUpdateScreenState
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextFormField(
-                            style: Theme.of(context).textTheme.bodyText2,
-                            cursorWidth: 1,
-                            controller: _controller,
-                            decoration: InputDecoration(
-                                isDense: true,
-                                prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 10),
-                                    child: Text(
-                                      L.of(context).firstName,
-                                      style: TextStyle(
-                                          color: Colors.black.withOpacity(0.6)),
-                                    )),
-                                prefixIconConstraints: const BoxConstraints(
-                                  minWidth: 120,
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 10),
-                                border: const OutlineInputBorder(),
-                                focusedBorder: OutlineInputBorder(
+                          style: Theme.of(context).textTheme.bodyText2,
+                          cursorWidth: 1,
+                          controller: _controller,
+                          decoration: InputDecoration(
+                              isDense: true,
+                              prefixIcon: Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 10),
+                                  child: Text(
+                                    L.of(context).firstName,
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.6)),
+                                  )),
+                              prefixIconConstraints: const BoxConstraints(
+                                minWidth: 120,
+                              ),
+                              contentPadding: const EdgeInsets.symmetric(
+                                  vertical: 15, horizontal: 10),
+                              border: const OutlineInputBorder(),
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                              ),
+                              enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6))),
-                                errorText: state.isValidFirstName
-                                    ? null
-                                    : L.of(context).missingFirstName,
-                                filled: true,
-                                fillColor: const Color(0xFFf1f3fd)),
-                            validator: (value) => state.isValidFirstName
-                                ? null
-                                : L.of(context).missingFirstName,
-                            onChanged: (value) =>
-                                context.read<UpdatePersonalBloc>().add(
-                                      UpdatePersonalFirstNameChanged(
-                                          firstName: value),
-                                    )),
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6))),
+                              errorText: state.isValidFirstName
+                                  ? null
+                                  : L.of(context).missingFirstName,
+                              filled: true,
+                              fillColor: const Color(0xFFf1f3fd)),
+                          validator: (value) => state.isValidFirstName
+                              ? null
+                              : L.of(context).missingFirstName,
+                          onChanged: (value) =>
+                              context.read<UpdatePersonalBloc>().add(
+                                    UpdatePersonalFirstNameChanged(
+                                        firstName: value),
+                                  ),
+                        ),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(

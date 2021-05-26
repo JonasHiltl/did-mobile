@@ -2,14 +2,10 @@ import 'dart:convert';
 
 import 'package:did/data/secureStorage.dart';
 import 'package:did/models/allergy/allergy.dart';
-import 'package:did/models/did/identity.dart';
 import 'package:did/models/medication/medication.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
-import 'package:did/models/personal_data_vc/personal_data_vc.dart';
-import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
-import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'create_PQ_event.dart';

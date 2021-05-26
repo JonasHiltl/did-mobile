@@ -28,14 +28,11 @@ class ManageApp extends StatelessWidget {
               floating: true,
               elevation: 0.0,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              flexibleSpace: FlexibleSpaceBar(
-                  title: Text(
-                    "Manage App",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.onBackground),
-                  ),
-                  titlePadding:
-                      const EdgeInsetsDirectional.only(start: 20, bottom: 16)),
+              title: Text(
+                "Manage App",
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.onBackground),
+              ),
             ),
             const SliverToBoxAdapter(
               child: SizedBox(

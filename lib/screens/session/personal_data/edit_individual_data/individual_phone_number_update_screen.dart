@@ -1,5 +1,4 @@
 import 'package:did/global_components/noti.dart';
-import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
 import 'package:did/generated/l10n.dart';

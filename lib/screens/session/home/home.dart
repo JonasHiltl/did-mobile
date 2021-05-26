@@ -34,12 +34,12 @@ class _HomeState extends State<Home> {
         ),
         SliverToBoxAdapter(
             child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: CreateFirstQuestionnaire(),
         )),
         SliverToBoxAdapter(
             child: Padding(
-          padding: const EdgeInsets.all(20.0),
+          padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
           child: Column(
               children: sessionState.patientQuestionnaires
                   .map((e) => Text(e.credentialSubject.documentName))
