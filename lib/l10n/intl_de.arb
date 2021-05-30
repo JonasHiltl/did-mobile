@@ -24,6 +24,7 @@
   "frequency": "Häufigkeit",
   "dose": "Dosis",
   "issued": "Erstellt am ",
+  "cancel": "Abbrechen",
   "pluralMedication": "Medikamente",
   "personalInfoVC": "Persönliche Informationen Credential",
 

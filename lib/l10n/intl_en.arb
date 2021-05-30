@@ -24,6 +24,7 @@
   "frequency": "Frequency",
   "dose": "Dose",
   "issued": "Issued ",
+  "cancel": "Cancel",
   "pluralMedication": "Medication",
   "personalInfoVC": "Personal Information Credential",
 

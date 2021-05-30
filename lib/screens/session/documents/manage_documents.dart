@@ -1,9 +1,12 @@
+import 'dart:io';
+
 import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/screens/session/create_patient_questionnaire/create_patient_questionnaire.dart';
 import 'package:did/screens/session/documents/document_folder/pq_document_folder.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:popover/popover.dart';
 
 import '../../../generated/l10n.dart';
 import 'components/document_folder_preview.dart';
@@ -32,17 +35,80 @@ class ManageDocuments extends StatelessWidget {
                 Icons.add,
                 color: Theme.of(context).colorScheme.onBackground,
               ),
-              onPressed: () => showPopover(
-                context: context,
-                bodyBuilder: (context) => Column(
-                  children: [
-                    Text(L.of(context).patientQuestionnaire),
-                    Text(L.of(context).patientQuestionnaire),
-                    Text(L.of(context).patientQuestionnaire),
-                  ],
-                ),
-                direction: PopoverDirection.bottom,
-              ),
+              onPressed: () => Platform.isIOS
+                  ? showCupertinoModalPopup(
+                      useRootNavigator: false,
+                      context: context,
+                      builder: (context) => CupertinoActionSheet(
+                        actions: [
+                          CupertinoActionSheetAction(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                              Navigator.push(
+                                context,
+                                PageTransition(
+                                  type: PageTransitionType.bottomToTop,
+                                  curve: Curves.easeInOut,
+                                  child: CreatePatientQuestionnaire(),
+                                ),
+                              );
+                            },
+                            child: Text(L.of(context).patientQuestionnaire),
+                          ),
+                        ],
+                        cancelButton: CupertinoActionSheetAction(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text(L.of(context).cancel),
+                        ),
+                      ),
+                    )
+                  : showModalBottomSheet(
+                      useRootNavigator: false,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(25),
+                        ),
+                      ),
+                      backgroundColor: Theme.of(context).backgroundColor,
+                      context: context,
+                      builder: (context) => Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          SizedBox(
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                Navigator.push(
+                                  context,
+                                  PageTransition(
+                                    type: PageTransitionType.bottomToTop,
+                                    curve: Curves.easeInOut,
+                                    child: CreatePatientQuestionnaire(),
+                                  ),
+                                );
+                              },
+                              child: Text(L.of(context).patientQuestionnaire,
+                                  style: Theme.of(context).textTheme.bodyText1),
+                            ),
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              child: Text(
+                                L.of(context).cancel,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                        color: Theme.of(context).errorColor),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
             ),
           ],
         ),

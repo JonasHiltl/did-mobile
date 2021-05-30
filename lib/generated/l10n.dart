@@ -300,6 +300,16 @@ class L {
     );
   }
 
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medication`
   String get pluralMedication {
     return Intl.message(

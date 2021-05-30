@@ -13,11 +13,13 @@ class CreateFirstQuestionnaire extends StatelessWidget {
         highlightColor: const Color(0xFF2C54E9),
         borderRadius: BorderRadius.circular(6),
         onTap: () => Navigator.push(
-            context,
-            PageTransition(
-                type: PageTransitionType.bottomToTop,
-                curve: Curves.easeInOut,
-                child: CreatePatientQuestionnaire())),
+          context,
+          PageTransition(
+            type: PageTransitionType.bottomToTop,
+            curve: Curves.easeInOut,
+            child: CreatePatientQuestionnaire(),
+          ),
+        ),
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
