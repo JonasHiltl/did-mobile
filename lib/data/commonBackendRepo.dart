@@ -13,7 +13,7 @@ class CommonBackendRepo {
       print("Did is valid");
       return true;
     }
-    print("Did is not Valid");
+    print("Did is not Valid ${res.body}");
     return false;
   }
 }

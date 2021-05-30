@@ -23,6 +23,7 @@
   "condition": "Condition",
   "frequency": "Frequency",
   "dose": "Dose",
+  "issued": "Issued ",
   "pluralMedication": "Medication",
   "personalInfoVC": "Personal Information Credential",
 
@@ -44,10 +45,14 @@
   "createHeader": "Let's create your digital Identity!",
   "createSuccessMessage": "Digital Identity successfully created",
   "createErrorMessage": "Your digital identity creation failed",
+  "createPQSuccessMessage": "Patient Questionnaire successfully created",
+  "createPQErrorMessage": "Your Patient Questionnaire creation failed",
 
   "noCountriesFound": "No Countries found",
-  "noAllergiesAdded": "No allergies added yet",
-  "noMedicationAdded": "No medication added yet",
+  "noAllergiesAddedYet": "No allergies added yet",
+  "noAllergiesAdded": "No allergies added",
+  "noMedicationAddedYet": "No medication added yet",
+  "noMedicationAdded": "No medication added",
 
   "introductionAction": "Create digital identity",
 

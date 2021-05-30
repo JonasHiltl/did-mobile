@@ -23,10 +23,11 @@
   "condition": "Beschwerden",
   "frequency": "Häufigkeit",
   "dose": "Dosis",
+  "issued": "Erstellt am ",
   "pluralMedication": "Medikamente",
-  "personalInfoVC": "Persönliche Information Credential",
+  "personalInfoVC": "Persönliche Informationen Credential",
 
-  "patientQuestionnaire": "Patienten Fragebogen",
+  "patientQuestionnaire": "Patientenfragebogen",
   "addAllergy": "Allergie hinzufügen",
   "addMedication": "Medikament hinzufügen",
   "examplePollen": "Bsp. Pollen",
@@ -44,10 +45,14 @@
   "createHeader": "Erstelle deine digitale Identität!",
   "createSuccessMessage": "Digitale Identität erfolgreich erstellt",
   "createErrorMessage": "Erstellung deiner digitalen Identität fehlgeschlagen",
+  "createPQSuccessMessage": "Patientenfragebogen erfolgreich erstellt",
+  "createPQErrorMessage": "Erstellung deines Patientenfragebogen fehlgeschlagen",
 
   "noCountriesFound": "Keine Länder gefunden",
-  "noAllergiesAdded": "Noch keine Allergie hinzugefügt",
-  "noMedicationAdded": "Noch kein Medikament hinzugefügt",
+  "noAllergiesAddedYet": "Noch keine Allergie hinzugefügt",
+  "noAllergiesAdded": "Keine Allergie hinzugefügt",
+  "noMedicationAddedYet": "Noch kein Medikament hinzugefügt",
+  "noMedicationAdded": "Kein Medikament hinzugefügt",
 
   "introductionAction": "Digitale Identität erstellen",
 

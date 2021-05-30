@@ -290,6 +290,16 @@ class L {
     );
   }
 
+  /// `Issued `
+  String get issued {
+    return Intl.message(
+      'Issued ',
+      name: 'issued',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medication`
   String get pluralMedication {
     return Intl.message(
@@ -480,6 +490,26 @@ class L {
     );
   }
 
+  /// `Patient Questionnaire successfully created`
+  String get createPQSuccessMessage {
+    return Intl.message(
+      'Patient Questionnaire successfully created',
+      name: 'createPQSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your Patient Questionnaire creation failed`
+  String get createPQErrorMessage {
+    return Intl.message(
+      'Your Patient Questionnaire creation failed',
+      name: 'createPQErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No Countries found`
   String get noCountriesFound {
     return Intl.message(
@@ -491,9 +521,19 @@ class L {
   }
 
   /// `No allergies added yet`
-  String get noAllergiesAdded {
+  String get noAllergiesAddedYet {
     return Intl.message(
       'No allergies added yet',
+      name: 'noAllergiesAddedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No allergies added`
+  String get noAllergiesAdded {
+    return Intl.message(
+      'No allergies added',
       name: 'noAllergiesAdded',
       desc: '',
       args: [],
@@ -501,9 +541,19 @@ class L {
   }
 
   /// `No medication added yet`
-  String get noMedicationAdded {
+  String get noMedicationAddedYet {
     return Intl.message(
       'No medication added yet',
+      name: 'noMedicationAddedYet',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No medication added`
+  String get noMedicationAdded {
+    return Intl.message(
+      'No medication added',
       name: 'noMedicationAdded',
       desc: '',
       args: [],

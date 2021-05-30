@@ -44,6 +44,7 @@ class SessionCubit extends Cubit<SessionState> {
             listPQ.add(
                 PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
           }).toList();
+
           if (await commonBackendRepo.verifyDid(identity.doc.id)) {
             emit(Verified(
                 identity: identity,
@@ -101,5 +102,24 @@ class SessionCubit extends Cubit<SessionState> {
   Future<void> deleteAll() async {
     await secureStorage.deleteAll();
     emit(Unverified());
+  }
+
+  Future<void> deletePQ(int index, Verified verified) async {
+    final encodedPQ = await secureStorage.read("patient_questionnaire");
+    final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
+
+    final List<PatientQuestionnaireVc> listPQ = [];
+    decodedPQ.map((e) {
+      listPQ.add(PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
+    }).toList();
+
+    listPQ.removeAt(index);
+
+    secureStorage.write("patient_questionnaire", jsonEncode(listPQ));
+
+    emit(Verified(
+        identity: verified.identity,
+        personalDataVc: verified.personalDataVc,
+        patientQuestionnaires: listPQ));
   }
 }

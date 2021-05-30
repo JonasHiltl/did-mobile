@@ -91,7 +91,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
                     Icons.folder_outlined,
                   ),
                   activeIcon: Icon(Icons.folder),
-                  label: "Page2",
+                  label: "Documents",
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(

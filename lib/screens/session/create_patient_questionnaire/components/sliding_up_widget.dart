@@ -1,4 +1,6 @@
+import 'package:did/global_components/bottom_Sheet_drag_handle.dart';
 import 'package:did/global_components/empty.dart';
+import 'package:did/global_components/table_header.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_event.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_state.dart';
@@ -63,7 +65,7 @@ class PanelWidget extends StatelessWidget {
                   if (state.allergies.isEmpty) ...[
                     SliverToBoxAdapter(
                       child: _buildEmptyState(context, L.of(context).allergies,
-                          L.of(context).noAllergiesAdded),
+                          L.of(context).noAllergiesAddedYet),
                     )
                   ],
                   SliverList(
@@ -82,39 +84,41 @@ class PanelWidget extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                      _BuildListHead(
+                      BuildListHead(
                         titles: [L.of(context).allergy, L.of(context).symptom],
                       ),
                       for (var i = 0; i < state.allergies.length; i++)
                         Container(
                           decoration: BoxDecoration(
-                              border: Border(
-                            bottom: BorderSide(
-                                color:
-                                    const Color(0xFFACB6C5).withOpacity(0.6)),
-                            left: BorderSide(
-                                color:
-                                    const Color(0xFFACB6C5).withOpacity(0.6)),
-                            right: BorderSide(
-                                color:
-                                    const Color(0xFFACB6C5).withOpacity(0.6)),
-                          )),
+                            border: Border(
+                              bottom: BorderSide(
+                                  color:
+                                      const Color(0xFFACB6C5).withOpacity(0.6)),
+                              left: BorderSide(
+                                  color:
+                                      const Color(0xFFACB6C5).withOpacity(0.6)),
+                              right: BorderSide(
+                                  color:
+                                      const Color(0xFFACB6C5).withOpacity(0.6)),
+                            ),
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 16, vertical: 6),
                             child: Row(
                               children: [
                                 Expanded(
-                                    child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 2.0),
-                                  child: Text(state.allergies[i].name),
-                                )),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 2.0),
+                                    child: Text(state.allergies[i].name),
+                                  ),
+                                ),
                                 Expanded(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 2.0),
@@ -130,7 +134,9 @@ class PanelWidget extends StatelessWidget {
                                           color: Theme.of(context).errorColor,
                                         ),
                                       )
-                                    ]))
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -138,7 +144,7 @@ class PanelWidget extends StatelessWidget {
                     ],
                     if (state.medications.isEmpty) ...[
                       _buildEmptyState(context, L.of(context).pluralMedication,
-                          L.of(context).noMedicationAdded)
+                          L.of(context).noMedicationAddedYet)
                     ],
                     if (state.medications.isNotEmpty) ...[
                       const SizedBox(
@@ -154,7 +160,7 @@ class PanelWidget extends StatelessWidget {
                       const SizedBox(
                         height: 8,
                       ),
-                      _BuildListHead(
+                      BuildListHead(
                         titles: [
                           L.of(context).medication,
                           L.of(context).condition,
@@ -194,16 +200,17 @@ class PanelWidget extends StatelessWidget {
                                   child: Text(state.medications[i].condition),
                                 )),
                                 Expanded(
-                                    child: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 2.0),
-                                  child: Text(state.medications[i].frequency),
-                                )),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 2.0),
+                                    child: Text(state.medications[i].frequency),
+                                  ),
+                                ),
                                 Expanded(
-                                    child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
                                       Padding(
                                         padding: const EdgeInsets.symmetric(
                                             horizontal: 2.0),
@@ -218,8 +225,10 @@ class PanelWidget extends StatelessWidget {
                                           Icons.delete_outline,
                                           color: Theme.of(context).errorColor,
                                         ),
-                                      )
-                                    ]))
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -255,66 +264,10 @@ class PanelWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildDragHandle() => GestureDetector(
-        onTap: togglePanel,
-        child: SizedBox(
-          height: 20,
-          width: double.infinity,
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Container(
-                width: 55,
-                height: 4,
-                decoration: BoxDecoration(
-                    color: Colors.grey.withOpacity(0.25),
-                    borderRadius: BorderRadius.circular(2)),
-              ),
-            ),
-          ),
-        ),
-      );
+  Widget _buildDragHandle() =>
+      GestureDetector(onTap: togglePanel, child: BottomSheetDraghandle());
 
   void togglePanel() => panelController.isPanelOpen
       ? panelController.close()
       : panelController.open();
-}
-
-class _BuildListHead extends StatelessWidget {
-  final List<String> titles;
-  const _BuildListHead({
-    required this.titles,
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-          color: Theme.of(context).scaffoldBackgroundColor,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(8), topRight: Radius.circular(8)),
-          border: Border.all(
-            color: const Color(0xFFACB6C5).withOpacity(0.6),
-          )),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        child: Row(
-            children: titles
-                .map(
-                  (title) => Expanded(
-                      child: Text(
-                    title,
-                    style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withOpacity(0.60)),
-                  )),
-                )
-                .toList()),
-      ),
-    );
-  }
 }

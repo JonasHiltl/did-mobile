@@ -46,6 +46,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Erstelle deine digitale Identität!"),
         "createPQ": MessageLookupByLibrary.simpleMessage(
             "Patientenfragebogen erstellen"),
+        "createPQErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Erstellung deines Patientenfragebogen fehlgeschlagen"),
+        "createPQSuccessMessage": MessageLookupByLibrary.simpleMessage(
+            "Patientenfragebogen erfolgreich erstellt"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erfolgreich erstellt"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
@@ -73,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Digitale Identität erstellen"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "Dies ist keine gültige E-Mail."),
+        "issued": MessageLookupByLibrary.simpleMessage("Erstellt am "),
         "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
         "male": MessageLookupByLibrary.simpleMessage("Männlich"),
         "medication": MessageLookupByLibrary.simpleMessage("Medikament"),
@@ -97,18 +102,22 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "next": MessageLookupByLibrary.simpleMessage("Weiter"),
         "no": MessageLookupByLibrary.simpleMessage("Nein"),
-        "noAllergiesAdded": MessageLookupByLibrary.simpleMessage(
+        "noAllergiesAdded":
+            MessageLookupByLibrary.simpleMessage("Keine Allergie hinzugefügt"),
+        "noAllergiesAddedYet": MessageLookupByLibrary.simpleMessage(
             "Noch keine Allergie hinzugefügt"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("Keine Länder gefunden"),
-        "noMedicationAdded": MessageLookupByLibrary.simpleMessage(
+        "noMedicationAdded":
+            MessageLookupByLibrary.simpleMessage("Kein Medikament hinzugefügt"),
+        "noMedicationAddedYet": MessageLookupByLibrary.simpleMessage(
             "Noch kein Medikament hinzugefügt"),
         "patientQuestionnaire":
-            MessageLookupByLibrary.simpleMessage("Patienten Fragebogen"),
+            MessageLookupByLibrary.simpleMessage("Patientenfragebogen"),
         "personalData":
             MessageLookupByLibrary.simpleMessage("Persönliche Daten"),
         "personalInfoVC": MessageLookupByLibrary.simpleMessage(
-            "Persönliche Information Credential"),
+            "Persönliche Informationen Credential"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Telefonnummer"),
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medikamente"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),

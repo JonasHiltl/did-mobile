@@ -44,6 +44,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Let\'s create your digital Identity!"),
         "createPQ": MessageLookupByLibrary.simpleMessage(
             "Create Patient Questionnaire"),
+        "createPQErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Your Patient Questionnaire creation failed"),
+        "createPQSuccessMessage": MessageLookupByLibrary.simpleMessage(
+            "Patient Questionnaire successfully created"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digital Identity successfully created"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Created at: "),
@@ -72,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Create digital identity"),
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Not a valid Email."),
+        "issued": MessageLookupByLibrary.simpleMessage("Issued "),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "medication": MessageLookupByLibrary.simpleMessage("Medication"),
@@ -99,10 +104,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noAllergiesAdded":
+            MessageLookupByLibrary.simpleMessage("No allergies added"),
+        "noAllergiesAddedYet":
             MessageLookupByLibrary.simpleMessage("No allergies added yet"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("No Countries found"),
         "noMedicationAdded":
+            MessageLookupByLibrary.simpleMessage("No medication added"),
+        "noMedicationAddedYet":
             MessageLookupByLibrary.simpleMessage("No medication added yet"),
         "patientQuestionnaire":
             MessageLookupByLibrary.simpleMessage("Patient Questionnaire"),

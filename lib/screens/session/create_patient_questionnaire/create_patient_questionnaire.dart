@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:did/global_components/noti.dart';
 import 'package:did/global_components/universal_text_field.dart';
 import 'package:did/providers/createPatientQuestionnaire/formSubmissionStatus.dart';
 import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
@@ -131,7 +132,17 @@ class _CreatePatientQuestionnaireState
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CreatePQBloc, CreatePQState>(
+    return BlocConsumer<CreatePQBloc, CreatePQState>(
+      listener: (context, state) {
+        if (state.formStatus is SubmissionSuccess) {
+          showSuccessNoti(
+              message: L.of(context).createPQSuccessMessage, context: context);
+          Navigator.pop(context);
+        } else if (state.formStatus is SubmissionFailed) {
+          showErrorNoti(
+              message: L.of(context).createPQErrorMessage, context: context);
+        }
+      },
       builder: (context, state) => SafeArea(
         child: Scaffold(
           appBar: AppBar(

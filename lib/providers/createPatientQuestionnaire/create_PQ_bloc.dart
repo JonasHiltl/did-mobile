@@ -92,16 +92,21 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
           }
           yield state.copyWith(formStatus: SubmissionSuccess());
           yield state.copyWith(formStatus: const InitialFormStatus());
+          yield state
+              .copyWith(medications: [], allergies: [], documentName: "");
         } else {
           yield state.copyWith(
               formStatus: SubmissionFailed(
                   "Backend error creating patient questionnaire"));
           yield state.copyWith(formStatus: const InitialFormStatus());
+          yield state
+              .copyWith(medications: [], allergies: [], documentName: "");
         }
       } catch (e) {
         print(e);
         yield state.copyWith(formStatus: SubmissionFailed(e.toString()));
         yield state.copyWith(formStatus: const InitialFormStatus());
+        yield state.copyWith(medications: [], allergies: [], documentName: "");
       }
     }
   }

@@ -28,7 +28,7 @@ class CreateFirstQuestionnaire extends StatelessWidget {
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.1), shape: BoxShape.circle),
               child: Icon(
-                Icons.description_outlined,
+                Icons.assignment_outlined,
                 color: Colors.white.withOpacity(0.9),
                 size: 26,
               ),
