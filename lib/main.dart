@@ -25,23 +25,26 @@ void main() async {
   await LanguagePreference.init();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  runApp(DevicePreview(
-    plugins: const [FileExplorerPlugin(), ScreenshotPlugin()],
-    builder: (context) => MyApp(),
-    enabled: !kReleaseMode,
-  ));
+  runApp(
+    DevicePreview(
+      plugins: const [FileExplorerPlugin(), ScreenshotPlugin()],
+      builder: (context) => MyApp(),
+      enabled: !kReleaseMode,
+    ),
+  );
 }
 
 const ColorScheme colorScheme = ColorScheme.light(
-    primary: Color(0xFF3861FB),
-    secondary: Color(0xFF1890FF),
-    primaryVariant: Color(0xFF0B0C10),
-    secondaryVariant: Color(0xFF0B0C10),
-    onBackground: Color(0xFF0B0C10),
-    onSecondary: Color(0xFFFFFFFF),
-    background: Color(0xFFf7fbff),
-    surface: Color(0xFFFFFFFF),
-    error: Color(0xFFef2b2d));
+  primary: Color(0xFF3861FB),
+  secondary: Color(0xFF1890FF),
+  primaryVariant: Color(0xFF0B0C10),
+  secondaryVariant: Color(0xFF0B0C10),
+  onBackground: Color(0xFF0B0C10),
+  onSecondary: Color(0xFFFFFFFF),
+  background: Color(0xFFf7fbff),
+  surface: Color(0xFFFFFFFF),
+  error: Color(0xFFef2b2d),
+);
 
 class MyApp extends StatelessWidget {
   @override
