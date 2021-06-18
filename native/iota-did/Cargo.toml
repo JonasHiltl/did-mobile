@@ -10,3 +10,5 @@ edition = "2018"
 identity = { git = "https://github.com/iotaledger/identity.rs", branch = "dev"}
 rand = { version = "0.8" }
 tokio = { version = "1.5", features = ["full"] }
+serde = "1.0.126"
+serde_json = "1.0.64"
