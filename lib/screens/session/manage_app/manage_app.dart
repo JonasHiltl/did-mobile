@@ -1,8 +1,8 @@
 import 'dart:io' show Platform;
 
 import 'package:did/generated/l10n.dart';
-import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
 import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

@@ -1,7 +1,7 @@
 import 'package:did/global_components/bottom_Sheet_drag_handle.dart';
 import 'package:did/global_components/credential.dart';
 import 'package:did/global_components/empty.dart';
-import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';

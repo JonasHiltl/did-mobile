@@ -7,7 +7,11 @@ part 'identity.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Identity {
-  Identity({required this.key, required this.doc, required this.messageId});
+  Identity({
+    required this.key,
+    required this.doc,
+    required this.messageId,
+  });
   final Key key;
   final Doc doc;
   final String messageId;

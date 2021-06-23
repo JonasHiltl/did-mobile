@@ -1,7 +1,7 @@
-import 'package:did/providers/appScreenState/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
-import 'package:did/providers/updatePersonalData/repository/update_personal_data_repo.dart';
-import 'package:did/providers/updatePersonalData/update_personal_bloc.dart';
+import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/update_personal_data/repository/update_personal_data_repo.dart';
+import 'package:did/providers/update_personal_data/update_personal_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

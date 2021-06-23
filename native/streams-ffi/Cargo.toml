@@ -10,6 +10,15 @@ edition = "2018"
 name = "streams_ffi"
 crate-type = ["cdylib", "staticlib"]
 
+targets = [
+  "aarch64-apple-ios",
+  "aarch64-linux-android",
+  "armv7-linux-androideabi",
+  "i686-linux-android",
+  "x86_64-apple-ios",
+  "x86_64-linux-android",
+]
+
 [dependencies]
 iota-streams = { git = "https://github.com/iotaledger/streams", branch = "develop"}
 streams = { path = "../streams" }

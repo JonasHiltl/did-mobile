@@ -1,5 +1,5 @@
-import 'package:did/providers/createDid/createDidBloc.dart';
-import 'package:did/providers/createDid/createDidEvent.dart';
+import 'package:did/providers/create_did/createDidBloc.dart';
+import 'package:did/providers/create_did/createDidEvent.dart';
 import 'package:did/providers/language/languageBloc.dart';
 import 'package:flutter/material.dart';
 import 'package:did/generated/l10n.dart';

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:did/providers/appScreenState/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
 import 'package:did/screens/session/create_patient_questionnaire/create_patient_questionnaire.dart';
 import 'package:did/screens/session/documents/document_folder/pq_document_folder.dart';
 import 'package:flutter/cupertino.dart';

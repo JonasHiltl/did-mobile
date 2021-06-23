@@ -1,4 +1,4 @@
-import 'package:did/providers/appScreenState/authFlow/authCubit.dart';
+import 'package:did/providers/app_screen_state/authFlow/authCubit.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';

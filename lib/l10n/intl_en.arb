@@ -62,6 +62,7 @@
   "submit": "Submit",
   "yes": "Yes",
   "no": "No",
+  "allFiles": "All Files",
 
   "deleteData": "Delete Data",
   "confirmDataDeletion": "Are you sure to irrevocably delete all of your data?",

@@ -1,9 +1,9 @@
 import 'package:did/global_components/bottom_Sheet_drag_handle.dart';
 import 'package:did/global_components/empty.dart';
 import 'package:did/global_components/table_header.dart';
-import 'package:did/providers/createPatientQuestionnaire/create_PQ_bloc.dart';
-import 'package:did/providers/createPatientQuestionnaire/create_PQ_event.dart';
-import 'package:did/providers/createPatientQuestionnaire/create_PQ_state.dart';
+import 'package:did/providers/create_patient_questionnaire/create_PQ_bloc.dart';
+import 'package:did/providers/create_patient_questionnaire/create_PQ_event.dart';
+import 'package:did/providers/create_patient_questionnaire/create_PQ_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';

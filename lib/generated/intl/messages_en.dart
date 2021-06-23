@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "addAllergy": MessageLookupByLibrary.simpleMessage("Add Allergy"),
         "addMedication": MessageLookupByLibrary.simpleMessage("Add Medication"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "allFiles": MessageLookupByLibrary.simpleMessage("All Files"),
         "allergies": MessageLookupByLibrary.simpleMessage("Allergies"),
         "allergy": MessageLookupByLibrary.simpleMessage("Allergy"),
         "anyAllergies":

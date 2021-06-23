@@ -1,8 +1,8 @@
 import 'package:did/generated/l10n.dart';
-import 'package:did/providers/createDid/createDidBloc.dart';
-import 'package:did/providers/createDid/createDidEvent.dart';
-import 'package:did/providers/createDid/createDidState.dart';
-import 'package:did/providers/createDid/formSubmissionStatus.dart';
+import 'package:did/providers/create_did/createDidBloc.dart';
+import 'package:did/providers/create_did/createDidEvent.dart';
+import 'package:did/providers/create_did/createDidState.dart';
+import 'package:did/providers/create_did/formSubmissionStatus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -630,6 +630,16 @@ class L {
     );
   }
 
+  /// `All Files`
+  String get allFiles {
+    return Intl.message(
+      'All Files',
+      name: 'allFiles',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete Data`
   String get deleteData {
     return Intl.message(
