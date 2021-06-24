@@ -17,12 +17,13 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
   final CreatePQRepository repo;
   final SessionCubit sessionCubit;
   final Verified sessionState;
+  final SecureStorage secureStorage = SecureStorage();
+
   CreatePQBloc({
     required this.repo,
     required this.sessionState,
     required this.sessionCubit,
   }) : super(CreatePQState(allergies: [], medications: []));
-  final SecureStorage secureStorage = SecureStorage();
 
   @override
   Stream<CreatePQState> mapEventToState(CreatePQEvent event) async* {

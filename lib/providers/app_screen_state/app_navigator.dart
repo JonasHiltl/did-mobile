@@ -1,3 +1,5 @@
+import 'package:did/providers/share_document/repo/share_document_repo.dart';
+import 'package:did/providers/share_document/share_document_bloc.dart';
 import 'package:did/screens/startup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

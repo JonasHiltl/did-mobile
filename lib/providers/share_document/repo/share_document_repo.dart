@@ -2,9 +2,10 @@ import 'dart:convert';
 import 'package:did/models/did/doc.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:http/http.dart' as http;
+import 'package:tuple/tuple.dart';
 
 class ShareDocumentRepo {
-  Future<String> createChannel(
+  Future<Tuple2<String, int>> createChannel(
     Doc doc,
     DynamicCredential credential,
   ) async {
@@ -22,11 +23,9 @@ class ShareDocumentRepo {
     );
     if (res.statusCode == 200) {
       final annLink = jsonDecode(res.body) as String;
-      print(annLink);
-      return annLink;
+      return Tuple2(annLink, res.statusCode);
     } else {
-      print(res.body);
-      throw "Error calling creation backend";
+      return const Tuple2("Server error", 500);
     }
   }
 }

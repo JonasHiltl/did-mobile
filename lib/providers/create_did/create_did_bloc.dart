@@ -57,20 +57,14 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
             state.state,
             state.postalCode,
             state.country);
-        if (res.personalDataVc.id.isNotEmpty) {
-          await secureStorage.write("identity", jsonEncode(res.identity));
-          await secureStorage.write(
-              "personal_data_vc", jsonEncode(res.personalDataVc));
+        await secureStorage.write("identity", jsonEncode(res.identity));
+        await secureStorage.write(
+            "personal_data_vc", jsonEncode(res.personalDataVc));
 
-          yield state.copyWith(formStatus: SubmissionSuccess());
-          yield state.copyWith(formStatus: const InitialFormStatus());
+        yield state.copyWith(formStatus: SubmissionSuccess());
+        yield state.copyWith(formStatus: const InitialFormStatus());
 
-          authCubit.launchSession(res.identity, res.personalDataVc);
-        } else {
-          yield state.copyWith(
-              formStatus: SubmissionFailed("Backend error creating Did"));
-          yield state.copyWith(formStatus: const InitialFormStatus());
-        }
+        authCubit.launchSession(res.identity, res.personalDataVc);
       } catch (e) {
         print(e);
         yield state.copyWith(formStatus: SubmissionFailed(e.toString()));

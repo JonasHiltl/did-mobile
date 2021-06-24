@@ -2,8 +2,13 @@ import 'dart:io' show Platform;
 
 import 'package:did/custom_icons/quader_font.dart';
 import 'package:did/global_components/material_bottom_sheet.dart';
+import 'package:did/models/dynamic_credential/dynamic_credential.dart';
+import 'package:did/models/dynamic_credential/proof.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/share_document/repo/share_document_repo.dart';
+import 'package:did/providers/share_document/share_document_bloc.dart';
+import 'package:did/providers/share_document/share_document_event.dart';
 import 'package:did/screens/session/documents/components/bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,9 +35,46 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
               context: context,
               builder: (context) => CupertinoActionSheet(
                 actions: [
-                  CupertinoActionSheetAction(
-                    onPressed: () {},
-                    child: Text(L.of(context).share),
+                  RepositoryProvider(
+                    create: (context) => ShareDocumentRepo(),
+                    child: BlocProvider(
+                      create: (context) => ShareDocumentBloc(
+                        repo: context.read<ShareDocumentRepo>(),
+                        credential: DynamicCredential(
+                          context:
+                              sessionState.patientQuestionnaires[i].context,
+                          id: sessionState.patientQuestionnaires[i].id,
+                          type: sessionState.patientQuestionnaires[i].type,
+                          credentialSubject: sessionState
+                              .patientQuestionnaires[i].credentialSubject,
+                          issuer: sessionState.patientQuestionnaires[i].issuer,
+                          issuanceDate: sessionState
+                              .patientQuestionnaires[i].issuanceDate,
+                          proof: Proof(
+                              type: sessionState
+                                  .patientQuestionnaires[i].proof.type,
+                              signatureValue: sessionState
+                                  .patientQuestionnaires[i]
+                                  .proof
+                                  .signatureValue,
+                              verificationMethod: sessionState
+                                  .patientQuestionnaires[i]
+                                  .proof
+                                  .verificationMethod),
+                        ),
+                        doc: sessionState.identity.doc,
+                      ),
+                      child: Builder(builder: (context) {
+                        return CupertinoActionSheetAction(
+                          onPressed: () {
+                            context
+                                .read<ShareDocumentBloc>()
+                                .add(ShareDocument());
+                          },
+                          child: Text(L.of(context).share),
+                        );
+                      }),
+                    ),
                   ),
                   CupertinoActionSheetAction(
                     onPressed: () {
@@ -58,12 +100,46 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
           : bottomSheet(
               context: context,
               buttons: [
-                SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text(L.of(context).share,
-                        style: Theme.of(context).textTheme.bodyText1),
+                RepositoryProvider(
+                  create: (context) => ShareDocumentRepo(),
+                  child: BlocProvider(
+                    create: (context) => ShareDocumentBloc(
+                      repo: context.read<ShareDocumentRepo>(),
+                      credential: DynamicCredential(
+                        context: sessionState.patientQuestionnaires[i].context,
+                        id: sessionState.patientQuestionnaires[i].id,
+                        type: sessionState.patientQuestionnaires[i].type,
+                        credentialSubject: sessionState
+                            .patientQuestionnaires[i].credentialSubject,
+                        issuer: sessionState.patientQuestionnaires[i].issuer,
+                        issuanceDate:
+                            sessionState.patientQuestionnaires[i].issuanceDate,
+                        proof: Proof(
+                            type: sessionState
+                                .patientQuestionnaires[i].proof.type,
+                            signatureValue: sessionState
+                                .patientQuestionnaires[i].proof.signatureValue,
+                            verificationMethod: sessionState
+                                .patientQuestionnaires[i]
+                                .proof
+                                .verificationMethod),
+                      ),
+                      doc: sessionState.identity.doc,
+                    ),
+                    child: Builder(builder: (context) {
+                      return SizedBox(
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () {
+                            context
+                                .read<ShareDocumentBloc>()
+                                .add(ShareDocument());
+                          },
+                          child: Text(L.of(context).share,
+                              style: Theme.of(context).textTheme.bodyText1),
+                        ),
+                      );
+                    }),
                   ),
                 ),
                 SizedBox(
