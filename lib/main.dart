@@ -1,8 +1,8 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:device_preview/plugins.dart';
-import 'package:did/providers/app_screen_state/appNavigator.dart';
-import 'package:did/providers/app_screen_state/authFlow/authCubit.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
+import 'package:did/providers/app_screen_state/app_navigator.dart';
+import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import "package:did/screens/auth/introduction/introduction.dart";
 import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
@@ -10,13 +10,13 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
 
-import "data/commonBackendRepo.dart";
+import 'data/common_backend_repo.dart';
 import "generated/l10n.dart";
-import "providers/create_did/createDidBloc.dart";
-import 'providers/create_did/repo/createDidRepository.dart';
-import "providers/language/languageBloc.dart";
-import "providers/language/languageState.dart";
-import "providers/language/storageUtils.dart";
+import 'providers/create_did/create_did_bloc.dart';
+import 'providers/create_did/repo/create_did_repository.dart';
+import 'providers/language/language_bloc.dart';
+import 'providers/language/language_state.dart';
+import 'providers/language/storage_utils.dart';
 import "screens/auth/creation/creation.dart";
 
 // ignore: avoid_void_async

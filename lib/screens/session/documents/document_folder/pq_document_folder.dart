@@ -2,9 +2,9 @@ import 'dart:io' show Platform;
 
 import 'package:did/custom_icons/quader_font.dart';
 import 'package:did/global_components/material_bottom_sheet.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
-import 'package:did/screens/session/documents/components/bottomSheet.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/screens/session/documents/components/bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -22,6 +22,69 @@ class PQDocumentFolder extends StatefulWidget {
 
 class _PQDocumentFolderState extends State<PQDocumentFolder> {
   int segmentedControlGroupValue = 1;
+
+  void bottomModal(BuildContext context, int i, Verified sessionState) =>
+      Platform.isIOS
+          ? showCupertinoModalPopup(
+              useRootNavigator: false,
+              context: context,
+              builder: (context) => CupertinoActionSheet(
+                actions: [
+                  CupertinoActionSheetAction(
+                    onPressed: () {},
+                    child: Text(L.of(context).share),
+                  ),
+                  CupertinoActionSheetAction(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        context.read<SessionCubit>().deletePQ(i, sessionState);
+                      });
+                    },
+                    child: Text(
+                      L.of(context).delete,
+                      style: TextStyle(color: Theme.of(context).errorColor),
+                    ),
+                  ),
+                ],
+                cancelButton: CupertinoActionSheetAction(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: Text(
+                    L.of(context).cancel,
+                  ),
+                ),
+              ),
+            )
+          : bottomSheet(
+              context: context,
+              buttons: [
+                SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(L.of(context).share,
+                        style: Theme.of(context).textTheme.bodyText1),
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      setState(() {
+                        context.read<SessionCubit>().deletePQ(i, sessionState);
+                      });
+                    },
+                    child: Text(
+                      L.of(context).delete,
+                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
+                            color: Theme.of(context).errorColor,
+                          ),
+                    ),
+                  ),
+                ),
+              ],
+            );
 
   @override
   Widget build(BuildContext context) {
@@ -127,6 +190,8 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                               i: i,
                             ),
                           ),
+                          onLongPress: () =>
+                              bottomModal(context, i, sessionState),
                           child: Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: Row(
@@ -186,87 +251,8 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                 IconButton(
                                     padding: const EdgeInsets.all(0.0),
                                     visualDensity: VisualDensity.compact,
-                                    onPressed: () => Platform.isIOS
-                                        ? showCupertinoModalPopup(
-                                            useRootNavigator: false,
-                                            context: context,
-                                            builder: (context) =>
-                                                CupertinoActionSheet(
-                                              actions: [
-                                                CupertinoActionSheetAction(
-                                                  onPressed: () {},
-                                                  child:
-                                                      Text(L.of(context).share),
-                                                ),
-                                                CupertinoActionSheetAction(
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                    setState(() {
-                                                      context
-                                                          .read<SessionCubit>()
-                                                          .deletePQ(
-                                                              i, sessionState);
-                                                    });
-                                                  },
-                                                  child: Text(
-                                                    L.of(context).delete,
-                                                    style: TextStyle(
-                                                        color: Theme.of(context)
-                                                            .errorColor),
-                                                  ),
-                                                ),
-                                              ],
-                                              cancelButton:
-                                                  CupertinoActionSheetAction(
-                                                onPressed: () =>
-                                                    Navigator.of(context).pop(),
-                                                child: Text(
-                                                  L.of(context).cancel,
-                                                ),
-                                              ),
-                                            ),
-                                          )
-                                        : bottomSheet(
-                                            context: context,
-                                            buttons: [
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {},
-                                                  child: Text(
-                                                      L.of(context).share,
-                                                      style: Theme.of(context)
-                                                          .textTheme
-                                                          .bodyText1),
-                                                ),
-                                              ),
-                                              SizedBox(
-                                                width: double.infinity,
-                                                child: TextButton(
-                                                  onPressed: () {
-                                                    Navigator.of(context).pop();
-                                                    setState(() {
-                                                      context
-                                                          .read<SessionCubit>()
-                                                          .deletePQ(
-                                                              i, sessionState);
-                                                    });
-                                                  },
-                                                  child: Text(
-                                                    L.of(context).delete,
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .bodyText1!
-                                                        .copyWith(
-                                                          color:
-                                                              Theme.of(context)
-                                                                  .errorColor,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
+                                    onPressed: () =>
+                                        bottomModal(context, i, sessionState),
                                     icon: const Icon(Icons.more_vert))
                               ],
                             ),

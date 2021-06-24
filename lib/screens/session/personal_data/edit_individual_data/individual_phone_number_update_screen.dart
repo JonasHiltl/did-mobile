@@ -1,8 +1,8 @@
 import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/generated/l10n.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/update_personal_data/form_submission_status.dart';
 import 'package:did/providers/update_personal_data/repository/update_personal_data_repo.dart';
 import 'package:did/providers/update_personal_data/update_personal_bloc.dart';

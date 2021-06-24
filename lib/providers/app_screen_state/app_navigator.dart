@@ -1,13 +1,13 @@
-import 'package:did/screens/startupScreen.dart';
+import 'package:did/screens/startup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 
-import 'authFlow/authCubit.dart';
-import 'authFlow/authNavigator.dart';
-import 'sessionFlow/sessionCubit.dart';
-import 'sessionFlow/sessionNavigator.dart';
-import 'sessionFlow/sessionState.dart';
+import 'auth_flow/auth_cubit.dart';
+import 'auth_flow/auth_navigator.dart';
+import 'session_flow/session_cubit.dart';
+import 'session_flow/session_navigator.dart';
+import 'session_flow/session_state.dart';
 
 class AppNavigator extends StatelessWidget {
   @override

@@ -1,13 +1,13 @@
 import 'dart:convert';
 
-import 'package:did/providers/app_screen_state/authFlow/authCubit.dart';
+import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/secureStorage.dart';
-import 'createDidEvent.dart';
-import 'createDidState.dart';
-import 'formSubmissionStatus.dart';
-import 'repo/createDidRepository.dart';
+import '../../data/secure_storage.dart';
+import 'create_did_event.dart';
+import 'create_did_state.dart';
+import 'form_submission_status.dart';
+import 'repo/create_did_repository.dart';
 
 class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
   final CreateDidRepository repo;

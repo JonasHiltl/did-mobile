@@ -1,12 +1,12 @@
 import 'dart:convert';
-import 'package:did/data/commonBackendRepo.dart';
-import 'package:did/data/secureStorage.dart';
+import 'package:did/data/common_backend_repo.dart';
+import 'package:did/data/secure_storage.dart';
 import 'package:did/models/did/identity.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'sessionState.dart';
+import 'session_state.dart';
 
 class SessionCubit extends Cubit<SessionState> {
   SessionCubit(this.commonBackendRepo) : super(UnkownSessionState()) {

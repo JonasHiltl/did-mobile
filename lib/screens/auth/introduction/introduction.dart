@@ -1,10 +1,10 @@
-import 'package:did/providers/app_screen_state/authFlow/authCubit.dart';
+import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../global_components/minimalChangeLanguage.dart';
+import '../../../global_components/minimal_change_language.dart';
 import 'carousel.dart';
 
 class Introduction extends StatefulWidget {

@@ -4,9 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../data/countries.dart';
 import '../../../../generated/l10n.dart';
-import '../../../../providers/create_did/createDidBloc.dart';
-import '../../../../providers/create_did/createDidEvent.dart';
-import '../../../../providers/create_did/createDidState.dart';
+import '../../../../providers/create_did/create_did_bloc.dart';
+import '../../../../providers/create_did/create_did_event.dart';
+import '../../../../providers/create_did/create_did_state.dart';
 
 class FirstNameField extends StatefulWidget {
   @override

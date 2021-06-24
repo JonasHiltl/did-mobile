@@ -1,4 +1,4 @@
-import 'package:did/global_components/changeLanguage.dart';
+import 'package:did/global_components/change_language.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';

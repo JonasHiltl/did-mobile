@@ -1,7 +1,7 @@
 import 'package:did/generated/l10n.dart';
 import 'package:did/global_components/change_single_value_with_expand_icon.dart';
 import 'package:did/global_components/credential.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/update_personal_data/update_personal_bloc.dart';
 import 'package:did/providers/update_personal_data/update_personal_state.dart';
 import 'package:did/screens/session/personal_data/edit_individual_data/individual_firstname_update_screen.dart';

@@ -2,7 +2,7 @@ import 'package:did/models/did/identity.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../sessionFlow/sessionCubit.dart';
+import '../session_flow/session_cubit.dart';
 
 enum AuthState { introduction, creation }
 

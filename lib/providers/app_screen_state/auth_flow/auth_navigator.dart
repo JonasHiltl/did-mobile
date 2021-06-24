@@ -3,7 +3,7 @@ import 'package:did/screens/auth/introduction/introduction.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'authCubit.dart';
+import 'auth_cubit.dart';
 
 class AuthNavigator extends StatelessWidget {
   @override

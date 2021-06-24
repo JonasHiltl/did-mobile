@@ -1,10 +1,10 @@
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../generated/l10n.dart';
-import 'textField.dart';
+import 'text_field.dart';
 
 class Step1 extends StatelessWidget {
   final GlobalKey _toolTipKey = GlobalKey();

@@ -1,15 +1,15 @@
 import 'dart:io' show Platform;
 
 import 'package:did/generated/l10n.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 
-import '../../../data/secureStorage.dart';
+import '../../../data/secure_storage.dart';
 import '../settings/settings.dart';
 
 class ManageApp extends StatelessWidget {

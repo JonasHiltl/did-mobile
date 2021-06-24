@@ -1,4 +1,4 @@
-import 'formSubmissionStatus.dart';
+import 'form_submission_status.dart';
 
 final RegExp _emailRegExp = RegExp(
   r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",

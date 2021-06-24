@@ -1,12 +1,12 @@
-import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/update_personal_data/repository/update_personal_data_repo.dart';
 import 'package:did/providers/update_personal_data/update_personal_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
-import 'components/credentialDetailsView.dart';
+import 'components/credential_details_view.dart';
 
 class PersonalData extends StatefulWidget {
   @override

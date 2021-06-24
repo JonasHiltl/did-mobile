@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:did/global_components/material_bottom_sheet.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/screens/session/create_patient_questionnaire/create_patient_questionnaire.dart';
 import 'package:did/screens/session/documents/document_folder/pq_document_folder.dart';
 import 'package:flutter/cupertino.dart';

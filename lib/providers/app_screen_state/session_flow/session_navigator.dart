@@ -6,8 +6,8 @@ import 'package:did/screens/session/manage_app/manage_app.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'sessionCubit.dart';
-import 'sessionState.dart';
+import 'session_cubit.dart';
+import 'session_state.dart';
 
 class SessionNavigator extends StatefulWidget {
   @override

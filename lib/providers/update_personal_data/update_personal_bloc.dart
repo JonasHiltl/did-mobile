@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:did/providers/app_screen_state/sessionFlow/sessionCubit.dart';
-import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../data/secureStorage.dart';
+import '../../data/secure_storage.dart';
 import 'form_submission_status.dart';
 import 'repository/update_personal_data_repo.dart';
 import 'update_personal_event.dart';
