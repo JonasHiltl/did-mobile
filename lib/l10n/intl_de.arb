@@ -49,13 +49,14 @@
   "createErrorMessage": "Erstellung deiner digitalen Identität fehlgeschlagen",
   "createPQSuccessMessage": "Patientenfragebogen erfolgreich erstellt",
   "createPQErrorMessage": "Erstellung deines Patientenfragebogen fehlgeschlagen",
+  "shareDocErrorMessage": "Dokumentenaustausch fehlgeschlagen ",
+  "shareDocSuccessMessage": "Dokument ist jetzt abrufbar ",
 
   "noCountriesFound": "Keine Länder gefunden",
   "noAllergiesAddedYet": "Noch keine Allergie hinzugefügt",
   "noAllergiesAdded": "Keine Allergie hinzugefügt",
   "noMedicationAddedYet": "Noch kein Medikament hinzugefügt",
   "noMedicationAdded": "Kein Medikament hinzugefügt",
-
   "introductionAction": "Digitale Identität erstellen",
 
   "back": "Zurück",

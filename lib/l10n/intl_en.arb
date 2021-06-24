@@ -48,6 +48,8 @@
   "createErrorMessage": "Your digital identity creation failed",
   "createPQSuccessMessage": "Patient Questionnaire successfully created",
   "createPQErrorMessage": "Your Patient Questionnaire creation failed",
+  "shareDocErrorMessage": "Document sharing failed",
+  "shareDocSuccessMessage": "Document is now retrievable",
 
   "noCountriesFound": "No Countries found",
   "noAllergiesAddedYet": "No allergies added yet",

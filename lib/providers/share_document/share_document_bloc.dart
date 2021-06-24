@@ -30,7 +30,9 @@ class ShareDocumentBloc extends Bloc<ShareDocumentEvent, ShareDocumentState> {
           yield state.copyWith(shareStatus: ShareFailed(res.item1));
           yield state.copyWith(shareStatus: const InitialShareStatus());
         } else {
-          print("Announcement Link: ${res.item1}");
+          yield state.copyWith(channelLink: res.item1);
+          yield state.copyWith(shareStatus: ShareSuccess());
+          yield state.copyWith(shareStatus: const InitialShareStatus());
         }
       } catch (e) {
         print(e);

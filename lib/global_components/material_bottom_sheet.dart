@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-Future bottomSheet(
-    {required BuildContext context, required List<Widget> buttons}) {
+Future bottomSheet({
+  required BuildContext context,
+  required List<Widget> content,
+  String? title,
+}) {
   return showModalBottomSheet(
     useRootNavigator: false,
     shape: const RoundedRectangleBorder(
@@ -17,8 +20,20 @@ Future bottomSheet(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+              Row(
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  if (title != null)
+                    Text(
+                      title,
+                      style: Theme.of(context).textTheme.headline5,
+                    )
+                ],
+              ),
               IconButton(
                 onPressed: () => Navigator.of(context).pop(),
                 icon: const Icon(
@@ -27,7 +42,7 @@ Future bottomSheet(
               )
             ],
           ),
-          ...buttons,
+          ...content,
         ],
       ),
     ),

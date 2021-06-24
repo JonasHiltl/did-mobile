@@ -129,6 +129,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sex": MessageLookupByLibrary.simpleMessage("Biological Sex"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
+        "shareDocErrorMessage":
+            MessageLookupByLibrary.simpleMessage("Document sharing failed"),
+        "shareDocSuccessMessage":
+            MessageLookupByLibrary.simpleMessage("Document is now retrievable"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Sex"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),

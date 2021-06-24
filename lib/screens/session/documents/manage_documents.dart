@@ -63,7 +63,7 @@ class ManageDocuments extends StatelessWidget {
                         ),
                       ),
                     )
-                  : bottomSheet(context: context, buttons: [
+                  : bottomSheet(context: context, content: [
                       SizedBox(
                         width: double.infinity,
                         child: TextButton(

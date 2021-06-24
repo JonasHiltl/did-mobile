@@ -6,16 +6,23 @@ class ShareDocumentState {
   final Doc doc;
   final DynamicCredential credential;
   final ShareStatus shareStatus;
+  final String channelLink;
 
   ShareDocumentState({
     required this.doc,
     required this.credential,
+    this.channelLink = "",
     this.shareStatus = const InitialShareStatus(),
   });
 
-  ShareDocumentState copyWith(
-      {Doc? doc, DynamicCredential? credential, ShareStatus? shareStatus}) {
+  ShareDocumentState copyWith({
+    String? channelLink,
+    Doc? doc,
+    DynamicCredential? credential,
+    ShareStatus? shareStatus,
+  }) {
     return ShareDocumentState(
+      channelLink: channelLink ?? this.channelLink,
       doc: doc ?? this.doc,
       credential: credential ?? this.credential,
       shareStatus: shareStatus ?? this.shareStatus,

@@ -22,9 +22,14 @@ class ShareDocumentRepo {
       }),
     );
     if (res.statusCode == 200) {
-      final annLink = jsonDecode(res.body) as String;
-      return Tuple2(annLink, res.statusCode);
+      final parsedRes = jsonDecode(res.body);
+      return Tuple2(parsedRes["annLink"].toString(), res.statusCode);
     } else {
+      final parsedRes = jsonDecode(res.body);
+      if (parsedRes["message"].toString().isNotEmpty) {
+        return Tuple2(parsedRes["message"].toString(), 500);
+      }
+
       return const Tuple2("Server error", 500);
     }
   }

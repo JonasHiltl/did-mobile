@@ -520,6 +520,26 @@ class L {
     );
   }
 
+  /// `Document sharing failed`
+  String get shareDocErrorMessage {
+    return Intl.message(
+      'Document sharing failed',
+      name: 'shareDocErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Document is now retrievable`
+  String get shareDocSuccessMessage {
+    return Intl.message(
+      'Document is now retrievable',
+      name: 'shareDocSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No Countries found`
   String get noCountriesFound {
     return Intl.message(
