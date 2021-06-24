@@ -1,4 +1,5 @@
 import 'package:did/generated/l10n.dart';
+import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/providers/create_did/createDidBloc.dart';
 import 'package:did/providers/create_did/createDidEvent.dart';
 import 'package:did/providers/create_did/createDidState.dart';
@@ -171,12 +172,10 @@ class _CreationState extends State<Creation> {
                                       width: 19,
                                       margin:
                                           const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                                      child: const CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                                Color(0xFFD9D9D9)),
-                                      ))
+                                      child: const LoadingIndicator(
+                                        color: Color(0xFFD9D9D9),
+                                      ),
+                                    )
                                   : Text(L.of(context).submit),
                             ));
                       },

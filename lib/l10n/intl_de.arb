@@ -25,6 +25,7 @@
   "dose": "Dosis",
   "issued": "Erstellt am ",
   "cancel": "Abbrechen",
+
   "pluralMedication": "Medikamente",
   "personalInfoVC": "Persönliche Informationen Credential",
 
@@ -63,6 +64,8 @@
   "yes": "Ja",
   "no": "Nein",
   "allFiles": "Alle Dateien",
+  "share": "Teilen",
+  "delete": "Löschen",
 
   "deleteData": "Daten löschen",
   "confirmDataDeletion": "Bist du sicher, dass du alle Daten unwiderruflich löschen willst?",

@@ -29,7 +29,6 @@ dependencies:
     sdk: flutter
   flutter_bloc: ^7.0.0
   flutter_datetime_picker: ^1.5.1
-  flutter_layout_grid: ^1.0.1
   flutter_localizations:
     sdk: flutter
   flutter_secure_storage: ^4.2.0

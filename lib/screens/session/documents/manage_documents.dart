@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/providers/app_screen_state/sessionFlow/sessionState.dart';
 import 'package:did/screens/session/create_patient_questionnaire/create_patient_questionnaire.dart';
 import 'package:did/screens/session/documents/document_folder/pq_document_folder.dart';
@@ -62,53 +63,26 @@ class ManageDocuments extends StatelessWidget {
                         ),
                       ),
                     )
-                  : showModalBottomSheet(
-                      useRootNavigator: false,
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.vertical(
-                          top: Radius.circular(25),
+                  : bottomSheet(context: context, buttons: [
+                      SizedBox(
+                        width: double.infinity,
+                        child: TextButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                            Navigator.push(
+                              context,
+                              PageTransition(
+                                type: PageTransitionType.bottomToTop,
+                                curve: Curves.easeInOut,
+                                child: CreatePatientQuestionnaire(),
+                              ),
+                            );
+                          },
+                          child: Text(L.of(context).patientQuestionnaire,
+                              style: Theme.of(context).textTheme.bodyText1),
                         ),
                       ),
-                      backgroundColor: Theme.of(context).backgroundColor,
-                      context: context,
-                      builder: (context) => Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: <Widget>[
-                          SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                                Navigator.push(
-                                  context,
-                                  PageTransition(
-                                    type: PageTransitionType.bottomToTop,
-                                    curve: Curves.easeInOut,
-                                    child: CreatePatientQuestionnaire(),
-                                  ),
-                                );
-                              },
-                              child: Text(L.of(context).patientQuestionnaire,
-                                  style: Theme.of(context).textTheme.bodyText1),
-                            ),
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () => Navigator.of(context).pop(),
-                              child: Text(
-                                L.of(context).cancel,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                        color: Theme.of(context).errorColor),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    ]),
             ),
           ],
         ),

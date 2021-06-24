@@ -1,3 +1,4 @@
+import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/language/languageBloc.dart';
 import 'package:did/generated/l10n.dart';
@@ -176,21 +177,27 @@ class _IndividualDateOfBirthUpdateScreenState
                               onPressed: !state.isValidDateOfBirth ||
                                       state.formStatus is FormSubmitting
                                   ? null
-                                  : () => context
-                                      .read<UpdatePersonalBloc>()
-                                      .add(UpdatePersonalSubmitted()),
+                                  : () {
+                                      final FocusScopeNode currentFocus =
+                                          FocusScope.of(context);
+
+                                      if (!currentFocus.hasPrimaryFocus) {
+                                        currentFocus.unfocus();
+                                      }
+                                      context
+                                          .read<UpdatePersonalBloc>()
+                                          .add(UpdatePersonalSubmitted());
+                                    },
                               child: state.formStatus is FormSubmitting
                                   ? Container(
                                       height: 19,
                                       width: 19,
                                       margin:
                                           const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                                      child: const CircularProgressIndicator(
-                                        strokeWidth: 2,
-                                        valueColor:
-                                            AlwaysStoppedAnimation<Color>(
-                                                Color(0xFFD9D9D9)),
-                                      ))
+                                      child: const LoadingIndicator(
+                                        color: Color(0xFFD9D9D9),
+                                      ),
+                                    )
                                   : Text(L.of(context).updateDateOfBirth),
                             ))
                       ],

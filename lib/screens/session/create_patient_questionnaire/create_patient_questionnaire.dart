@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/global_components/universal_text_field.dart';
 import 'package:did/providers/create_patient_questionnaire/form_submission_status.dart';
@@ -210,14 +211,10 @@ class _CreatePatientQuestionnaireState
                                                     margin: const EdgeInsets
                                                         .fromLTRB(7, 0, 7, 0),
                                                     child:
-                                                        const CircularProgressIndicator(
-                                                      strokeWidth: 2,
-                                                      valueColor:
-                                                          AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                              Color(
-                                                                  0xFFD9D9D9)),
-                                                    ))
+                                                        const LoadingIndicator(
+                                                      color: Color(0xFFD9D9D9),
+                                                    ),
+                                                  )
                                                 : Text(currentStep == 2
                                                     ? L.of(context).submit
                                                     : L.of(context).next)),
