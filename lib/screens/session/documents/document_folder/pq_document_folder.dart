@@ -1,6 +1,7 @@
 import 'dart:io' show Platform;
 
 import 'package:did/custom_icons/quader_font.dart';
+import 'package:did/global_components/alert.dart';
 import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/global_components/noti.dart';
@@ -31,7 +32,7 @@ class PQDocumentFolder extends StatefulWidget {
 }
 
 class _PQDocumentFolderState extends State<PQDocumentFolder> {
-  int segmentedControlGroupValue = 1;
+  int? segmentedControlGroupValue = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +88,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                         3: Icon(Icons.apps)
                       },
                       onValueChanged: (value) => setState(() {
-                        segmentedControlGroupValue = value as int;
+                        segmentedControlGroupValue = value as int?;
                       }),
                     ),
                   ],
@@ -101,7 +102,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                 sliver: SliverGrid.count(
                   mainAxisSpacing: 10.0,
                   crossAxisSpacing: 10.0,
-                  crossAxisCount: segmentedControlGroupValue,
+                  crossAxisCount: segmentedControlGroupValue ?? 1,
                   childAspectRatio: MediaQuery.of(context).size.width >= 480
                       ? segmentedControlGroupValue == 1
                           ? MediaQuery.of(context).size.width /
@@ -217,7 +218,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
 
 // The
   void bottomModal(BuildContext context, int i, Verified sessionState) =>
-      Platform.isIOS
+      /* Platform.isIOS
           ? showCupertinoModalPopup(
               useRootNavigator: false,
               context: context,
@@ -272,12 +273,9 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                 title: L.of(context).share,
                                 context: context,
                                 content: [
-                                  SingleChildScrollView(
-                                    physics: const BouncingScrollPhysics(),
-                                    child: QrImage(
-                                      data: state.channelLink,
-                                      size: 200.0,
-                                    ),
+                                  QrImage(
+                                    data: state.channelLink,
+                                    size: 200.0,
                                   )
                                 ],
                               );
@@ -321,111 +319,121 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                 ),
               ),
             )
-          : bottomSheet(
-              context: context,
-              content: [
-                RepositoryProvider(
-                  create: (context) => ShareDocumentRepo(),
-                  child: BlocProvider(
-                    create: (context) => ShareDocumentBloc(
-                      repo: context.read<ShareDocumentRepo>(),
-                      credential: DynamicCredential(
-                        context: sessionState.patientQuestionnaires[i].context,
-                        id: sessionState.patientQuestionnaires[i].id,
-                        type: sessionState.patientQuestionnaires[i].type,
-                        credentialSubject: sessionState
-                            .patientQuestionnaires[i].credentialSubject,
-                        issuer: sessionState.patientQuestionnaires[i].issuer,
-                        issuanceDate:
-                            sessionState.patientQuestionnaires[i].issuanceDate,
-                        proof: Proof(
-                            type: sessionState
-                                .patientQuestionnaires[i].proof.type,
-                            signatureValue: sessionState
-                                .patientQuestionnaires[i].proof.signatureValue,
-                            verificationMethod: sessionState
-                                .patientQuestionnaires[i]
-                                .proof
-                                .verificationMethod),
-                      ),
-                      doc: sessionState.identity.doc,
-                    ),
-                    child: Builder(builder: (context) {
-                      return BlocListener<ShareDocumentBloc,
-                          ShareDocumentState>(
-                        listener: (context, state) {
-                          if (state.shareStatus is ShareFailed) {
-                            Navigator.of(context).pop();
-                            showErrorNoti(
-                                message: L.of(context).shareDocErrorMessage,
-                                context: context);
-                          } else if (state.shareStatus is ShareSuccess) {
-                            Navigator.of(context).pop();
-                            showSuccessNoti(
-                                message: L.of(context).shareDocSuccessMessage,
-                                context: context);
-                            bottomSheet(
-                              context: context,
-                              title: L.of(context).share,
-                              content: [
-                                SingleChildScrollView(
-                                  physics: const BouncingScrollPhysics(),
-                                  child: Center(
-                                    child: QrImage(
-                                      data: state.channelLink,
-                                      size: 200.0,
-                                    ),
-                                  ),
-                                )
-                              ],
-                            );
-                          }
-                        },
-                        child: SizedBox(
-                          width: double.infinity,
-                          child: BlocBuilder<ShareDocumentBloc,
-                              ShareDocumentState>(
-                            builder: (context, state) {
-                              return TextButton(
-                                onPressed: state.shareStatus is Sharing
-                                    ? null
-                                    : () => context
-                                        .read<ShareDocumentBloc>()
-                                        .add(ShareDocument()),
-                                child: state.shareStatus is Sharing
-                                    ? const SizedBox(
-                                        height: 24,
-                                        width: 24,
-                                        child: LoadingIndicator())
-                                    : Text(L.of(context).share,
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .bodyText1),
-                              );
-                            },
-                          ),
-                        ),
-                      );
-                    }),
-                  ),
+          :  */
+      bottomSheet(
+        context: context,
+        content: [
+          RepositoryProvider(
+            create: (context) => ShareDocumentRepo(),
+            child: BlocProvider(
+              create: (context) => ShareDocumentBloc(
+                repo: context.read<ShareDocumentRepo>(),
+                credential: DynamicCredential(
+                  context: sessionState.patientQuestionnaires[i].context,
+                  id: sessionState.patientQuestionnaires[i].id,
+                  type: sessionState.patientQuestionnaires[i].type,
+                  credentialSubject:
+                      sessionState.patientQuestionnaires[i].credentialSubject,
+                  issuer: sessionState.patientQuestionnaires[i].issuer,
+                  issuanceDate:
+                      sessionState.patientQuestionnaires[i].issuanceDate,
+                  proof: Proof(
+                      type: sessionState.patientQuestionnaires[i].proof.type,
+                      signatureValue: sessionState
+                          .patientQuestionnaires[i].proof.signatureValue,
+                      verificationMethod: sessionState
+                          .patientQuestionnaires[i].proof.verificationMethod),
                 ),
-                SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
+                doc: sessionState.identity.doc,
+              ),
+              child: Builder(builder: (context) {
+                return BlocConsumer<ShareDocumentBloc, ShareDocumentState>(
+                  listener: (context, state) {
+                    if (state.shareStatus is ShareFailed) {
                       Navigator.of(context).pop();
-                      setState(() {
-                        context.read<SessionCubit>().deletePQ(i, sessionState);
-                      });
-                    },
-                    child: Text(
-                      L.of(context).delete,
-                      style: Theme.of(context).textTheme.bodyText1!.copyWith(
-                            color: Theme.of(context).errorColor,
+                      showErrorNoti(
+                          message: L.of(context).shareDocErrorMessage,
+                          context: context);
+                    } else if (state.shareStatus is ShareSuccess) {
+                      Navigator.of(context).pop();
+                      showSuccessNoti(
+                          message: L.of(context).shareDocSuccessMessage,
+                          context: context);
+                      bottomSheet(
+                        context: context,
+                        title: L.of(context).share,
+                        content: [
+                          SingleChildScrollView(
+                            physics: const BouncingScrollPhysics(),
+                            child: Center(
+                              child: QrImage(
+                                data: state.channelLink,
+                                size: 200.0,
+                              ),
+                            ),
+                          )
+                        ],
+                      );
+                    }
+                  },
+                  builder: (context, state) {
+                    return Column(
+                      children: [
+                        if (state.shareStatus is Sharing)
+                          LoadingAlert(
+                            title: L.of(context).sharing,
+                            message: L.of(context).sharemessage,
+                          )
+                        else ...[
+                          SizedBox(
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: state.shareStatus is Sharing
+                                  ? null
+                                  : () => context
+                                      .read<ShareDocumentBloc>()
+                                      .add(ShareDocument()),
+                              child: state.shareStatus is Sharing
+                                  ? const SizedBox(
+                                      height: 24,
+                                      width: 24,
+                                      child: LoadingIndicator())
+                                  : Text(L.of(context).share,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyText1),
+                            ),
                           ),
-                    ),
-                  ),
-                ),
-              ],
-            );
+                          SizedBox(
+                            width: double.infinity,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                                setState(() {
+                                  context
+                                      .read<SessionCubit>()
+                                      .deletePQ(i, sessionState);
+                                });
+                              },
+                              child: Text(
+                                L.of(context).delete,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText1!
+                                    .copyWith(
+                                      color: Theme.of(context).errorColor,
+                                    ),
+                              ),
+                            ),
+                          ),
+                        ]
+                      ],
+                    );
+                  },
+                );
+              }),
+            ),
+          ),
+        ],
+      );
 }

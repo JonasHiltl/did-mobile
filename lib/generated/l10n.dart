@@ -670,6 +670,26 @@ class L {
     );
   }
 
+  /// `Sharing`
+  String get sharing {
+    return Intl.message(
+      'Sharing',
+      name: 'sharing',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan the resulting QR-Code to retrieve the document.`
+  String get sharemessage {
+    return Intl.message(
+      'Scan the resulting QR-Code to retrieve the document.',
+      name: 'sharemessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete`
   String get delete {
     return Intl.message(

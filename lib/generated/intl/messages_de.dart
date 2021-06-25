@@ -132,6 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
             "Dokumentenaustausch fehlgeschlagen "),
         "shareDocSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Dokument ist jetzt abrufbar "),
+        "sharemessage": MessageLookupByLibrary.simpleMessage(
+            "Scanne den entstehenden QR-Code, um das Dokument abzurufen."),
+        "sharing": MessageLookupByLibrary.simpleMessage("Teilen"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Geschlecht"),
         "state": MessageLookupByLibrary.simpleMessage("Bundesland"),
         "submit": MessageLookupByLibrary.simpleMessage("Fertig"),

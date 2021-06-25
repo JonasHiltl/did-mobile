@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:did/models/did/identity.dart';
 import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -57,14 +58,25 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
             state.state,
             state.postalCode,
             state.country);
-        await secureStorage.write("identity", jsonEncode(res.identity));
-        await secureStorage.write(
-            "personal_data_vc", jsonEncode(res.personalDataVc));
+        if (res.item2 != 200) {
+          yield state.copyWith(
+              formStatus: SubmissionFailed("Backend error creating Did"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
+        } else if (res.item1 == null) {
+          yield state.copyWith(
+              formStatus: SubmissionFailed("Returned Did is empty"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
+        } else {
+          await secureStorage.write(
+              "identity", jsonEncode(res.item1?.identity));
+          await secureStorage.write(
+              "personal_data_vc", jsonEncode(res.item1?.personalDataVc));
 
-        yield state.copyWith(formStatus: SubmissionSuccess());
-        yield state.copyWith(formStatus: const InitialFormStatus());
-
-        authCubit.launchSession(res.identity, res.personalDataVc);
+          yield state.copyWith(formStatus: SubmissionSuccess());
+          yield state.copyWith(formStatus: const InitialFormStatus());
+          authCubit.launchSession(
+              res.item1!.identity, res.item1!.personalDataVc);
+        }
       } catch (e) {
         print(e);
         yield state.copyWith(formStatus: SubmissionFailed(e.toString()));

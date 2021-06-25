@@ -91,31 +91,39 @@ class UpdatePersonalBloc
 
       try {
         final res = await repo.updatePersonalVc(
-            id,
-            state.firstName,
-            state.lastName,
-            state.email,
-            state.phoneNumber,
-            state.dateOfBirth,
-            state.sex,
-            state.address,
-            state.city,
-            state.state,
-            state.postalCode,
-            state.country);
-        if (res.id.isNotEmpty) {
-          await secureStorage.write("personal_data_vc", jsonEncode(res));
+          id,
+          state.firstName,
+          state.lastName,
+          state.email,
+          state.phoneNumber,
+          state.dateOfBirth,
+          state.sex,
+          state.address,
+          state.city,
+          state.state,
+          state.postalCode,
+          state.country,
+        );
+
+        if (res.item2 != 200) {
+          yield state.copyWith(
+              formStatus: SubmissionFailed("Backend error updating Did"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
+        } else if (res.item1 == null) {
+          yield state.copyWith(
+              formStatus: SubmissionFailed("Returned Credential is empty"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
+        } else {
+          yield state.copyWith(formStatus: const InitialFormStatus());
+          await secureStorage.write("personal_data_vc", jsonEncode(res.item1));
 
           yield state.copyWith(formStatus: SubmissionSuccess());
           yield state.copyWith(formStatus: const InitialFormStatus());
 
           // launch the session flow with the returned Did object
-          final newSessionState = sessionState.copyWith(personalDataVc: res);
+          final newSessionState =
+              sessionState.copyWith(personalDataVc: res.item1);
           sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
-        } else {
-          yield state.copyWith(
-              formStatus: SubmissionFailed("Backend error creating Did"));
-          yield state.copyWith(formStatus: const InitialFormStatus());
         }
       } catch (e) {
         print(e);

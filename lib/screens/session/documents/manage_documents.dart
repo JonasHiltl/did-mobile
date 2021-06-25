@@ -32,6 +32,13 @@ class ManageDocuments extends StatelessWidget {
           centerTitle: true,
           actions: [
             IconButton(
+              onPressed: () => {},
+              icon: Icon(
+                Icons.qr_code,
+                color: Theme.of(context).colorScheme.onBackground,
+              ),
+            ),
+            IconButton(
               icon: Icon(
                 Icons.add,
                 color: Theme.of(context).colorScheme.onBackground,

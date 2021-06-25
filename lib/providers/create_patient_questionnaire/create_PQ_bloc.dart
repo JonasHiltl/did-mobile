@@ -51,32 +51,48 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
 
       try {
         final res = await repo.createPQ(
-            sessionState.personalDataVc.credentialSubject.firstName,
-            sessionState.personalDataVc.credentialSubject.lastName,
-            sessionState.personalDataVc.credentialSubject.email,
-            sessionState.personalDataVc.credentialSubject.phoneNumber,
-            sessionState.personalDataVc.credentialSubject.dateOfBirth,
-            sessionState.personalDataVc.credentialSubject.sex,
-            sessionState.personalDataVc.credentialSubject.address.street,
-            sessionState.personalDataVc.credentialSubject.address.city,
-            sessionState.personalDataVc.credentialSubject.address.state,
-            sessionState.personalDataVc.credentialSubject.address.postalCode,
-            sessionState.personalDataVc.credentialSubject.address.country,
-            state.documentName,
-            state.allergies,
-            state.medications);
-        if (res.id.isNotEmpty) {
+          sessionState.personalDataVc.credentialSubject.firstName,
+          sessionState.personalDataVc.credentialSubject.lastName,
+          sessionState.personalDataVc.credentialSubject.email,
+          sessionState.personalDataVc.credentialSubject.phoneNumber,
+          sessionState.personalDataVc.credentialSubject.dateOfBirth,
+          sessionState.personalDataVc.credentialSubject.sex,
+          sessionState.personalDataVc.credentialSubject.address.street,
+          sessionState.personalDataVc.credentialSubject.address.city,
+          sessionState.personalDataVc.credentialSubject.address.state,
+          sessionState.personalDataVc.credentialSubject.address.postalCode,
+          sessionState.personalDataVc.credentialSubject.address.country,
+          state.documentName,
+          state.allergies,
+          state.medications,
+        );
+        if (res.item2 != 200) {
+          yield state.copyWith(
+              formStatus: SubmissionFailed(
+                  "Backend error creating patient questionnaire"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
+          yield state
+              .copyWith(medications: [], allergies: [], documentName: "");
+        } else if (res.item1 == null) {
+          yield state.copyWith(
+              formStatus: SubmissionFailed(
+                  "Backend error creating patient questionnaire"));
+          yield state.copyWith(formStatus: const InitialFormStatus());
+          yield state
+              .copyWith(medications: [], allergies: [], documentName: "");
+        } else {
+          // if list of PQ's already exist add new PQ
           if (await secureStorage.contains("patient_questionnaire")) {
             final encodedPQ = await secureStorage.read("patient_questionnaire");
             final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
 
-            //convert saved list of patient questionnaires to List<PatientQuestionnaireVc> and add newly created one
+            // convert saved list of patient questionnaires to List<PatientQuestionnaireVc> and add newly created one
             final List<PatientQuestionnaireVc> listPQ = [];
             decodedPQ.map((e) {
               listPQ.add(
                   PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
             }).toList();
-            listPQ.add(res);
+            listPQ.add(res.item1!);
 
             secureStorage.write("patient_questionnaire", jsonEncode(listPQ));
 
@@ -84,21 +100,14 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
                 sessionState.copyWith(patientQuestionnaires: listPQ);
             sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
           } else {
-            //when first patient questionnaire just save and
+            // when no existing list of PQ's is present create list
             final newSessionState =
-                sessionState.copyWith(patientQuestionnaires: [res]);
+                sessionState.copyWith(patientQuestionnaires: [res.item1!]);
             await secureStorage.write(
-                "patient_questionnaire", jsonEncode([res]));
+                "patient_questionnaire", jsonEncode([res.item1!]));
             sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
           }
           yield state.copyWith(formStatus: SubmissionSuccess());
-          yield state.copyWith(formStatus: const InitialFormStatus());
-          yield state
-              .copyWith(medications: [], allergies: [], documentName: "");
-        } else {
-          yield state.copyWith(
-              formStatus: SubmissionFailed(
-                  "Backend error creating patient questionnaire"));
           yield state.copyWith(formStatus: const InitialFormStatus());
           yield state
               .copyWith(medications: [], allergies: [], documentName: "");

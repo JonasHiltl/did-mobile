@@ -2,7 +2,6 @@ import 'package:did/models/did/doc.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:did/providers/share_document/repo/share_document_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tuple/tuple.dart';
 
 import 'share_document_event.dart';
 import 'share_document_state.dart';

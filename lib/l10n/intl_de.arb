@@ -66,6 +66,8 @@
   "no": "Nein",
   "allFiles": "Alle Dateien",
   "share": "Teilen",
+  "sharing": "Teilen",
+  "sharemessage": "Scanne den entstehenden QR-Code, um das Dokument abzurufen.",
   "delete": "Löschen",
 
   "deleteData": "Daten löschen",

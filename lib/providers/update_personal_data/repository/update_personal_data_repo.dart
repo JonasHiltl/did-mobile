@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:http/http.dart' as http;
+import 'package:tuple/tuple.dart';
 
 class UpdatePersonalDataRepo {
-  Future<PersonalDataVc> updatePersonalVc(
+  Future<Tuple2<PersonalDataVc?, int>> updatePersonalVc(
       String id,
       String firstName,
       String lastName,
@@ -41,9 +42,10 @@ class UpdatePersonalDataRepo {
       final resJson = jsonDecode(res.body);
       final personalDataVcJson = resJson["credential"] as Map<String, dynamic>;
 
-      return PersonalDataVc.fromJson(personalDataVcJson);
+      return Tuple2(
+          PersonalDataVc.fromJson(personalDataVcJson), res.statusCode);
     } else {
-      throw "Error calling creation backend";
+      return const Tuple2(null, 500);
     }
   }
 }

@@ -66,6 +66,8 @@
   "no": "No",
   "allFiles": "All Files",
   "share": "Share",
+  "sharing": "Sharing",
+  "sharemessage": "Scan the resulting QR-Code to retrieve the document.",
   "delete": "Delete",
 
   "deleteData": "Delete Data",
