@@ -67,8 +67,10 @@
   "allFiles": "All Files",
   "share": "Share",
   "sharing": "Sharing",
-  "sharemessage": "Scan the resulting QR-Code to retrieve the document.",
+  "sharemessage": "Scan the resulting QR Code to retrieve the document.",
   "delete": "Delete",
+  "scanQR": "Scan QR-Code",
+  "scanMessage": "After a valid code is recognised, the document will be requested",
 
   "deleteData": "Delete Data",
   "confirmDataDeletion": "Are you sure to irrevocably delete all of your data?",

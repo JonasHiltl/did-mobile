@@ -63,6 +63,12 @@ class _CreatePatientQuestionnaireState
                   return TextButton(
                       onPressed: state.isValidDocumentName
                           ? () {
+                              final FocusScopeNode currentFocus =
+                                  FocusScope.of(context);
+
+                              if (!currentFocus.hasPrimaryFocus) {
+                                currentFocus.unfocus();
+                              }
                               context
                                   .read<CreatePQBloc>()
                                   .add(CreatePQSubmitted());
@@ -109,6 +115,12 @@ class _CreatePatientQuestionnaireState
                   return CupertinoDialogAction(
                       onPressed: state.isValidDocumentName
                           ? () {
+                              final FocusScopeNode currentFocus =
+                                  FocusScope.of(context);
+
+                              if (!currentFocus.hasPrimaryFocus) {
+                                currentFocus.unfocus();
+                              }
                               context
                                   .read<CreatePQBloc>()
                                   .add(CreatePQSubmitted());
@@ -230,9 +242,15 @@ class _CreatePatientQuestionnaireState
                                                               Color(0xFFD9D9D9),
                                                         ),
                                                       )
-                                                    : Text(currentStep == 2
-                                                        ? L.of(context).submit
-                                                        : L.of(context).next),
+                                                    : Text(
+                                                        currentStep == 2
+                                                            ? L
+                                                                .of(context)
+                                                                .submit
+                                                            : L
+                                                                .of(context)
+                                                                .next,
+                                                      ),
                                               ),
                                             ),
                                             const SizedBox(

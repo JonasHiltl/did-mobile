@@ -680,10 +680,10 @@ class L {
     );
   }
 
-  /// `Scan the resulting QR-Code to retrieve the document.`
+  /// `Scan the resulting QR Code to retrieve the document.`
   String get sharemessage {
     return Intl.message(
-      'Scan the resulting QR-Code to retrieve the document.',
+      'Scan the resulting QR Code to retrieve the document.',
       name: 'sharemessage',
       desc: '',
       args: [],
@@ -695,6 +695,26 @@ class L {
     return Intl.message(
       'Delete',
       name: 'delete',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Scan QR-Code`
+  String get scanQR {
+    return Intl.message(
+      'Scan QR-Code',
+      name: 'scanQR',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `After a valid code is recognised, the document will be requested`
+  String get scanMessage {
+    return Intl.message(
+      'After a valid code is recognised, the document will be requested',
+      name: 'scanMessage',
       desc: '',
       args: [],
     );

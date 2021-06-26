@@ -125,6 +125,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medikamente"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
         "residence": MessageLookupByLibrary.simpleMessage("Wohnadresse"),
+        "scanMessage": MessageLookupByLibrary.simpleMessage(
+            "Nachdem ein gültiger Code erkannt wurde, wird das Dokument angefordert"),
+        "scanQR": MessageLookupByLibrary.simpleMessage("QR-Code scannen"),
         "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
         "sex": MessageLookupByLibrary.simpleMessage("Biologisches Geschlecht"),
         "share": MessageLookupByLibrary.simpleMessage("Teilen"),

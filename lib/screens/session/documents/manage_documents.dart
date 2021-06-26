@@ -4,10 +4,12 @@ import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/screens/session/create_patient_questionnaire/create_patient_questionnaire.dart';
 import 'package:did/screens/session/documents/document_folder/pq_document_folder.dart';
+import 'package:did/screens/session/scan_qr/scan_qr.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../generated/l10n.dart';
 import 'components/document_folder_preview.dart';
@@ -32,7 +34,10 @@ class ManageDocuments extends StatelessWidget {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () => {},
+              onPressed: () => Navigator.of(context, rootNavigator: true)
+                  .push(MaterialPageRoute(
+                builder: (context) => const ScanQR(),
+              )),
               icon: Icon(
                 Icons.qr_code,
                 color: Theme.of(context).colorScheme.onBackground,

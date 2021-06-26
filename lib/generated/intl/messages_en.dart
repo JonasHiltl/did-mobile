@@ -126,6 +126,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "residence":
             MessageLookupByLibrary.simpleMessage("Residential Address"),
+        "scanMessage": MessageLookupByLibrary.simpleMessage(
+            "After a valid code is recognised, the document will be requested"),
+        "scanQR": MessageLookupByLibrary.simpleMessage("Scan QR-Code"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sex": MessageLookupByLibrary.simpleMessage("Biological Sex"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
@@ -134,7 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "shareDocSuccessMessage":
             MessageLookupByLibrary.simpleMessage("Document is now retrievable"),
         "sharemessage": MessageLookupByLibrary.simpleMessage(
-            "Scan the resulting QR-Code to retrieve the document."),
+            "Scan the resulting QR Code to retrieve the document."),
         "sharing": MessageLookupByLibrary.simpleMessage("Sharing"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Sex"),
         "state": MessageLookupByLibrary.simpleMessage("State"),

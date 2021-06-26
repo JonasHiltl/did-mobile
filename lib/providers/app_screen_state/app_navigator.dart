@@ -21,10 +21,11 @@ class AppNavigator extends StatelessWidget {
             //show auth flow
             if (state is Unverified)
               MaterialPage(
-                  child: BlocProvider(
-                create: (context) => AuthCubit(context.read<SessionCubit>()),
-                child: AuthNavigator(),
-              )),
+                child: BlocProvider(
+                  create: (context) => AuthCubit(context.read<SessionCubit>()),
+                  child: AuthNavigator(),
+                ),
+              ),
             //show session flow
             if (state is Verified)
               MaterialPage(
