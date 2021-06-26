@@ -114,7 +114,7 @@ class _IntroductionState extends State<Introduction>
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 20),
               child: InkWell(
                 onTap: () {
                   if (_current > 0) {
@@ -135,30 +135,32 @@ class _IntroductionState extends State<Introduction>
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(children: [
-                  FadeTransition(
-                    opacity: _animationController,
-                    child: Text(
-                      carouselList[_current].title,
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.headline3,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: Column(
+                  children: [
+                    FadeTransition(
+                      opacity: _animationController,
+                      child: Text(
+                        carouselList[_current].title,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: FadeTransition(
-                        opacity: _animationController,
-                        child: RichText(
-                            textAlign: TextAlign.center,
-                            text: TextSpan(children: <TextSpan>[
-                              TextSpan(
-                                text: carouselList[_current].paragraph,
-                                style: Theme.of(context).textTheme.bodyText2,
-                              )
-                            ]))),
-                  )
-                ]),
+                    Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: FadeTransition(
+                          opacity: _animationController,
+                          child: RichText(
+                              textAlign: TextAlign.center,
+                              text: TextSpan(children: <TextSpan>[
+                                TextSpan(
+                                  text: carouselList[_current].paragraph,
+                                  style: Theme.of(context).textTheme.bodyText2,
+                                )
+                              ]))),
+                    )
+                  ],
+                ),
               ),
               CarouselSlider(
                 options: CarouselOptions(
@@ -191,29 +193,30 @@ class _IntroductionState extends State<Introduction>
                 }).toList(),
               ),
               Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    ...Iterable<int>.generate(carouselList.length).map(
-                      (int pageIndex) => InkWell(
-                        onTap: () {
-                          _controller.animateToPage(pageIndex);
-                        },
-                        child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 150),
-                            margin: const EdgeInsets.all(10),
-                            height: 8,
-                            width: 8,
-                            decoration: BoxDecoration(
-                                color: _current == pageIndex
-                                    ? Theme.of(context).primaryColor
-                                    : Colors.transparent,
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(12)),
-                                border: Border.all(
-                                    color: Theme.of(context).primaryColor))),
-                      ),
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  ...Iterable<int>.generate(carouselList.length).map(
+                    (int pageIndex) => InkWell(
+                      onTap: () {
+                        _controller.animateToPage(pageIndex);
+                      },
+                      child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 150),
+                          margin: const EdgeInsets.all(10),
+                          height: 8,
+                          width: 8,
+                          decoration: BoxDecoration(
+                              color: _current == pageIndex
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.transparent,
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(12)),
+                              border: Border.all(
+                                  color: Theme.of(context).primaryColor))),
                     ),
-                  ]),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
@@ -254,33 +257,33 @@ class _IntroductionState extends State<Introduction>
                                   : Colors.transparent,
                             ),
                             child: InkWell(
-                                onTap: () async {
-                                  if (_current + 1 == carouselList.length) {
-                                    setState(() {
-                                      hideProgessIndicator = true;
-                                    });
-                                    _scaleController.forward();
-                                    //TODO wait time and push new page
-                                    await Future.delayed(
-                                        const Duration(milliseconds: 2200),
-                                        () => context
-                                            .read<AuthCubit>()
-                                            .showCreation());
-                                  } else {
-                                    _controller.nextPage();
-                                  }
-                                },
-                                borderRadius: BorderRadius.circular(25),
-                                child: Stack(
-                                  children: [
-                                    AnimatedBuilder(
-                                      animation: _moveAnimation,
-                                      builder: (context, child) => Positioned(
-                                        left: _moveAnimation.value,
-                                        child: Stack(
-                                          children: [
-                                            Positioned(
-                                                child: AnimatedBuilder(
+                              onTap: () async {
+                                if (_current + 1 == carouselList.length) {
+                                  setState(() {
+                                    hideProgessIndicator = true;
+                                  });
+                                  _scaleController.forward();
+                                  //TODO wait time and push new page
+                                  await Future.delayed(
+                                      const Duration(milliseconds: 2200),
+                                      () => context
+                                          .read<AuthCubit>()
+                                          .showCreation());
+                                } else {
+                                  _controller.nextPage();
+                                }
+                              },
+                              borderRadius: BorderRadius.circular(25),
+                              child: Stack(
+                                children: [
+                                  AnimatedBuilder(
+                                    animation: _moveAnimation,
+                                    builder: (context, child) => Positioned(
+                                      left: _moveAnimation.value,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            child: AnimatedBuilder(
                                               animation: _scale2Controller,
                                               builder: (context, child) =>
                                                   Transform.scale(
@@ -300,21 +303,23 @@ class _IntroductionState extends State<Introduction>
                                                       : Container(),
                                                 ),
                                               ),
-                                            ))
-                                          ],
-                                        ),
+                                            ),
+                                          ),
+                                        ],
                                       ),
-                                    )
-                                  ],
-                                )),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
                           ),
                         ),
-                      )
+                      ),
                     ],
                   ),
                 )),
         const SizedBox(
-          height: 16,
+          height: 20,
         )
       ],
     )));

@@ -108,15 +108,16 @@ class _CreationState extends State<Creation> {
                 BlocBuilder<CreateDidBloc, CreateDidState>(
                   builder: (context, state) {
                     return SizedBox(
-                      width: size.width - 20,
+                      width: size.width - 40,
                       child: ElevatedButton(
-                          onPressed: !state.isValidFirstName ||
-                                  !state.isValidlastName ||
-                                  !state.isValidEmail ||
-                                  !state.isValidPhoneNumber
-                              ? null
-                              : next,
-                          child: Text(L.of(context).next)),
+                        onPressed: !state.isValidFirstName ||
+                                !state.isValidlastName ||
+                                !state.isValidEmail ||
+                                !state.isValidPhoneNumber
+                            ? null
+                            : next,
+                        child: Text(L.of(context).next),
+                      ),
                     );
                   },
                 ),
@@ -126,7 +127,7 @@ class _CreationState extends State<Creation> {
                     BlocBuilder<CreateDidBloc, CreateDidState>(
                       builder: (context, state) {
                         return SizedBox(
-                          width: size.width - 20,
+                          width: size.width - 40,
                           child: ElevatedButton(
                               onPressed:
                                   !state.isValidDateOfBirth || !state.isValidSex
@@ -139,7 +140,7 @@ class _CreationState extends State<Creation> {
                     BlocBuilder<CreateDidBloc, CreateDidState>(
                       builder: (context, state) {
                         return SizedBox(
-                          width: size.width - 20,
+                          width: size.width - 40,
                           child: OutlinedButton(
                               onPressed: state.formStatus is FormSubmitting
                                   ? null
@@ -156,7 +157,7 @@ class _CreationState extends State<Creation> {
                     BlocBuilder<CreateDidBloc, CreateDidState>(
                       builder: (context, state) {
                         return SizedBox(
-                            width: size.width - 20,
+                            width: size.width - 40,
                             child: ElevatedButton(
                               onPressed: state.formStatus is FormSubmitting ||
                                       !state.isValidAddress ||
@@ -183,7 +184,7 @@ class _CreationState extends State<Creation> {
                     BlocBuilder<CreateDidBloc, CreateDidState>(
                       builder: (context, state) {
                         return SizedBox(
-                          width: size.width - 20,
+                          width: size.width - 40,
                           child: OutlinedButton(
                               onPressed: state.formStatus is FormSubmitting
                                   ? null

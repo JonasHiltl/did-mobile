@@ -21,56 +21,69 @@ class _Page3State extends State<Page3>
   Widget build(BuildContext context) {
     super.build(context);
     final Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 40,
-          ),
-          Step3(),
-          const SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Form(
-              key: widget.formKeys[2],
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    L.of(context).createHeader,
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.05,
-                  ),
-                  addressField(),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  cityField(),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  stateField(),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  postalCodeField(),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  CountryField()
-                ],
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Step3(),
               ),
-            ),
-          )
-        ],
-      ),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight - 70,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        L.of(context).createHeader,
+                        textAlign: TextAlign.left,
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
+                      child: Form(
+                        key: widget.formKeys[2],
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            addressField(),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            cityField(),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            stateField(),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            postalCodeField(),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            CountryField()
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }

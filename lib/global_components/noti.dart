@@ -9,7 +9,7 @@ void showSuccessNoti({
       context: context,
       duration: const Duration(seconds: 3),
       builder: (context, controller) {
-        return Flash.dialog(
+        return Flash(
             barrierColor: Colors.transparent,
             controller: controller,
             borderRadius: const BorderRadius.all(Radius.circular(2)),

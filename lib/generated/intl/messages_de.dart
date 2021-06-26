@@ -137,7 +137,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "sharing": MessageLookupByLibrary.simpleMessage("Teilen"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Geschlecht"),
         "state": MessageLookupByLibrary.simpleMessage("Bundesland"),
-        "submit": MessageLookupByLibrary.simpleMessage("Fertig"),
+        "submit": MessageLookupByLibrary.simpleMessage("Erstellen"),
         "symptom": MessageLookupByLibrary.simpleMessage("Symptom"),
         "symptoms": MessageLookupByLibrary.simpleMessage("Symptome"),
         "updateAddress":

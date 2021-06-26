@@ -37,164 +37,192 @@ class _Page2State extends State<Page2>
   Widget build(BuildContext context) {
     super.build(context);
     final Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(
-            height: 40,
-          ),
-          Step2(),
-          const SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Form(
-              key: widget.formKeys[1],
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    L.of(context).createHeader,
-                    textAlign: TextAlign.left,
-                    style: Theme.of(context).textTheme.headline3,
-                  ),
-                  SizedBox(
-                    height: size.height * 0.05,
-                  ),
-                  TextFormField(
-                    onTap: () => DatePicker.showDatePicker(
-                      context,
-                      locale:
-                          context.read<LanguageBloc>().state.language == "en"
-                              ? LocaleType.en
-                              : LocaleType.de,
-                      onConfirm: (date) {
-                        context.read<CreateDidBloc>().add(
-                              CreateDidDateOfBirthChanged(dateOfBirth: date),
-                            );
-                        dateController.text = DateFormat.yMMMd().format(date);
-                      },
-                      currentTime: context
-                              .read<CreateDidBloc>()
-                              .state
-                              .dateOfBirth is DateTime
-                          ? context.read<CreateDidBloc>().state.dateOfBirth
-                          : DateTime.now(),
-                      theme: DatePickerTheme(
-                          itemStyle: const TextStyle(
-                              color: Colors.black, fontSize: 16),
-                          doneStyle: TextStyle(
-                              color: Theme.of(context).primaryColor,
-                              fontSize: 16)),
+    return LayoutBuilder(
+      builder: (BuildContext context, BoxConstraints viewportConstraints) {
+        return SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Step2(),
+              ),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: viewportConstraints.maxHeight - 70,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Text(
+                        L.of(context).createHeader,
+                        textAlign: TextAlign.left,
+                        style: Theme.of(context).textTheme.headline3,
+                      ),
                     ),
-                    controller: dateController,
-                    cursorWidth: 1,
-                    readOnly: true,
-                    style: const TextStyle(fontSize: 14),
-                    decoration: InputDecoration(
-                        isDense: true,
-                        prefixIcon: Padding(
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 15, horizontal: 10),
-                            child: Text(
-                              L.of(context).dateOfBirth,
-                              style: TextStyle(
-                                  color: Colors.black.withOpacity(0.6)),
-                            )),
-                        prefixIconConstraints: const BoxConstraints(
-                          minWidth: 100,
-                        ),
-                        suffixIcon: Icon(
-                          Icons.calendar_today,
-                          color: Colors.black.withOpacity(0.6),
-                        ),
-                        contentPadding: const EdgeInsets.symmetric(
-                            vertical: 15, horizontal: 10),
-                        border: const OutlineInputBorder(),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: const Color(0xFFACB6C5).withOpacity(0.6)),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                          color: const Color(0xFFACB6C5).withOpacity(0.6),
-                        )),
-                        filled: true,
-                        fillColor: const Color(0xFFF1F3FD)),
-                  ),
-                  SizedBox(
-                    height: size.height * 0.02,
-                  ),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(0, 0, 18, 0),
-                                  decoration: BoxDecoration(
-                                      color: const Color(0xFFF1F3FD),
-                                      borderRadius: BorderRadius.circular(4.0),
-                                      border: Border.all(
-                                          color: const Color(0xFFACB6C5)
-                                              .withOpacity(0.6))),
-                                  child: Row(children: [
-                                    Radio(
-                                      value: "female",
-                                      groupValue: context
-                                          .read<CreateDidBloc>()
-                                          .state
-                                          .sex,
-                                      onChanged: setSex,
-                                      activeColor:
-                                          Theme.of(context).primaryColor,
-                                    ),
-                                    Text(L.of(context).female),
-                                  ])),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
+                      child: Form(
+                        key: widget.formKeys[1],
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            TextFormField(
+                              onTap: () => DatePicker.showDatePicker(
+                                context,
+                                locale: context
+                                            .read<LanguageBloc>()
+                                            .state
+                                            .language ==
+                                        "en"
+                                    ? LocaleType.en
+                                    : LocaleType.de,
+                                onConfirm: (date) {
+                                  context.read<CreateDidBloc>().add(
+                                        CreateDidDateOfBirthChanged(
+                                            dateOfBirth: date),
+                                      );
+                                  dateController.text =
+                                      DateFormat.yMMMd().format(date);
+                                },
+                                currentTime: context
+                                        .read<CreateDidBloc>()
+                                        .state
+                                        .dateOfBirth is DateTime
+                                    ? context
+                                        .read<CreateDidBloc>()
+                                        .state
+                                        .dateOfBirth
+                                    : DateTime.now(),
+                                theme: DatePickerTheme(
+                                    itemStyle: const TextStyle(
+                                        color: Colors.black, fontSize: 16),
+                                    doneStyle: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontSize: 16)),
+                              ),
+                              controller: dateController,
+                              cursorWidth: 1,
+                              readOnly: true,
+                              style: const TextStyle(fontSize: 14),
+                              decoration: InputDecoration(
+                                  isDense: true,
+                                  prefixIcon: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 15, horizontal: 10),
+                                      child: Text(
+                                        L.of(context).dateOfBirth,
+                                        style: TextStyle(
+                                            color:
+                                                Colors.black.withOpacity(0.6)),
+                                      )),
+                                  prefixIconConstraints: const BoxConstraints(
+                                    minWidth: 100,
+                                  ),
+                                  suffixIcon: Icon(
+                                    Icons.calendar_today,
+                                    color: Colors.black.withOpacity(0.6),
+                                  ),
+                                  contentPadding: const EdgeInsets.symmetric(
+                                      vertical: 15, horizontal: 10),
+                                  border: const OutlineInputBorder(),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: const Color(0xFFACB6C5)
+                                            .withOpacity(0.6)),
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                    color: const Color(0xFFACB6C5)
+                                        .withOpacity(0.6),
+                                  )),
+                                  filled: true,
+                                  fillColor: const Color(0xFFF1F3FD)),
                             ),
                             SizedBox(
-                              width: size.height * 0.02,
+                              height: size.height * 0.02,
                             ),
-                            Expanded(
-                              child: Container(
-                                padding: const EdgeInsets.fromLTRB(0, 0, 18, 0),
-                                decoration: BoxDecoration(
-                                    color: const Color(0xFFF1F3FD),
-                                    borderRadius: BorderRadius.circular(4.0),
-                                    border: Border.all(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6))),
-                                child: Row(
-                                  children: [
-                                    Radio(
-                                      value: "male",
-                                      groupValue: context
-                                          .read<CreateDidBloc>()
-                                          .state
-                                          .sex,
-                                      onChanged: setSex,
-                                      activeColor:
-                                          Theme.of(context).primaryColor,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: <Widget>[
+                                    Expanded(
+                                      child: Container(
+                                          padding: const EdgeInsets.fromLTRB(
+                                              0, 0, 18, 0),
+                                          decoration: BoxDecoration(
+                                              color: const Color(0xFFF1F3FD),
+                                              borderRadius:
+                                                  BorderRadius.circular(4.0),
+                                              border: Border.all(
+                                                  color: const Color(0xFFACB6C5)
+                                                      .withOpacity(0.6))),
+                                          child: Row(children: [
+                                            Radio(
+                                              value: "female",
+                                              groupValue: context
+                                                  .read<CreateDidBloc>()
+                                                  .state
+                                                  .sex,
+                                              onChanged: setSex,
+                                              activeColor: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            Text(L.of(context).female),
+                                          ])),
                                     ),
-                                    Text(L.of(context).male),
+                                    SizedBox(
+                                      width: size.height * 0.02,
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 18, 0),
+                                        decoration: BoxDecoration(
+                                            color: const Color(0xFFF1F3FD),
+                                            borderRadius:
+                                                BorderRadius.circular(4.0),
+                                            border: Border.all(
+                                                color: const Color(0xFFACB6C5)
+                                                    .withOpacity(0.6))),
+                                        child: Row(
+                                          children: [
+                                            Radio(
+                                              value: "male",
+                                              groupValue: context
+                                                  .read<CreateDidBloc>()
+                                                  .state
+                                                  .sex,
+                                              onChanged: setSex,
+                                              activeColor: Theme.of(context)
+                                                  .primaryColor,
+                                            ),
+                                            Text(L.of(context).male),
+                                          ],
+                                        ),
+                                      ),
+                                    )
                                   ],
                                 ),
-                              ),
+                              ],
                             )
                           ],
                         ),
-                      ])
-                ],
+                      ),
+                    )
+                  ],
+                ),
               ),
-            ),
-          )
-        ],
-      ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
