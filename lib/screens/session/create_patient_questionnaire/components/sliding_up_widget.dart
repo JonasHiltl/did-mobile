@@ -23,10 +23,11 @@ class _SlidingUpWidgetState extends State<SlidingUpWidget> {
     return SlidingUpPanel(
       boxShadow: [
         BoxShadow(
-            color: (Colors.grey[400])!,
-            offset: const Offset(0, 8),
-            blurRadius: 20,
-            spreadRadius: 1.0)
+          color: (Colors.grey[400])!,
+          offset: const Offset(0, 8),
+          blurRadius: 20,
+          spreadRadius: 1.0,
+        )
       ],
       controller: panelController,
       minHeight: MediaQuery.of(context).size.height * 0.1,

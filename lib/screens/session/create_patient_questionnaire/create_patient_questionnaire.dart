@@ -175,7 +175,7 @@ class _CreatePatientQuestionnaireState
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(4.0),
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
                       child: CustomStepper(
                         currentStep: currentStep,
                       ),
@@ -183,62 +183,85 @@ class _CreatePatientQuestionnaireState
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
-                          child: Column(
-                            children: [
-                              IndexedStack(
-                                index: currentStep,
-                                children: <Widget>[Step1(), Step2(), Step3()],
+                        child: LayoutBuilder(
+                          builder: (BuildContext context,
+                              BoxConstraints viewportConstraints) {
+                            return SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: ConstrainedBox(
+                                constraints: BoxConstraints(
+                                  minHeight: viewportConstraints.maxHeight -
+                                      MediaQuery.of(context).size.height * 0.1,
+                                ),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IndexedStack(
+                                      index: currentStep,
+                                      children: <Widget>[
+                                        Step1(),
+                                        Step2(),
+                                        Step3()
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Expanded(
+                                              child: ElevatedButton(
+                                                onPressed: state.formStatus
+                                                        is FormSubmitting
+                                                    ? null
+                                                    : () =>
+                                                        increseSubmit(context),
+                                                child: state.formStatus
+                                                        is FormSubmitting
+                                                    ? Container(
+                                                        height: 19,
+                                                        width: 19,
+                                                        margin: const EdgeInsets
+                                                                .fromLTRB(
+                                                            7, 0, 7, 0),
+                                                        child:
+                                                            const LoadingIndicator(
+                                                          color:
+                                                              Color(0xFFD9D9D9),
+                                                        ),
+                                                      )
+                                                    : Text(currentStep == 2
+                                                        ? L.of(context).submit
+                                                        : L.of(context).next),
+                                              ),
+                                            ),
+                                            const SizedBox(
+                                              width: 10,
+                                            ),
+                                            Expanded(
+                                              child: OutlinedButton(
+                                                  onPressed: currentStep == 0
+                                                      ? null
+                                                      : decreaseUntil0,
+                                                  child:
+                                                      Text(L.of(context).back)),
+                                            ),
+                                          ],
+                                        ),
+                                        if (MediaQuery.of(context)
+                                                .size
+                                                .height <=
+                                            640)
+                                          const SizedBox(
+                                            height: 50,
+                                          )
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
-                              Column(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: ElevatedButton(
-                                            onPressed: state.formStatus
-                                                    is FormSubmitting
-                                                ? null
-                                                : () => increseSubmit(context),
-                                            child: state.formStatus
-                                                    is FormSubmitting
-                                                ? Container(
-                                                    height: 19,
-                                                    width: 19,
-                                                    margin: const EdgeInsets
-                                                        .fromLTRB(7, 0, 7, 0),
-                                                    child:
-                                                        const LoadingIndicator(
-                                                      color: Color(0xFFD9D9D9),
-                                                    ),
-                                                  )
-                                                : Text(currentStep == 2
-                                                    ? L.of(context).submit
-                                                    : L.of(context).next)),
-                                      ),
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Expanded(
-                                        child: OutlinedButton(
-                                            onPressed: currentStep == 0
-                                                ? null
-                                                : decreaseUntil0,
-                                            child: Text(L.of(context).back)),
-                                      ),
-                                    ],
-                                  ),
-                                  Container(
-                                    height: MediaQuery.of(context).size.height *
-                                        0.1,
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
+                            );
+                          },
                         ),
                       ),
                     ),
