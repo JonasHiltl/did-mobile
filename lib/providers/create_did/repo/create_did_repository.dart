@@ -1,13 +1,12 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:tuple/tuple.dart';
 
 import '../../../models/did/did_vc_combination.dart';
 import '../../../models/did/identity.dart';
 import '../../../models/personal_data_vc/personal_data_vc.dart';
 
 class CreateDidRepository {
-  Future<Tuple2<DidVcCombination?, int>> createDid(
+  Future<DidVcCombination?> createDid(
     String firstName,
     String lastName,
     String email,
@@ -48,13 +47,13 @@ class CreateDidRepository {
       final personalDataVc = PersonalDataVc.fromJson(credentialJson);
       final identity = Identity.fromJson(didJson);
 
-      return Tuple2(
-        DidVcCombination(identity: identity, personalDataVc: personalDataVc),
-        200,
+      return DidVcCombination(
+        identity: identity,
+        personalDataVc: personalDataVc,
       );
     } else {
       print(res.body);
-      return const Tuple2(null, 500);
+      return null;
     }
   }
 }

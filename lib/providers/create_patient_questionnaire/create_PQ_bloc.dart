@@ -66,14 +66,7 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
           state.allergies,
           state.medications,
         );
-        if (res.item2 != 200) {
-          yield state.copyWith(
-              formStatus: SubmissionFailed(
-                  "Backend error creating patient questionnaire"));
-          yield state.copyWith(formStatus: const InitialFormStatus());
-          yield state
-              .copyWith(medications: [], allergies: [], documentName: "");
-        } else if (res.item1 == null) {
+        if (res == null) {
           yield state.copyWith(
               formStatus: SubmissionFailed(
                   "Backend error creating patient questionnaire"));
@@ -92,7 +85,7 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
               listPQ.add(
                   PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
             }).toList();
-            listPQ.add(res.item1!);
+            listPQ.add(res);
 
             secureStorage.write("patient_questionnaire", jsonEncode(listPQ));
 
@@ -102,9 +95,9 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
           } else {
             // when no existing list of PQ's is present create list
             final newSessionState =
-                sessionState.copyWith(patientQuestionnaires: [res.item1!]);
+                sessionState.copyWith(patientQuestionnaires: [res]);
             await secureStorage.write(
-                "patient_questionnaire", jsonEncode([res.item1!]));
+                "patient_questionnaire", jsonEncode([res]));
             sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
           }
           yield state.copyWith(formStatus: SubmissionSuccess());

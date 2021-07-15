@@ -4,10 +4,9 @@ import 'package:did/models/allergy/allergy.dart';
 import 'package:did/models/medication/medication.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:http/http.dart' as http;
-import 'package:tuple/tuple.dart';
 
 class CreatePQRepository {
-  Future<Tuple2<PatientQuestionnaireVc?, int>> createPQ(
+  Future<PatientQuestionnaireVc?> createPQ(
     String firstName,
     String lastName,
     String email,
@@ -52,10 +51,10 @@ class CreatePQRepository {
       final pqJson = resJson["patientQuestionnaire"] as Map<String, dynamic>;
 
       final patientQuestionnaire = PatientQuestionnaireVc.fromJson(pqJson);
-      return Tuple2(patientQuestionnaire, res.statusCode);
+      return patientQuestionnaire;
     } else {
       print(res.body);
-      return const Tuple2(null, 500);
+      return null;
     }
   }
 }

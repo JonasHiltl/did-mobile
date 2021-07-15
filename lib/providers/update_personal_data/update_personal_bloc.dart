@@ -105,24 +105,19 @@ class UpdatePersonalBloc
           state.country,
         );
 
-        if (res.item2 != 200) {
+        if (res == null) {
           yield state.copyWith(
               formStatus: SubmissionFailed("Backend error updating Did"));
           yield state.copyWith(formStatus: const InitialFormStatus());
-        } else if (res.item1 == null) {
-          yield state.copyWith(
-              formStatus: SubmissionFailed("Returned Credential is empty"));
-          yield state.copyWith(formStatus: const InitialFormStatus());
         } else {
           yield state.copyWith(formStatus: const InitialFormStatus());
-          await secureStorage.write("personal_data_vc", jsonEncode(res.item1));
+          await secureStorage.write("personal_data_vc", jsonEncode(res));
 
           yield state.copyWith(formStatus: SubmissionSuccess());
           yield state.copyWith(formStatus: const InitialFormStatus());
 
           // launch the session flow with the returned Did object
-          final newSessionState =
-              sessionState.copyWith(personalDataVc: res.item1);
+          final newSessionState = sessionState.copyWith(personalDataVc: res);
           sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
         }
       } catch (e) {
