@@ -142,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Scan the resulting QR Code to retrieve the document."),
         "sharing": MessageLookupByLibrary.simpleMessage("Sharing"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Sex"),
+        "skip": MessageLookupByLibrary.simpleMessage("Skip"),
         "state": MessageLookupByLibrary.simpleMessage("State"),
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "symptom": MessageLookupByLibrary.simpleMessage("Symptom"),

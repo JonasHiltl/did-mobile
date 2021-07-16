@@ -2,10 +2,9 @@ import 'dart:convert';
 import 'package:did/models/did/doc.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:http/http.dart' as http;
-import 'package:tuple/tuple.dart';
 
 class ShareDocumentRepo {
-  Future<Tuple2<String, int>> createChannel(
+  Future<String?> createChannel(
     Doc doc,
     DynamicCredential credential,
   ) async {
@@ -23,14 +22,14 @@ class ShareDocumentRepo {
     );
     if (res.statusCode == 200) {
       final parsedRes = jsonDecode(res.body);
-      return Tuple2(parsedRes["annLink"].toString(), res.statusCode);
+      return parsedRes["annLink"].toString();
     } else {
       final parsedRes = jsonDecode(res.body);
       if (parsedRes["message"].toString().isNotEmpty) {
-        return Tuple2(parsedRes["message"].toString(), 500);
+        return null;
       }
 
-      return const Tuple2("Server error", 500);
+      return null;
     }
   }
 }

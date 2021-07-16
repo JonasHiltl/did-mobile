@@ -10,8 +10,9 @@ class Empty extends StatelessWidget {
     return Column(
       children: [
         SizedBox(
-            height: 100,
-            child: SvgPicture.asset('assets/images/undraw_no_data.svg')),
+          height: MediaQuery.of(context).size.height * 0.15,
+          child: SvgPicture.asset('assets/images/undraw_no_data.svg'),
+        ),
         const SizedBox(
           height: 8,
         ),

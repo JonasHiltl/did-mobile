@@ -630,6 +630,16 @@ class L {
     );
   }
 
+  /// `Skip`
+  String get skip {
+    return Intl.message(
+      'Skip',
+      name: 'skip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Yes`
   String get yes {
     return Intl.message(

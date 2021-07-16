@@ -14,7 +14,7 @@ class AuthNavigator extends StatelessWidget {
           pages: [
             //display introduction page
             if (state == AuthState.introduction)
-              MaterialPage(child: Introduction()),
+              const MaterialPage(child: Introduction()),
             //allow push Animation and display creation
             if (state == AuthState.creation) ...[
               MaterialPage(child: Creation()),

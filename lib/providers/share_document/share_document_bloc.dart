@@ -24,12 +24,13 @@ class ShareDocumentBloc extends Bloc<ShareDocumentEvent, ShareDocumentState> {
       yield state.copyWith(shareStatus: Sharing());
       try {
         final res = await repo.createChannel(state.doc, state.credential);
-        if (res.item2 != 200) {
+        if (res == null) {
           print(res);
-          yield state.copyWith(shareStatus: ShareFailed(res.item1));
+          yield state.copyWith(
+              shareStatus: ShareFailed("No announcement link returned"));
           yield state.copyWith(shareStatus: const InitialShareStatus());
         } else {
-          yield state.copyWith(channelLink: res.item1);
+          yield state.copyWith(channelLink: res);
           yield state.copyWith(shareStatus: ShareSuccess());
           yield state.copyWith(shareStatus: const InitialShareStatus());
         }

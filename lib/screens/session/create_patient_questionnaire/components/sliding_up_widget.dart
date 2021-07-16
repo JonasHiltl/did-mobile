@@ -248,20 +248,22 @@ class PanelWidget extends StatelessWidget {
   SizedBox _buildEmptyState(BuildContext context, String title, String text) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.35,
-      child:
-          Column(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-        Text(
-          title,
-          textAlign: TextAlign.center,
-          style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-        Empty(
-          text: text,
-        ),
-        Container()
-      ]),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          Empty(
+            text: text,
+          ),
+          Container()
+        ],
+      ),
     );
   }
 

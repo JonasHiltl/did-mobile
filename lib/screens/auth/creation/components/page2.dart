@@ -24,9 +24,11 @@ class _Page2State extends State<Page2>
 
   void setSex(String? value) {
     setState(() {
-      context
-          .read<CreateDidBloc>()
-          .add(CreateDidSexChanged(sex: value.toString()));
+      context.read<CreateDidBloc>().add(
+            CreateDidSexChanged(
+              sex: value.toString(),
+            ),
+          );
     });
   }
 
@@ -100,49 +102,54 @@ class _Page2State extends State<Page2>
                                         .dateOfBirth
                                     : DateTime.now(),
                                 theme: DatePickerTheme(
-                                    itemStyle: const TextStyle(
-                                        color: Colors.black, fontSize: 16),
-                                    doneStyle: TextStyle(
-                                        color: Theme.of(context).primaryColor,
-                                        fontSize: 16)),
+                                  itemStyle: const TextStyle(
+                                      color: Colors.black, fontSize: 16),
+                                  doneStyle: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 16),
+                                ),
                               ),
                               controller: dateController,
                               cursorWidth: 1,
                               readOnly: true,
                               style: const TextStyle(fontSize: 14),
                               decoration: InputDecoration(
-                                  isDense: true,
-                                  prefixIcon: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 15, horizontal: 10),
-                                      child: Text(
-                                        L.of(context).dateOfBirth,
-                                        style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.6)),
-                                      )),
-                                  prefixIconConstraints: const BoxConstraints(
-                                    minWidth: 100,
-                                  ),
-                                  suffixIcon: Icon(
-                                    Icons.calendar_today,
-                                    color: Colors.black.withOpacity(0.6),
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
+                                isDense: true,
+                                prefixIcon: Padding(
+                                  padding: const EdgeInsets.symmetric(
                                       vertical: 15, horizontal: 10),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6)),
+                                  child: Text(
+                                    L.of(context).dateOfBirth,
+                                    style: TextStyle(
+                                      color: Colors.black.withOpacity(0.6),
+                                    ),
                                   ),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                ),
+                                prefixIconConstraints: const BoxConstraints(
+                                  minWidth: 100,
+                                ),
+                                suffixIcon: Icon(
+                                  Icons.calendar_today,
+                                  color: Colors.black.withOpacity(0.6),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 10),
+                                border: const OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
                                     color: const Color(0xFFACB6C5)
                                         .withOpacity(0.6),
-                                  )),
-                                  filled: true,
-                                  fillColor: const Color(0xFFF1F3FD)),
+                                  ),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: const Color(0xFFACB6C5)
+                                        .withOpacity(0.6),
+                                  ),
+                                ),
+                                filled: true,
+                                fillColor: const Color(0xFFF1F3FD),
+                              ),
                             ),
                             SizedBox(
                               height: size.height * 0.02,
@@ -154,28 +161,31 @@ class _Page2State extends State<Page2>
                                   children: <Widget>[
                                     Expanded(
                                       child: Container(
-                                          padding: const EdgeInsets.fromLTRB(
-                                              0, 0, 18, 0),
-                                          decoration: BoxDecoration(
-                                              color: const Color(0xFFF1F3FD),
-                                              borderRadius:
-                                                  BorderRadius.circular(4.0),
-                                              border: Border.all(
-                                                  color: const Color(0xFFACB6C5)
-                                                      .withOpacity(0.6))),
-                                          child: Row(children: [
-                                            Radio(
-                                              value: "female",
-                                              groupValue: context
-                                                  .read<CreateDidBloc>()
-                                                  .state
-                                                  .sex,
-                                              onChanged: setSex,
-                                              activeColor: Theme.of(context)
-                                                  .primaryColor,
-                                            ),
-                                            Text(L.of(context).female),
-                                          ])),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 18, 0),
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFF1F3FD),
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          border: Border.all(
+                                            color: const Color(0xFFACB6C5)
+                                                .withOpacity(0.6),
+                                          ),
+                                        ),
+                                        child: Row(children: [
+                                          Radio(
+                                            value: "female",
+                                            groupValue: context
+                                                .read<CreateDidBloc>()
+                                                .state
+                                                .sex,
+                                            onChanged: setSex,
+                                            activeColor:
+                                                Theme.of(context).primaryColor,
+                                          ),
+                                          Text(L.of(context).female),
+                                        ]),
+                                      ),
                                     ),
                                     SizedBox(
                                       width: size.height * 0.02,
@@ -185,12 +195,14 @@ class _Page2State extends State<Page2>
                                         padding: const EdgeInsets.fromLTRB(
                                             0, 0, 18, 0),
                                         decoration: BoxDecoration(
-                                            color: const Color(0xFFF1F3FD),
-                                            borderRadius:
-                                                BorderRadius.circular(4.0),
-                                            border: Border.all(
-                                                color: const Color(0xFFACB6C5)
-                                                    .withOpacity(0.6))),
+                                          color: const Color(0xFFF1F3FD),
+                                          borderRadius:
+                                              BorderRadius.circular(4.0),
+                                          border: Border.all(
+                                            color: const Color(0xFFACB6C5)
+                                                .withOpacity(0.6),
+                                          ),
+                                        ),
                                         child: Row(
                                           children: [
                                             Radio(

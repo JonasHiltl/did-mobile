@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
               locale: Locale(state.language),
               home: AppNavigator(),
               routes: {
-                "/introduction": (context) => Introduction(),
+                "/introduction": (context) => const Introduction(),
                 "/create": (context) => Creation(),
               },
             );

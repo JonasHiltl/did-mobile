@@ -141,6 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Scanne den entstehenden QR-Code, um das Dokument abzurufen."),
         "sharing": MessageLookupByLibrary.simpleMessage("Teilen"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Geschlecht"),
+        "skip": MessageLookupByLibrary.simpleMessage("Überspringen"),
         "state": MessageLookupByLibrary.simpleMessage("Bundesland"),
         "submit": MessageLookupByLibrary.simpleMessage("Erstellen"),
         "symptom": MessageLookupByLibrary.simpleMessage("Symptom"),
