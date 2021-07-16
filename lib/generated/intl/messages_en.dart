@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Patient Questionnaire successfully created"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digital Identity successfully created"),
+        "created": MessageLookupByLibrary.simpleMessage("Created"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Created at: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
@@ -75,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "frequency": MessageLookupByLibrary.simpleMessage("Frequency"),
         "givePQName": MessageLookupByLibrary.simpleMessage(
             "Give your patient Questionnaire a name!"),
+        "identity": MessageLookupByLibrary.simpleMessage("Identity"),
         "introductionAction":
             MessageLookupByLibrary.simpleMessage("Create digital identity"),
         "invalidEmail":

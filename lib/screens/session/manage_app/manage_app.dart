@@ -72,7 +72,7 @@ class ManageApp extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              L.of(context).personalData,
+                              L.of(context).identity,
                               style: Theme.of(context).textTheme.headline6,
                             ),
                           ],
@@ -107,7 +107,7 @@ class ManageApp extends StatelessWidget {
                         Container(
                           padding: const EdgeInsets.all(8.0),
                           decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              color: Colors.grey.shade600,
                               borderRadius: BorderRadius.circular(6)),
                           child: Icon(
                             Icons.settings,

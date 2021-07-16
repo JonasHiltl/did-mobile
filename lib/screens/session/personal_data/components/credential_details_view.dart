@@ -63,38 +63,44 @@ class CredentialDetailsView extends StatelessWidget {
             label: L.of(context).email,
             value: credential.email,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualEmailUpdateScreen(
-                      initialValue: credential.email,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualEmailUpdateScreen(
+                  initialValue: credential.email,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).phoneNumber,
             value: credential.phoneNumber,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualPhoneNumberUpdateScreen(
-                      initialValue: credential.phoneNumber,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualPhoneNumberUpdateScreen(
+                  initialValue: credential.phoneNumber,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).dateOfBirth,
             value: DateFormat.yMMMd().format(credential.dateOfBirth),
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualDateOfBirthUpdateScreen(
-                      initialValue:
-                          DateFormat.yMMMd().format(credential.dateOfBirth),
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualDateOfBirthUpdateScreen(
+                  initialValue:
+                      DateFormat.yMMMd().format(credential.dateOfBirth),
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).sex,
@@ -102,73 +108,85 @@ class CredentialDetailsView extends StatelessWidget {
                 ? L.of(context).male
                 : L.of(context).female,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualSexUpdateScreen(
-                      initialValue: credential.sex,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualSexUpdateScreen(
+                  initialValue: credential.sex,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).address,
             value: credential.address.street,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualAddressUpdateScreen(
-                      initialValue: credential.address.street,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualAddressUpdateScreen(
+                  initialValue: credential.address.street,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).city,
             value: credential.address.city,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualCityUpdateScreen(
-                      initialValue: credential.address.city,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualCityUpdateScreen(
+                  initialValue: credential.address.city,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).state,
             value: credential.address.state,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualStateUpdateScreen(
-                      initialValue: credential.address.state,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualStateUpdateScreen(
+                  initialValue: credential.address.state,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).postalCode,
             value: credential.address.postalCode,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualPostalCodeUpdateScreen(
-                      initialValue: credential.address.postalCode,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualPostalCodeUpdateScreen(
+                  initialValue: credential.address.postalCode,
+                ),
+              ),
+            ),
           ),
           ChangeSingleValueWithExpandIcon(
             label: L.of(context).country,
             value: credential.address.country,
             onTap: () => Navigator.push(
-                context,
-                PageTransition(
-                    type: PageTransitionType.rightToLeft,
-                    curve: Curves.easeInOut,
-                    child: IndividualCountryUpdateScreen(
-                      initialValue: credential.address.country,
-                    ))),
+              context,
+              PageTransition(
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualCountryUpdateScreen(
+                  initialValue: credential.address.country,
+                ),
+              ),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.all(10.0),

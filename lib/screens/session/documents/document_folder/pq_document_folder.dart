@@ -1,5 +1,3 @@
-import 'dart:io' show Platform;
-
 import 'package:did/custom_icons/quader_font.dart';
 import 'package:did/global_components/alert.dart';
 import 'package:did/global_components/loading_indicator.dart';

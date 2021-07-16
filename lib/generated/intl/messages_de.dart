@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Patientenfragebogen erfolgreich erstellt"),
         "createSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erfolgreich erstellt"),
+        "created": MessageLookupByLibrary.simpleMessage("Erstellt"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Geburtsdatum"),
         "delete": MessageLookupByLibrary.simpleMessage("Löschen"),
@@ -76,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "frequency": MessageLookupByLibrary.simpleMessage("Häufigkeit"),
         "givePQName": MessageLookupByLibrary.simpleMessage(
             "Gib deinem Patientenfragebogen einen Namen!"),
+        "identity": MessageLookupByLibrary.simpleMessage("Identität"),
         "introductionAction": MessageLookupByLibrary.simpleMessage(
             "Digitale Identität erstellen"),
         "invalidEmail": MessageLookupByLibrary.simpleMessage(

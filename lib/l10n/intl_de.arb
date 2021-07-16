@@ -77,7 +77,9 @@
   "changeLanguage": "Sprache ändern",
 
   "createdAt": "Erstellt am: ",
+  "created": "Erstellt",
   "personalData": "Persönliche Daten",
+  "identity": "Identität",
   "settings": "Einstellungen",
   "deleteAll": "Alle Daten löschen",
   

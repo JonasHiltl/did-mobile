@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
-import '../providers/language/language_bloc.dart';
-import '../providers/language/language_event.dart';
-import '../providers/language/language_state.dart';
+import '../providers/app_settings/app_settings_bloc.dart';
+import '../providers/app_settings/app_settings_event.dart';
+import '../providers/app_settings/app_settings_state.dart';
 
 class ChangeLanguage extends StatefulWidget {
   @override
@@ -15,7 +15,8 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LanguageBloc, LanguageState>(builder: (context, state) {
+    return BlocBuilder<AppSettingsBloc, AppSettingsState>(
+        builder: (context, state) {
       return SizedBox(
         height: isExpanded ? 130 : 60,
         child: Stack(clipBehavior: Clip.none, children: [
@@ -71,7 +72,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                     children: [
                       GestureDetector(
                         behavior: HitTestBehavior.translucent,
-                        onTap: () => context.read<LanguageBloc>().add(
+                        onTap: () => context.read<AppSettingsBloc>().add(
                               LanguageChanged(language: "de"),
                             ),
                         child: Padding(
@@ -94,7 +95,7 @@ class _ChangeLanguageState extends State<ChangeLanguage> {
                       ),
                       GestureDetector(
                         behavior: HitTestBehavior.translucent,
-                        onTap: () => context.read<LanguageBloc>().add(
+                        onTap: () => context.read<AppSettingsBloc>().add(
                               LanguageChanged(language: "en"),
                             ),
                         child: Padding(

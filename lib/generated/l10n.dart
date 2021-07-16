@@ -760,11 +760,31 @@ class L {
     );
   }
 
+  /// `Created`
+  String get created {
+    return Intl.message(
+      'Created',
+      name: 'created',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Personal Data`
   String get personalData {
     return Intl.message(
       'Personal Data',
       name: 'personalData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Identity`
+  String get identity {
+    return Intl.message(
+      'Identity',
+      name: 'identity',
       desc: '',
       args: [],
     );

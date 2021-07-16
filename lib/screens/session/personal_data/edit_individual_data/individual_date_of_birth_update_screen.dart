@@ -1,6 +1,6 @@
 import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/noti.dart';
-import 'package:did/providers/language/language_bloc.dart';
+import 'package:did/providers/app_settings/app_settings_bloc.dart';
 import 'package:did/generated/l10n.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
@@ -97,11 +97,13 @@ class _IndividualDateOfBirthUpdateScreenState
                         TextFormField(
                           onTap: () => DatePicker.showDatePicker(
                             context,
-                            locale:
-                                context.read<LanguageBloc>().state.language ==
-                                        "en"
-                                    ? LocaleType.en
-                                    : LocaleType.de,
+                            locale: context
+                                        .read<AppSettingsBloc>()
+                                        .state
+                                        .language ==
+                                    "en"
+                                ? LocaleType.en
+                                : LocaleType.de,
                             onConfirm: (date) {
                               context.read<UpdatePersonalBloc>().add(
                                     UpdatePersonalDateOfBirthChanged(

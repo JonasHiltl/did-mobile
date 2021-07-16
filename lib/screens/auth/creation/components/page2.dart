@@ -1,6 +1,6 @@
 import 'package:did/providers/create_did/create_did_bloc.dart';
 import 'package:did/providers/create_did/create_did_event.dart';
-import 'package:did/providers/language/language_bloc.dart';
+import 'package:did/providers/app_settings/app_settings_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:did/generated/l10n.dart';
 import 'package:intl/intl.dart';
@@ -76,7 +76,7 @@ class _Page2State extends State<Page2>
                               onTap: () => DatePicker.showDatePicker(
                                 context,
                                 locale: context
-                                            .read<LanguageBloc>()
+                                            .read<AppSettingsBloc>()
                                             .state
                                             .language ==
                                         "en"

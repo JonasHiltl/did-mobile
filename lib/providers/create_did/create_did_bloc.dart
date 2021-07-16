@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:did/models/did/identity.dart';
 import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -47,17 +46,18 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
 
       try {
         final res = await repo.createDid(
-            state.firstName,
-            state.lastName,
-            state.email,
-            state.phoneNumber,
-            state.dateOfBirth,
-            state.sex,
-            state.address,
-            state.city,
-            state.state,
-            state.postalCode,
-            state.country);
+          state.firstName,
+          state.lastName,
+          state.email,
+          state.phoneNumber,
+          state.dateOfBirth,
+          state.sex,
+          state.address,
+          state.city,
+          state.state,
+          state.postalCode,
+          state.country,
+        );
         if (res == null) {
           yield state.copyWith(
               formStatus: SubmissionFailed("Backend error creating Did"));

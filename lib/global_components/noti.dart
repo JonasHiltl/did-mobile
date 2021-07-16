@@ -5,40 +5,73 @@ void showSuccessNoti({
   required String message,
   required BuildContext context,
 }) {
+/*   final snackBar = SnackBar(
+    duration: const Duration(seconds: 3),
+    behavior: SnackBarBehavior.floating,
+    backgroundColor: Theme.of(context).backgroundColor,
+    elevation: 0,
+    content: Row(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        const Icon(
+          Icons.check_circle,
+          color: Color(0xFF52C41A),
+          size: 18.0,
+        ),
+        const SizedBox(
+          width: 8,
+        ),
+        Expanded(
+          child: Text(
+            message,
+            style: Theme.of(context).textTheme.bodyText2,
+          ),
+        )
+      ],
+    ),
+  );
+
+  ScaffoldMessenger.of(context)
+    ..removeCurrentSnackBar()
+    ..showSnackBar(snackBar); */
   showFlash(
-      context: context,
-      duration: const Duration(seconds: 3),
-      builder: (context, controller) {
-        return Flash(
-            barrierColor: Colors.transparent,
-            controller: controller,
-            borderRadius: const BorderRadius.all(Radius.circular(2)),
-            boxShadows: [
-              BoxShadow(
-                  color: Colors.black.withOpacity(0.12),
-                  offset: const Offset(3.0, 3.0),
-                  blurRadius: 6)
-            ],
-            alignment: Alignment.topCenter,
-            margin: const EdgeInsets.all(15),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-              child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                const Icon(
-                  Icons.check_circle,
-                  color: Color(0xFF52C41A),
-                  size: 18.0,
-                ),
-                const SizedBox(
-                  width: 8,
-                ),
-                Text(
-                  message,
-                  style: Theme.of(context).textTheme.bodyText2,
-                )
-              ]),
-            ));
-      });
+    context: context,
+    duration: const Duration(seconds: 2),
+    builder: (context, controller) {
+      return Flash(
+        barrierColor: Colors.transparent,
+        behavior: FlashBehavior.floating,
+        position: FlashPosition.top,
+        controller: controller,
+        borderRadius: const BorderRadius.all(Radius.circular(2)),
+        boxShadows: [
+          BoxShadow(
+              color: Colors.black.withOpacity(0.12),
+              offset: const Offset(3.0, 3.0),
+              blurRadius: 6)
+        ],
+        margin: const EdgeInsets.all(15),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: Row(mainAxisSize: MainAxisSize.min, children: <Widget>[
+            const Icon(
+              Icons.check_circle,
+              color: Color(0xFF52C41A),
+              size: 18.0,
+            ),
+            const SizedBox(
+              width: 8,
+            ),
+            Text(
+              message,
+              style: Theme.of(context).textTheme.bodyText2,
+            )
+          ]),
+        ),
+      );
+    },
+  );
 }
 
 void showErrorNoti({
@@ -47,10 +80,12 @@ void showErrorNoti({
 }) {
   showFlash(
       context: context,
-      duration: const Duration(seconds: 5),
+      duration: const Duration(seconds: 2),
       builder: (context, controller) {
-        return Flash.dialog(
+        return Flash(
             barrierColor: Colors.transparent,
+            behavior: FlashBehavior.floating,
+            position: FlashPosition.top,
             controller: controller,
             borderRadius: const BorderRadius.all(Radius.circular(2)),
             boxShadows: [
@@ -59,7 +94,6 @@ void showErrorNoti({
                   offset: const Offset(3.0, 3.0),
                   blurRadius: 8)
             ],
-            alignment: Alignment.topCenter,
             margin: const EdgeInsets.all(20),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

@@ -2,27 +2,25 @@ import "package:flutter/material.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 
 import '../generated/l10n.dart';
-import '../providers/language/language_bloc.dart';
-import '../providers/language/language_event.dart';
-import '../providers/language/language_state.dart';
+import '../providers/app_settings/app_settings_bloc.dart';
+import '../providers/app_settings/app_settings_event.dart';
+import '../providers/app_settings/app_settings_state.dart';
 
 class MinimalChangeLanguage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(children: [
-      BlocBuilder<LanguageBloc, LanguageState>(builder: (context, state) {
+      BlocBuilder<AppSettingsBloc, AppSettingsState>(builder: (context, state) {
         return PopupMenuButton(
           offset: const Offset(0, 40),
           elevation: 2,
           iconSize: 20,
           onSelected: (value) {
-            context.read<LanguageBloc>().add(
+            context.read<AppSettingsBloc>().add(
                   LanguageChanged(language: value.toString()),
                 );
           },
-          icon: const Icon(
-            Icons.language,
-          ),
+          icon: const Icon(Icons.language),
           tooltip: L.of(context).changeLanguage,
           itemBuilder: (BuildContext context) => [
             PopupMenuItem(

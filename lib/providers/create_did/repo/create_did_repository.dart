@@ -46,6 +46,8 @@ class CreateDidRepository {
 
       final personalDataVc = PersonalDataVc.fromJson(credentialJson);
       final identity = Identity.fromJson(didJson);
+      print("DID Message Id: ${identity.messageId}");
+      print("DID Message Id: ${identity.messageId}");
 
       return DidVcCombination(
         identity: identity,

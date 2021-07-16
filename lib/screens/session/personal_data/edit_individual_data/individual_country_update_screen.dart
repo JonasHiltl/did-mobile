@@ -141,7 +141,7 @@ class _IndividualCountryUpdateScreenState
                                             country: value),
                                       )),
                           suggestionsCallback: (value) {
-                            return CountryService.getSuggestions(value);
+                            return getCountrySuggestion(value);
                           },
                           itemBuilder: (context, CustomCountry suggestion) {
                             final country = suggestion;

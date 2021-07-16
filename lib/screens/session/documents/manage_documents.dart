@@ -9,7 +9,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
-import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../generated/l10n.dart';
 import 'components/document_folder_preview.dart';

@@ -77,7 +77,9 @@
   "changeLanguage": "Change Language",
 
   "createdAt": "Created at: ",
+  "created": "Created",
   "personalData": "Personal Data",
+  "identity": "Identity",
   "settings": "Settings",
   "deleteAll": "Delete all data",
 
