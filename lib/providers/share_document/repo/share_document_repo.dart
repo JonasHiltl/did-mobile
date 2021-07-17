@@ -1,11 +1,10 @@
 import 'dart:convert';
-import 'package:did/models/did/doc.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:http/http.dart' as http;
 
 class ShareDocumentRepo {
   Future<String?> createChannel(
-    Doc doc,
+    String id,
     DynamicCredential credential,
   ) async {
     final _uri =
@@ -16,7 +15,7 @@ class ShareDocumentRepo {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode({
-        "didDoc": doc,
+        "id": id,
         "credential": credential,
       }),
     );

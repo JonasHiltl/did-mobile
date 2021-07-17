@@ -342,7 +342,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                       verificationMethod: sessionState
                           .patientQuestionnaires[i].proof.verificationMethod),
                 ),
-                doc: sessionState.identity.doc,
+                id: sessionState.identity.doc.id,
               ),
               child: Builder(builder: (context) {
                 return BlocConsumer<ShareDocumentBloc, ShareDocumentState>(

@@ -1,4 +1,3 @@
-import 'package:did/models/did/doc.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:did/providers/share_document/repo/share_document_repo.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,21 +8,21 @@ import 'share_status.dart';
 
 class ShareDocumentBloc extends Bloc<ShareDocumentEvent, ShareDocumentState> {
   final ShareDocumentRepo repo;
-  final Doc doc;
+  final String id;
   final DynamicCredential credential;
 
   ShareDocumentBloc({
     required this.repo,
-    required this.doc,
+    required this.id,
     required this.credential,
-  }) : super(ShareDocumentState(doc: doc, credential: credential));
+  }) : super(ShareDocumentState(id: id, credential: credential));
 
   @override
   Stream<ShareDocumentState> mapEventToState(ShareDocumentEvent event) async* {
     if (event is ShareDocument) {
       yield state.copyWith(shareStatus: Sharing());
       try {
-        final res = await repo.createChannel(state.doc, state.credential);
+        final res = await repo.createChannel(state.id, state.credential);
         if (res == null) {
           print(res);
           yield state.copyWith(

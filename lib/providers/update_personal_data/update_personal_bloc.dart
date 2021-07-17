@@ -73,6 +73,7 @@ class UpdatePersonalBloc
     } else if (event is UpdatePersonalPhoneNumberChanged) {
       yield state.copyWith(phoneNumber: event.phoneNumber);
     } else if (event is UpdatePersonalDateOfBirthChanged) {
+      print(event.dateOfBirth);
       yield state.copyWith(dateOfBirth: event.dateOfBirth);
     } else if (event is UpdatePersonalSexChanged) {
       yield state.copyWith(sex: event.sex);

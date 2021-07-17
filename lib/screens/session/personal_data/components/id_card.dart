@@ -13,18 +13,25 @@ class IdCard extends StatelessWidget {
         context.watch<Verified>().personalDataVc.credentialSubject;
     return Container(
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: LinearGradient(
+          borderRadius: BorderRadius.circular(20),
+          gradient: RadialGradient(
+            colors: [
+              const Color(0xFF70dfff),
+              Theme.of(context).primaryColor,
+            ],
+            center: Alignment.topRight,
+            radius: 2.2,
+          )
+          /* LinearGradient(
           colors: [
-            Colors.blueAccent,
             Theme.of(context).primaryColor,
-            Colors.blueAccent,
+            //Color(0xFF9fb1f5),
+            Color(0xFF48cae4),
           ],
-          stops: const [0.1, 0.5, 1],
           begin: Alignment.topLeft,
           end: Alignment.bottomRight,
-        ),
-      ),
+        ), */
+          ),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(

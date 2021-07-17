@@ -104,6 +104,7 @@ class _ScanQRState extends State<ScanQR> {
       setState(() {
         result = scanData.code;
       });
+      print(scanData.code);
     });
   }
 }

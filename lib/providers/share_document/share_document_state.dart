@@ -1,15 +1,14 @@
-import 'package:did/models/did/doc.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:did/providers/share_document/share_status.dart';
 
 class ShareDocumentState {
-  final Doc doc;
+  final String id;
   final DynamicCredential credential;
   final ShareStatus shareStatus;
   final String channelLink;
 
   ShareDocumentState({
-    required this.doc,
+    required this.id,
     required this.credential,
     this.channelLink = "",
     this.shareStatus = const InitialShareStatus(),
@@ -17,13 +16,13 @@ class ShareDocumentState {
 
   ShareDocumentState copyWith({
     String? channelLink,
-    Doc? doc,
+    String? id,
     DynamicCredential? credential,
     ShareStatus? shareStatus,
   }) {
     return ShareDocumentState(
       channelLink: channelLink ?? this.channelLink,
-      doc: doc ?? this.doc,
+      id: id ?? this.id,
       credential: credential ?? this.credential,
       shareStatus: shareStatus ?? this.shareStatus,
     );

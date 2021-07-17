@@ -26,11 +26,12 @@ void main() async {
   /* SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]); */
   runApp(
-    DevicePreview(
+    /* DevicePreview(
       plugins: const [FileExplorerPlugin(), ScreenshotPlugin()],
-      builder: (context) => MyApp(),
-      enabled: !kReleaseMode,
-    ),
+      builder: (context) =>  */
+    MyApp(),
+    /* enabled: !kReleaseMode,
+    ), */
   );
 }
 
