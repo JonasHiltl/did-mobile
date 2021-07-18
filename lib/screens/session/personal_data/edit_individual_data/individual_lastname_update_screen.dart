@@ -1,6 +1,7 @@
 import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/generated/l10n.dart';
+import 'package:did/global_components/universal_text_field.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/update_personal_data/form_submission_status.dart';
@@ -91,49 +92,15 @@ class _IndividualLastNameUpdateScreenState
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextFormField(
-                            style: Theme.of(context).textTheme.bodyText2,
-                            cursorWidth: 1,
-                            controller: _controller,
-                            decoration: InputDecoration(
-                                isDense: true,
-                                prefixIcon: Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 15, horizontal: 10),
-                                    child: Text(
-                                      L.of(context).lastName,
-                                      style: TextStyle(
-                                          color: Colors.black.withOpacity(0.6)),
-                                    )),
-                                prefixIconConstraints: const BoxConstraints(
-                                  minWidth: 120,
-                                ),
-                                contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 10),
-                                border: const OutlineInputBorder(),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .primary),
-                                ),
-                                enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6))),
-                                errorText: state.isValidlastName
-                                    ? null
-                                    : L.of(context).missingLastName,
-                                filled: true,
-                                fillColor: const Color(0xFFf1f3fd)),
-                            validator: (value) => state.isValidlastName
-                                ? null
-                                : L.of(context).missingLastName,
-                            onChanged: (value) =>
-                                context.read<UpdatePersonalBloc>().add(
-                                      UpdatePersonalLastNameChanged(
-                                          lastName: value),
-                                    )),
+                        UniversalTextField(
+                          prefixText: L.of(context).lastName,
+                          initialValue: widget.initialValue,
+                          onChanged: (value) => context
+                              .read<UpdatePersonalBloc>()
+                              .add(
+                                UpdatePersonalLastNameChanged(lastName: value),
+                              ),
+                        ),
                         SizedBox(
                             width: size.width - 20,
                             child: ElevatedButton(

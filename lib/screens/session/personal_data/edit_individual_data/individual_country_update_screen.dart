@@ -98,48 +98,48 @@ class _IndividualCountryUpdateScreenState
                               const SuggestionsBoxDecoration(
                                   elevation: 2, hasScrollbar: false),
                           textFieldConfiguration: TextFieldConfiguration(
-                              controller: _controller,
-                              cursorWidth: 1,
-                              style: Theme.of(context).textTheme.bodyText2,
-                              decoration: InputDecoration(
-                                  isDense: true,
-                                  prefixIcon: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 15, horizontal: 10),
-                                      child: Text(
-                                        L.of(context).country,
-                                        style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.6)),
-                                      )),
-                                  prefixIconConstraints: const BoxConstraints(
-                                    minWidth: 100,
-                                  ),
-                                  suffixIcon: const Icon(
-                                    Icons.expand_more,
-                                    size: 28,
-                                  ),
-                                  contentPadding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 10),
-                                  border: const OutlineInputBorder(),
-                                  focusedBorder: OutlineInputBorder(
+                            controller: _controller,
+                            cursorWidth: 1,
+                            style: Theme.of(context).textTheme.bodyText2,
+                            decoration: InputDecoration(
+                                isDense: true,
+                                prefixIcon: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 15, horizontal: 10),
+                                    child: Text(
+                                      L.of(context).country,
+                                      style: TextStyle(
+                                          color: Colors.black.withOpacity(0.6)),
+                                    )),
+                                prefixIconConstraints: const BoxConstraints(
+                                  minWidth: 100,
+                                ),
+                                suffixIcon: const Icon(
+                                  Icons.expand_more,
+                                  size: 28,
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 15, horizontal: 10),
+                                border: const OutlineInputBorder(),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .primary),
+                                ),
+                                enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary),
-                                  ),
-                                  enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
-                                    color: const Color(0xFFACB6C5)
-                                        .withOpacity(0.6),
-                                  )),
-                                  filled: true,
-                                  fillColor: const Color(0xFFF1F3FD)),
-                              onChanged: (value) =>
-                                  context.read<UpdatePersonalBloc>().add(
-                                        UpdatePersonalCountryChanged(
-                                            country: value),
-                                      )),
+                                  color:
+                                      const Color(0xFFACB6C5).withOpacity(0.6),
+                                )),
+                                filled: true,
+                                fillColor: const Color(0xFFF1F3FD)),
+                            onChanged: (value) => context
+                                .read<UpdatePersonalBloc>()
+                                .add(
+                                  UpdatePersonalCountryChanged(country: value),
+                                ),
+                          ),
                           suggestionsCallback: (value) {
                             return getCountrySuggestion(value);
                           },

@@ -1,3 +1,4 @@
+import 'package:did/global_components/universal_text_field.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,45 +23,15 @@ class _FirstNameFieldState extends State<FirstNameField>
   Widget build(BuildContext context) {
     super.build(context);
     return BlocBuilder<CreateDidBloc, CreateDidState>(
-        builder: (context, state) {
-      return TextFormField(
-        style: Theme.of(context).textTheme.bodyText2,
-        cursorWidth: 1,
-        decoration: InputDecoration(
-          isDense: true,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            child: Text(
-              L.of(context).firstName,
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.6),
+      builder: (context, state) {
+        return UniversalTextField(
+          prefixText: L.of(context).firstName,
+          onChanged: (value) => context.read<CreateDidBloc>().add(
+                CreateDidFirstNameChanged(firstName: value),
               ),
-            ),
-          ),
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 120,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          border: const OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
-          ),
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-            color: const Color(0xFFACB6C5).withOpacity(0.6),
-          )),
-          filled: true,
-          fillColor: const Color(0xFFf1f3fd),
-        ),
-        validator: (value) =>
-            state.isValidFirstName ? null : L.of(context).missingFirstName,
-        onChanged: (value) => context.read<CreateDidBloc>().add(
-              CreateDidFirstNameChanged(firstName: value),
-            ),
-      );
-    });
+        );
+      },
+    );
   }
 }
 
@@ -79,40 +50,8 @@ class _LastNameFieldState extends State<LastNameField>
     super.build(context);
     return BlocBuilder<CreateDidBloc, CreateDidState>(
       builder: (context, state) {
-        return TextFormField(
-          cursorWidth: 1,
-          style: Theme.of(context).textTheme.bodyText2,
-          decoration: InputDecoration(
-            isDense: true,
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              child: Text(
-                L.of(context).lastName,
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.6),
-                ),
-              ),
-            ),
-            prefixIconConstraints: const BoxConstraints(
-              minWidth: 120,
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            border: const OutlineInputBorder(),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Theme.of(context).colorScheme.primary),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: const Color(0xFFACB6C5).withOpacity(0.6),
-              ),
-            ),
-            filled: true,
-            fillColor: const Color(0xFFF1F3FD),
-          ),
-          validator: (value) =>
-              state.isValidlastName ? null : L.of(context).missingLastName,
+        return UniversalTextField(
+          prefixText: L.of(context).lastName,
           onChanged: (value) => context.read<CreateDidBloc>().add(
                 CreateDidLastNameChanged(lastName: value),
               ),
@@ -137,46 +76,9 @@ class _EmailFieldState extends State<EmailField>
     super.build(context);
     return BlocBuilder<CreateDidBloc, CreateDidState>(
       builder: (context, state) {
-        return TextFormField(
-          cursorWidth: 1,
-          style: Theme.of(context).textTheme.bodyText2,
-          decoration: InputDecoration(
-            isDense: true,
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              child: Text(
-                L.of(context).email,
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.6),
-                ),
-              ),
-            ),
-            prefixIconConstraints: const BoxConstraints(
-              minWidth: 120,
-            ),
-            errorText: state.showEmailError ? L.of(context).invalidEmail : null,
-            focusedErrorBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Color(0xFFFF4D4F),
-              ),
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            border: const OutlineInputBorder(),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Theme.of(context).colorScheme.primary),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: const Color(0xFFACB6C5).withOpacity(0.6),
-              ),
-            ),
-            filled: true,
-            fillColor: const Color(0xFFF1F3FD),
-          ),
-          validator: (value) =>
-              state.isValidEmail ? null : L.of(context).missingEmail,
+        return UniversalTextField(
+          prefixText: L.of(context).email,
+          errorText: state.showEmailError ? L.of(context).invalidEmail : null,
           onChanged: (value) => context.read<CreateDidBloc>().add(
                 CreateDidEmailChanged(email: value),
               ),
@@ -201,42 +103,9 @@ class _PhoneNumberFieldState extends State<PhoneNumberField>
     super.build(context);
     return BlocBuilder<CreateDidBloc, CreateDidState>(
       builder: (context, state) {
-        return TextFormField(
+        return UniversalTextField(
+          prefixText: L.of(context).phoneNumber,
           keyboardType: TextInputType.number,
-          cursorWidth: 1,
-          style: Theme.of(context).textTheme.bodyText2,
-          decoration: InputDecoration(
-            isDense: true,
-            prefixIcon: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-              child: Text(
-                L.of(context).phoneNumber,
-                style: TextStyle(
-                  color: Colors.black.withOpacity(0.6),
-                ),
-              ),
-            ),
-            prefixIconConstraints: const BoxConstraints(
-              minWidth: 120,
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            border: const OutlineInputBorder(),
-            focusedBorder: OutlineInputBorder(
-              borderSide:
-                  BorderSide(color: Theme.of(context).colorScheme.primary),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(
-                color: const Color(0xFFACB6C5).withOpacity(0.6),
-              ),
-            ),
-            filled: true,
-            fillColor: const Color(0xFFF1F3FD),
-          ),
-          validator: (value) => state.isValidPhoneNumber
-              ? null
-              : L.of(context).missingPhoneNumber,
           onChanged: (value) => context.read<CreateDidBloc>().add(
                 CreateDidPhoneNumberChanged(phoneNumber: value),
               ),
@@ -249,40 +118,8 @@ class _PhoneNumberFieldState extends State<PhoneNumberField>
 Widget addressField() {
   return BlocBuilder<CreateDidBloc, CreateDidState>(
     builder: (context, state) {
-      return TextFormField(
-        cursorWidth: 1,
-        style: Theme.of(context).textTheme.bodyText2,
-        decoration: InputDecoration(
-          isDense: true,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            child: Text(
-              L.of(context).address,
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.6),
-              ),
-            ),
-          ),
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 100,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          border: const OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: const Color(0xFFACB6C5).withOpacity(0.6),
-            ),
-          ),
-          filled: true,
-          fillColor: const Color(0xFFF1F3FD),
-        ),
-        validator: (value) =>
-            state.isValidAddress ? null : L.of(context).address,
+      return UniversalTextField(
+        prefixText: L.of(context).address,
         onChanged: (value) => context.read<CreateDidBloc>().add(
               CreateDidAddressChanged(address: value),
             ),
@@ -294,39 +131,8 @@ Widget addressField() {
 Widget cityField() {
   return BlocBuilder<CreateDidBloc, CreateDidState>(
     builder: (context, state) {
-      return TextFormField(
-        cursorWidth: 1,
-        style: Theme.of(context).textTheme.bodyText2,
-        decoration: InputDecoration(
-          isDense: true,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            child: Text(
-              L.of(context).city,
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.6),
-              ),
-            ),
-          ),
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 100,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          border: const OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: const Color(0xFFACB6C5).withOpacity(0.6),
-            ),
-          ),
-          filled: true,
-          fillColor: const Color(0xFFF1F3FD),
-        ),
-        validator: (value) => state.isValidCity ? null : L.of(context).city,
+      return UniversalTextField(
+        prefixText: L.of(context).city,
         onChanged: (value) => context.read<CreateDidBloc>().add(
               CreateDidCityChanged(city: value),
             ),
@@ -338,39 +144,8 @@ Widget cityField() {
 Widget stateField() {
   return BlocBuilder<CreateDidBloc, CreateDidState>(
     builder: (context, state) {
-      return TextFormField(
-        cursorWidth: 1,
-        style: Theme.of(context).textTheme.bodyText2,
-        decoration: InputDecoration(
-          isDense: true,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            child: Text(
-              L.of(context).state,
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.6),
-              ),
-            ),
-          ),
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 100,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          border: const OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: const Color(0xFFACB6C5).withOpacity(0.6),
-            ),
-          ),
-          filled: true,
-          fillColor: const Color(0xFFF1F3FD),
-        ),
-        validator: (value) => state.isValidState ? null : L.of(context).state,
+      return UniversalTextField(
+        prefixText: L.of(context).state,
         onChanged: (value) => context.read<CreateDidBloc>().add(
               CreateDidStateChanged(state: value),
             ),
@@ -382,41 +157,9 @@ Widget stateField() {
 Widget postalCodeField() {
   return BlocBuilder<CreateDidBloc, CreateDidState>(
     builder: (context, state) {
-      return TextFormField(
+      return UniversalTextField(
+        prefixText: L.of(context).postalCode,
         keyboardType: TextInputType.number,
-        cursorWidth: 1,
-        style: Theme.of(context).textTheme.bodyText2,
-        decoration: InputDecoration(
-          isDense: true,
-          prefixIcon: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-            child: Text(
-              L.of(context).postalCode,
-              style: TextStyle(
-                color: Colors.black.withOpacity(0.6),
-              ),
-            ),
-          ),
-          prefixIconConstraints: const BoxConstraints(
-            minWidth: 100,
-          ),
-          contentPadding:
-              const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
-          border: const OutlineInputBorder(),
-          focusedBorder: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: Theme.of(context).colorScheme.primary),
-          ),
-          enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(
-              color: const Color(0xFFACB6C5).withOpacity(0.6),
-            ),
-          ),
-          filled: true,
-          fillColor: const Color(0xFFF1F3FD),
-        ),
-        validator: (value) =>
-            state.isValidPostalCode ? null : L.of(context).postalCode,
         onChanged: (value) => context.read<CreateDidBloc>().add(
               CreateDidPostalCodeChanged(postalCode: value),
             ),
