@@ -82,6 +82,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Not a valid Email."),
         "issued": MessageLookupByLibrary.simpleMessage("Issued "),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "medication": MessageLookupByLibrary.simpleMessage("Medication"),
@@ -126,6 +127,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Phone Number"),
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medication"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "residence":
             MessageLookupByLibrary.simpleMessage("Residential Address"),
         "scanMessage": MessageLookupByLibrary.simpleMessage(

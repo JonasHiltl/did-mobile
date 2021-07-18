@@ -82,6 +82,8 @@
   "personalData": "Persönliche Daten",
   "identity": "Identität",
   "settings": "Einstellungen",
+  "profile": "Profil",
+  "language": "Sprache",
   "deleteAll": "Alle Daten löschen",
   
   "updateFirstName": "Vornamen aktualisieren",

@@ -10,8 +10,6 @@ class Credential extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 6,
-      shadowColor: Colors.black38,
       child: Stack(
         clipBehavior: Clip.none,
         children: <Widget>[

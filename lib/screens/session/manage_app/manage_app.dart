@@ -1,8 +1,12 @@
 import 'dart:io' show Platform;
+import 'dart:math' as math;
 
 import 'package:did/generated/l10n.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/app_settings/app_settings_bloc.dart';
+import 'package:did/providers/app_settings/app_settings_state.dart';
+import 'package:did/screens/session/manage_app/components/delete_all_button.dart';
 import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,8 +16,15 @@ import 'package:page_transition/page_transition.dart';
 import '../../../data/secure_storage.dart';
 import '../settings/settings.dart';
 
-class ManageApp extends StatelessWidget {
+class ManageApp extends StatefulWidget {
+  @override
+  _ManageAppState createState() => _ManageAppState();
+}
+
+class _ManageAppState extends State<ManageApp> {
   final SecureStorage secureStorage = SecureStorage();
+
+  bool isSettingsExpanded = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,202 +51,155 @@ class ManageApp extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-                child: InkWell(
-              onTap: () => Navigator.push(
+              child: InkWell(
+                onTap: () => Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      curve: Curves.easeInOut,
-                      child: PersonalData())),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
+                    type: PageTransitionType.rightToLeft,
+                    curve: Curves.easeInOut,
+                    child: PersonalData(),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                      horizontal: 20.0, vertical: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Container(
+                            padding: const EdgeInsets.all(4.0),
+                            decoration: BoxDecoration(
                               color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Icon(
-                            Icons.person,
-                            color: Theme.of(context).backgroundColor,
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 14,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              L.of(context).identity,
-                              style: Theme.of(context).textTheme.headline6,
+                              borderRadius: BorderRadius.circular(6),
                             ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const Icon(
-                      Icons.chevron_right,
-                      size: 20,
-                      color: Colors.black,
-                    )
-                  ],
+                            child: Icon(
+                              Icons.person,
+                              color: Theme.of(context).backgroundColor,
+                            ),
+                          ),
+                          const SizedBox(
+                            width: 14,
+                          ),
+                          Text(
+                            L.of(context).identity,
+                            style: Theme.of(context).textTheme.headline6,
+                          )
+                        ],
+                      ),
+                      Icon(
+                        Icons.chevron_right,
+                        size: 20,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      )
+                    ],
+                  ),
                 ),
               ),
-            )),
+            ),
             SliverToBoxAdapter(
-                child: InkWell(
-              onTap: () => Navigator.push(
-                  context,
-                  PageTransition(
-                      type: PageTransitionType.rightToLeft,
-                      curve: Curves.easeInOut,
-                      child: Settings())),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(8.0),
-                          decoration: BoxDecoration(
-                              color: Colors.grey.shade600,
-                              borderRadius: BorderRadius.circular(6)),
-                          child: Icon(
-                            Icons.settings,
-                            color: Theme.of(context).backgroundColor,
+              child: ListTileTheme(
+                contentPadding: const EdgeInsets.all(0),
+                dense: true,
+                child: Theme(
+                  data: Theme.of(context)
+                      .copyWith(dividerColor: Colors.transparent),
+                  child: ExpansionTile(
+                    tilePadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    childrenPadding: const EdgeInsets.all(0),
+                    title: Row(children: [
+                      Container(
+                        padding: const EdgeInsets.all(4.0),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.shade600,
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        child: Icon(
+                          Icons.settings,
+                          color: Theme.of(context).backgroundColor,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 14,
+                      ),
+                      Text(
+                        L.of(context).settings,
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                    ]),
+                    trailing: Transform.rotate(
+                      angle: isSettingsExpanded ? 90 * math.pi / 180 : 0,
+                      child: Icon(
+                        Icons.chevron_right,
+                        size: 20,
+                        color: Theme.of(context).colorScheme.onSurface,
+                      ),
+                    ),
+                    onExpansionChanged: (value) => setState(
+                      () => isSettingsExpanded = value,
+                    ),
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 20.0, vertical: 10.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  const SizedBox(
+                                    width: 46,
+                                  ),
+                                  Text(
+                                    L.of(context).language,
+                                  )
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  BlocBuilder<AppSettingsBloc,
+                                      AppSettingsState>(
+                                    builder: (context, state) {
+                                      return Text(
+                                        state.language == "en"
+                                            ? "English"
+                                            : "Deutsch",
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText2!
+                                            .copyWith(
+                                              color:
+                                                  Colors.black.withOpacity(0.6),
+                                            ),
+                                      );
+                                    },
+                                  ),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    size: 20,
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onSurface
+                                        .withOpacity(0.8),
+                                  )
+                                ],
+                              )
+                            ],
                           ),
                         ),
-                        const SizedBox(
-                          width: 14,
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              L.of(context).settings,
-                              style: Theme.of(context).textTheme.headline6,
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                    const Icon(
-                      Icons.chevron_right,
-                      size: 20,
-                      color: Colors.black,
-                    )
-                  ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            )),
-            SliverToBoxAdapter(
+            ),
+            const SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
-                child: ElevatedButton(
-                    onPressed: () => Platform.isAndroid
-                        ? showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: Text(L.of(context).deleteData),
-                                content:
-                                    Text(L.of(context).confirmDataDeletion),
-                                actions: [
-                                  TextButton(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text(L.of(context).no)),
-                                  TextButton(
-                                      onPressed: () {
-                                        context
-                                            .read<SessionCubit>()
-                                            .deleteAll();
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        L.of(context).yes,
-                                        style: TextStyle(
-                                            color:
-                                                Theme.of(context).errorColor),
-                                      ))
-                                ],
-                              );
-                            })
-                        : showCupertinoDialog(
-                            context: context,
-                            builder: (context) {
-                              return CupertinoAlertDialog(
-                                title: Text(L.of(context).deleteData),
-                                content:
-                                    Text(L.of(context).confirmDataDeletion),
-                                actions: [
-                                  CupertinoDialogAction(
-                                      onPressed: () => Navigator.pop(context),
-                                      child: Text(L.of(context).no)),
-                                  CupertinoDialogAction(
-                                      onPressed: () {
-                                        context
-                                            .read<SessionCubit>()
-                                            .deleteAll();
-                                        Navigator.pop(context);
-                                      },
-                                      child: Text(
-                                        L.of(context).yes,
-                                        style: TextStyle(
-                                            color:
-                                                Theme.of(context).errorColor),
-                                      ))
-                                ],
-                              );
-                            }),
-                    style: ButtonStyle(
-                        overlayColor: MaterialStateProperty.resolveWith<Color>(
-                            (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.focused)) {
-                            return const Color(0xFFf84042);
-                          }
-                          if (states.contains(MaterialState.hovered)) {
-                            return const Color(0xFFf84042);
-                          }
-                          if (states.contains(MaterialState.pressed)) {
-                            return const Color(0xFFe40a0c);
-                          }
-                          if (states.contains(MaterialState.disabled)) {
-                            return const Color(0xFFF5F5F5);
-                          }
-                          return Theme.of(context).errorColor;
-                        }),
-                        backgroundColor:
-                            MaterialStateProperty.resolveWith<Color>(
-                                (Set<MaterialState> states) {
-                          if (states.contains(MaterialState.focused)) {
-                            return const Color(0xFFf84042);
-                          }
-                          if (states.contains(MaterialState.hovered)) {
-                            return const Color(0xFFf84042);
-                          }
-                          if (states.contains(MaterialState.pressed)) {
-                            return const Color(0xFFe40a0c);
-                          }
-                          if (states.contains(MaterialState.disabled)) {
-                            return Colors.black.withOpacity(0.03);
-                          }
-                          return Theme.of(context).errorColor;
-                        }),
-                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4.0),
-                            side: BorderSide(
-                                color: Theme.of(context).errorColor)))),
-                    child: Text(L.of(context).deleteAll)),
+                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                child: DeleteAllButton(),
               ),
             )
           ],

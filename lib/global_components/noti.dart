@@ -5,36 +5,6 @@ void showSuccessNoti({
   required String message,
   required BuildContext context,
 }) {
-/*   final snackBar = SnackBar(
-    duration: const Duration(seconds: 3),
-    behavior: SnackBarBehavior.floating,
-    backgroundColor: Theme.of(context).backgroundColor,
-    elevation: 0,
-    content: Row(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        const Icon(
-          Icons.check_circle,
-          color: Color(0xFF52C41A),
-          size: 18.0,
-        ),
-        const SizedBox(
-          width: 8,
-        ),
-        Expanded(
-          child: Text(
-            message,
-            style: Theme.of(context).textTheme.bodyText2,
-          ),
-        )
-      ],
-    ),
-  );
-
-  ScaffoldMessenger.of(context)
-    ..removeCurrentSnackBar()
-    ..showSnackBar(snackBar); */
   showFlash(
     context: context,
     duration: const Duration(seconds: 2),
@@ -44,12 +14,13 @@ void showSuccessNoti({
         behavior: FlashBehavior.floating,
         position: FlashPosition.top,
         controller: controller,
-        borderRadius: const BorderRadius.all(Radius.circular(2)),
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
         boxShadows: [
           BoxShadow(
-              color: Colors.black.withOpacity(0.12),
-              offset: const Offset(3.0, 3.0),
-              blurRadius: 6)
+            color: Colors.black.withOpacity(0.12),
+            offset: const Offset(3.0, 3.0),
+            blurRadius: 6,
+          )
         ],
         margin: const EdgeInsets.all(15),
         child: Padding(
