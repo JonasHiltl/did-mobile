@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
+import 'package:did/theme.dart';
 
 class AppSettingsState {
   final String language;
-  final ThemeData themeData;
+  final AppTheme themeData;
 
   AppSettingsState({required this.language, required this.themeData});
 
   AppSettingsState copyWith({
     String? language,
-    ThemeData? themeData,
+    AppTheme? themeData,
   }) {
     return AppSettingsState(
       language: language ?? this.language,

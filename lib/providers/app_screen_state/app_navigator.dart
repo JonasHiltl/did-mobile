@@ -29,10 +29,11 @@ class AppNavigator extends StatelessWidget {
             //show session flow
             if (state is Verified)
               MaterialPage(
-                  child: Provider.value(
-                value: state,
-                child: SessionNavigator(),
-              ))
+                child: Provider.value(
+                  value: state,
+                  child: SessionNavigator(),
+                ),
+              )
           ],
           onPopPage: (route, result) => route.didPop(result),
         );

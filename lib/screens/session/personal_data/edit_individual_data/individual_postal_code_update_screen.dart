@@ -67,9 +67,6 @@ class _IndividualPostalCodeUpdateScreenState
               // if floating is true the appbar becomes instantly visible if scrolled towards top
               // if it's false the appbar is only visible if completly scrolled back to top
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              iconTheme: const IconThemeData(
-                color: Colors.black,
-              ),
               title: Text(
                 L.of(context).updatePostalCode,
                 style: Theme.of(context).textTheme.headline5,
@@ -128,8 +125,11 @@ class _IndividualPostalCodeUpdateScreenState
                                     width: 19,
                                     margin:
                                         const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                                    child: const LoadingIndicator(
-                                      color: Color(0xFFD9D9D9),
+                                    child: LoadingIndicator(
+                                      color: Theme.of(context).brightness ==
+                                              Brightness.light
+                                          ? const Color(0xFFD9D9D9)
+                                          : kTextFieldDarkBorder,
                                     ),
                                   )
                                 : Text(L.of(context).updatePostalCode),

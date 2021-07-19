@@ -4,6 +4,7 @@ import 'package:did/providers/app_screen_state/app_navigator.dart';
 import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import "package:did/screens/auth/introduction/introduction.dart";
+import 'package:did/theme.dart';
 import 'package:flutter/foundation.dart';
 import "package:flutter/material.dart";
 import "package:flutter_localizations/flutter_localizations.dart";
@@ -75,7 +76,7 @@ class MyApp extends StatelessWidget {
               title: "Flutter Demo",
               builder: DevicePreview.appBuilder,
               debugShowCheckedModeBanner: false,
-              theme: state.themeData,
+              theme: appTheme[state.themeData],
               localizationsDelegates: const [
                 L.delegate,
                 GlobalMaterialLocalizations.delegate,

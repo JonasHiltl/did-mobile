@@ -69,9 +69,6 @@ class _IndividualDateOfBirthUpdateScreenState
               // if floating is true the appbar becomes instantly visible if scrolled towards top
               // if it's false the appbar is only visible if completly scrolled back to top
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              iconTheme: const IconThemeData(
-                color: Colors.black,
-              ),
               title: Text(
                 L.of(context).updateDateOfBirth,
                 style: Theme.of(context).textTheme.headline5,
@@ -123,86 +120,111 @@ class _IndividualDateOfBirthUpdateScreenState
                                   .dateOfBirth
                               : DateTime.now(),
                           theme: DatePickerTheme(
-                              itemStyle: const TextStyle(
-                                  color: Colors.black, fontSize: 16),
-                              doneStyle: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 16),
-                              cancelStyle: TextStyle(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onSurface
-                                      .withOpacity(0.85),
-                                  fontSize: 16,
-                                  height: 1.5),
-                              backgroundColor:
-                                  Theme.of(context).backgroundColor),
+                            itemStyle: TextStyle(
+                              color: Theme.of(context).colorScheme.onBackground,
+                              fontSize: 16,
+                            ),
+                            doneStyle: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16,
+                            ),
+                            cancelStyle: TextStyle(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground,
+                                fontSize: 16,
+                                height: 1.5),
+                            backgroundColor: Theme.of(context).backgroundColor,
+                          ),
                         ),
                         controller: dateController,
                         cursorWidth: 1,
                         readOnly: true,
                         style: const TextStyle(fontSize: 14),
                         decoration: InputDecoration(
-                            isDense: true,
-                            prefixIcon: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 10),
-                                child: Text(
-                                  L.of(context).dateOfBirth,
-                                  style: TextStyle(
-                                      color: Colors.black.withOpacity(0.6)),
-                                )),
-                            prefixIconConstraints: const BoxConstraints(
-                              minWidth: 100,
-                            ),
-                            suffixIcon: Icon(
-                              Icons.calendar_today,
-                              color: Colors.black.withOpacity(0.6),
-                            ),
-                            contentPadding: const EdgeInsets.symmetric(
+                          isDense: true,
+                          prefixIcon: Padding(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 15, horizontal: 10),
-                            border: const OutlineInputBorder(),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                  color:
-                                      const Color(0xFFACB6C5).withOpacity(0.6)),
+                            child: Text(
+                              L.of(context).dateOfBirth,
+                              style: TextStyle(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onBackground
+                                    .withOpacity(0.6),
+                              ),
                             ),
-                            enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                              color: const Color(0xFFACB6C5).withOpacity(0.6),
-                            )),
-                            filled: true,
-                            fillColor: const Color(0xFFF1F3FD)),
+                          ),
+                          prefixIconConstraints: const BoxConstraints(
+                            minWidth: 100,
+                          ),
+                          suffixIcon: Icon(
+                            Icons.calendar_today,
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onBackground
+                                .withOpacity(0.6),
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 10,
+                          ),
+                          border: const OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? kTextFieldLightBorder
+                                  : kTextFieldDarkBorder,
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.light
+                                  ? kTextFieldLightBorder
+                                  : kTextFieldDarkBorder,
+                            ),
+                          ),
+                          filled: true,
+                          fillColor:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? kLightAccentBG
+                                  : kDarkAccentBG,
+                        ),
                       ),
                       SizedBox(
-                          width: size.width - kMediumPadding,
-                          child: ElevatedButton(
-                            onPressed: !state.isValidDateOfBirth ||
-                                    state.formStatus is FormSubmitting
-                                ? null
-                                : () {
-                                    final FocusScopeNode currentFocus =
-                                        FocusScope.of(context);
+                        width: size.width - kMediumPadding,
+                        child: ElevatedButton(
+                          onPressed: !state.isValidDateOfBirth ||
+                                  state.formStatus is FormSubmitting
+                              ? null
+                              : () {
+                                  final FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
 
-                                    if (!currentFocus.hasPrimaryFocus) {
-                                      currentFocus.unfocus();
-                                    }
-                                    context
-                                        .read<UpdatePersonalBloc>()
-                                        .add(UpdatePersonalSubmitted());
-                                  },
-                            child: state.formStatus is FormSubmitting
-                                ? Container(
-                                    height: 19,
-                                    width: 19,
-                                    margin:
-                                        const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                                    child: const LoadingIndicator(
-                                      color: Color(0xFFD9D9D9),
-                                    ),
-                                  )
-                                : Text(L.of(context).updateDateOfBirth),
-                          ))
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                  context
+                                      .read<UpdatePersonalBloc>()
+                                      .add(UpdatePersonalSubmitted());
+                                },
+                          child: state.formStatus is FormSubmitting
+                              ? Container(
+                                  height: 19,
+                                  width: 19,
+                                  margin: const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                                  child: LoadingIndicator(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? const Color(0xFFD9D9D9)
+                                        : kTextFieldDarkBorder,
+                                  ),
+                                )
+                              : Text(L.of(context).updateDateOfBirth),
+                        ),
+                      )
                     ],
                   ),
                 );

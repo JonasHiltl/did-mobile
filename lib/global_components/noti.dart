@@ -16,6 +16,7 @@ void showSuccessNoti({
         position: FlashPosition.top,
         controller: controller,
         borderRadius: const BorderRadius.all(Radius.circular(4)),
+        backgroundColor: Theme.of(context).backgroundColor,
         boxShadows: [
           BoxShadow(
             color: Colors.black.withOpacity(0.12),
@@ -63,6 +64,7 @@ void showErrorNoti({
         position: FlashPosition.top,
         controller: controller,
         borderRadius: const BorderRadius.all(Radius.circular(2)),
+        backgroundColor: Theme.of(context).backgroundColor,
         boxShadows: [
           BoxShadow(
               color: Colors.black.withOpacity(0.12),

@@ -62,16 +62,20 @@ class UniversalTextField extends StatelessWidget {
         ),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
-            color: const Color(0xFFACB6C5).withOpacity(0.6),
+            color: Theme.of(context).brightness == Brightness.light
+                ? kTextFieldLightBorder
+                : kTextFieldDarkBorder,
           ),
         ),
         errorText: errorText,
         hintText: hintText,
         hintStyle: TextStyle(
-          color: Colors.black.withOpacity(0.4),
+          color: Theme.of(context).colorScheme.onBackground.withOpacity(0.4),
         ),
         filled: true,
-        fillColor: const Color(0xFFf1f3fd),
+        fillColor: Theme.of(context).brightness == Brightness.light
+            ? kLightAccentBG
+            : kDarkAccentBG,
       ),
       onChanged: onChanged,
     );

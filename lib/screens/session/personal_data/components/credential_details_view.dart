@@ -39,11 +39,12 @@ class CredentialDetailsView extends StatelessWidget {
             onTap: () => Navigator.push(
               context,
               PageTransition(
-                  type: PageTransitionType.rightToLeft,
-                  curve: Curves.easeInOut,
-                  child: IndividualFirstNameUpdateScreen(
-                    initialValue: credential.firstName,
-                  )),
+                type: PageTransitionType.rightToLeft,
+                curve: Curves.easeInOut,
+                child: IndividualFirstNameUpdateScreen(
+                  initialValue: credential.firstName,
+                ),
+              ),
             ),
           ),
           ChangeSingleValueWithExpandIcon(
@@ -199,25 +200,29 @@ class CredentialDetailsView extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.fromLTRB(
-                kSmallPadding, 0, kSmallPadding, kSmallPadding),
+              kSmallPadding,
+              0,
+              kSmallPadding,
+              kSmallPadding,
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   L.of(context).createdAt,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
                 Text(
                   DateFormat.yMMMd().add_jm().format(
-                      DateTime.parse(sessionState.personalDataVc.issuanceDate)
-                          .toLocal()),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black.withOpacity(0.6)),
+                        DateTime.parse(sessionState.personalDataVc.issuanceDate)
+                            .toLocal(),
+                      ),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withOpacity(0.6),
+                      ),
                 ),
               ],
             ),

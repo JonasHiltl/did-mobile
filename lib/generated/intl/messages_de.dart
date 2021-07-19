@@ -56,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Digitale Identität erfolgreich erstellt"),
         "created": MessageLookupByLibrary.simpleMessage("Erstellt"),
         "createdAt": MessageLookupByLibrary.simpleMessage("Erstellt am: "),
+        "darkMode": MessageLookupByLibrary.simpleMessage("Dunkelmodus"),
         "dateOfBirth": MessageLookupByLibrary.simpleMessage("Geburtsdatum"),
         "delete": MessageLookupByLibrary.simpleMessage("Löschen"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Alle Daten löschen"),

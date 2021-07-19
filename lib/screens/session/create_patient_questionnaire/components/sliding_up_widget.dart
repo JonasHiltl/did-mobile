@@ -24,7 +24,7 @@ class _SlidingUpWidgetState extends State<SlidingUpWidget> {
     return SlidingUpPanel(
       boxShadow: [
         BoxShadow(
-          color: (Colors.grey[400])!,
+          color: Colors.black.withOpacity(0.5),
           offset: const Offset(0, 8),
           blurRadius: 20,
           spreadRadius: 1.0,
@@ -37,7 +37,12 @@ class _SlidingUpWidgetState extends State<SlidingUpWidget> {
         controller: controller,
         panelController: panelController,
       ),
-      borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
+      borderRadius: const BorderRadius.vertical(
+        top: Radius.circular(25),
+      ),
+      color: Theme.of(context).brightness == Brightness.light
+          ? kLightAccentBG
+          : kDarkAccentBG,
     );
   }
 }
@@ -58,11 +63,14 @@ class PanelWidget extends StatelessWidget {
             left: kMediumPadding,
             right: kMediumPadding,
             bottom: kSmallPadding,
-            top: kSmallPadding,
+            top: kSmallPadding - 2,
           ),
           child: Column(
             children: [
               _buildDragHandle(),
+              const SizedBox(
+                height: kSmallPadding - 2,
+              ),
               Expanded(
                 child: CustomScrollView(
                   controller: controller,
@@ -72,18 +80,16 @@ class PanelWidget extends StatelessWidget {
                     if (state.allergies.isEmpty) ...[
                       SliverToBoxAdapter(
                         child: _buildEmptyState(
-                            context,
-                            L.of(context).allergies,
-                            L.of(context).noAllergiesAddedYet),
+                          context,
+                          L.of(context).allergies,
+                          L.of(context).noAllergiesAddedYet,
+                        ),
                       )
                     ],
                     SliverList(
                       delegate: SliverChildListDelegate(
                         [
                           if (state.allergies.isNotEmpty) ...[
-                            const SizedBox(
-                              height: kSmallPadding,
-                            ),
                             Text(
                               L.of(context).allergies,
                               textAlign: TextAlign.center,
@@ -108,14 +114,17 @@ class PanelWidget extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   border: Border(
                                     bottom: BorderSide(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6)),
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6),
+                                    ),
                                     left: BorderSide(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6)),
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6),
+                                    ),
                                     right: BorderSide(
-                                        color: const Color(0xFFACB6C5)
-                                            .withOpacity(0.6)),
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6),
+                                    ),
                                   ),
                                 ),
                                 child: Padding(
@@ -166,6 +175,9 @@ class PanelWidget extends StatelessWidget {
                               ),
                           ],
                           if (state.medications.isEmpty) ...[
+                            const SizedBox(
+                              height: kSmallPadding,
+                            ),
                             _buildEmptyState(
                                 context,
                                 L.of(context).pluralMedication,
@@ -199,20 +211,21 @@ class PanelWidget extends StatelessWidget {
                             for (var i = 0; i < state.medications.length; i++)
                               Container(
                                 decoration: BoxDecoration(
-                                    border: Border(
-                                  bottom: BorderSide(
-                                    color: const Color(0xFFACB6C5)
-                                        .withOpacity(0.6),
+                                  border: Border(
+                                    bottom: BorderSide(
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6),
+                                    ),
+                                    left: BorderSide(
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6),
+                                    ),
+                                    right: BorderSide(
+                                      color: const Color(0xFFACB6C5)
+                                          .withOpacity(0.6),
+                                    ),
                                   ),
-                                  left: BorderSide(
-                                    color: const Color(0xFFACB6C5)
-                                        .withOpacity(0.6),
-                                  ),
-                                  right: BorderSide(
-                                    color: const Color(0xFFACB6C5)
-                                        .withOpacity(0.6),
-                                  ),
-                                )),
+                                ),
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
                                     horizontal: kMediumPadding,
@@ -221,18 +234,21 @@ class PanelWidget extends StatelessWidget {
                                   child: Row(
                                     children: [
                                       Expanded(
-                                          child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 2.0),
-                                        child: Text(state.medications[i].name),
-                                      )),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 2.0),
+                                          child:
+                                              Text(state.medications[i].name),
+                                        ),
+                                      ),
                                       Expanded(
-                                          child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 2.0),
-                                        child: Text(
-                                            state.medications[i].condition),
-                                      )),
+                                        child: Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 2.0),
+                                          child: Text(
+                                              state.medications[i].condition),
+                                        ),
+                                      ),
                                       Expanded(
                                         child: Padding(
                                           padding: const EdgeInsets.symmetric(
@@ -256,8 +272,10 @@ class PanelWidget extends StatelessWidget {
                                             GestureDetector(
                                               onTap: () => context
                                                   .read<CreatePQBloc>()
-                                                  .add(CreatePQRemoveMedication(
-                                                      index: i)),
+                                                  .add(
+                                                    CreatePQRemoveMedication(
+                                                        index: i),
+                                                  ),
                                               child: Icon(
                                                 Icons.delete_outline,
                                                 color: Theme.of(context)
@@ -307,8 +325,10 @@ class PanelWidget extends StatelessWidget {
     );
   }
 
-  Widget _buildDragHandle() =>
-      GestureDetector(onTap: togglePanel, child: BottomSheetDraghandle());
+  Widget _buildDragHandle() => GestureDetector(
+        onTap: togglePanel,
+        child: BottomSheetDraghandle(),
+      );
 
   void togglePanel() => panelController.isPanelOpen
       ? panelController.close()

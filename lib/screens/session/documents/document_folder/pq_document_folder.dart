@@ -46,9 +46,6 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
               elevation: 0.0,
               floating: true,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              iconTheme: const IconThemeData(
-                color: Colors.black,
-              ),
               title: Text(
                 widget.appBarTitle,
                 style: Theme.of(context).textTheme.headline5,
@@ -67,7 +64,9 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: kMediumPadding, vertical: kSmallPadding),
+                  horizontal: kMediumPadding,
+                  vertical: kSmallPadding,
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -97,10 +96,11 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
             if (sessionState.patientQuestionnaires.isNotEmpty)
               SliverPadding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: kMediumPadding, vertical: kSmallPadding),
+                  horizontal: kMediumPadding,
+                  vertical: kSmallPadding,
+                ),
                 sliver: SliverGrid.count(
                   mainAxisSpacing: kSmallPadding,
-                  crossAxisSpacing: kSmallPadding,
                   crossAxisCount: segmentedControlGroupValue ?? 1,
                   childAspectRatio: MediaQuery.of(context).size.width >= 480
                       ? segmentedControlGroupValue == 1
@@ -123,11 +123,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                     for (var i = 0;
                         i < sessionState.patientQuestionnaires.length;
                         i++)
-                      Material(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(6),
-                        elevation: 6,
-                        shadowColor: Colors.black38,
+                      Card(
                         child: InkWell(
                           onTap: () => showModalBottomSheet(
                             context: context,
@@ -242,92 +238,102 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                 ),
                 id: sessionState.identity.doc.id,
               ),
-              child: Builder(builder: (context) {
-                return BlocConsumer<ShareDocumentBloc, ShareDocumentState>(
-                  listener: (context, state) {
-                    if (state.shareStatus is ShareFailed) {
-                      Navigator.of(context).pop();
-                      showErrorNoti(
-                          message: L.of(context).shareDocErrorMessage,
-                          context: context);
-                    } else if (state.shareStatus is ShareSuccess) {
-                      Navigator.of(context).pop();
-                      showSuccessNoti(
-                          message: L.of(context).shareDocSuccessMessage,
-                          context: context);
-                      bottomSheet(
-                        context: context,
-                        title: L.of(context).share,
-                        content: [
-                          SingleChildScrollView(
-                            physics: const BouncingScrollPhysics(),
-                            child: Center(
-                              child: QrImage(
-                                data: state.channelLink,
-                                size: 200.0,
+              child: Builder(
+                builder: (context) {
+                  return BlocConsumer<ShareDocumentBloc, ShareDocumentState>(
+                    listener: (context, state) {
+                      if (state.shareStatus is ShareFailed) {
+                        Navigator.of(context).pop();
+                        showErrorNoti(
+                            message: L.of(context).shareDocErrorMessage,
+                            context: context);
+                      } else if (state.shareStatus is ShareSuccess) {
+                        Navigator.of(context).pop();
+                        showSuccessNoti(
+                            message: L.of(context).shareDocSuccessMessage,
+                            context: context);
+                        bottomSheet(
+                          context: context,
+                          title: L.of(context).share,
+                          content: [
+                            SingleChildScrollView(
+                              physics: const BouncingScrollPhysics(),
+                              child: Center(
+                                child: QrImage(
+                                  data: state.channelLink,
+                                  size: 200.0,
+                                  foregroundColor: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground,
+                                ),
+                              ),
+                            )
+                          ],
+                        );
+                      }
+                    },
+                    builder: (context, state) {
+                      return Column(
+                        children: [
+                          if (state.shareStatus is Sharing)
+                            LoadingAlert(
+                              title: L.of(context).sharing,
+                              message: L.of(context).sharemessage,
+                            )
+                          else ...[
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextButton(
+                                onPressed: state.shareStatus is Sharing
+                                    ? null
+                                    : () => context
+                                        .read<ShareDocumentBloc>()
+                                        .add(ShareDocument()),
+                                child: state.shareStatus is Sharing
+                                    ? const SizedBox(
+                                        height: 24,
+                                        width: 24,
+                                        child: LoadingIndicator(),
+                                      )
+                                    : Text(
+                                        L.of(context).share,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1,
+                                      ),
                               ),
                             ),
-                          )
+                            SizedBox(
+                              width: double.infinity,
+                              child: TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                  setState(
+                                    () {
+                                      context
+                                          .read<SessionCubit>()
+                                          .deletePQ(i, sessionState);
+                                    },
+                                  );
+                                },
+                                child: Text(
+                                  L.of(context).delete,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .copyWith(
+                                        color: Theme.of(context).errorColor,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ]
                         ],
                       );
-                    }
-                  },
-                  builder: (context, state) {
-                    return Column(
-                      children: [
-                        if (state.shareStatus is Sharing)
-                          LoadingAlert(
-                            title: L.of(context).sharing,
-                            message: L.of(context).sharemessage,
-                          )
-                        else ...[
-                          SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: state.shareStatus is Sharing
-                                  ? null
-                                  : () => context
-                                      .read<ShareDocumentBloc>()
-                                      .add(ShareDocument()),
-                              child: state.shareStatus is Sharing
-                                  ? const SizedBox(
-                                      height: 24,
-                                      width: 24,
-                                      child: LoadingIndicator())
-                                  : Text(L.of(context).share,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
-                            ),
-                          ),
-                          SizedBox(
-                            width: double.infinity,
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                                setState(() {
-                                  context
-                                      .read<SessionCubit>()
-                                      .deletePQ(i, sessionState);
-                                });
-                              },
-                              child: Text(
-                                L.of(context).delete,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyText1!
-                                    .copyWith(
-                                      color: Theme.of(context).errorColor,
-                                    ),
-                              ),
-                            ),
-                          ),
-                        ]
-                      ],
-                    );
-                  },
-                );
-              }),
+                    },
+                  );
+                },
+              ),
             ),
           ),
         ],

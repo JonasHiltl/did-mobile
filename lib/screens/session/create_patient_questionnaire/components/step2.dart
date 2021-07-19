@@ -64,11 +64,14 @@ class _Step2State extends State<Step2> {
               child: OutlinedButton(
                 onPressed: _allergyName.isEmpty || _symptom.isEmpty
                     ? null
-                    : () => context.read<CreatePQBloc>().add(CreatePQAddAllergy(
+                    : () => context.read<CreatePQBloc>().add(
+                          CreatePQAddAllergy(
                             allergy: Allergy(
-                          name: allergyNameController.text,
-                          symptom: allergySymptomController.text,
-                        ))),
+                              name: allergyNameController.text,
+                              symptom: allergySymptomController.text,
+                            ),
+                          ),
+                        ),
                 child: Text(L.of(context).addAllergy),
               ),
             ),

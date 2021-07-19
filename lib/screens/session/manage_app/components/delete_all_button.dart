@@ -22,7 +22,11 @@ class DeleteAllButton extends StatelessWidget {
                   actions: [
                     TextButton(
                       onPressed: () => Navigator.pop(context),
-                      child: Text(L.of(context).no),
+                      child: Text(
+                        L.of(context).no,
+                        style: TextStyle(
+                            color: Theme.of(context).colorScheme.onBackground),
+                      ),
                     ),
                     TextButton(
                       onPressed: () {
@@ -103,7 +107,10 @@ class DeleteAllButton extends StatelessWidget {
           ),
         ),
       ),
-      child: Text(L.of(context).deleteAll),
+      child: Text(
+        L.of(context).deleteAll,
+        style: const TextStyle(color: Colors.white),
+      ),
     );
   }
 }

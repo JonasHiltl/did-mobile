@@ -7,6 +7,7 @@ import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
+import '../../../../theme.dart';
 import 'customSteps.dart';
 
 class Page2 extends StatefulWidget {
@@ -38,7 +39,6 @@ class _Page2State extends State<Page2>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final Size size = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
         return SingleChildScrollView(
@@ -47,7 +47,7 @@ class _Page2State extends State<Page2>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: kMediumPadding),
                 child: Step2(),
               ),
               ConstrainedBox(
@@ -59,7 +59,9 @@ class _Page2State extends State<Page2>
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kMediumPadding,
+                      ),
                       child: Text(
                         L.of(context).createHeader,
                         textAlign: TextAlign.left,
@@ -67,7 +69,12 @@ class _Page2State extends State<Page2>
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
+                      padding: const EdgeInsets.fromLTRB(
+                        kMediumPadding,
+                        0,
+                        kMediumPadding,
+                        kMediumPadding,
+                      ),
                       child: Form(
                         key: widget.formKeys[1],
                         child: Column(
@@ -102,11 +109,24 @@ class _Page2State extends State<Page2>
                                         .dateOfBirth
                                     : DateTime.now(),
                                 theme: DatePickerTheme(
-                                  itemStyle: const TextStyle(
-                                      color: Colors.black, fontSize: 16),
+                                  itemStyle: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onBackground,
+                                    fontSize: 16,
+                                  ),
                                   doneStyle: TextStyle(
-                                      color: Theme.of(context).primaryColor,
-                                      fontSize: 16),
+                                    color: Theme.of(context).primaryColor,
+                                    fontSize: 16,
+                                  ),
+                                  cancelStyle: TextStyle(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground,
+                                      fontSize: 16,
+                                      height: 1.5),
+                                  backgroundColor:
+                                      Theme.of(context).backgroundColor,
                                 ),
                               ),
                               controller: dateController,
@@ -117,11 +137,16 @@ class _Page2State extends State<Page2>
                                 isDense: true,
                                 prefixIcon: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 10),
+                                    vertical: 15,
+                                    horizontal: kSmallPadding,
+                                  ),
                                   child: Text(
                                     L.of(context).dateOfBirth,
                                     style: TextStyle(
-                                      color: Colors.black.withOpacity(0.6),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground
+                                          .withOpacity(0.6),
                                     ),
                                   ),
                                 ),
@@ -130,15 +155,20 @@ class _Page2State extends State<Page2>
                                 ),
                                 suffixIcon: Icon(
                                   Icons.calendar_today,
-                                  color: Colors.black.withOpacity(0.6),
+                                  color: Theme.of(context)
+                                      .colorScheme
+                                      .onBackground
+                                      .withOpacity(0.6),
                                 ),
                                 contentPadding: const EdgeInsets.symmetric(
-                                    vertical: 15, horizontal: 10),
+                                    vertical: 15, horizontal: kSmallPadding),
                                 border: const OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
-                                    color: const Color(0xFFACB6C5)
-                                        .withOpacity(0.6),
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? kTextFieldLightBorder
+                                        : kTextFieldDarkBorder,
                                   ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
@@ -148,11 +178,14 @@ class _Page2State extends State<Page2>
                                   ),
                                 ),
                                 filled: true,
-                                fillColor: const Color(0xFFF1F3FD),
+                                fillColor: Theme.of(context).brightness ==
+                                        Brightness.light
+                                    ? kLightAccentBG
+                                    : kDarkAccentBG,
                               ),
                             ),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -161,15 +194,19 @@ class _Page2State extends State<Page2>
                                   children: <Widget>[
                                     Expanded(
                                       child: Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 18, 0),
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFFF1F3FD),
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? kLightAccentBG
+                                              : kDarkAccentBG,
                                           borderRadius:
                                               BorderRadius.circular(4.0),
                                           border: Border.all(
-                                            color: const Color(0xFFACB6C5)
-                                                .withOpacity(0.6),
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.light
+                                                    ? kTextFieldLightBorder
+                                                    : kTextFieldDarkBorder,
                                           ),
                                         ),
                                         child: Row(children: [
@@ -187,20 +224,24 @@ class _Page2State extends State<Page2>
                                         ]),
                                       ),
                                     ),
-                                    SizedBox(
-                                      width: size.height * 0.02,
+                                    const SizedBox(
+                                      width: kSmallPadding,
                                     ),
                                     Expanded(
                                       child: Container(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 18, 0),
                                         decoration: BoxDecoration(
-                                          color: const Color(0xFFF1F3FD),
+                                          color: Theme.of(context).brightness ==
+                                                  Brightness.light
+                                              ? kLightAccentBG
+                                              : kDarkAccentBG,
                                           borderRadius:
                                               BorderRadius.circular(4.0),
                                           border: Border.all(
-                                            color: const Color(0xFFACB6C5)
-                                                .withOpacity(0.6),
+                                            color:
+                                                Theme.of(context).brightness ==
+                                                        Brightness.light
+                                                    ? kTextFieldLightBorder
+                                                    : kTextFieldDarkBorder,
                                           ),
                                         ),
                                         child: Row(

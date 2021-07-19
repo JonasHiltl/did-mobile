@@ -19,7 +19,7 @@ class CreateDidRepository {
     String postalCode,
     String country,
   ) async {
-    final _uri = Uri.https("did-backend.herokuapp.com", "/create");
+    final _uri = Uri.https("did-backend.herokuapp.com", "/did/create");
     final res = await http.post(
       _uri,
       headers: <String, String>{

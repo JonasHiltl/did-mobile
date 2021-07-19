@@ -840,6 +840,16 @@ class L {
     );
   }
 
+  /// `Dark Mode`
+  String get darkMode {
+    return Intl.message(
+      'Dark Mode',
+      name: 'darkMode',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete all data`
   String get deleteAll {
     return Intl.message(

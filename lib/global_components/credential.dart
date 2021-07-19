@@ -18,14 +18,15 @@ class Credential extends StatelessWidget {
               Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(6),
-                        topRight: Radius.circular(6)),
-                    color: Theme.of(context).primaryColor,
-                    image: const DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(
-                            "assets/images/dot_pattern_light_50.png"))),
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(6),
+                      topRight: Radius.circular(6)),
+                  color: Theme.of(context).primaryColor,
+                  image: const DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage("assets/images/dot_pattern_light_50.png"),
+                  ),
+                ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: Text(
@@ -40,19 +41,29 @@ class Credential extends StatelessWidget {
               )
             ],
           ),
-          Container(
-              margin: const EdgeInsets.only(
-                top: 50,
+          Card(
+            margin: const EdgeInsets.only(
+              top: 50,
+            ),
+            child: Wrap(
+              children: children,
+            ),
+          ),
+          /* Container(
+            margin: const EdgeInsets.only(
+              top: 50,
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.surface,
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(6),
+                topRight: Radius.circular(6),
               ),
-              width: MediaQuery.of(context).size.width - 40,
-              decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surface,
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(6),
-                      topRight: Radius.circular(6))),
-              child: Wrap(
-                children: children,
-              )),
+            ),
+            child: Wrap(
+              children: children,
+            ),
+          ), */
         ],
       ),
     );

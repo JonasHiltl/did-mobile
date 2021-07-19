@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:did/global_components/minimal_change_language.dart';
 import 'package:did/generated/l10n.dart';
 
+import '../../../../theme.dart';
 import 'customSteps.dart';
 import 'customTextFields.dart';
 
@@ -11,7 +12,6 @@ class Page1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
         return SingleChildScrollView(
@@ -19,7 +19,7 @@ class Page1 extends StatelessWidget {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20),
+                padding: const EdgeInsets.only(top: kMediumPadding),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -39,7 +39,9 @@ class Page1 extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: kMediumPadding,
+                      ),
                       child: Text(
                         L.of(context).createHeader,
                         textAlign: TextAlign.left,
@@ -47,7 +49,12 @@ class Page1 extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20.0, 0, 20.0, 20.0),
+                      padding: const EdgeInsets.fromLTRB(
+                        kMediumPadding,
+                        0,
+                        kMediumPadding,
+                        kMediumPadding,
+                      ),
                       child: Form(
                         key: formKeys[0],
                         child: Column(
@@ -55,16 +62,16 @@ class Page1 extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FirstNameField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             LastNameField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             EmailField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             PhoneNumberField()
                           ],

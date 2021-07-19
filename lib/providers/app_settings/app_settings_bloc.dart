@@ -12,7 +12,7 @@ class AppSettingsBloc extends Bloc<AppSettingsEvent, AppSettingsState> {
   }) : super(
           AppSettingsState(
             language: language,
-            themeData: appTheme[theme]!,
+            themeData: theme,
           ),
         );
 
@@ -24,7 +24,7 @@ class AppSettingsBloc extends Bloc<AppSettingsEvent, AppSettingsState> {
     }
     if (event is ThemeChanged) {
       changeTheme(event.theme);
-      yield state.copyWith(themeData: appTheme[event.theme]);
+      yield state.copyWith(themeData: event.theme);
     }
   }
 }

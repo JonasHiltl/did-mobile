@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:did/generated/l10n.dart';
 
@@ -20,7 +21,6 @@ class _Page3State extends State<Page3>
   @override
   Widget build(BuildContext context) {
     super.build(context);
-    final Size size = MediaQuery.of(context).size;
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints viewportConstraints) {
         return SingleChildScrollView(
@@ -57,20 +57,20 @@ class _Page3State extends State<Page3>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             addressField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             cityField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             stateField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             postalCodeField(),
-                            SizedBox(
-                              height: size.height * 0.02,
+                            const SizedBox(
+                              height: kSmallPadding,
                             ),
                             CountryField()
                           ],

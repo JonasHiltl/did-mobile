@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../../theme.dart';
+
 class CustomStepper extends StatefulWidget {
   final int currentStep;
   const CustomStepper({required this.currentStep});
@@ -32,8 +34,9 @@ class _CustomStepperState extends State<CustomStepper> {
             child: Center(
               child: Text(
                 "1",
-                style:
-                    TextStyle(color: Theme.of(context).colorScheme.onSecondary),
+                style: TextStyle(
+                  color: Theme.of(context).backgroundColor,
+                ),
               ),
             ),
           ),
@@ -45,7 +48,9 @@ class _CustomStepperState extends State<CustomStepper> {
           height: 1.0,
           color: widget.currentStep >= 1
               ? Theme.of(context).primaryColor
-              : Colors.grey.shade400,
+              : Theme.of(context).brightness == Brightness.light
+                  ? Colors.grey.shade400
+                  : kDarkAccentBG,
         ),
       ),
       Padding(
@@ -61,7 +66,11 @@ class _CustomStepperState extends State<CustomStepper> {
                 : null,
             border: widget.currentStep >= 1
                 ? null
-                : Border.all(color: Colors.black38),
+                : Border.all(
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.grey.shade400
+                        : kDarkAccentBG,
+                  ),
           ),
           child: Container(
             width: 30,
@@ -76,9 +85,12 @@ class _CustomStepperState extends State<CustomStepper> {
               child: Text(
                 "2",
                 style: TextStyle(
-                    color: widget.currentStep >= 1
-                        ? Theme.of(context).colorScheme.onSecondary
-                        : Colors.black38),
+                  color: widget.currentStep >= 1
+                      ? Theme.of(context).backgroundColor
+                      : Theme.of(context).brightness == Brightness.light
+                          ? Colors.black38
+                          : kDarkAccentBG,
+                ),
               ),
             ),
           ),
@@ -90,7 +102,9 @@ class _CustomStepperState extends State<CustomStepper> {
           height: 1.0,
           color: widget.currentStep >= 2
               ? Theme.of(context).primaryColor
-              : Colors.grey.shade400,
+              : Theme.of(context).brightness == Brightness.light
+                  ? Colors.grey.shade400
+                  : kDarkAccentBG,
         ),
       ),
       Padding(
@@ -106,7 +120,11 @@ class _CustomStepperState extends State<CustomStepper> {
                 : null,
             border: widget.currentStep >= 2
                 ? null
-                : Border.all(color: Colors.black38),
+                : Border.all(
+                    color: Theme.of(context).brightness == Brightness.light
+                        ? Colors.grey.shade400
+                        : kDarkAccentBG,
+                  ),
           ),
           child: Container(
             width: 30,
@@ -121,9 +139,12 @@ class _CustomStepperState extends State<CustomStepper> {
               child: Text(
                 "3",
                 style: TextStyle(
-                    color: widget.currentStep >= 2
-                        ? Theme.of(context).colorScheme.onSecondary
-                        : Colors.black38),
+                  color: widget.currentStep >= 2
+                      ? Theme.of(context).backgroundColor
+                      : Theme.of(context).brightness == Brightness.light
+                          ? Colors.black38
+                          : kDarkAccentBG,
+                ),
               ),
             ),
           ),

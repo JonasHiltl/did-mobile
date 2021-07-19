@@ -163,9 +163,6 @@ class _CreatePatientQuestionnaireState
             automaticallyImplyLeading: false,
             elevation: 0.0,
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            iconTheme: const IconThemeData(
-              color: Colors.black,
-            ),
             actions: [
               IconButton(
                 icon: const Icon(
@@ -237,10 +234,14 @@ class _CreatePatientQuestionnaireState
                                                         margin: const EdgeInsets
                                                                 .fromLTRB(
                                                             7, 0, 7, 0),
-                                                        child:
-                                                            const LoadingIndicator(
-                                                          color:
-                                                              Color(0xFFD9D9D9),
+                                                        child: LoadingIndicator(
+                                                          color: Theme.of(context)
+                                                                      .brightness ==
+                                                                  Brightness
+                                                                      .light
+                                                              ? const Color(
+                                                                  0xFFD9D9D9)
+                                                              : kTextFieldDarkBorder,
                                                         ),
                                                       )
                                                     : Text(
@@ -259,11 +260,13 @@ class _CreatePatientQuestionnaireState
                                             ),
                                             Expanded(
                                               child: OutlinedButton(
-                                                  onPressed: currentStep == 0
-                                                      ? null
-                                                      : decreaseUntil0,
-                                                  child:
-                                                      Text(L.of(context).back)),
+                                                onPressed: currentStep == 0
+                                                    ? null
+                                                    : decreaseUntil0,
+                                                child: Text(
+                                                  L.of(context).back,
+                                                ),
+                                              ),
                                             ),
                                           ],
                                         ),

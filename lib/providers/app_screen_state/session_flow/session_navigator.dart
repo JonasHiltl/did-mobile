@@ -72,33 +72,37 @@ class _SessionNavigatorState extends State<SessionNavigator> {
               onTap: (int index) {
                 _selectTab(pageKeys[index], index);
               },
-              backgroundColor: Colors.white,
               currentIndex: _selectedIndex,
               showUnselectedLabels: false,
               showSelectedLabels: false,
-              items: const [
+              items: [
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.home_outlined,
                   ),
                   activeIcon: Icon(
                     Icons.home_rounded,
+                    color: Theme.of(context).primaryColor,
                   ),
                   label: "Home",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.folder_outlined,
                   ),
-                  activeIcon: Icon(Icons.folder),
+                  activeIcon: Icon(
+                    Icons.folder,
+                    color: Theme.of(context).primaryColor,
+                  ),
                   label: "Documents",
                 ),
                 BottomNavigationBarItem(
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.admin_panel_settings_outlined,
                   ),
                   activeIcon: Icon(
                     Icons.admin_panel_settings_rounded,
+                    color: Theme.of(context).primaryColor,
                   ),
                   label: "Settings",
                 ),

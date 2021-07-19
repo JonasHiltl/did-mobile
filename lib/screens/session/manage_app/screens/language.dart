@@ -22,10 +22,7 @@ class LanguageScreen extends StatelessWidget {
               // if floating is true the appbar becomes instantly visible if scrolled towards top
               // if it's false the appbar is only visible if completly scrolled back to top
               floating: true,
-              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              iconTheme: const IconThemeData(
-                color: Colors.black,
-              ),
+              backgroundColor: Theme.of(context).backgroundColor,
               title: Text(
                 L.of(context).languages,
                 style: Theme.of(context).textTheme.headline5,
@@ -49,11 +46,18 @@ class LanguageScreen extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(0, 0, 18, 0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFF1F3FD),
-                            borderRadius: BorderRadius.circular(4.0),
-                            border: Border.all(
-                                color:
-                                    const Color(0xFFACB6C5).withOpacity(0.6))),
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? kLightAccentBG
+                                  : kDarkAccentBG,
+                          borderRadius: BorderRadius.circular(4.0),
+                          border: Border.all(
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? kTextFieldLightBorder
+                                    : kTextFieldDarkBorder,
+                          ),
+                        ),
                         child: Row(
                           children: [
                             Radio(
@@ -84,11 +88,18 @@ class LanguageScreen extends StatelessWidget {
                       child: Container(
                         padding: const EdgeInsets.fromLTRB(0, 0, 18, 0),
                         decoration: BoxDecoration(
-                            color: const Color(0xFFF1F3FD),
-                            borderRadius: BorderRadius.circular(4.0),
-                            border: Border.all(
-                                color:
-                                    const Color(0xFFACB6C5).withOpacity(0.6))),
+                          color:
+                              Theme.of(context).brightness == Brightness.light
+                                  ? kLightAccentBG
+                                  : kDarkAccentBG,
+                          borderRadius: BorderRadius.circular(4.0),
+                          border: Border.all(
+                            color:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? kTextFieldLightBorder
+                                    : kTextFieldDarkBorder,
+                          ),
+                        ),
                         child: Row(
                           children: [
                             Radio(

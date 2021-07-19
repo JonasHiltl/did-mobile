@@ -85,6 +85,7 @@
   "profile": "Profile",
   "language": "Language",
   "languages": "Languages",
+  "darkMode": "Dark Mode",
   "deleteAll": "Delete all data",
 
   "updateFirstName": "Update First Name",

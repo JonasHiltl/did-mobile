@@ -13,7 +13,6 @@ String getLanguage() => _preferences.getString("language") ?? "en";
 
 Future changeTheme(AppTheme theme) {
   final themeString = theme == AppTheme.light ? "light" : "dark";
-  print("Theme: $themeString");
   return _preferences.setString("theme", themeString);
 }
 

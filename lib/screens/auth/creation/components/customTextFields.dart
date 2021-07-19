@@ -8,6 +8,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../providers/create_did/create_did_bloc.dart';
 import '../../../../providers/create_did/create_did_event.dart';
 import '../../../../providers/create_did/create_did_state.dart';
+import '../../../../theme.dart';
 
 class FirstNameField extends StatefulWidget {
   @override
@@ -181,8 +182,10 @@ class _CountryFieldState extends State<CountryField> {
     return BlocBuilder<CreateDidBloc, CreateDidState>(
       builder: (context, state) {
         return TypeAheadField(
-          suggestionsBoxDecoration:
-              const SuggestionsBoxDecoration(elevation: 2, hasScrollbar: false),
+          suggestionsBoxDecoration: const SuggestionsBoxDecoration(
+            elevation: 2,
+            hasScrollbar: false,
+          ),
           textFieldConfiguration: TextFieldConfiguration(
             controller: txt,
             cursorWidth: 1,
@@ -194,17 +197,22 @@ class _CountryFieldState extends State<CountryField> {
                     const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
                 child: Text(
                   L.of(context).country,
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.6),
-                  ),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground
+                            .withOpacity(0.6),
+                      ),
                 ),
               ),
               prefixIconConstraints: const BoxConstraints(
                 minWidth: 100,
               ),
-              suffixIcon: const Icon(
+              suffixIcon: Icon(
                 Icons.expand_more,
                 size: 28,
+                color:
+                    Theme.of(context).colorScheme.onBackground.withOpacity(0.6),
               ),
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
@@ -219,7 +227,9 @@ class _CountryFieldState extends State<CountryField> {
                 ),
               ),
               filled: true,
-              fillColor: const Color(0xFFF1F3FD),
+              fillColor: Theme.of(context).brightness == Brightness.light
+                  ? kLightAccentBG
+                  : kDarkAccentBG,
             ),
             onChanged: (value) => context.read<CreateDidBloc>().add(
                   CreateDidCountryChanged(country: value),

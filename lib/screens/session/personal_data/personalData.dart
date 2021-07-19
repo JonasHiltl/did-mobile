@@ -31,9 +31,6 @@ class _PersonalDataState extends State<PersonalData> {
           // if it's false the appbar is only visible if completly scrolled back to top
           floating: true,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          iconTheme: const IconThemeData(
-            color: Colors.black,
-          ),
           title: Text(
             L.of(context).identity,
             style: Theme.of(context).textTheme.headline5,

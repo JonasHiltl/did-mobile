@@ -92,7 +92,10 @@ class PQBottomSheet extends StatelessWidget {
                                     style: Theme.of(context)
                                         .textTheme
                                         .bodyText2!
-                                        .copyWith(color: Colors.black),
+                                        .copyWith(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onBackground),
                                   ),
                                   Text(
                                     "${patientQuestionnaires[i].credentialSubject.address.street}, ${patientQuestionnaires[i].credentialSubject.address.postalCode} ${patientQuestionnaires[i].credentialSubject.address.city}, ${patientQuestionnaires[i].credentialSubject.address.state} ${patientQuestionnaires[i].credentialSubject.address.country}",
@@ -100,8 +103,11 @@ class PQBottomSheet extends StatelessWidget {
                                         .textTheme
                                         .bodyText2!
                                         .copyWith(
-                                            color:
-                                                Colors.black.withOpacity(0.6)),
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onBackground
+                                              .withOpacity(0.6),
+                                        ),
                                   ),
                                 ],
                               ),
@@ -208,7 +214,7 @@ class PQBottomSheet extends StatelessWidget {
                         ),
                       if (patientQuestionnaires[i]
                           .credentialSubject
-                          .allergies
+                          .medication
                           .isEmpty) ...[
                         const Padding(
                           padding: EdgeInsets.all(kSmallPadding),
@@ -358,7 +364,10 @@ class PQBottomSheet extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .bodyText2!
-                                  .copyWith(color: Colors.black),
+                                  .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground),
                             ),
                             Text(
                               DateFormat.yMMMd().add_jm().format(DateTime.parse(
@@ -368,7 +377,10 @@ class PQBottomSheet extends StatelessWidget {
                                   .textTheme
                                   .bodyText2!
                                   .copyWith(
-                                      color: Colors.black.withOpacity(0.6)),
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground
+                                          .withOpacity(0.6)),
                             ),
                           ],
                         ),
@@ -422,17 +434,16 @@ class _BuildRow extends StatelessWidget {
               children: [
                 Text(
                   label1,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground),
                 ),
                 Text(
                   text1,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black.withOpacity(0.6)),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onBackground
+                          .withOpacity(0.6)),
                 ),
               ],
             ),
@@ -446,17 +457,16 @@ class _BuildRow extends StatelessWidget {
               children: [
                 Text(
                   label2,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Theme.of(context).colorScheme.onBackground),
                 ),
                 Text(
                   text2,
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyText2!
-                      .copyWith(color: Colors.black.withOpacity(0.6)),
+                  style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onBackground
+                          .withOpacity(0.6)),
                 ),
               ],
             ),

@@ -68,9 +68,6 @@ class _IndividualCountryUpdateScreenState
               // if floating is true the appbar becomes instantly visible if scrolled towards top
               // if it's false the appbar is only visible if completly scrolled back to top
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-              iconTheme: const IconThemeData(
-                color: Colors.black,
-              ),
               title: Text(
                 L.of(context).updateCountry,
                 style: Theme.of(context).textTheme.headline5,
@@ -99,42 +96,63 @@ class _IndividualCountryUpdateScreenState
                       TypeAheadField(
                         suggestionsBoxDecoration:
                             const SuggestionsBoxDecoration(
-                                elevation: 2, hasScrollbar: false),
+                          elevation: 2,
+                          hasScrollbar: false,
+                        ),
                         textFieldConfiguration: TextFieldConfiguration(
                           controller: _controller,
                           cursorWidth: 1,
                           style: Theme.of(context).textTheme.bodyText2,
                           decoration: InputDecoration(
-                              isDense: true,
-                              prefixIcon: Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 10),
-                                  child: Text(
-                                    L.of(context).country,
-                                    style: TextStyle(
-                                        color: Colors.black.withOpacity(0.6)),
-                                  )),
-                              prefixIconConstraints: const BoxConstraints(
-                                minWidth: 100,
-                              ),
-                              suffixIcon: const Icon(
-                                Icons.expand_more,
-                                size: 28,
-                              ),
-                              contentPadding: const EdgeInsets.symmetric(
+                            isDense: true,
+                            prefixIcon: Padding(
+                              padding: const EdgeInsets.symmetric(
                                   vertical: 15, horizontal: 10),
-                              border: const OutlineInputBorder(),
-                              focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
+                              child: Text(
+                                L.of(context).country,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyText2!
+                                    .copyWith(
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onBackground
+                                          .withOpacity(0.6),
+                                    ),
                               ),
-                              enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                color: const Color(0xFFACB6C5).withOpacity(0.6),
-                              )),
-                              filled: true,
-                              fillColor: const Color(0xFFF1F3FD)),
+                            ),
+                            prefixIconConstraints: const BoxConstraints(
+                              minWidth: 100,
+                            ),
+                            suffixIcon: Icon(
+                              Icons.expand_more,
+                              size: 28,
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withOpacity(0.6),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 10),
+                            border: const OutlineInputBorder(),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                  color: Theme.of(context).colorScheme.primary),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: Theme.of(context).brightness ==
+                                        Brightness.light
+                                    ? kTextFieldLightBorder
+                                    : kTextFieldDarkBorder,
+                              ),
+                            ),
+                            filled: true,
+                            fillColor:
+                                Theme.of(context).brightness == Brightness.light
+                                    ? kLightAccentBG
+                                    : kDarkAccentBG,
+                          ),
                           onChanged: (value) => context
                               .read<UpdatePersonalBloc>()
                               .add(
@@ -179,34 +197,37 @@ class _IndividualCountryUpdateScreenState
                         },
                       ),
                       SizedBox(
-                          width: size.width - kMediumPadding,
-                          child: ElevatedButton(
-                            onPressed: !state.isValidCountry ||
-                                    state.formStatus is FormSubmitting
-                                ? null
-                                : () {
-                                    final FocusScopeNode currentFocus =
-                                        FocusScope.of(context);
+                        width: size.width - kMediumPadding,
+                        child: ElevatedButton(
+                          onPressed: !state.isValidCountry ||
+                                  state.formStatus is FormSubmitting
+                              ? null
+                              : () {
+                                  final FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
 
-                                    if (!currentFocus.hasPrimaryFocus) {
-                                      currentFocus.unfocus();
-                                    }
-                                    context
-                                        .read<UpdatePersonalBloc>()
-                                        .add(UpdatePersonalSubmitted());
-                                  },
-                            child: state.formStatus is FormSubmitting
-                                ? Container(
-                                    height: 19,
-                                    width: 19,
-                                    margin:
-                                        const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                                    child: const LoadingIndicator(
-                                      color: Color(0xFFD9D9D9),
-                                    ),
-                                  )
-                                : Text(L.of(context).updateCountry),
-                          ))
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                  context
+                                      .read<UpdatePersonalBloc>()
+                                      .add(UpdatePersonalSubmitted());
+                                },
+                          child: state.formStatus is FormSubmitting
+                              ? Container(
+                                  height: 19,
+                                  width: 19,
+                                  margin: const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                                  child: LoadingIndicator(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? const Color(0xFFD9D9D9)
+                                        : kTextFieldDarkBorder,
+                                  ),
+                                )
+                              : Text(L.of(context).updateCountry),
+                        ),
+                      )
                     ],
                   ),
                 );

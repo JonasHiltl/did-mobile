@@ -22,24 +22,31 @@ class MinimalChangeLanguage extends StatelessWidget {
                       LanguageChanged(language: value.toString()),
                     );
               },
-              icon: const Icon(Icons.language),
+              icon: const Icon(
+                Icons.language,
+              ),
               tooltip: L.of(context).changeLanguage,
               itemBuilder: (BuildContext context) => [
                 PopupMenuItem(
-                    value: "en",
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("English",
-                              style: Theme.of(context).textTheme.bodyText2),
-                          if (state.language == "en") ...[
-                            Icon(
-                              Icons.check_circle,
-                              size: 18,
-                              color: Colors.black.withOpacity(0.60),
-                            )
-                          ]
-                        ])),
+                  value: "en",
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("English",
+                          style: Theme.of(context).textTheme.bodyText2),
+                      if (state.language == "en") ...[
+                        Icon(
+                          Icons.check_circle,
+                          size: 18,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onBackground
+                              .withOpacity(0.6),
+                        )
+                      ]
+                    ],
+                  ),
+                ),
                 PopupMenuItem(
                   value: "de",
                   child: Row(
@@ -51,7 +58,10 @@ class MinimalChangeLanguage extends StatelessWidget {
                         Icon(
                           Icons.check_circle,
                           size: 18,
-                          color: Colors.black.withOpacity(0.60),
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onBackground
+                              .withOpacity(0.6),
                         )
                       ]
                     ],
