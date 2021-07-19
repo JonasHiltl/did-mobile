@@ -7,6 +7,7 @@ import 'package:did/providers/create_patient_questionnaire/form_submission_statu
 import 'package:did/providers/create_patient_questionnaire/create_PQ_bloc.dart';
 import 'package:did/providers/create_patient_questionnaire/create_PQ_event.dart';
 import 'package:did/providers/create_patient_questionnaire/create_PQ_state.dart';
+import 'package:did/theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,7 +46,7 @@ class _CreatePatientQuestionnaireState
               mainAxisSize: MainAxisSize.min,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: kSmallPadding),
                   child: Text(L.of(context).givePQName),
                 ),
                 UniversalTextField(
@@ -91,7 +92,7 @@ class _CreatePatientQuestionnaireState
             content: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
+                  padding: const EdgeInsets.symmetric(vertical: kSmallPadding),
                   child: Text(L.of(context).givePQName),
                 ),
                 CupertinoTextField(
@@ -194,7 +195,7 @@ class _CreatePatientQuestionnaireState
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.all(kMediumPadding),
                         child: LayoutBuilder(
                           builder: (BuildContext context,
                               BoxConstraints viewportConstraints) {
@@ -254,7 +255,7 @@ class _CreatePatientQuestionnaireState
                                               ),
                                             ),
                                             const SizedBox(
-                                              width: 10,
+                                              width: kSmallPadding,
                                             ),
                                             Expanded(
                                               child: OutlinedButton(

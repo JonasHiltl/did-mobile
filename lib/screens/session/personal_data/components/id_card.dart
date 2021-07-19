@@ -1,4 +1,5 @@
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -33,7 +34,7 @@ class IdCard extends StatelessWidget {
         ), */
           ),
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(kSmallPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -65,7 +66,7 @@ class IdCard extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: kSmallPadding,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -91,7 +92,7 @@ class IdCard extends StatelessWidget {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: kSmallPadding,
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,

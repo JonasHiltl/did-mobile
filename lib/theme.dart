@@ -2,6 +2,12 @@ import 'package:flutter/material.dart';
 
 enum AppTheme { dark, light }
 
+const double kSmallPadding = 10;
+
+const double kMediumPadding = 20;
+
+const double kBigPadding = 40;
+
 final appTheme = {
   AppTheme.light: ThemeData(
     brightness: Brightness.light,

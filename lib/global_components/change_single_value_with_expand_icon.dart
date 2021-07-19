@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 
 class ChangeSingleValueWithExpandIcon extends StatelessWidget {
@@ -15,7 +16,7 @@ class ChangeSingleValueWithExpandIcon extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.all(kSmallPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -36,7 +37,7 @@ class ChangeSingleValueWithExpandIcon extends StatelessWidget {
                         .copyWith(color: Colors.black.withOpacity(0.6)),
                   ),
                   const SizedBox(
-                    width: 10,
+                    width: kSmallPadding,
                   ),
                   const Icon(
                     Icons.chevron_right,

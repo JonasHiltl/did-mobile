@@ -7,6 +7,7 @@ import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/app_settings/app_settings_bloc.dart';
 import 'package:did/providers/app_settings/app_settings_state.dart';
 import 'package:did/screens/session/manage_app/components/delete_all_button.dart';
+import 'package:did/screens/session/manage_app/screens/language.dart';
 import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../../data/secure_storage.dart';
-import '../settings/settings.dart';
+import '../../../theme.dart';
 
 class ManageApp extends StatefulWidget {
   @override
@@ -47,7 +48,7 @@ class _ManageAppState extends State<ManageApp> {
             ),
             const SliverToBoxAdapter(
               child: SizedBox(
-                height: 10,
+                height: kSmallPadding,
               ),
             ),
             SliverToBoxAdapter(
@@ -62,7 +63,7 @@ class _ManageAppState extends State<ManageApp> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
-                      horizontal: 20.0, vertical: 10.0),
+                      horizontal: kMediumPadding, vertical: kSmallPadding),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -77,10 +78,11 @@ class _ManageAppState extends State<ManageApp> {
                             child: Icon(
                               Icons.person,
                               color: Theme.of(context).backgroundColor,
+                              size: 20,
                             ),
                           ),
                           const SizedBox(
-                            width: 14,
+                            width: kSmallPadding,
                           ),
                           Text(
                             L.of(context).identity,
@@ -106,7 +108,8 @@ class _ManageAppState extends State<ManageApp> {
                   data: Theme.of(context)
                       .copyWith(dividerColor: Colors.transparent),
                   child: ExpansionTile(
-                    tilePadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    tilePadding:
+                        const EdgeInsets.symmetric(horizontal: kMediumPadding),
                     childrenPadding: const EdgeInsets.all(0),
                     title: Row(children: [
                       Container(
@@ -118,10 +121,11 @@ class _ManageAppState extends State<ManageApp> {
                         child: Icon(
                           Icons.settings,
                           color: Theme.of(context).backgroundColor,
+                          size: 20,
                         ),
                       ),
                       const SizedBox(
-                        width: 14,
+                        width: kSmallPadding,
                       ),
                       Text(
                         L.of(context).settings,
@@ -141,17 +145,26 @@ class _ManageAppState extends State<ManageApp> {
                     ),
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.rightToLeft,
+                            curve: Curves.easeInOut,
+                            child: LanguageScreen(),
+                          ),
+                        ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20.0, vertical: 10.0),
+                            horizontal: kMediumPadding,
+                            vertical: kSmallPadding,
+                          ),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Row(
                                 children: [
                                   const SizedBox(
-                                    width: 46,
+                                    width: 40,
                                   ),
                                   Text(
                                     L.of(context).language,
@@ -171,8 +184,10 @@ class _ManageAppState extends State<ManageApp> {
                                             .textTheme
                                             .bodyText2!
                                             .copyWith(
-                                              color:
-                                                  Colors.black.withOpacity(0.6),
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface
+                                                  .withOpacity(0.6),
                                             ),
                                       );
                                     },
@@ -198,7 +213,8 @@ class _ManageAppState extends State<ManageApp> {
             ),
             const SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+                padding: EdgeInsets.symmetric(
+                    horizontal: kMediumPadding, vertical: kSmallPadding),
                 child: DeleteAllButton(),
               ),
             )

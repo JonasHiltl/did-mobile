@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 
 class DocumentFolderPreview extends StatelessWidget {
@@ -20,7 +21,10 @@ class DocumentFolderPreview extends StatelessWidget {
       child: Container(
         constraints:
             BoxConstraints(minWidth: MediaQuery.of(context).size.width * 0.7),
-        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        padding: const EdgeInsets.symmetric(
+          vertical: 16,
+          horizontal: 24,
+        ),
         decoration: BoxDecoration(
           color: backgroundColor,
           borderRadius: BorderRadius.circular(6),
@@ -28,14 +32,14 @@ class DocumentFolderPreview extends StatelessWidget {
         child: Row(
           children: [
             Container(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(kSmallPadding),
               decoration: BoxDecoration(
                   color: Theme.of(context).backgroundColor,
                   borderRadius: BorderRadius.circular(6)),
               child: icon,
             ),
             const SizedBox(
-              width: 14,
+              width: kSmallPadding,
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,

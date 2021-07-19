@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:page_transition/page_transition.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../theme.dart';
 import 'components/document_folder_preview.dart';
 
 class ManageDocuments extends StatelessWidget {
@@ -104,7 +105,9 @@ class ManageDocuments extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
+                  horizontal: kMediumPadding,
+                  vertical: kSmallPadding,
+                ),
                 child: Row(
                   children: [
                     DocumentFolderPreview(

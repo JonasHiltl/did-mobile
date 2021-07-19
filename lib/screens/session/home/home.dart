@@ -1,5 +1,6 @@
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/screens/session/home/components/create_first_questionnaire.dart';
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -35,8 +36,10 @@ class _HomeState extends State<Home> {
         if (sessionState.patientQuestionnaires.isEmpty)
           SliverToBoxAdapter(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+              padding: const EdgeInsets.symmetric(
+                vertical: kSmallPadding,
+                horizontal: kMediumPadding,
+              ),
               child: CreateFirstQuestionnaire(),
             ),
           ),

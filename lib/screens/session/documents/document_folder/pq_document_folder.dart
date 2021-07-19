@@ -20,6 +20,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../theme.dart';
 
 class PQDocumentFolder extends StatefulWidget {
   final String appBarTitle;
@@ -66,7 +67,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
+                    horizontal: kMediumPadding, vertical: kSmallPadding),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -96,10 +97,10 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
             if (sessionState.patientQuestionnaires.isNotEmpty)
               SliverPadding(
                 padding: const EdgeInsets.symmetric(
-                    horizontal: 20.0, vertical: 10.0),
+                    horizontal: kMediumPadding, vertical: kSmallPadding),
                 sliver: SliverGrid.count(
-                  mainAxisSpacing: 10.0,
-                  crossAxisSpacing: 10.0,
+                  mainAxisSpacing: kSmallPadding,
+                  crossAxisSpacing: kSmallPadding,
                   crossAxisCount: segmentedControlGroupValue ?? 1,
                   childAspectRatio: MediaQuery.of(context).size.width >= 480
                       ? segmentedControlGroupValue == 1
@@ -153,7 +154,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                 ),
                                 if (segmentedControlGroupValue == 1)
                                   const SizedBox(
-                                    width: 8,
+                                    width: kSmallPadding,
                                   ),
                                 if (segmentedControlGroupValue == 2)
                                   const SizedBox(
@@ -214,110 +215,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
     );
   }
 
-// The
   void bottomModal(BuildContext context, int i, Verified sessionState) =>
-      /* Platform.isIOS
-          ? showCupertinoModalPopup(
-              useRootNavigator: false,
-              context: context,
-              builder: (context) => CupertinoActionSheet(
-                actions: [
-                  RepositoryProvider(
-                    create: (context) => ShareDocumentRepo(),
-                    child: BlocProvider(
-                      create: (context) => ShareDocumentBloc(
-                        repo: context.read<ShareDocumentRepo>(),
-                        credential: DynamicCredential(
-                          context:
-                              sessionState.patientQuestionnaires[i].context,
-                          id: sessionState.patientQuestionnaires[i].id,
-                          type: sessionState.patientQuestionnaires[i].type,
-                          credentialSubject: sessionState
-                              .patientQuestionnaires[i].credentialSubject,
-                          issuer: sessionState.patientQuestionnaires[i].issuer,
-                          issuanceDate: sessionState
-                              .patientQuestionnaires[i].issuanceDate,
-                          proof: Proof(
-                              type: sessionState
-                                  .patientQuestionnaires[i].proof.type,
-                              signatureValue: sessionState
-                                  .patientQuestionnaires[i]
-                                  .proof
-                                  .signatureValue,
-                              verificationMethod: sessionState
-                                  .patientQuestionnaires[i]
-                                  .proof
-                                  .verificationMethod),
-                        ),
-                        doc: sessionState.identity.doc,
-                      ),
-                      child: Builder(builder: (context) {
-                        return BlocListener<ShareDocumentBloc,
-                            ShareDocumentState>(
-                          listener: (context, state) {
-                            if (state.shareStatus is ShareFailed) {
-                              Navigator.of(context).pop();
-                              showErrorNoti(
-                                message: L.of(context).shareDocErrorMessage,
-                                context: context,
-                              );
-                            } else if (state.shareStatus is ShareSuccess) {
-                              Navigator.of(context).pop();
-                              showSuccessNoti(
-                                message: L.of(context).shareDocSuccessMessage,
-                                context: context,
-                              );
-                              bottomSheet(
-                                title: L.of(context).share,
-                                context: context,
-                                content: [
-                                  QrImage(
-                                    data: state.channelLink,
-                                    size: 200.0,
-                                  )
-                                ],
-                              );
-                            }
-                          },
-                          child: BlocBuilder<ShareDocumentBloc,
-                              ShareDocumentState>(
-                            builder: (context, state) {
-                              return CupertinoActionSheetAction(
-                                onPressed: () => context
-                                    .read<ShareDocumentBloc>()
-                                    .add(ShareDocument()),
-                                child: state.shareStatus is Sharing
-                                    ? const LoadingIndicator()
-                                    : Text(L.of(context).share),
-                              );
-                            },
-                          ),
-                        );
-                      }),
-                    ),
-                  ),
-                  CupertinoActionSheetAction(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      setState(() {
-                        context.read<SessionCubit>().deletePQ(i, sessionState);
-                      });
-                    },
-                    child: Text(
-                      L.of(context).delete,
-                      style: TextStyle(color: Theme.of(context).errorColor),
-                    ),
-                  ),
-                ],
-                cancelButton: CupertinoActionSheetAction(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: Text(
-                    L.of(context).cancel,
-                  ),
-                ),
-              ),
-            )
-          :  */
       bottomSheet(
         context: context,
         content: [

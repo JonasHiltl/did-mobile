@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../theme.dart';
 
 class Step2 extends StatefulWidget {
   @override
@@ -28,7 +29,7 @@ class _Step2State extends State<Step2> {
         Text(L.of(context).anyAllergies,
             style: Theme.of(context).textTheme.headline5),
         const SizedBox(
-          height: 10,
+          height: kSmallPadding,
         ),
         Column(
           children: [
@@ -43,7 +44,7 @@ class _Step2State extends State<Step2> {
               ),
             ),
             const SizedBox(
-              height: 10,
+              height: kSmallPadding,
             ),
             UniversalTextField(
               prefixText: L.of(context).symptom,
@@ -56,7 +57,7 @@ class _Step2State extends State<Step2> {
               ),
             ),
             const SizedBox(
-              height: 4,
+              height: 6,
             ),
             SizedBox(
               width: double.infinity,

@@ -84,6 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Dies ist keine gültige E-Mail."),
         "issued": MessageLookupByLibrary.simpleMessage("Erstellt am "),
         "language": MessageLookupByLibrary.simpleMessage("Sprache"),
+        "languages": MessageLookupByLibrary.simpleMessage("Sprachen"),
         "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
         "male": MessageLookupByLibrary.simpleMessage("Männlich"),
         "medication": MessageLookupByLibrary.simpleMessage("Medikament"),

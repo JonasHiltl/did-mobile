@@ -95,16 +95,16 @@ class _IndividualSexUpdateScreenState extends State<IndividualSexUpdateScreen> {
                             children: <Widget>[
                               Expanded(
                                 child: Container(
-                                    padding:
-                                        const EdgeInsets.fromLTRB(0, 0, 18, 0),
-                                    decoration: BoxDecoration(
-                                        color: const Color(0xFFF1F3FD),
-                                        borderRadius:
-                                            BorderRadius.circular(4.0),
-                                        border: Border.all(
-                                            color: const Color(0xFFACB6C5)
-                                                .withOpacity(0.6))),
-                                    child: Row(children: [
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 18, 0),
+                                  decoration: BoxDecoration(
+                                      color: const Color(0xFFF1F3FD),
+                                      borderRadius: BorderRadius.circular(4.0),
+                                      border: Border.all(
+                                          color: const Color(0xFFACB6C5)
+                                              .withOpacity(0.6))),
+                                  child: Row(
+                                    children: [
                                       Radio(
                                         value: "female",
                                         groupValue: context
@@ -119,7 +119,9 @@ class _IndividualSexUpdateScreenState extends State<IndividualSexUpdateScreen> {
                                             Theme.of(context).primaryColor,
                                       ),
                                       Text(L.of(context).female),
-                                    ])),
+                                    ],
+                                  ),
+                                ),
                               ),
                               const SizedBox(
                                 width: 20,

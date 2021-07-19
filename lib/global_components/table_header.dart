@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 
 class BuildListHead extends StatelessWidget {
@@ -18,22 +19,26 @@ class BuildListHead extends StatelessWidget {
             color: const Color(0xFFACB6C5).withOpacity(0.6),
           )),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.symmetric(
+            horizontal: kMediumPadding, vertical: kSmallPadding),
         child: Row(
-            children: titles
-                .map(
-                  (title) => Expanded(
-                      child: Text(
+          children: titles
+              .map(
+                (title) => Expanded(
+                  child: Text(
                     title,
                     style: Theme.of(context).textTheme.bodyText2!.copyWith(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context)
-                            .colorScheme
-                            .onSurface
-                            .withOpacity(0.60)),
-                  )),
-                )
-                .toList()),
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onBackground
+                              .withOpacity(0.6),
+                        ),
+                  ),
+                ),
+              )
+              .toList(),
+        ),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:did/global_components/loading_indicator.dart';
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 
 class LoadingAlert extends StatelessWidget {
@@ -18,13 +19,14 @@ class LoadingAlert extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+        padding: const EdgeInsets.symmetric(
+            horizontal: kMediumPadding, vertical: kSmallPadding),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 24, width: 24, child: LoadingIndicator()),
             const SizedBox(
-              width: 15,
+              width: kSmallPadding,
             ),
             Expanded(
               child: Column(

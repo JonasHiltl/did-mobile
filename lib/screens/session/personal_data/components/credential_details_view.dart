@@ -5,6 +5,7 @@ import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/update_personal_data/update_personal_bloc.dart';
 import 'package:did/providers/update_personal_data/update_personal_state.dart';
 import 'package:did/screens/session/personal_data/edit_individual_data/individual_firstname_update_screen.dart';
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -189,7 +190,7 @@ class CredentialDetailsView extends StatelessWidget {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(kSmallPadding),
             child: Divider(
               color: Colors.black38,
               height: 1,
@@ -197,7 +198,8 @@ class CredentialDetailsView extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 10.0),
+            padding: const EdgeInsets.fromLTRB(
+                kSmallPadding, 0, kSmallPadding, kSmallPadding),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

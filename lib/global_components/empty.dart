@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -14,7 +15,7 @@ class Empty extends StatelessWidget {
           child: SvgPicture.asset('assets/images/undraw_no_data.svg'),
         ),
         const SizedBox(
-          height: 8,
+          height: kSmallPadding,
         ),
         Text(
           text,

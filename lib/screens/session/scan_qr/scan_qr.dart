@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../theme.dart';
 
 class ScanQR extends StatefulWidget {
   const ScanQR({Key? key}) : super(key: key);
@@ -52,7 +53,7 @@ class _ScanQRState extends State<ScanQR> {
             top: 60,
             child: SafeArea(
               child: SizedBox(
-                width: MediaQuery.of(context).size.width - 40,
+                width: MediaQuery.of(context).size.width - kMediumPadding * 2,
                 child: Column(
                   children: [
                     Text(
@@ -79,8 +80,8 @@ class _ScanQRState extends State<ScanQR> {
               ),
             )),
         Positioned(
-          left: 20,
-          top: 20,
+          left: kMediumPadding,
+          top: kMediumPadding,
           child: SafeArea(
             child: IconButton(
               onPressed: () {

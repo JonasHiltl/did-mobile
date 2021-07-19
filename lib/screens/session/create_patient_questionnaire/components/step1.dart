@@ -1,10 +1,11 @@
+import 'package:did/global_components/universal_text_field.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../generated/l10n.dart';
-import 'text_field.dart';
 
 class Step1 extends StatelessWidget {
   final GlobalKey _toolTipKey = GlobalKey();
@@ -39,61 +40,121 @@ class Step1 extends StatelessWidget {
           ],
         ),
         const SizedBox(
-          height: 10,
+          height: kSmallPadding,
         ),
         Column(
           children: [
             Row(children: [
-              DynamicTextField(
+              Expanded(
+                child: UniversalTextField(
                   initialValue: credential.firstName,
-                  label: L.of(context).firstName),
-              const SizedBox(
-                width: 10,
+                  prefixText: L.of(context).firstName,
+                  readOnly: true,
+                  textColor: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
+                ),
               ),
-              DynamicTextField(
+              const SizedBox(
+                width: kSmallPadding,
+              ),
+              Expanded(
+                child: UniversalTextField(
                   initialValue: credential.lastName,
-                  label: L.of(context).lastName),
+                  prefixText: L.of(context).lastName,
+                  readOnly: true,
+                  textColor: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
+                ),
+              ),
             ]),
             const SizedBox(
-              height: 10,
+              height: kSmallPadding,
             ),
             Row(children: [
-              DynamicTextField(
-                  initialValue: credential.email, label: L.of(context).email),
+              Expanded(
+                child: UniversalTextField(
+                  initialValue: credential.email,
+                  prefixText: L.of(context).email,
+                  readOnly: true,
+                  textColor: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
+                ),
+              ),
               const SizedBox(
-                width: 10,
+                width: kSmallPadding,
               ),
-              DynamicTextField(
-                initialValue: credential.phoneNumber,
-                label: L.of(context).phoneNumber,
+              Expanded(
+                child: UniversalTextField(
+                  initialValue: credential.phoneNumber,
+                  prefixText: L.of(context).phoneNumber,
+                  readOnly: true,
+                  textColor: Theme.of(context)
+                      .colorScheme
+                      .onBackground
+                      .withOpacity(0.6),
+                ),
               ),
             ]),
             const SizedBox(
-              height: 10,
+              height: kSmallPadding,
             ),
-            Row(children: [
-              DynamicTextField(
-                  initialValue:
-                      DateFormat.yMMMd().format(credential.dateOfBirth),
-                  label: L.of(context).dateOfBirth),
-              const SizedBox(
-                width: 10,
-              ),
-              DynamicTextField(
-                  initialValue: credential.sex == "male"
-                      ? L.of(context).male
-                      : L.of(context).female,
-                  label: L.of(context).simpleSex),
-            ]),
+            Row(
+              children: [
+                Expanded(
+                  child: UniversalTextField(
+                    initialValue:
+                        DateFormat.yMMMd().format(credential.dateOfBirth),
+                    prefixText: L.of(context).dateOfBirth,
+                    readOnly: true,
+                    textColor: Theme.of(context)
+                        .colorScheme
+                        .onBackground
+                        .withOpacity(0.6),
+                  ),
+                ),
+                const SizedBox(
+                  width: kSmallPadding,
+                ),
+                Expanded(
+                  child: UniversalTextField(
+                    initialValue: credential.sex == "male"
+                        ? L.of(context).male
+                        : L.of(context).female,
+                    prefixText: L.of(context).simpleSex,
+                    readOnly: true,
+                    textColor: Theme.of(context)
+                        .colorScheme
+                        .onBackground
+                        .withOpacity(0.6),
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(
-              height: 10,
+              height: kSmallPadding,
             ),
-            Row(children: [
-              DynamicTextField(
-                  initialValue:
-                      "${credential.address.street}, ${credential.address.postalCode} ${credential.address.city},  ${credential.address.state} ${credential.address.country}",
-                  label: L.of(context).address),
-            ])
+            Row(
+              children: [
+                Expanded(
+                  child: UniversalTextField(
+                    initialValue:
+                        "${credential.address.street}, ${credential.address.postalCode} ${credential.address.city},  ${credential.address.state} ${credential.address.country}",
+                    prefixText: L.of(context).address,
+                    readOnly: true,
+                    textColor: Theme.of(context)
+                        .colorScheme
+                        .onBackground
+                        .withOpacity(0.6),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
         Container()

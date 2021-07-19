@@ -83,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Not a valid Email."),
         "issued": MessageLookupByLibrary.simpleMessage("Issued "),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
         "medication": MessageLookupByLibrary.simpleMessage("Medication"),

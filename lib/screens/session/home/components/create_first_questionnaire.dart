@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -26,7 +27,7 @@ class CreateFirstQuestionnaire extends StatelessWidget {
           child: Row(children: [
             Container(
               alignment: Alignment.center,
-              padding: const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(kSmallPadding),
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.1), shape: BoxShape.circle),
               child: Icon(
@@ -36,7 +37,7 @@ class CreateFirstQuestionnaire extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              width: 24,
+              width: kMediumPadding,
             ),
             Flexible(
               child: Column(
@@ -50,7 +51,7 @@ class CreateFirstQuestionnaire extends StatelessWidget {
                         .copyWith(color: Colors.white),
                   ),
                   const SizedBox(
-                    height: 6,
+                    height: kSmallPadding,
                   ),
                   Text(
                     "Let's create your first patient questionnaire to share with any doctor.",

@@ -84,6 +84,7 @@
   "settings": "Settings",
   "profile": "Profile",
   "language": "Language",
+  "languages": "Languages",
   "deleteAll": "Delete all data",
 
   "updateFirstName": "Update First Name",

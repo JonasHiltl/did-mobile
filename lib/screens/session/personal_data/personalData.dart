@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../theme.dart';
 import 'components/credential_details_view.dart';
 
 class PersonalData extends StatefulWidget {
@@ -40,15 +41,20 @@ class _PersonalDataState extends State<PersonalData> {
           centerTitle: true,
         ),
         const SliverPadding(
-          padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+          padding: EdgeInsets.symmetric(
+            horizontal: kMediumPadding,
+            vertical: kSmallPadding,
+          ),
           sliver: SliverToBoxAdapter(
             child: IdCard(),
           ),
         ),
         SliverToBoxAdapter(
           child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+            padding: const EdgeInsets.symmetric(
+              horizontal: kMediumPadding,
+              vertical: kSmallPadding,
+            ),
             child: RepositoryProvider(
               create: (context) => UpdatePersonalDataRepo(),
               child: BlocProvider<UpdatePersonalBloc>(

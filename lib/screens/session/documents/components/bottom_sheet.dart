@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../generated/l10n.dart';
+import '../../../../theme.dart';
 
 class PQBottomSheet extends StatelessWidget {
   final int i;
@@ -24,14 +25,21 @@ class PQBottomSheet extends StatelessWidget {
         minChildSize: 0.5,
         builder: (_, controller) => Container(
           decoration: BoxDecoration(
-              color: Theme.of(context).backgroundColor,
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(25))),
+            color: Theme.of(context).backgroundColor,
+            borderRadius: const BorderRadius.vertical(
+              top: Radius.circular(25),
+            ),
+          ),
           child: SingleChildScrollView(
             controller: controller,
             physics: const BouncingScrollPhysics(),
             child: Container(
-              margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
+              margin: const EdgeInsets.fromLTRB(
+                kMediumPadding,
+                8,
+                kMediumPadding,
+                kMediumPadding,
+              ),
               child: Column(
                 children: [
                   GestureDetector(
@@ -39,7 +47,7 @@ class PQBottomSheet extends StatelessWidget {
                     child: BottomSheetDraghandle(),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 8,
                   ),
                   Credential(
                     title:
@@ -75,7 +83,7 @@ class PQBottomSheet extends StatelessWidget {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: const EdgeInsets.all(kSmallPadding),
                               child: Wrap(
                                 alignment: WrapAlignment.spaceBetween,
                                 children: [
@@ -106,7 +114,7 @@ class PQBottomSheet extends StatelessWidget {
                           .allergies
                           .isEmpty) ...[
                         const Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(kSmallPadding),
                           child: Divider(
                             color: Colors.black38,
                             height: 1,
@@ -122,7 +130,7 @@ class PQBottomSheet extends StatelessWidget {
                           .allergies
                           .isNotEmpty)
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(kSmallPadding),
                           child: Table(
                             children: [
                               TableRow(
@@ -203,7 +211,7 @@ class PQBottomSheet extends StatelessWidget {
                           .allergies
                           .isEmpty) ...[
                         const Padding(
-                          padding: EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(kSmallPadding),
                           child: Divider(
                             color: Colors.black38,
                             height: 1,
@@ -219,7 +227,7 @@ class PQBottomSheet extends StatelessWidget {
                           .medication
                           .isNotEmpty)
                         Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: const EdgeInsets.all(kSmallPadding),
                           child: Table(
                             children: [
                               TableRow(
@@ -332,7 +340,7 @@ class PQBottomSheet extends StatelessWidget {
                           ),
                         ),
                       const Padding(
-                        padding: EdgeInsets.all(10.0),
+                        padding: EdgeInsets.all(kSmallPadding),
                         child: Divider(
                           color: Colors.black38,
                           height: 1,
@@ -340,7 +348,8 @@ class PQBottomSheet extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsets.fromLTRB(10.0, 0, 10.0, 10.0),
+                        padding: const EdgeInsets.fromLTRB(
+                            kSmallPadding, 0, kSmallPadding, kSmallPadding),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -407,7 +416,7 @@ class _BuildRow extends StatelessWidget {
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(kSmallPadding),
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,
               children: [
@@ -431,7 +440,7 @@ class _BuildRow extends StatelessWidget {
         ),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(kSmallPadding),
             child: Wrap(
               alignment: WrapAlignment.spaceBetween,
               children: [

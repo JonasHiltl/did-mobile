@@ -12,6 +12,8 @@ import 'package:did/providers/update_personal_data/update_personal_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../theme.dart';
+
 class IndividualPhoneNumberUpdateScreen extends StatefulWidget {
   final String initialValue;
   const IndividualPhoneNumberUpdateScreen({required this.initialValue});
@@ -88,7 +90,7 @@ class _IndividualPhoneNumberUpdateScreenState
                   }
                 }, builder: (context, state) {
                   return Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(kMediumPadding),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -103,7 +105,7 @@ class _IndividualPhoneNumberUpdateScreenState
                                   ),
                         ),
                         SizedBox(
-                            width: size.width - 20,
+                            width: size.width - kMediumPadding,
                             child: ElevatedButton(
                               onPressed: !state.isValidPhoneNumber ||
                                       state.formStatus is FormSubmitting

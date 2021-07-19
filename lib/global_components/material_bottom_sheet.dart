@@ -1,3 +1,4 @@
+import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
 
 Future bottomSheet({
@@ -15,7 +16,8 @@ Future bottomSheet({
     backgroundColor: Theme.of(context).backgroundColor,
     context: context,
     builder: (context) => Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
+      padding:
+          const EdgeInsets.symmetric(horizontal: kSmallPadding, vertical: 5.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
@@ -25,7 +27,7 @@ Future bottomSheet({
               Row(
                 children: [
                   const SizedBox(
-                    width: 10,
+                    width: kSmallPadding,
                   ),
                   if (title != null)
                     Text(

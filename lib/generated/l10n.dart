@@ -830,6 +830,16 @@ class L {
     );
   }
 
+  /// `Languages`
+  String get languages {
+    return Intl.message(
+      'Languages',
+      name: 'languages',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Delete all data`
   String get deleteAll {
     return Intl.message(
