@@ -21,6 +21,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "activateFingerprint":
+            MessageLookupByLibrary.simpleMessage("Activate Fingerprint"),
+        "activateTouchID":
+            MessageLookupByLibrary.simpleMessage("Activate Touch ID"),
         "addAllergy": MessageLookupByLibrary.simpleMessage("Add Allergy"),
         "addMedication": MessageLookupByLibrary.simpleMessage("Add Medication"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
@@ -59,6 +63,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Delete all data"),
         "deleteData": MessageLookupByLibrary.simpleMessage("Delete Data"),
+        "disableFingerprint":
+            MessageLookupByLibrary.simpleMessage("Disable Fingerprint"),
+        "disableFingerprintText": MessageLookupByLibrary.simpleMessage(
+            "Disable secure access to the App with your fingerprint?"),
+        "disableTouchID":
+            MessageLookupByLibrary.simpleMessage("Disable Touch ID"),
+        "disableTouchIDText": MessageLookupByLibrary.simpleMessage(
+            "Disable secure access to the App with Touch ID?"),
         "dose": MessageLookupByLibrary.simpleMessage("Dose"),
         "editProfile": MessageLookupByLibrary.simpleMessage(
             "You can only edit this data in settings"),
@@ -73,6 +85,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "exampleSneezing":
             MessageLookupByLibrary.simpleMessage("e.g. Sneezing"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
+        "fingerprint": MessageLookupByLibrary.simpleMessage("Fingerprint"),
+        "fingerprintText": MessageLookupByLibrary.simpleMessage(
+            "Enable Fingerprint to secure access to the App?"),
         "firstName": MessageLookupByLibrary.simpleMessage("First Name"),
         "frequency": MessageLookupByLibrary.simpleMessage("Frequency"),
         "givePQName": MessageLookupByLibrary.simpleMessage(
@@ -135,6 +150,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanMessage": MessageLookupByLibrary.simpleMessage(
             "After a valid code is recognised, the document will be requested"),
         "scanQR": MessageLookupByLibrary.simpleMessage("Scan QR-Code"),
+        "security": MessageLookupByLibrary.simpleMessage("Security"),
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sex": MessageLookupByLibrary.simpleMessage("Biological Sex"),
         "share": MessageLookupByLibrary.simpleMessage("Share"),
@@ -151,6 +167,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Submit"),
         "symptom": MessageLookupByLibrary.simpleMessage("Symptom"),
         "symptoms": MessageLookupByLibrary.simpleMessage("Symptoms"),
+        "touchIDText": MessageLookupByLibrary.simpleMessage(
+            "Enable Touch ID to secure access to the App?"),
+        "touchId": MessageLookupByLibrary.simpleMessage("Touch ID"),
         "updateAddress": MessageLookupByLibrary.simpleMessage("Update Address"),
         "updateCity": MessageLookupByLibrary.simpleMessage("Update City"),
         "updateCountry": MessageLookupByLibrary.simpleMessage("Update Country"),

@@ -32,7 +32,7 @@ void main() async {
       builder: (context) =>  */
     MyApp(),
     /* enabled: !kReleaseMode,
-    ),*/
+    ), */
   );
 }
 
@@ -46,10 +46,18 @@ class MyApp extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          // the session cubit needs to be above the AuthCubit because the AuthCubit needs the sessionCubit to launch the session flow after successfull authentification
+          BlocProvider<AppSettingsBloc>(
+            create: (context) => AppSettingsBloc(
+              language: getLanguage(),
+              theme: getTheme(),
+              useTouchID: getUseTouchID(),
+            ),
+          ),
+          // the session cubit needs to be above the AuthCubit because the AuthCubit depends on sessionCubit
           BlocProvider<SessionCubit>(
             create: (context) => SessionCubit(
               CommonBackendRepo(),
+              appSettingsBloc: context.read<AppSettingsBloc>(),
             ),
           ),
           BlocProvider<AuthCubit>(
@@ -61,12 +69,6 @@ class MyApp extends StatelessWidget {
             create: (context) => CreateDidBloc(
               repo: context.read<CreateDidRepository>(),
               authCubit: context.read<AuthCubit>(),
-            ),
-          ),
-          BlocProvider<AppSettingsBloc>(
-            create: (context) => AppSettingsBloc(
-              language: getLanguage(),
-              theme: getTheme(),
             ),
           ),
         ],

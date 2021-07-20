@@ -3,6 +3,7 @@ import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 
 import 'package:did/screens/session/manage_app/components/delete_all_button.dart';
+import 'package:did/screens/session/manage_app/components/security_expansion_tile.dart';
 import 'package:did/screens/session/manage_app/components/settings_expansion_tile.dart';
 import 'package:did/screens/session/personal_data/personalData.dart';
 import 'package:flutter/cupertino.dart';
@@ -93,6 +94,9 @@ class _ManageAppState extends State<ManageApp> {
                   ),
                 ),
               ),
+            ),
+            const SliverToBoxAdapter(
+              child: SecurityExpansionTile(),
             ),
             const SliverToBoxAdapter(
               child: SettingsExpansionTile(),

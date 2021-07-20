@@ -21,6 +21,10 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "activateFingerprint":
+            MessageLookupByLibrary.simpleMessage("Fingerabdruck aktivieren"),
+        "activateTouchID":
+            MessageLookupByLibrary.simpleMessage("Touch ID aktivieren"),
         "addAllergy":
             MessageLookupByLibrary.simpleMessage("Allergie hinzufügen"),
         "addMedication":
@@ -61,6 +65,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "delete": MessageLookupByLibrary.simpleMessage("Löschen"),
         "deleteAll": MessageLookupByLibrary.simpleMessage("Alle Daten löschen"),
         "deleteData": MessageLookupByLibrary.simpleMessage("Daten löschen"),
+        "disableFingerprint":
+            MessageLookupByLibrary.simpleMessage("Fingerabdruck deaktivieren"),
+        "disableFingerprintText": MessageLookupByLibrary.simpleMessage(
+            "Sicheren Zugriff auf die App mit deinem Fingerabdruck deaktivieren?"),
+        "disableTouchID":
+            MessageLookupByLibrary.simpleMessage("Touch ID deaktivieren"),
+        "disableTouchIDText": MessageLookupByLibrary.simpleMessage(
+            "Sicheren Zugriff auf die App durch Touch ID deaktivieren?"),
         "dose": MessageLookupByLibrary.simpleMessage("Dosis"),
         "editProfile": MessageLookupByLibrary.simpleMessage(
             "Informationen nur in den Einstellungen bearbeitbar"),
@@ -74,6 +86,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "examplePollen": MessageLookupByLibrary.simpleMessage("Bsp. Pollen"),
         "exampleSneezing": MessageLookupByLibrary.simpleMessage("Bsp. Niesen"),
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
+        "fingerprint": MessageLookupByLibrary.simpleMessage("Fingerabdruck"),
+        "fingerprintText": MessageLookupByLibrary.simpleMessage(
+            "Fingerabdruck aktivieren, um den Zugriff auf die App zu sichern?"),
         "firstName": MessageLookupByLibrary.simpleMessage("Vorname"),
         "frequency": MessageLookupByLibrary.simpleMessage("Häufigkeit"),
         "givePQName": MessageLookupByLibrary.simpleMessage(
@@ -134,6 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "scanMessage": MessageLookupByLibrary.simpleMessage(
             "Nachdem ein gültiger Code erkannt wurde, wird das Dokument angefordert"),
         "scanQR": MessageLookupByLibrary.simpleMessage("QR-Code scannen"),
+        "security": MessageLookupByLibrary.simpleMessage("Sicherheit"),
         "settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
         "sex": MessageLookupByLibrary.simpleMessage("Biologisches Geschlecht"),
         "share": MessageLookupByLibrary.simpleMessage("Teilen"),
@@ -150,6 +166,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "submit": MessageLookupByLibrary.simpleMessage("Erstellen"),
         "symptom": MessageLookupByLibrary.simpleMessage("Symptom"),
         "symptoms": MessageLookupByLibrary.simpleMessage("Symptome"),
+        "touchIDText": MessageLookupByLibrary.simpleMessage(
+            "Touch ID aktivieren, um den Zugriff auf die App zu sichern?"),
+        "touchId": MessageLookupByLibrary.simpleMessage("Touch ID"),
         "updateAddress":
             MessageLookupByLibrary.simpleMessage("Adresse aktualisieren"),
         "updateCity":

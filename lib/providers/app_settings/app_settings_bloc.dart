@@ -9,10 +9,12 @@ class AppSettingsBloc extends Bloc<AppSettingsEvent, AppSettingsState> {
   AppSettingsBloc({
     required String language,
     required AppTheme theme,
+    required bool useTouchID,
   }) : super(
           AppSettingsState(
             language: language,
             themeData: theme,
+            useTouchID: useTouchID,
           ),
         );
 
@@ -25,6 +27,10 @@ class AppSettingsBloc extends Bloc<AppSettingsEvent, AppSettingsState> {
     if (event is ThemeChanged) {
       changeTheme(event.theme);
       yield state.copyWith(themeData: event.theme);
+    }
+    if (event is TouchIDChanged) {
+      changeUseTouchID(event.useTouchID);
+      yield state.copyWith(useTouchID: event.useTouchID);
     }
   }
 }

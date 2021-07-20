@@ -26,3 +26,9 @@ AppTheme getTheme() {
     return AppTheme.light;
   }
 }
+
+bool getUseTouchID() => _preferences.getBool("touch_ID") ?? false;
+
+// ignore: avoid_positional_boolean_parameters
+Future changeUseTouchID(bool useTouchID) =>
+    _preferences.setBool("touch_ID", useTouchID);

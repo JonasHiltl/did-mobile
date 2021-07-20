@@ -4,13 +4,20 @@ import 'package:did/data/secure_storage.dart';
 import 'package:did/models/did/identity.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
+import 'package:did/providers/app_settings/app_settings_bloc.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:local_auth/auth_strings.dart';
+import 'package:local_auth/local_auth.dart';
 
 import 'session_state.dart';
+import '../../../generated/l10n.dart';
 
 class SessionCubit extends Cubit<SessionState> {
-  SessionCubit(this.commonBackendRepo)
-      : super(
+  SessionCubit(
+    this.commonBackendRepo, {
+    required this.appSettingsBloc,
+  }) : super(
           UnkownSessionState(),
         ) {
     attemptGettingDid();
@@ -18,24 +25,59 @@ class SessionCubit extends Cubit<SessionState> {
 
   final CommonBackendRepo commonBackendRepo;
   final SecureStorage secureStorage = SecureStorage();
+  final _auth = LocalAuthentication();
+  final AppSettingsBloc appSettingsBloc;
+
+  Future<bool> hasBiometric() async {
+    try {
+      final isDeviceSupported = await _auth.isDeviceSupported();
+      final isAvailable = await _auth.canCheckBiometrics;
+      return isAvailable && isDeviceSupported;
+    } on PlatformException catch (e) {
+      print("hasBiometric Error $e");
+      return false;
+    }
+  }
+
+  Future<bool> authenticate() async {
+    try {
+      return await _auth.authenticate(
+        localizedReason: "Scan Fingerprint to Authenticate",
+        useErrorDialogs: true,
+        stickyAuth: true,
+        androidAuthStrings: const AndroidAuthMessages(
+          biometricHint: "",
+        ),
+      );
+    } on PlatformException catch (e) {
+      print("Authentication Error: $e");
+      return false;
+    }
+  }
+
+  Future<Identity> getdid() async {
+    final encodedDid = await secureStorage.read("identity");
+    final decodedDid = jsonDecode(
+      encodedDid.toString(),
+    ) as Map<String, dynamic>;
+    return Identity.fromJson(decodedDid);
+  }
+
+  Future<PersonalDataVc> getPersonalDataVc() async {
+    final encodedPersonalDataVc = await secureStorage.read("personal_data_vc");
+    final decodedPersonalDataVc = jsonDecode(
+      encodedPersonalDataVc.toString(),
+    ) as Map<String, dynamic>;
+    return PersonalDataVc.fromJson(decodedPersonalDataVc);
+  }
 
   Future<void> attemptGettingDid() async {
     try {
-      //await secureStorage.delete("identity");
+      // await secureStorage.delete("identity");
       if (await secureStorage.contains("identity") &&
           await secureStorage.contains("personal_data_vc")) {
-        final encodedDid = await secureStorage.read("identity");
-        final decodedDid = jsonDecode(
-          encodedDid.toString(),
-        ) as Map<String, dynamic>;
-        final identity = Identity.fromJson(decodedDid);
-
-        final encodedPersonalDataVc =
-            await secureStorage.read("personal_data_vc");
-        final decodedPersonalDataVc = jsonDecode(
-          encodedPersonalDataVc.toString(),
-        ) as Map<String, dynamic>;
-        final personalDataVc = PersonalDataVc.fromJson(decodedPersonalDataVc);
+        final identity = await getdid();
+        final personalDataVc = await getPersonalDataVc();
 
         // if patient questionnaire is already created launch session with these patient questionnaires
         if (await secureStorage.contains("patient_questionnaire")) {
@@ -44,7 +86,7 @@ class SessionCubit extends Cubit<SessionState> {
             encodedPQ.toString(),
           ) as List<dynamic>;
 
-          //convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
+          // convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
           final List<PatientQuestionnaireVc> listPQ = [];
           decodedPQ.map((e) {
             listPQ.add(
@@ -53,12 +95,28 @@ class SessionCubit extends Cubit<SessionState> {
           }).toList();
 
           if (await commonBackendRepo.verifyDid(identity.doc.id)) {
-            emit(
-              Verified(
+            if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
+              final isAuthenticated = await authenticate();
+
+              if (isAuthenticated) {
+                emit(
+                  Verified(
+                    identity: identity,
+                    personalDataVc: personalDataVc,
+                    patientQuestionnaires: listPQ,
+                  ),
+                );
+              }
+            } else {
+              print("no touch ID");
+              emit(
+                Verified(
                   identity: identity,
                   personalDataVc: personalDataVc,
-                  patientQuestionnaires: listPQ),
-            );
+                  patientQuestionnaires: listPQ,
+                ),
+              );
+            }
           } else {
             emit(
               Unverified(),
@@ -66,9 +124,26 @@ class SessionCubit extends Cubit<SessionState> {
           }
         } else {
           if (await commonBackendRepo.verifyDid(identity.doc.id)) {
-            emit(
-              Verified(identity: identity, personalDataVc: personalDataVc),
-            );
+            if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
+              final isAuthenticated = await authenticate();
+
+              if (isAuthenticated) {
+                emit(
+                  Verified(
+                    identity: identity,
+                    personalDataVc: personalDataVc,
+                  ),
+                );
+              }
+            } else {
+              print("no touch ID");
+              emit(
+                Verified(
+                  identity: identity,
+                  personalDataVc: personalDataVc,
+                ),
+              );
+            }
           } else {
             emit(
               Unverified(),

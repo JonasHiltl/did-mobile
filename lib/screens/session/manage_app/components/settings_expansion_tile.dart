@@ -149,9 +149,7 @@ class _SettingsExpansionTileState extends State<SettingsExpansionTile> {
                           ? Transform.scale(
                               scale: 0.8,
                               child: CupertinoSwitch(
-                                value: state.themeData == AppTheme.dark
-                                    ? true
-                                    : false,
+                                value: state.themeData == AppTheme.dark,
                                 onChanged: (value) =>
                                     context.read<AppSettingsBloc>().add(
                                           ThemeChanged(
@@ -167,9 +165,7 @@ class _SettingsExpansionTileState extends State<SettingsExpansionTile> {
                               height: 15,
                               child: Switch(
                                 activeColor: Theme.of(context).primaryColor,
-                                value: state.themeData == AppTheme.dark
-                                    ? true
-                                    : false,
+                                value: state.themeData == AppTheme.dark,
                                 onChanged: (value) =>
                                     context.read<AppSettingsBloc>().add(
                                           ThemeChanged(
@@ -185,7 +181,7 @@ class _SettingsExpansionTileState extends State<SettingsExpansionTile> {
                   )
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

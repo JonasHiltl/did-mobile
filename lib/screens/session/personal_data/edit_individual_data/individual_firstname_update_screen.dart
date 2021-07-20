@@ -77,13 +77,15 @@ class _IndividualFirstNameUpdateScreenState
               listener: (context, state) {
                 if (state.formStatus is SubmissionSuccess) {
                   showSuccessNoti(
-                      message: L.of(context).updateSuccessFirstName,
-                      context: context);
+                    message: L.of(context).updateSuccessFirstName,
+                    context: context,
+                  );
                   Navigator.pop(context);
                 } else if (state.formStatus is SubmissionFailed) {
                   showErrorNoti(
-                      message: L.of(context).updateErrorMessage,
-                      context: context);
+                    message: L.of(context).updateErrorMessage,
+                    context: context,
+                  );
                 }
               },
               builder: (context, state) {
@@ -102,37 +104,37 @@ class _IndividualFirstNameUpdateScreenState
                             ),
                       ),
                       SizedBox(
-                          width: size.width - kMediumPadding,
-                          child: ElevatedButton(
-                            onPressed: !state.isValidFirstName ||
-                                    state.formStatus is FormSubmitting
-                                ? null
-                                : () {
-                                    final FocusScopeNode currentFocus =
-                                        FocusScope.of(context);
+                        width: size.width - kMediumPadding,
+                        child: ElevatedButton(
+                          onPressed: !state.isValidFirstName ||
+                                  state.formStatus is FormSubmitting
+                              ? null
+                              : () {
+                                  final FocusScopeNode currentFocus =
+                                      FocusScope.of(context);
 
-                                    if (!currentFocus.hasPrimaryFocus) {
-                                      currentFocus.unfocus();
-                                    }
-                                    context
-                                        .read<UpdatePersonalBloc>()
-                                        .add(UpdatePersonalSubmitted());
-                                  },
-                            child: state.formStatus is FormSubmitting
-                                ? Container(
-                                    height: 19,
-                                    width: 19,
-                                    margin:
-                                        const EdgeInsets.fromLTRB(7, 0, 7, 0),
-                                    child: LoadingIndicator(
-                                      color: Theme.of(context).brightness ==
-                                              Brightness.light
-                                          ? const Color(0xFFD9D9D9)
-                                          : kTextFieldDarkBorder,
-                                    ),
-                                  )
-                                : Text(L.of(context).updateFirstName),
-                          ))
+                                  if (!currentFocus.hasPrimaryFocus) {
+                                    currentFocus.unfocus();
+                                  }
+                                  context
+                                      .read<UpdatePersonalBloc>()
+                                      .add(UpdatePersonalSubmitted());
+                                },
+                          child: state.formStatus is FormSubmitting
+                              ? Container(
+                                  height: 19,
+                                  width: 19,
+                                  margin: const EdgeInsets.fromLTRB(7, 0, 7, 0),
+                                  child: LoadingIndicator(
+                                    color: Theme.of(context).brightness ==
+                                            Brightness.light
+                                        ? const Color(0xFFD9D9D9)
+                                        : kTextFieldDarkBorder,
+                                  ),
+                                )
+                              : Text(L.of(context).updateFirstName),
+                        ),
+                      )
                     ],
                   ),
                 );

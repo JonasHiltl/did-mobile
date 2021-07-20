@@ -810,6 +810,116 @@ class L {
     );
   }
 
+  /// `Security`
+  String get security {
+    return Intl.message(
+      'Security',
+      name: 'security',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Touch ID`
+  String get touchId {
+    return Intl.message(
+      'Touch ID',
+      name: 'touchId',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activate Touch ID`
+  String get activateTouchID {
+    return Intl.message(
+      'Activate Touch ID',
+      name: 'activateTouchID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable Touch ID`
+  String get disableTouchID {
+    return Intl.message(
+      'Disable Touch ID',
+      name: 'disableTouchID',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Touch ID to secure access to the App?`
+  String get touchIDText {
+    return Intl.message(
+      'Enable Touch ID to secure access to the App?',
+      name: 'touchIDText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable secure access to the App with Touch ID?`
+  String get disableTouchIDText {
+    return Intl.message(
+      'Disable secure access to the App with Touch ID?',
+      name: 'disableTouchIDText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fingerprint`
+  String get fingerprint {
+    return Intl.message(
+      'Fingerprint',
+      name: 'fingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Activate Fingerprint`
+  String get activateFingerprint {
+    return Intl.message(
+      'Activate Fingerprint',
+      name: 'activateFingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable Fingerprint`
+  String get disableFingerprint {
+    return Intl.message(
+      'Disable Fingerprint',
+      name: 'disableFingerprint',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enable Fingerprint to secure access to the App?`
+  String get fingerprintText {
+    return Intl.message(
+      'Enable Fingerprint to secure access to the App?',
+      name: 'fingerprintText',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Disable secure access to the App with your fingerprint?`
+  String get disableFingerprintText {
+    return Intl.message(
+      'Disable secure access to the App with your fingerprint?',
+      name: 'disableFingerprintText',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Profile`
   String get profile {
     return Intl.message(

@@ -10,11 +10,10 @@ void showSuccessNoti({
     context: context,
     duration: const Duration(seconds: 2),
     builder: (context, controller) {
-      return Flash(
+      return Flash.dialog(
         barrierColor: Colors.transparent,
-        behavior: FlashBehavior.floating,
-        position: FlashPosition.top,
         controller: controller,
+        alignment: Alignment.topCenter,
         borderRadius: const BorderRadius.all(Radius.circular(4)),
         backgroundColor: Theme.of(context).backgroundColor,
         boxShadows: [
@@ -24,7 +23,7 @@ void showSuccessNoti({
             blurRadius: 6,
           )
         ],
-        margin: const EdgeInsets.all(kMediumPadding),
+        margin: const EdgeInsets.only(top: kMediumPadding),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: kMediumPadding,
@@ -58,10 +57,9 @@ void showErrorNoti({
     context: context,
     duration: const Duration(seconds: 2),
     builder: (context, controller) {
-      return Flash(
+      return Flash.dialog(
         barrierColor: Colors.transparent,
-        behavior: FlashBehavior.floating,
-        position: FlashPosition.top,
+        alignment: Alignment.topCenter,
         controller: controller,
         borderRadius: const BorderRadius.all(Radius.circular(2)),
         backgroundColor: Theme.of(context).backgroundColor,
@@ -71,7 +69,7 @@ void showErrorNoti({
               offset: const Offset(3.0, 3.0),
               blurRadius: 8)
         ],
-        margin: const EdgeInsets.all(kMediumPadding),
+        margin: const EdgeInsets.only(top: kMediumPadding),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: kSmallPadding,

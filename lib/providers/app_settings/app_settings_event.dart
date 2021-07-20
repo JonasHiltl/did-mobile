@@ -13,3 +13,9 @@ class ThemeChanged extends AppSettingsEvent {
 
   ThemeChanged({required this.theme});
 }
+
+class TouchIDChanged extends AppSettingsEvent {
+  final bool useTouchID;
+
+  TouchIDChanged({required this.useTouchID});
+}
