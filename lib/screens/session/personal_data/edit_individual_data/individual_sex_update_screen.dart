@@ -130,7 +130,7 @@ class _IndividualSexUpdateScreenState extends State<IndividualSexUpdateScreen> {
                               ),
                             ),
                             const SizedBox(
-                              width: 20,
+                              width: kSmallPadding,
                             ),
                             Expanded(
                               child: Container(

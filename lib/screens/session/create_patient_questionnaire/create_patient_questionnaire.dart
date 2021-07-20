@@ -158,140 +158,145 @@ class _CreatePatientQuestionnaireState
         }
       },
       builder: (context, state) => SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            elevation: 0.0,
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            actions: [
-              IconButton(
-                icon: const Icon(
-                  Icons.cancel,
-                  size: 18,
+        child: SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              automaticallyImplyLeading: false,
+              elevation: 0.0,
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              actions: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.cancel,
+                    size: 18,
+                  ),
+                  onPressed: () => Navigator.pop(context),
                 ),
-                onPressed: () => Navigator.pop(context),
+              ],
+              title: Text(
+                L.of(context).patientQuestionnaire,
+                style: Theme.of(context).textTheme.headline5,
               ),
-            ],
-            title: Text(
-              L.of(context).patientQuestionnaire,
-              style: Theme.of(context).textTheme.headline5,
+              centerTitle: true,
             ),
-            centerTitle: true,
-          ),
-          body: Stack(
-            children: [
-              Positioned.fill(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                      child: CustomStepper(
-                        currentStep: currentStep,
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: const EdgeInsets.all(kMediumPadding),
-                        child: LayoutBuilder(
-                          builder: (BuildContext context,
-                              BoxConstraints viewportConstraints) {
-                            return SingleChildScrollView(
-                              physics: const BouncingScrollPhysics(),
-                              child: ConstrainedBox(
-                                constraints: BoxConstraints(
-                                  minHeight: viewportConstraints.maxHeight -
-                                      MediaQuery.of(context).size.height * 0.1,
-                                ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    IndexedStack(
-                                      index: currentStep,
-                                      children: <Widget>[
-                                        Step1(),
-                                        Step2(),
-                                        Step3()
-                                      ],
-                                    ),
-                                    Column(
-                                      children: [
-                                        Row(
-                                          children: [
-                                            Expanded(
-                                              child: ElevatedButton(
-                                                onPressed: state.formStatus
-                                                        is FormSubmitting
-                                                    ? null
-                                                    : () =>
-                                                        increseSubmit(context),
-                                                child: state.formStatus
-                                                        is FormSubmitting
-                                                    ? Container(
-                                                        height: 19,
-                                                        width: 19,
-                                                        margin: const EdgeInsets
-                                                                .fromLTRB(
-                                                            7, 0, 7, 0),
-                                                        child: LoadingIndicator(
-                                                          color: Theme.of(context)
-                                                                      .brightness ==
-                                                                  Brightness
-                                                                      .light
-                                                              ? const Color(
-                                                                  0xFFD9D9D9)
-                                                              : kTextFieldDarkBorder,
-                                                        ),
-                                                      )
-                                                    : Text(
-                                                        currentStep == 2
-                                                            ? L
-                                                                .of(context)
-                                                                .submit
-                                                            : L
-                                                                .of(context)
-                                                                .next,
-                                                      ),
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: kSmallPadding,
-                                            ),
-                                            Expanded(
-                                              child: OutlinedButton(
-                                                onPressed: currentStep == 0
-                                                    ? null
-                                                    : decreaseUntil0,
-                                                child: Text(
-                                                  L.of(context).back,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        if (MediaQuery.of(context)
-                                                .size
-                                                .height <=
-                                            640)
-                                          const SizedBox(
-                                            height: 50,
-                                          )
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            );
-                          },
+            body: Stack(
+              children: [
+                Positioned.fill(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                        child: CustomStepper(
+                          currentStep: currentStep,
                         ),
                       ),
-                    ),
-                  ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.all(kMediumPadding),
+                          child: LayoutBuilder(
+                            builder: (BuildContext context,
+                                BoxConstraints viewportConstraints) {
+                              return SingleChildScrollView(
+                                physics: const BouncingScrollPhysics(),
+                                child: ConstrainedBox(
+                                  constraints: BoxConstraints(
+                                    minHeight: viewportConstraints.maxHeight -
+                                        MediaQuery.of(context).size.height *
+                                            0.1,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      IndexedStack(
+                                        index: currentStep,
+                                        children: <Widget>[
+                                          Step1(),
+                                          Step2(),
+                                          Step3()
+                                        ],
+                                      ),
+                                      Column(
+                                        children: [
+                                          Row(
+                                            children: [
+                                              Expanded(
+                                                child: ElevatedButton(
+                                                  onPressed: state.formStatus
+                                                          is FormSubmitting
+                                                      ? null
+                                                      : () => increseSubmit(
+                                                          context),
+                                                  child: state.formStatus
+                                                          is FormSubmitting
+                                                      ? Container(
+                                                          height: 19,
+                                                          width: 19,
+                                                          margin:
+                                                              const EdgeInsets
+                                                                      .fromLTRB(
+                                                                  7, 0, 7, 0),
+                                                          child:
+                                                              LoadingIndicator(
+                                                            color: Theme.of(context)
+                                                                        .brightness ==
+                                                                    Brightness
+                                                                        .light
+                                                                ? const Color(
+                                                                    0xFFD9D9D9)
+                                                                : kTextFieldDarkBorder,
+                                                          ),
+                                                        )
+                                                      : Text(
+                                                          currentStep == 2
+                                                              ? L
+                                                                  .of(context)
+                                                                  .submit
+                                                              : L
+                                                                  .of(context)
+                                                                  .next,
+                                                        ),
+                                                ),
+                                              ),
+                                              const SizedBox(
+                                                width: kSmallPadding,
+                                              ),
+                                              Expanded(
+                                                child: OutlinedButton(
+                                                  onPressed: currentStep == 0
+                                                      ? null
+                                                      : decreaseUntil0,
+                                                  child: Text(
+                                                    L.of(context).back,
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          if (MediaQuery.of(context)
+                                                  .size
+                                                  .height <=
+                                              640)
+                                            const SizedBox(
+                                              height: 50,
+                                            )
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              SlidingUpWidget(),
-            ],
+                SlidingUpWidget(),
+              ],
+            ),
           ),
         ),
       ),

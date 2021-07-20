@@ -73,36 +73,37 @@ class _SessionNavigatorState extends State<SessionNavigator> {
                 _selectTab(pageKeys[index], index);
               },
               currentIndex: _selectedIndex,
-              showUnselectedLabels: false,
-              showSelectedLabels: false,
-              items: [
+              showUnselectedLabels: true,
+              showSelectedLabels: true,
+              selectedIconTheme: IconThemeData(
+                color: Theme.of(context).primaryColor,
+              ),
+              selectedFontSize: 0.0,
+              items: const [
                 BottomNavigationBarItem(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.home_outlined,
                   ),
                   activeIcon: Icon(
                     Icons.home_rounded,
-                    color: Theme.of(context).primaryColor,
                   ),
                   label: "Home",
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.folder_outlined,
                   ),
                   activeIcon: Icon(
                     Icons.folder,
-                    color: Theme.of(context).primaryColor,
                   ),
                   label: "Documents",
                 ),
                 BottomNavigationBarItem(
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.admin_panel_settings_outlined,
                   ),
                   activeIcon: Icon(
                     Icons.admin_panel_settings_rounded,
-                    color: Theme.of(context).primaryColor,
                   ),
                   label: "Settings",
                 ),
