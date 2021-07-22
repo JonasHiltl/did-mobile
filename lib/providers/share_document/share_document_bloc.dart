@@ -15,18 +15,31 @@ class ShareDocumentBloc extends Bloc<ShareDocumentEvent, ShareDocumentState> {
     required this.repo,
     required this.id,
     required this.credential,
-  }) : super(ShareDocumentState(id: id, credential: credential));
+  }) : super(
+          ShareDocumentState(
+            id: id,
+            credential: credential,
+          ),
+        );
 
   @override
   Stream<ShareDocumentState> mapEventToState(ShareDocumentEvent event) async* {
     if (event is ShareDocument) {
-      yield state.copyWith(shareStatus: Sharing());
+      yield state.copyWith(
+        shareStatus: Sharing(),
+        expirationDate: state.expirationDate,
+        expirationTime: state.expirationTime,
+      );
       try {
-        final res = await repo.createChannel(state.id, state.credential);
+        final res = await repo.createChannel(
+          state.id,
+          state.credential,
+          state.expirationMoment,
+        );
         if (res == null) {
-          print(res);
           yield state.copyWith(
-              shareStatus: ShareFailed("No announcement link returned"));
+            shareStatus: ShareFailed("No announcement link returned"),
+          );
           yield state.copyWith(shareStatus: const InitialShareStatus());
         } else {
           yield state.copyWith(channelLink: res);
@@ -39,6 +52,26 @@ class ShareDocumentBloc extends Bloc<ShareDocumentEvent, ShareDocumentState> {
         //yield initial state to counter the reappearing of noti after state changes (For example when keyboard gets closed or input changes)
         yield state.copyWith(shareStatus: const InitialShareStatus());
       }
+    }
+    if (event is InitializeSharing) {
+      yield state.copyWith(shareStatus: Initializing());
+    }
+    if (event is ChangeNoExpiration) {
+      yield state.copyWith(
+        noExpiration: event.noExpiration,
+      );
+    }
+    if (event is ChangeExpirationDate) {
+      yield state.copyWith(
+        expirationDate: event.expirationDate,
+        expirationTime: state.expirationTime,
+      );
+    }
+    if (event is ChangeExpirationTime) {
+      yield state.copyWith(
+        expirationTime: event.expirationTime,
+        expirationDate: state.expirationDate,
+      );
     }
   }
 }

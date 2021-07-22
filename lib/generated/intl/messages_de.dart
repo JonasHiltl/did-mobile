@@ -85,6 +85,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Bsp. einmal täglich"),
         "examplePollen": MessageLookupByLibrary.simpleMessage("Bsp. Pollen"),
         "exampleSneezing": MessageLookupByLibrary.simpleMessage("Bsp. Niesen"),
+        "expirationDate": MessageLookupByLibrary.simpleMessage("Ablaufdatum"),
+        "expirationTime": MessageLookupByLibrary.simpleMessage("Ablaufzeit"),
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
         "fingerprint": MessageLookupByLibrary.simpleMessage("Fingerabdruck"),
         "fingerprintText": MessageLookupByLibrary.simpleMessage(
@@ -131,6 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Noch keine Allergie hinzugefügt"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("Keine Länder gefunden"),
+        "noExpiry": MessageLookupByLibrary.simpleMessage("Keine Beschränkung"),
         "noMedicationAdded":
             MessageLookupByLibrary.simpleMessage("Kein Medikament hinzugefügt"),
         "noMedicationAddedYet": MessageLookupByLibrary.simpleMessage(
@@ -155,6 +158,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "share": MessageLookupByLibrary.simpleMessage("Teilen"),
         "shareDocErrorMessage": MessageLookupByLibrary.simpleMessage(
             "Dokumentenaustausch fehlgeschlagen "),
+        "shareDocExpiryDate": MessageLookupByLibrary.simpleMessage(
+            "Möchtest du ein Ablaufdatum für dein geteiltes Dokument festlegen?"),
         "shareDocSuccessMessage": MessageLookupByLibrary.simpleMessage(
             "Dokument ist jetzt abrufbar "),
         "sharemessage": MessageLookupByLibrary.simpleMessage(

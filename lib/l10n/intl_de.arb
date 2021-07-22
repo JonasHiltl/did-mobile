@@ -52,6 +52,11 @@
   "shareDocErrorMessage": "Dokumentenaustausch fehlgeschlagen ",
   "shareDocSuccessMessage": "Dokument ist jetzt abrufbar ",
 
+  "shareDocExpiryDate": "Möchtest du ein Ablaufdatum für dein geteiltes Dokument festlegen?",
+  "noExpiry": "Keine Beschränkung",
+  "expirationDate": "Ablaufdatum",
+  "expirationTime": "Ablaufzeit",
+
   "noCountriesFound": "Keine Länder gefunden",
   "noAllergiesAddedYet": "Noch keine Allergie hinzugefügt",
   "noAllergiesAdded": "Keine Allergie hinzugefügt",

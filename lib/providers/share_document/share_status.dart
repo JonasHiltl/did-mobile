@@ -6,6 +6,8 @@ class InitialShareStatus extends ShareStatus {
   const InitialShareStatus();
 }
 
+class Initializing extends ShareStatus {}
+
 class Sharing extends ShareStatus {}
 
 class ShareSuccess extends ShareStatus {}

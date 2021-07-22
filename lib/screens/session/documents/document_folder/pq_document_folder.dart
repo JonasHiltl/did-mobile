@@ -12,6 +12,8 @@ import 'package:did/providers/share_document/share_document_bloc.dart';
 import 'package:did/providers/share_document/share_document_event.dart';
 import 'package:did/providers/share_document/share_document_state.dart';
 import 'package:did/providers/share_document/share_status.dart';
+import 'package:did/screens/session/documents/components/adjustable_datepicker.dart';
+import 'package:did/screens/session/documents/components/adjustable_timepicker.dart';
 import 'package:did/screens/session/documents/components/bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +33,7 @@ class PQDocumentFolder extends StatefulWidget {
 }
 
 class _PQDocumentFolderState extends State<PQDocumentFolder> {
+  final TextEditingController dateController = TextEditingController();
   int? segmentedControlGroupValue = 1;
 
   @override
@@ -136,8 +139,12 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                   i: i,
                                 ),
                               ),
-                              onLongPress: () =>
-                                  bottomModal(context, i, sessionState),
+                              onLongPress: () => bottomModal(
+                                context,
+                                i,
+                                sessionState,
+                                dateController,
+                              ),
                               child: Padding(
                                 padding: const EdgeInsets.all(6.0),
                                 child: Row(
@@ -198,11 +205,16 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                       ),
                                     ),
                                     IconButton(
-                                        padding: const EdgeInsets.all(0.0),
-                                        visualDensity: VisualDensity.compact,
-                                        onPressed: () => bottomModal(
-                                            context, i, sessionState),
-                                        icon: const Icon(Icons.more_vert))
+                                      padding: const EdgeInsets.all(0.0),
+                                      visualDensity: VisualDensity.compact,
+                                      onPressed: () => bottomModal(
+                                        context,
+                                        i,
+                                        sessionState,
+                                        dateController,
+                                      ),
+                                      icon: const Icon(Icons.more_vert),
+                                    )
                                   ],
                                 ),
                               ),
@@ -219,7 +231,12 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
     );
   }
 
-  void bottomModal(BuildContext context, int i, Verified sessionState) =>
+  void bottomModal(
+    BuildContext context,
+    int i,
+    Verified sessionState,
+    TextEditingController dateController,
+  ) =>
       bottomSheet(
         context: context,
         content: [
@@ -278,6 +295,8 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                             )
                           ],
                         );
+                      } else if (state.noExpiration) {
+                        dateController.text = "";
                       }
                     },
                     builder: (context, state) {
@@ -288,7 +307,107 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                               title: L.of(context).sharing,
                               message: L.of(context).sharemessage,
                             )
-                          else ...[
+                          else if (state.shareStatus is Initializing) ...[
+                            Center(
+                              child: Text(
+                                L.of(context).shareDocExpiryDate,
+                                textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.headline6,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                Checkbox(
+                                  value: state.noExpiration,
+                                  onChanged: (value) =>
+                                      context.read<ShareDocumentBloc>().add(
+                                            ChangeNoExpiration(
+                                              noExpiration: !state.noExpiration,
+                                            ),
+                                          ),
+                                ),
+                                Text(
+                                  L.of(context).noExpiry,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: AdjustableDatePicker(
+                                    dateController: dateController,
+                                    currentTime:
+                                        state.expirationDate is DateTime
+                                            ? state.expirationDate
+                                            : DateTime.now(),
+                                    state: state,
+                                    prefixText: state.expirationDate != null
+                                        ? DateFormat.yMd().format(
+                                            state.expirationDate!,
+                                          )
+                                        : L.of(context).expirationDate,
+                                    onConfirm: (date) =>
+                                        context.read<ShareDocumentBloc>().add(
+                                              ChangeExpirationDate(
+                                                expirationDate: date,
+                                              ),
+                                            ),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: kSmallPadding,
+                                ),
+                                Expanded(
+                                  child: AdjustableTimePicker(
+                                    dateController: dateController,
+                                    currentTime:
+                                        state.expirationTime is DateTime
+                                            ? state.expirationTime
+                                            : DateTime.now(),
+                                    state: state,
+                                    prefixText: state.expirationTime != null
+                                        ? DateFormat.jm().format(
+                                            state.expirationTime!,
+                                          )
+                                        : L.of(context).expirationTime,
+                                    onConfirm: (time) =>
+                                        context.read<ShareDocumentBloc>().add(
+                                              ChangeExpirationTime(
+                                                expirationTime: time,
+                                              ),
+                                            ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(
+                              height: kSmallPadding,
+                            ),
+                            SizedBox(
+                              width: double.infinity,
+                              child: OutlinedButton(
+                                onPressed: !state.isValidExpirationDate &&
+                                            !state.isValidExpirationTime &&
+                                            state.noExpiration ||
+                                        state.isValidExpirationDate &&
+                                            state.isValidExpirationTime &&
+                                            !state.noExpiration
+                                    ? () => context
+                                        .read<ShareDocumentBloc>()
+                                        .add(ShareDocument())
+                                    : null,
+                                child: state.shareStatus is Sharing
+                                    ? const SizedBox(
+                                        height: 24,
+                                        width: 24,
+                                        child: LoadingIndicator(),
+                                      )
+                                    : Text(
+                                        L.of(context).share,
+                                      ),
+                              ),
+                            )
+                          ] else ...[
                             SizedBox(
                               width: double.infinity,
                               child: TextButton(
@@ -296,7 +415,7 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                     ? null
                                     : () => context
                                         .read<ShareDocumentBloc>()
-                                        .add(ShareDocument()),
+                                        .add(InitializeSharing()),
                                 child: state.shareStatus is Sharing
                                     ? const SizedBox(
                                         height: 24,

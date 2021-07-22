@@ -78,6 +78,25 @@ final appTheme = {
       ),
     ),
     indicatorColor: const Color(0xFFD9D9D9),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.resolveWith<Color>(
+        (Set<MaterialState> states) {
+          const interactiveStates = <MaterialState>{
+            MaterialState.focused,
+            MaterialState.hovered,
+            MaterialState.pressed,
+            MaterialState.selected,
+          };
+          if (states.any(interactiveStates.contains)) {
+            return appTheme[AppTheme.light]!.primaryColor;
+          }
+          if (states.contains(MaterialState.disabled)) {
+            return Colors.black.withOpacity(0.25);
+          }
+          return const Color(0xFFACB6C5);
+        },
+      ),
+    ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         foregroundColor: MaterialStateProperty.resolveWith<Color>(
@@ -294,6 +313,25 @@ final appTheme = {
       bodyText2: TextStyle(
         color: Colors.white.withOpacity(0.9),
         fontSize: 14,
+      ),
+    ),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: MaterialStateProperty.resolveWith<Color>(
+        (Set<MaterialState> states) {
+          const interactiveStates = <MaterialState>{
+            MaterialState.focused,
+            MaterialState.hovered,
+            MaterialState.pressed,
+            MaterialState.selected,
+          };
+          if (states.any(interactiveStates.contains)) {
+            return appTheme[AppTheme.light]!.primaryColor;
+          }
+          if (states.contains(MaterialState.disabled)) {
+            return Colors.white.withOpacity(0.25);
+          }
+          return const Color(0xFFACB6C5);
+        },
       ),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(

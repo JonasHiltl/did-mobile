@@ -540,6 +540,46 @@ class L {
     );
   }
 
+  /// `Do you want to set an expiration date to your shared document?`
+  String get shareDocExpiryDate {
+    return Intl.message(
+      'Do you want to set an expiration date to your shared document?',
+      name: 'shareDocExpiryDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No restriction`
+  String get noExpiry {
+    return Intl.message(
+      'No restriction',
+      name: 'noExpiry',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiration Date`
+  String get expirationDate {
+    return Intl.message(
+      'Expiration Date',
+      name: 'expirationDate',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expiration Time`
+  String get expirationTime {
+    return Intl.message(
+      'Expiration Time',
+      name: 'expirationTime',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `No Countries found`
   String get noCountriesFound {
     return Intl.message(

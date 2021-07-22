@@ -1,6 +1,5 @@
 import 'dart:io' show Platform;
 import 'dart:math' as math;
-import 'dart:ui';
 
 import 'package:did/providers/app_settings/app_settings_event.dart';
 import 'package:flutter/cupertino.dart';

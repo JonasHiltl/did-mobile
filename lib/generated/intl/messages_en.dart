@@ -84,6 +84,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "examplePollen": MessageLookupByLibrary.simpleMessage("e.g. Pollen"),
         "exampleSneezing":
             MessageLookupByLibrary.simpleMessage("e.g. Sneezing"),
+        "expirationDate":
+            MessageLookupByLibrary.simpleMessage("Expiration Date"),
+        "expirationTime":
+            MessageLookupByLibrary.simpleMessage("Expiration Time"),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "fingerprint": MessageLookupByLibrary.simpleMessage("Fingerprint"),
         "fingerprintText": MessageLookupByLibrary.simpleMessage(
@@ -132,6 +136,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No allergies added yet"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("No Countries found"),
+        "noExpiry": MessageLookupByLibrary.simpleMessage("No restriction"),
         "noMedicationAdded":
             MessageLookupByLibrary.simpleMessage("No medication added"),
         "noMedicationAddedYet":
@@ -156,6 +161,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "share": MessageLookupByLibrary.simpleMessage("Share"),
         "shareDocErrorMessage":
             MessageLookupByLibrary.simpleMessage("Document sharing failed"),
+        "shareDocExpiryDate": MessageLookupByLibrary.simpleMessage(
+            "Do you want to set an expiration date to your shared document?"),
         "shareDocSuccessMessage":
             MessageLookupByLibrary.simpleMessage("Document is now retrievable"),
         "sharemessage": MessageLookupByLibrary.simpleMessage(

@@ -36,7 +36,63 @@ class _CreatePatientQuestionnaireState
     if (currentStep < 2) {
       setState(() => currentStep++);
     } else {
-      if (Platform.isAndroid) {
+      if (Platform.isIOS) {
+        showCupertinoDialog(
+          context: context,
+          useRootNavigator: false,
+          builder: (context) => CupertinoAlertDialog(
+            title: Text(L.of(context).createPQ),
+            content: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: kSmallPadding),
+                  child: Text(
+                    L.of(context).givePQName,
+                  ),
+                ),
+                CupertinoTextField(
+                  onChanged: (value) => context
+                      .read<CreatePQBloc>()
+                      .add(CreatePQDocumentNameChanged(documentName: value)),
+                ),
+              ],
+            ),
+            actions: [
+              CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    context
+                        .read<CreatePQBloc>()
+                        .add(CreatePQResetDocumentName());
+                  },
+                  child: Text(L.of(context).no)),
+              BlocBuilder<CreatePQBloc, CreatePQState>(
+                builder: (context, state) {
+                  return CupertinoDialogAction(
+                    onPressed: state.isValidDocumentName
+                        ? () {
+                            final FocusScopeNode currentFocus =
+                                FocusScope.of(context);
+
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
+                            }
+                            context
+                                .read<CreatePQBloc>()
+                                .add(CreatePQSubmitted());
+                            Navigator.pop(context);
+                          }
+                        : null,
+                    child: Text(
+                      L.of(context).yes,
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
+        );
+      } else {
         showDialog(
           context: context,
           useRootNavigator: false,
@@ -62,77 +118,24 @@ class _CreatePatientQuestionnaireState
               BlocBuilder<CreatePQBloc, CreatePQState>(
                 builder: (context, state) {
                   return TextButton(
-                      onPressed: state.isValidDocumentName
-                          ? () {
-                              final FocusScopeNode currentFocus =
-                                  FocusScope.of(context);
+                    onPressed: state.isValidDocumentName
+                        ? () {
+                            final FocusScopeNode currentFocus =
+                                FocusScope.of(context);
 
-                              if (!currentFocus.hasPrimaryFocus) {
-                                currentFocus.unfocus();
-                              }
-                              context
-                                  .read<CreatePQBloc>()
-                                  .add(CreatePQSubmitted());
-                              Navigator.pop(context);
+                            if (!currentFocus.hasPrimaryFocus) {
+                              currentFocus.unfocus();
                             }
-                          : null,
-                      child: Text(L.of(context).submit));
+                            context
+                                .read<CreatePQBloc>()
+                                .add(CreatePQSubmitted());
+                            Navigator.pop(context);
+                          }
+                        : null,
+                    child: Text(L.of(context).submit),
+                  );
                 },
               ),
-            ],
-          ),
-        );
-      }
-      if (Platform.isIOS) {
-        showCupertinoDialog(
-          context: context,
-          useRootNavigator: false,
-          builder: (context) => CupertinoAlertDialog(
-            title: Text(L.of(context).createPQ),
-            content: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: kSmallPadding),
-                  child: Text(L.of(context).givePQName),
-                ),
-                CupertinoTextField(
-                  onChanged: (value) => context
-                      .read<CreatePQBloc>()
-                      .add(CreatePQDocumentNameChanged(documentName: value)),
-                )
-              ],
-            ),
-            actions: [
-              CupertinoDialogAction(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    context
-                        .read<CreatePQBloc>()
-                        .add(CreatePQResetDocumentName());
-                  },
-                  child: Text(L.of(context).no)),
-              BlocBuilder<CreatePQBloc, CreatePQState>(
-                builder: (context, state) {
-                  return CupertinoDialogAction(
-                      onPressed: state.isValidDocumentName
-                          ? () {
-                              final FocusScopeNode currentFocus =
-                                  FocusScope.of(context);
-
-                              if (!currentFocus.hasPrimaryFocus) {
-                                currentFocus.unfocus();
-                              }
-                              context
-                                  .read<CreatePQBloc>()
-                                  .add(CreatePQSubmitted());
-                              Navigator.pop(context);
-                            }
-                          : null,
-                      child: Text(
-                        L.of(context).yes,
-                      ));
-                },
-              )
             ],
           ),
         );

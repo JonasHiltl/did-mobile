@@ -11,7 +11,6 @@ import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
 
 import 'session_state.dart';
-import '../../../generated/l10n.dart';
 
 class SessionCubit extends Cubit<SessionState> {
   SessionCubit(
@@ -43,7 +42,6 @@ class SessionCubit extends Cubit<SessionState> {
     try {
       return await _auth.authenticate(
         localizedReason: "Scan Fingerprint to Authenticate",
-        useErrorDialogs: true,
         stickyAuth: true,
         androidAuthStrings: const AndroidAuthMessages(
           biometricHint: "",

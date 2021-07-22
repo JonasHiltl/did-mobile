@@ -6,6 +6,7 @@ class ShareDocumentRepo {
   Future<String?> createChannel(
     String id,
     DynamicCredential credential,
+    DateTime? expirationMoment,
   ) async {
     final _uri =
         Uri.https("did-backend.herokuapp.com", "/streams/create-channel");
@@ -17,8 +18,10 @@ class ShareDocumentRepo {
       body: jsonEncode({
         "id": id,
         "credential": credential,
+        "expirationDate": expirationMoment?.toIso8601String(),
       }),
     );
+    print(res.body);
     if (res.statusCode == 200) {
       final parsedRes = jsonDecode(res.body);
       return parsedRes["annLink"].toString();

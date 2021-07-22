@@ -51,6 +51,11 @@
   "shareDocErrorMessage": "Document sharing failed",
   "shareDocSuccessMessage": "Document is now retrievable",
 
+  "shareDocExpiryDate": "Do you want to set an expiration date to your shared document?",
+  "noExpiry": "No restriction",
+  "expirationDate": "Expiration Date",
+  "expirationTime": "Expiration Time",
+
   "noCountriesFound": "No Countries found",
   "noAllergiesAddedYet": "No allergies added yet",
   "noAllergiesAdded": "No allergies added",

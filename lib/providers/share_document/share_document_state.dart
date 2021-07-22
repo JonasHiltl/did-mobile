@@ -6,10 +6,30 @@ class ShareDocumentState {
   final DynamicCredential credential;
   final ShareStatus shareStatus;
   final String channelLink;
+  final bool noExpiration;
+  final DateTime? expirationDate;
+  final DateTime? expirationTime;
+  bool get isValidExpirationDate => expirationDate is DateTime;
+  bool get isValidExpirationTime => expirationTime is DateTime;
+
+  DateTime? get expirationMoment =>
+      isValidExpirationDate && isValidExpirationTime
+          ? DateTime(
+              expirationDate!.year,
+              expirationDate!.month,
+              expirationDate!.day,
+              expirationTime!.hour,
+              expirationTime!.minute,
+              expirationTime!.millisecond,
+            )
+          : null;
 
   ShareDocumentState({
     required this.id,
     required this.credential,
+    this.noExpiration = false,
+    this.expirationDate,
+    this.expirationTime,
     this.channelLink = "",
     this.shareStatus = const InitialShareStatus(),
   });
@@ -19,12 +39,18 @@ class ShareDocumentState {
     String? id,
     DynamicCredential? credential,
     ShareStatus? shareStatus,
+    bool? noExpiration,
+    DateTime? expirationDate,
+    DateTime? expirationTime,
   }) {
     return ShareDocumentState(
       channelLink: channelLink ?? this.channelLink,
       id: id ?? this.id,
       credential: credential ?? this.credential,
       shareStatus: shareStatus ?? this.shareStatus,
+      noExpiration: noExpiration ?? this.noExpiration,
+      expirationDate: expirationDate,
+      expirationTime: expirationTime,
     );
   }
 }
