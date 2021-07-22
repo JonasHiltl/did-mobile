@@ -18,7 +18,7 @@ class ShareDocumentRepo {
       body: jsonEncode({
         "id": id,
         "credential": credential,
-        "expirationDate": expirationMoment?.toIso8601String(),
+        "expirationDate": expirationMoment?.toUtc().toIso8601String(),
       }),
     );
     print(res.body);

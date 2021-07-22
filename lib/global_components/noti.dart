@@ -73,7 +73,7 @@ void showErrorNoti({
         child: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: kSmallPadding,
-            vertical: kMediumPadding,
+            vertical: kSmallPadding,
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,

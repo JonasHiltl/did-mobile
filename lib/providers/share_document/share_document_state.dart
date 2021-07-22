@@ -20,7 +20,7 @@ class ShareDocumentState {
               expirationDate!.day,
               expirationTime!.hour,
               expirationTime!.minute,
-              expirationTime!.millisecond,
+              expirationTime!.second,
             )
           : null;
 
