@@ -1,6 +1,9 @@
 import 'dart:io';
 
+import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';
+import 'package:did/providers/retrieve_document/retrieve_document_event.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../generated/l10n.dart';
@@ -17,6 +20,27 @@ class _ScanQRState extends State<ScanQR> {
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   String? result;
   QRViewController? controller;
+
+  void onQRViewCreated(QRViewController controller) {
+    setState(() => this.controller = controller);
+    controller.scannedDataStream.listen(
+      (scanData) {
+        setState(() {
+          result = scanData.code;
+        });
+        // TODO: add others public key
+        if (mounted) {
+          if (result != null) {
+            context
+                .read<RetrieveDocumentBloc>()
+                .add(ChangeAnnLink(annLink: result!));
+          }
+          controller.dispose();
+          Navigator.pop(context);
+        }
+      },
+    );
+  }
 
   @override
   void reassemble() {
@@ -97,15 +121,5 @@ class _ScanQRState extends State<ScanQR> {
         ),
       ],
     ));
-  }
-
-  void onQRViewCreated(QRViewController controller) {
-    this.controller = controller;
-    controller.scannedDataStream.listen((scanData) {
-      setState(() {
-        result = scanData.code;
-      });
-      print(scanData.code);
-    });
   }
 }

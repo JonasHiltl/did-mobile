@@ -1,3 +1,5 @@
+import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart';
+import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';
 import 'package:did/screens/startup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,9 +33,16 @@ class AppNavigator extends StatelessWidget {
               MaterialPage(
                 child: Provider.value(
                   value: state,
-                  child: SessionNavigator(),
+                  child: BlocProvider<RetrieveDocumentBloc>(
+                    create: (context) => RetrieveDocumentBloc(
+                      sessionCubit: context.read<SessionCubit>(),
+                      sessionState: state,
+                      repo: context.read<RetrieveDocumentRepo>(),
+                    ),
+                    child: SessionNavigator(),
+                  ),
                 ),
-              )
+              ),
           ],
           onPopPage: (route, result) => route.didPop(result),
         );

@@ -1,11 +1,10 @@
 import 'dart:convert';
-import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:http/http.dart' as http;
 
 class ShareDocumentRepo {
   Future<String?> createChannel(
     String id,
-    DynamicCredential credential,
+    dynamic credential,
     DateTime? expirationMoment,
   ) async {
     final _uri =
@@ -15,6 +14,7 @@ class ShareDocumentRepo {
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
+      // TODO: encrypt data with private key
       body: jsonEncode({
         "id": id,
         "credential": credential,
@@ -26,11 +26,6 @@ class ShareDocumentRepo {
       final parsedRes = jsonDecode(res.body);
       return parsedRes["annLink"].toString();
     } else {
-      final parsedRes = jsonDecode(res.body);
-      if (parsedRes["message"].toString().isNotEmpty) {
-        return null;
-      }
-
       return null;
     }
   }

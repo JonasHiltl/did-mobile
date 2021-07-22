@@ -1,21 +1,21 @@
-import 'package:did/models/patient_questionnaire/credential_subject.dart';
 import 'package:json_annotation/json_annotation.dart';
+import './credential_subject.dart';
+import './proof.dart';
 
-import 'proof.dart';
-part 'dynamic_credential.g.dart';
+part 'verifiable_credential.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class DynamicCredential {
+class VerifiableCredential {
   @JsonKey(name: "@context")
   final String context;
   final String id;
   final List<String> type;
-  final dynamic credentialSubject;
+  final CredentialSubject credentialSubject;
   final String issuer;
   final String issuanceDate;
   final Proof proof;
 
-  DynamicCredential({
+  VerifiableCredential({
     required this.context,
     required this.id,
     required this.type,
@@ -25,8 +25,8 @@ class DynamicCredential {
     required this.proof,
   });
 
-  factory DynamicCredential.fromJson(Map<String, dynamic> data) =>
-      _$DynamicCredentialFromJson(data);
+  factory VerifiableCredential.fromJson(Map<String, dynamic> data) =>
+      _$VerifiableCredentialFromJson(data);
 
-  Map<String, dynamic> toJson() => _$DynamicCredentialToJson(this);
+  Map<String, dynamic> toJson() => _$VerifiableCredentialToJson(this);
 }

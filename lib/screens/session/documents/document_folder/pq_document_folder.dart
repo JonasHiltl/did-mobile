@@ -3,6 +3,7 @@ import 'package:did/global_components/alert.dart';
 import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/global_components/noti.dart';
+import 'package:did/global_components/own_qr_image.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:did/models/dynamic_credential/proof.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
@@ -14,7 +15,7 @@ import 'package:did/providers/share_document/share_document_state.dart';
 import 'package:did/providers/share_document/share_status.dart';
 import 'package:did/screens/session/documents/components/adjustable_datepicker.dart';
 import 'package:did/screens/session/documents/components/adjustable_timepicker.dart';
-import 'package:did/screens/session/documents/components/bottom_sheet.dart';
+import 'package:did/screens/session/documents/components/pq_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -284,13 +285,8 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                             SingleChildScrollView(
                               physics: const BouncingScrollPhysics(),
                               child: Center(
-                                child: QrImage(
-                                  data: state.channelLink,
-                                  size: 200.0,
-                                  foregroundColor: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                ),
+                                // TODO: display public key to decrypt data on other side
+                                child: OwnQrImage(data: state.channelLink),
                               ),
                             )
                           ],

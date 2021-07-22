@@ -68,8 +68,9 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
         );
         if (res == null) {
           yield state.copyWith(
-              formStatus: SubmissionFailed(
-                  "Backend error creating patient questionnaire"));
+            formStatus: SubmissionFailed(
+                "Backend error creating patient questionnaire"),
+          );
           yield state.copyWith(formStatus: const InitialFormStatus());
           yield state
               .copyWith(medications: [], allergies: [], documentName: "");
@@ -81,10 +82,13 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
 
             // convert saved list of patient questionnaires to List<PatientQuestionnaireVc> and add newly created one
             final List<PatientQuestionnaireVc> listPQ = [];
-            decodedPQ.map((e) {
-              listPQ.add(
-                  PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>));
-            }).toList();
+            decodedPQ
+                .map(
+                  (e) => listPQ.add(
+                    PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>),
+                  ),
+                )
+                .toList();
             listPQ.add(res);
 
             secureStorage.write("patient_questionnaire", jsonEncode(listPQ));

@@ -16,10 +16,10 @@ class SessionNavigator extends StatefulWidget {
 
 class _SessionNavigatorState extends State<SessionNavigator> {
   String _currentPage = "Home";
-  List<String> pageKeys = ["Home", "Page2", "Settings"];
+  List<String> pageKeys = ["Home", "manage", "Settings"];
   final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
     "Home": GlobalKey<NavigatorState>(),
-    "Page2": GlobalKey<NavigatorState>(),
+    "manage": GlobalKey<NavigatorState>(),
     "Settings": GlobalKey<NavigatorState>(),
   };
   int _selectedIndex = 0;
@@ -64,7 +64,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
             body: Stack(
               children: [
                 _buildOffstageNavigator("Home"),
-                _buildOffstageNavigator("Page2"),
+                _buildOffstageNavigator("manage"),
                 _buildOffstageNavigator("Settings"),
               ],
             ),
@@ -137,7 +137,7 @@ class TabNavigator extends StatelessWidget {
     Widget child;
     if (tabItem == "Home") {
       child = Home();
-    } else if (tabItem == "Page2") {
+    } else if (tabItem == "manage") {
       child = ManageDocuments();
     } else {
       child = ManageApp();

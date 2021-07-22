@@ -3,6 +3,8 @@ import 'package:device_preview/plugins.dart';
 import 'package:did/providers/app_screen_state/app_navigator.dart';
 import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart';
+import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';
 import "package:did/screens/auth/introduction/introduction.dart";
 import 'package:did/theme.dart';
 import 'package:flutter/foundation.dart';
@@ -43,6 +45,7 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => CreateDidRepository()),
         RepositoryProvider(create: (context) => CommonBackendRepo()),
+        RepositoryProvider(create: (context) => RetrieveDocumentRepo())
       ],
       child: MultiBlocProvider(
         providers: [

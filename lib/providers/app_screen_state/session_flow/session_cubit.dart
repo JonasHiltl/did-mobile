@@ -120,7 +120,11 @@ class SessionCubit extends Cubit<SessionState> {
               Unverified(),
             );
           }
-        } else {
+        }
+        /* if (await secureStorage.contains("shared_documents")) {
+
+        } */
+        else {
           if (await commonBackendRepo.verifyDid(identity.doc.id)) {
             if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
               final isAuthenticated = await authenticate();
@@ -194,9 +198,11 @@ class SessionCubit extends Cubit<SessionState> {
   void startSessionWithVerifiedStateObj(Verified verified) {
     emit(
       Verified(
-          identity: verified.identity,
-          personalDataVc: verified.personalDataVc,
-          patientQuestionnaires: verified.patientQuestionnaires),
+        identity: verified.identity,
+        personalDataVc: verified.personalDataVc,
+        patientQuestionnaires: verified.patientQuestionnaires,
+        sharedPatientQuestionnaires: verified.sharedPatientQuestionnaires,
+      ),
     );
   }
 

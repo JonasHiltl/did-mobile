@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';
+import 'package:did/providers/retrieve_document/retrieve_document_event.dart';
 import 'package:did/screens/session/create_patient_questionnaire/create_patient_questionnaire.dart';
 import 'package:did/screens/session/documents/document_folder/pq_document_folder.dart';
 import 'package:did/screens/session/scan_qr/scan_qr.dart';
@@ -15,6 +17,17 @@ import '../../../theme.dart';
 import 'components/document_folder_preview.dart';
 
 class ManageDocuments extends StatelessWidget {
+  Future _openScanner(BuildContext context) async {
+    await Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => const ScanQR(),
+      ),
+    );
+    // call the bloc to retrieve document
+    print("back in manage docs");
+    context.read<RetrieveDocumentBloc>().add(RetrieveDocument());
+  }
+
   @override
   Widget build(BuildContext context) {
     final sessionState = context.watch<Verified>();
@@ -37,10 +50,7 @@ class ManageDocuments extends StatelessWidget {
               centerTitle: true,
               actions: [
                 IconButton(
-                  onPressed: () => Navigator.of(context, rootNavigator: true)
-                      .push(MaterialPageRoute(
-                    builder: (context) => const ScanQR(),
-                  )),
+                  onPressed: () => _openScanner(context),
                   icon: Icon(
                     Icons.qr_code,
                     color: Theme.of(context).colorScheme.onBackground,
@@ -153,6 +163,14 @@ class ManageDocuments extends StatelessWidget {
                       ],
                     ),
                   ),
+                ),
+              ),
+            if (sessionState.sharedPatientQuestionnaires.isNotEmpty)
+              SliverToBoxAdapter(
+                child: Column(
+                  children: sessionState.sharedPatientQuestionnaires
+                      .map((e) => Text(e.presentation.holder))
+                      .toList(),
                 ),
               ),
           ],
