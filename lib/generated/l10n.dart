@@ -340,6 +340,26 @@ class L {
     );
   }
 
+  /// `Patient Questionnaires`
+  String get patientQuestionnaires {
+    return Intl.message(
+      'Patient Questionnaires',
+      name: 'patientQuestionnaires',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Received Patient Questionnaires`
+  String get receivedPatientQuestionnaire {
+    return Intl.message(
+      'Received Patient Questionnaires',
+      name: 'receivedPatientQuestionnaire',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Allergy`
   String get addAllergy {
     return Intl.message(
@@ -630,6 +650,16 @@ class L {
     );
   }
 
+  /// `You have not received a document yet!`
+  String get noDocReceived {
+    return Intl.message(
+      'You have not received a document yet!',
+      name: 'noDocReceived',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Create digital identity`
   String get introductionAction {
     return Intl.message(
@@ -700,11 +730,61 @@ class L {
     );
   }
 
+  /// `Items`
+  String get items {
+    return Intl.message(
+      'Items',
+      name: 'items',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item`
+  String get item {
+    return Intl.message(
+      'Item',
+      name: 'item',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `All Files`
   String get allFiles {
     return Intl.message(
       'All Files',
       name: 'allFiles',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Received Documents`
+  String get receivedDocs {
+    return Intl.message(
+      'Received Documents',
+      name: 'receivedDocs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Personal Documents`
+  String get ownDocs {
+    return Intl.message(
+      'Personal Documents',
+      name: 'ownDocs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Manage Documents`
+  String get manageDocs {
+    return Intl.message(
+      'Manage Documents',
+      name: 'manageDocs',
       desc: '',
       args: [],
     );

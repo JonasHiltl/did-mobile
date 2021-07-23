@@ -102,10 +102,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidEmail":
             MessageLookupByLibrary.simpleMessage("Not a valid Email."),
         "issued": MessageLookupByLibrary.simpleMessage("Issued "),
+        "item": MessageLookupByLibrary.simpleMessage("Item"),
+        "items": MessageLookupByLibrary.simpleMessage("Items"),
         "language": MessageLookupByLibrary.simpleMessage("Language"),
         "languages": MessageLookupByLibrary.simpleMessage("Languages"),
         "lastName": MessageLookupByLibrary.simpleMessage("Last Name"),
         "male": MessageLookupByLibrary.simpleMessage("Male"),
+        "manageDocs": MessageLookupByLibrary.simpleMessage("Manage Documents"),
         "medication": MessageLookupByLibrary.simpleMessage("Medication"),
         "missingAddress": MessageLookupByLibrary.simpleMessage(
             "Please input your street and number."),
@@ -136,13 +139,18 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("No allergies added yet"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("No Countries found"),
+        "noDocReceived": MessageLookupByLibrary.simpleMessage(
+            "You have not received a document yet!"),
         "noExpiry": MessageLookupByLibrary.simpleMessage("No restriction"),
         "noMedicationAdded":
             MessageLookupByLibrary.simpleMessage("No medication added"),
         "noMedicationAddedYet":
             MessageLookupByLibrary.simpleMessage("No medication added yet"),
+        "ownDocs": MessageLookupByLibrary.simpleMessage("Personal Documents"),
         "patientQuestionnaire":
             MessageLookupByLibrary.simpleMessage("Patient Questionnaire"),
+        "patientQuestionnaires":
+            MessageLookupByLibrary.simpleMessage("Patient Questionnaires"),
         "personalData": MessageLookupByLibrary.simpleMessage("Personal Data"),
         "personalInfoVC": MessageLookupByLibrary.simpleMessage(
             "Personal Information Credential"),
@@ -150,6 +158,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medication"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postal Code"),
         "profile": MessageLookupByLibrary.simpleMessage("Profile"),
+        "receivedDocs":
+            MessageLookupByLibrary.simpleMessage("Received Documents"),
+        "receivedPatientQuestionnaire": MessageLookupByLibrary.simpleMessage(
+            "Received Patient Questionnaires"),
         "residence":
             MessageLookupByLibrary.simpleMessage("Residential Address"),
         "scanMessage": MessageLookupByLibrary.simpleMessage(

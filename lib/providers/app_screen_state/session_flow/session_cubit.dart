@@ -111,8 +111,15 @@ class SessionCubit extends Cubit<SessionState> {
         final identity = await getdid();
         final personalDataVc = await getPersonalDataVc();
 
-        final listPQ = await getListPQ();
-        final listSharedPQ = await getListSharedPQ();
+        List<PatientQuestionnaireVc> listPQ = [];
+        if (await secureStorage.contains("patient_questionnaire")) {
+          listPQ = await getListPQ();
+        }
+
+        List<SharedPatientQuestionnaire> listSharedPQ = [];
+        if (await secureStorage.contains("shared_patient_questionnaires")) {
+          listSharedPQ = await getListSharedPQ();
+        }
 
         if (await commonBackendRepo.verifyDid(identity.doc.id)) {
           if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
@@ -154,27 +161,6 @@ class SessionCubit extends Cubit<SessionState> {
       emit(
         Unverified(),
       );
-    }
-  }
-
-  Future<void> attemptGettingPatientQuestionnaire() async {
-    try {
-      if (await secureStorage.contains("patient_questionnaire")) {
-        final encodedPQ = await secureStorage.read("patient_questionnaire");
-        final decodedPQ = jsonDecode(
-          encodedPQ.toString(),
-        ) as List<dynamic>;
-
-        //convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
-        final List<PatientQuestionnaireVc> listPQ = [];
-        decodedPQ.map((e) {
-          listPQ.add(
-            PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>),
-          );
-        }).toList();
-      }
-    } catch (e) {
-      print(e);
     }
   }
 

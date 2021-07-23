@@ -10,10 +10,11 @@ void showSuccessNoti({
     context: context,
     duration: const Duration(seconds: 2),
     builder: (context, controller) {
-      return Flash.dialog(
-        barrierColor: Colors.transparent,
+      return Flash.bar(
+        barrierColor: null,
+        barrierBlur: null,
+        position: FlashPosition.top,
         controller: controller,
-        alignment: Alignment.topCenter,
         borderRadius: const BorderRadius.all(Radius.circular(4)),
         backgroundColor: Theme.of(context).backgroundColor,
         boxShadows: [
@@ -57,9 +58,10 @@ void showErrorNoti({
     context: context,
     duration: const Duration(seconds: 2),
     builder: (context, controller) {
-      return Flash.dialog(
-        barrierColor: Colors.transparent,
-        alignment: Alignment.topCenter,
+      return Flash.bar(
+        barrierColor: null,
+        barrierBlur: null,
+        position: FlashPosition.top,
         controller: controller,
         borderRadius: const BorderRadius.all(Radius.circular(2)),
         backgroundColor: Theme.of(context).backgroundColor,

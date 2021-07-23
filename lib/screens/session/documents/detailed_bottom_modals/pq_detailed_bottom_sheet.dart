@@ -9,9 +9,9 @@ import 'package:intl/intl.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../theme.dart';
 
-class PQBottomSheet extends StatelessWidget {
+class PQDetailedBottomSheet extends StatelessWidget {
   final int i;
-  const PQBottomSheet({required this.i});
+  const PQDetailedBottomSheet({required this.i});
 
   @override
   Widget build(BuildContext context) {

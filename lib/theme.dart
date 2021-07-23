@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 
 const double kSmallPadding = 10;
@@ -11,6 +13,10 @@ const Color kDarkAccentBG = Color(0xFF262837);
 
 Color kTextFieldLightBorder = const Color(0xFFACB6C5).withOpacity(0.6);
 Color kTextFieldDarkBorder = Colors.white10;
+
+ScrollPhysics scrollPhysics = Platform.isIOS
+    ? const BouncingScrollPhysics()
+    : const ClampingScrollPhysics();
 
 enum AppTheme { dark, light }
 
@@ -31,6 +37,7 @@ final appTheme = {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
     ),
+    bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF3861FB),
       onBackground: Color(0xFF0B0C10),
@@ -77,7 +84,12 @@ final appTheme = {
         fontSize: 14,
       ),
     ),
-    indicatorColor: const Color(0xFFD9D9D9),
+    unselectedWidgetColor: Colors.black38,
+    indicatorColor: const Color(0xFF3861FB),
+    tabBarTheme: const TabBarTheme(
+      labelColor: Color(0xFF3861FB),
+      unselectedLabelColor: Colors.black38,
+    ),
     checkboxTheme: CheckboxThemeData(
       fillColor: MaterialStateProperty.resolveWith<Color>(
         (Set<MaterialState> states) {
@@ -161,19 +173,22 @@ final appTheme = {
             };
             if (states.any(interactiveStates.contains)) {
               return RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                  side: BorderSide(
-                      color: appTheme[AppTheme.light]!.primaryColor));
+                borderRadius: BorderRadius.circular(4.0),
+                side: BorderSide(color: appTheme[AppTheme.light]!.primaryColor),
+              );
             }
             if (states.contains(MaterialState.disabled)) {
               return RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4.0),
-                  side: const BorderSide(color: Color(0xFFD9D9D9)));
+                borderRadius: BorderRadius.circular(4.0),
+                side: const BorderSide(
+                  color: Color(0xFFD9D9D9),
+                ),
+              );
             }
             return RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(4.0),
-                side:
-                    BorderSide(color: appTheme[AppTheme.light]!.primaryColor));
+              borderRadius: BorderRadius.circular(4.0),
+              side: BorderSide(color: appTheme[AppTheme.light]!.primaryColor),
+            );
           },
         ),
       ),
@@ -211,7 +226,10 @@ final appTheme = {
           },
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.0))),
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(4.0),
+          ),
+        ),
         side: MaterialStateProperty.resolveWith<BorderSide>(
           (Set<MaterialState> states) {
             const interactiveStates = <MaterialState>{
@@ -229,14 +247,16 @@ final appTheme = {
           },
         ),
         padding: MaterialStateProperty.all(
-            const EdgeInsets.fromLTRB(20, 12, 20, 12)),
+          const EdgeInsets.fromLTRB(20, 12, 20, 12),
+        ),
       ),
     ),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         elevation: MaterialStateProperty.all(0.0),
         padding: MaterialStateProperty.all(
-            const EdgeInsets.fromLTRB(20, 12, 20, 12)),
+          const EdgeInsets.fromLTRB(20, 12, 20, 12),
+        ),
         foregroundColor: MaterialStateProperty.resolveWith<Color>(
           (Set<MaterialState> states) {
             const interactiveStates = <MaterialState>{
@@ -315,6 +335,12 @@ final appTheme = {
         fontSize: 14,
       ),
     ),
+    unselectedWidgetColor: Colors.white70,
+    indicatorColor: const Color(0xFF3861FB),
+    tabBarTheme: const TabBarTheme(
+      labelColor: Color(0xFF3861FB),
+      unselectedLabelColor: Colors.white70,
+    ),
     checkboxTheme: CheckboxThemeData(
       fillColor: MaterialStateProperty.resolveWith<Color>(
         (Set<MaterialState> states) {
@@ -325,7 +351,7 @@ final appTheme = {
             MaterialState.selected,
           };
           if (states.any(interactiveStates.contains)) {
-            return appTheme[AppTheme.light]!.primaryColor;
+            return appTheme[AppTheme.dark]!.primaryColor;
           }
           if (states.contains(MaterialState.disabled)) {
             return Colors.white.withOpacity(0.25);
@@ -369,7 +395,7 @@ final appTheme = {
             if (states.contains(MaterialState.disabled)) {
               return const Color(0xFFF5F5F5);
             }
-            return appTheme[AppTheme.light]!.primaryColor;
+            return appTheme[AppTheme.dark]!.primaryColor;
           },
         ),
         backgroundColor: MaterialStateProperty.resolveWith<Color>(
@@ -386,7 +412,7 @@ final appTheme = {
             if (states.contains(MaterialState.disabled)) {
               return Colors.white.withOpacity(0.03);
             }
-            return appTheme[AppTheme.light]!.primaryColor;
+            return appTheme[AppTheme.dark]!.primaryColor;
           },
         ),
         shape: MaterialStateProperty.resolveWith<RoundedRectangleBorder>(
@@ -399,7 +425,7 @@ final appTheme = {
             if (states.any(interactiveStates.contains)) {
               return RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(4.0),
-                side: BorderSide(color: appTheme[AppTheme.light]!.primaryColor),
+                side: BorderSide(color: appTheme[AppTheme.dark]!.primaryColor),
               );
             }
             if (states.contains(MaterialState.disabled)) {
@@ -412,7 +438,7 @@ final appTheme = {
             }
             return RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
-              side: BorderSide(color: appTheme[AppTheme.light]!.primaryColor),
+              side: BorderSide(color: appTheme[AppTheme.dark]!.primaryColor),
             );
           },
         ),
@@ -428,7 +454,7 @@ final appTheme = {
               MaterialState.pressed
             };
             if (states.any(interactiveStates.contains)) {
-              return appTheme[AppTheme.light]!.primaryColor;
+              return appTheme[AppTheme.dark]!.primaryColor;
             }
             if (states.contains(MaterialState.disabled)) {
               return Colors.white.withOpacity(0.25);
@@ -447,7 +473,7 @@ final appTheme = {
             if (states.any(interactiveStates.contains)) {
               return Colors.transparent;
             }
-            return appTheme[AppTheme.light]!.primaryColor;
+            return appTheme[AppTheme.dark]!.primaryColor;
           },
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -463,7 +489,7 @@ final appTheme = {
               MaterialState.pressed
             };
             if (states.any(interactiveStates.contains)) {
-              return BorderSide(color: appTheme[AppTheme.light]!.primaryColor);
+              return BorderSide(color: appTheme[AppTheme.dark]!.primaryColor);
             }
             if (states.contains(MaterialState.disabled)) {
               return BorderSide(color: Colors.white.withOpacity(0.25));
@@ -488,7 +514,7 @@ final appTheme = {
               MaterialState.pressed
             };
             if (states.any(interactiveStates.contains)) {
-              return appTheme[AppTheme.light]!.primaryColor;
+              return appTheme[AppTheme.dark]!.primaryColor;
             }
             if (states.contains(MaterialState.disabled)) {
               return Colors.white.withOpacity(0.25);

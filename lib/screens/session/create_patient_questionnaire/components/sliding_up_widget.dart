@@ -24,7 +24,7 @@ class _SlidingUpWidgetState extends State<SlidingUpWidget> {
     return SlidingUpPanel(
       boxShadow: [
         BoxShadow(
-          color: Colors.black.withOpacity(0.5),
+          color: Colors.black.withOpacity(0.3),
           offset: const Offset(0, 8),
           blurRadius: 20,
           spreadRadius: 1.0,
@@ -41,7 +41,7 @@ class _SlidingUpWidgetState extends State<SlidingUpWidget> {
         top: Radius.circular(25),
       ),
       color: Theme.of(context).brightness == Brightness.light
-          ? kLightAccentBG
+          ? Colors.white
           : kDarkAccentBG,
     );
   }

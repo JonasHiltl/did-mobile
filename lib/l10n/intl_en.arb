@@ -29,6 +29,8 @@
   "personalInfoVC": "Personal Information Credential",
 
   "patientQuestionnaire": "Patient Questionnaire",
+  "patientQuestionnaires": "Patient Questionnaires",
+  "receivedPatientQuestionnaire": "Received Patient Questionnaires",
   "addAllergy": "Add Allergy",
   "addMedication": "Add Medication",
   "examplePollen": "e.g. Pollen",
@@ -61,7 +63,7 @@
   "noAllergiesAdded": "No allergies added",
   "noMedicationAddedYet": "No medication added yet",
   "noMedicationAdded": "No medication added",
-
+  "noDocReceived": "You have not received a document yet!",
   "introductionAction": "Create digital identity",
 
   "next": "Next",
@@ -70,7 +72,12 @@
   "skip": "Skip",
   "yes": "Yes",
   "no": "No",
+  "items": "Items",
+  "item": "Item",
   "allFiles": "All Files",
+  "receivedDocs": "Received Documents",
+  "ownDocs": "Personal Documents",
+  "manageDocs": "Manage Documents",
   "share": "Share",
   "sharing": "Sharing",
   "sharemessage": "Scan the resulting QR Code to retrieve the document.",

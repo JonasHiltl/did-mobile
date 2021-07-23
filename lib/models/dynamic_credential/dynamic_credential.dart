@@ -1,4 +1,3 @@
-import 'package:did/models/patient_questionnaire/credential_subject.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'proof.dart';

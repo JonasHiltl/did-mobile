@@ -8,13 +8,7 @@ import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart
 import 'package:did/providers/retrieve_document/retrieve_document_event.dart';
 import 'package:did/providers/retrieve_document/retrieve_document_state.dart';
 import 'package:did/providers/retrieve_document/retrieve_status.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-void printWrapped(String text) {
-  final pattern = new RegExp('.{1,800}'); // 800 is the size of each chunk
-  pattern.allMatches(text).forEach((match) => print(match.group(0)));
-}
 
 class RetrieveDocumentBloc
     extends Bloc<RetrieveDocumentEvent, RetrieveDocumentState> {

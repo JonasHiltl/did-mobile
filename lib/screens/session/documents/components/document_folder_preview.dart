@@ -1,17 +1,18 @@
 import 'package:did/theme.dart';
 import 'package:flutter/material.dart';
+import '../../../../generated/l10n.dart';
 
 class DocumentFolderPreview extends StatelessWidget {
   final Color backgroundColor;
   final Icon icon;
   final String title;
-  final String subtitle;
+  final int items;
   final Function()? onTap;
   const DocumentFolderPreview({
     required this.backgroundColor,
     required this.icon,
     required this.title,
-    required this.subtitle,
+    required this.items,
     this.onTap,
   });
   @override
@@ -53,12 +54,14 @@ class DocumentFolderPreview extends StatelessWidget {
                       .copyWith(color: Colors.white),
                 ),
                 Text(
-                  subtitle,
+                  items == 1
+                      ? "$items ${L.of(context).item}"
+                      : "$items ${L.of(context).items}",
                   style: Theme.of(context)
                       .textTheme
                       .bodyText2!
                       .copyWith(color: Colors.white),
-                )
+                ),
               ],
             )
           ],

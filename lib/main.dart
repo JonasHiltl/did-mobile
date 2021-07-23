@@ -26,14 +26,11 @@ import "screens/auth/creation/creation.dart";
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await sharedPreferencesInit();
-  /* SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]); */
   runApp(
     /* DevicePreview(
       plugins: const [FileExplorerPlugin(), ScreenshotPlugin()],
-      builder: (context) =>  */
-    MyApp(),
-    /* enabled: !kReleaseMode,
+      builder: (context) =>  */MyApp(),
+      /* enabled: !kReleaseMode,
     ), */
   );
 }

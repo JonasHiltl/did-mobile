@@ -1,9 +1,6 @@
 import 'dart:io';
 
-import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';
-import 'package:did/providers/retrieve_document/retrieve_document_event.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import '../../../generated/l10n.dart';
@@ -29,14 +26,10 @@ class _ScanQRState extends State<ScanQR> {
           result = scanData.code;
         });
         // TODO: add others public key
+        // TODO: check that result has form of Announcement link
         if (mounted) {
-          if (result != null) {
-            context
-                .read<RetrieveDocumentBloc>()
-                .add(ChangeAnnLink(annLink: result!));
-          }
           controller.dispose();
-          Navigator.pop(context);
+          Navigator.pop(context, result);
         }
       },
     );

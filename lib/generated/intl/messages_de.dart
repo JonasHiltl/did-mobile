@@ -101,10 +101,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "invalidEmail": MessageLookupByLibrary.simpleMessage(
             "Dies ist keine gültige E-Mail."),
         "issued": MessageLookupByLibrary.simpleMessage("Erstellt am "),
+        "item": MessageLookupByLibrary.simpleMessage("Eintrag"),
+        "items": MessageLookupByLibrary.simpleMessage("Einträge"),
         "language": MessageLookupByLibrary.simpleMessage("Sprache"),
         "languages": MessageLookupByLibrary.simpleMessage("Sprachen"),
         "lastName": MessageLookupByLibrary.simpleMessage("Nachname"),
         "male": MessageLookupByLibrary.simpleMessage("Männlich"),
+        "manageDocs":
+            MessageLookupByLibrary.simpleMessage("Dokumente verwalten"),
         "medication": MessageLookupByLibrary.simpleMessage("Medikament"),
         "missingCity":
             MessageLookupByLibrary.simpleMessage("Bitte gib deine Stadt ein."),
@@ -133,12 +137,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "Noch keine Allergie hinzugefügt"),
         "noCountriesFound":
             MessageLookupByLibrary.simpleMessage("Keine Länder gefunden"),
+        "noDocReceived": MessageLookupByLibrary.simpleMessage(
+            "Du hast noch kein Dokument erhalten!"),
         "noExpiry": MessageLookupByLibrary.simpleMessage("Keine Beschränkung"),
         "noMedicationAdded":
             MessageLookupByLibrary.simpleMessage("Kein Medikament hinzugefügt"),
         "noMedicationAddedYet": MessageLookupByLibrary.simpleMessage(
             "Noch kein Medikament hinzugefügt"),
+        "ownDocs": MessageLookupByLibrary.simpleMessage("Eigene Dokumente"),
         "patientQuestionnaire":
+            MessageLookupByLibrary.simpleMessage("Patientenfragebogen"),
+        "patientQuestionnaires":
             MessageLookupByLibrary.simpleMessage("Patientenfragebogen"),
         "personalData":
             MessageLookupByLibrary.simpleMessage("Persönliche Daten"),
@@ -148,6 +157,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medikamente"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
+        "receivedDocs":
+            MessageLookupByLibrary.simpleMessage("Empfangene Dokumente"),
+        "receivedPatientQuestionnaire": MessageLookupByLibrary.simpleMessage(
+            "Empfangene Patientenfragebogen"),
         "residence": MessageLookupByLibrary.simpleMessage("Wohnadresse"),
         "scanMessage": MessageLookupByLibrary.simpleMessage(
             "Nachdem ein gültiger Code erkannt wurde, wird das Dokument angefordert"),
