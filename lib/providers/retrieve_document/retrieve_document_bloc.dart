@@ -40,20 +40,8 @@ class RetrieveDocumentBloc
           yield state.copyWith(
               retrieveStatus: RetrieveFailed("No Document returned!"));
         } else if (res is SharedPatientQuestionnaire) {
-          if (await secureStorage.contains("shared_patient_questionnaires")) {
-            final encodedPQ =
-                await secureStorage.read("shared_patient_questionnaires");
-            final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
-
-            final List<SharedPatientQuestionnaire> documentsList = [];
-            decodedPQ.map(
-              (e) {
-                documentsList.add(
-                  SharedPatientQuestionnaire.fromJson(
-                      e as Map<String, dynamic>),
-                );
-              },
-            ).toList();
+          if (sessionState.sharedPatientQuestionnaires.isNotEmpty) {
+            final documentsList = sessionState.sharedPatientQuestionnaires;
             documentsList.add(res);
 
             secureStorage.write(

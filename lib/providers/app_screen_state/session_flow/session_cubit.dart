@@ -4,6 +4,7 @@ import 'package:did/data/secure_storage.dart';
 import 'package:did/models/did/identity.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
+import 'package:did/models/shared_patient_questionnaire/shared_patient_questionnaire.dart';
 import 'package:did/providers/app_settings/app_settings_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,7 @@ class SessionCubit extends Cubit<SessionState> {
   }) : super(
           UnkownSessionState(),
         ) {
-    attemptGettingDid();
+    attemptGettingSavedState();
   }
 
   final CommonBackendRepo commonBackendRepo;
@@ -69,88 +70,79 @@ class SessionCubit extends Cubit<SessionState> {
     return PersonalDataVc.fromJson(decodedPersonalDataVc);
   }
 
-  Future<void> attemptGettingDid() async {
+  Future<List<PatientQuestionnaireVc>> getListPQ() async {
+    final encodedPQ = await secureStorage.read("patient_questionnaire");
+    final decodedPQ = jsonDecode(
+      encodedPQ.toString(),
+    ) as List<dynamic>;
+
+    // convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
+    final List<PatientQuestionnaireVc> listPQ = [];
+    decodedPQ.map((e) {
+      listPQ.add(
+        PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>),
+      );
+    }).toList();
+
+    return listPQ;
+  }
+
+  Future<List<SharedPatientQuestionnaire>> getListSharedPQ() async {
+    final encodedDocuments =
+        await secureStorage.read("shared_patient_questionnaires");
+    final decodedDocuments = jsonDecode(
+      encodedDocuments.toString(),
+    ) as List<dynamic>;
+
+    // convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
+    final List<SharedPatientQuestionnaire> listSharedPQ = [];
+    decodedDocuments.map((e) {
+      listSharedPQ.add(
+        SharedPatientQuestionnaire.fromJson(e as Map<String, dynamic>),
+      );
+    }).toList();
+    return listSharedPQ;
+  }
+
+  Future<void> attemptGettingSavedState() async {
     try {
-      // await secureStorage.delete("identity");
       if (await secureStorage.contains("identity") &&
           await secureStorage.contains("personal_data_vc")) {
         final identity = await getdid();
         final personalDataVc = await getPersonalDataVc();
 
-        // if patient questionnaire is already created launch session with these patient questionnaires
-        if (await secureStorage.contains("patient_questionnaire")) {
-          final encodedPQ = await secureStorage.read("patient_questionnaire");
-          final decodedPQ = jsonDecode(
-            encodedPQ.toString(),
-          ) as List<dynamic>;
+        final listPQ = await getListPQ();
+        final listSharedPQ = await getListSharedPQ();
 
-          // convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
-          final List<PatientQuestionnaireVc> listPQ = [];
-          decodedPQ.map((e) {
-            listPQ.add(
-              PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>),
-            );
-          }).toList();
+        if (await commonBackendRepo.verifyDid(identity.doc.id)) {
+          if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
+            final isAuthenticated = await authenticate();
 
-          if (await commonBackendRepo.verifyDid(identity.doc.id)) {
-            if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
-              final isAuthenticated = await authenticate();
-
-              if (isAuthenticated) {
-                emit(
-                  Verified(
-                    identity: identity,
-                    personalDataVc: personalDataVc,
-                    patientQuestionnaires: listPQ,
-                  ),
-                );
-              }
-            } else {
-              print("no touch ID");
+            if (isAuthenticated) {
               emit(
                 Verified(
                   identity: identity,
                   personalDataVc: personalDataVc,
                   patientQuestionnaires: listPQ,
+                  sharedPatientQuestionnaires: listSharedPQ,
                 ),
               );
             }
           } else {
+            print("no TOuch ID");
             emit(
-              Unverified(),
+              Verified(
+                identity: identity,
+                personalDataVc: personalDataVc,
+                patientQuestionnaires: listPQ,
+                sharedPatientQuestionnaires: listSharedPQ,
+              ),
             );
           }
-        }
-        /* if (await secureStorage.contains("shared_documents")) {
-
-        } */
-        else {
-          if (await commonBackendRepo.verifyDid(identity.doc.id)) {
-            if (appSettingsBloc.state.useTouchID && await hasBiometric()) {
-              final isAuthenticated = await authenticate();
-
-              if (isAuthenticated) {
-                emit(
-                  Verified(
-                    identity: identity,
-                    personalDataVc: personalDataVc,
-                  ),
-                );
-              }
-            } else {
-              print("no touch ID");
-              emit(
-                Verified(
-                  identity: identity,
-                  personalDataVc: personalDataVc,
-                ),
-              );
-            }
-          } else {
-            emit(
-              Unverified(),
-            );
-          }
+        } else {
+          emit(
+            Unverified(),
+          );
         }
       } else {
         emit(
