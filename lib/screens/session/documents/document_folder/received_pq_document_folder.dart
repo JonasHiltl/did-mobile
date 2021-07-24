@@ -25,7 +25,7 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
 
   @override
   Widget build(BuildContext context) {
-    final sessionState = context.watch<Verified>();
+    final sessionState = context.watch<SessionState>();
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
@@ -127,7 +127,6 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                           onLongPress: () => receivedPqBottomModal(
                             context,
                             i,
-                            sessionState,
                           ),
                           child: Padding(
                             padding: const EdgeInsets.all(6.0),
@@ -156,7 +155,6 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                                     onPressed: () => receivedPqBottomModal(
                                       context,
                                       i,
-                                      sessionState,
                                     ),
                                   )
                                 : HorizontalDocumentCard(
@@ -183,7 +181,6 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                                     onPressed: () => receivedPqBottomModal(
                                       context,
                                       i,
-                                      sessionState,
                                     ),
                                   ),
                           ),

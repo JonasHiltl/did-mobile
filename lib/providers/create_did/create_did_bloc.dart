@@ -14,8 +14,10 @@ class CreateDidBloc extends Bloc<CreateDidEvent, CreateDidState> {
   final AuthCubit authCubit;
   final SecureStorage secureStorage = SecureStorage();
 
-  CreateDidBloc({required this.repo, required this.authCubit})
-      : super(CreateDidState());
+  CreateDidBloc({
+    required this.repo,
+    required this.authCubit,
+  }) : super(CreateDidState());
 
   @override
   Stream<CreateDidState> mapEventToState(CreateDidEvent event) async* {

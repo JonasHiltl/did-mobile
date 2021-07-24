@@ -1,6 +1,6 @@
 import 'package:did/global_components/material_bottom_sheet.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,7 +12,6 @@ import '../../../../generated/l10n.dart';
 void receivedPqBottomModal(
   BuildContext context,
   int i,
-  Verified sessionState,
 ) =>
     bottomSheet(
       context: context,
@@ -22,7 +21,9 @@ void receivedPqBottomModal(
           child: TextButton(
             onPressed: () {
               Navigator.of(context).pop();
-              context.read<SessionCubit>().deleteReceivedPQ(i, sessionState);
+              context.read<SessionBloc>().add(
+                    DeleteReceivedPQ(index: i),
+                  );
             },
             child: Text(
               L.of(context).delete,

@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:did/global_components/loading_indicator.dart';
 import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';

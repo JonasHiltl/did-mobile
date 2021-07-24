@@ -1,7 +1,8 @@
 import 'dart:io' show Platform;
 
 import 'package:did/generated/l10n.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_event.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -30,7 +31,7 @@ class DeleteAllButton extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        context.read<SessionCubit>().deleteAll();
+                        context.read<SessionBloc>().add(DeleteAll());
                         Navigator.pop(context);
                       },
                       child: Text(
@@ -55,7 +56,9 @@ class DeleteAllButton extends StatelessWidget {
                     ),
                     CupertinoDialogAction(
                       onPressed: () {
-                        context.read<SessionCubit>().deleteAll();
+                        context.read<SessionBloc>().add(
+                              DeleteAll(),
+                            );
                         Navigator.pop(context);
                       },
                       child: Text(

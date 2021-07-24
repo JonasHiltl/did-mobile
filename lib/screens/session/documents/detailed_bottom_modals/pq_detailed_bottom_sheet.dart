@@ -16,7 +16,7 @@ class PQDetailedBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final patientQuestionnaires =
-        context.watch<Verified>().patientQuestionnaires;
+        context.watch<SessionState>().patientQuestionnaires;
     return makeDismissible(
       context: context,
       child: DraggableScrollableSheet(

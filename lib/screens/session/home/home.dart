@@ -14,8 +14,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     final credential =
-        context.watch<Verified>().personalDataVc.credentialSubject;
-    final sessionState = context.watch<Verified>();
+        context.watch<SessionState>().personalDataVc!.credentialSubject;
+    final sessionState = context.watch<SessionState>();
     return CustomScrollView(
       physics: const BouncingScrollPhysics(),
       slivers: <Widget>[

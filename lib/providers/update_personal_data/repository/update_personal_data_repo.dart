@@ -4,18 +4,19 @@ import 'package:http/http.dart' as http;
 
 class UpdatePersonalDataRepo {
   Future<PersonalDataVc?> updatePersonalVc(
-      String id,
-      String firstName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      DateTime? dateOfBirth,
-      String sex,
-      String address,
-      String city,
-      String state,
-      String postalCode,
-      String country) async {
+    String id,
+    String firstName,
+    String lastName,
+    String email,
+    String phoneNumber,
+    DateTime? dateOfBirth,
+    String sex,
+    String address,
+    String city,
+    String state,
+    String postalCode,
+    String country,
+  ) async {
     final _uri = Uri.https("did-backend.herokuapp.com", "/update-personal-vc");
     final res = await http.post(
       _uri,

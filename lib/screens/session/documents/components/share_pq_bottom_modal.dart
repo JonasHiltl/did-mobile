@@ -4,8 +4,8 @@ import 'package:did/global_components/material_bottom_sheet.dart';
 import 'package:did/global_components/noti.dart';
 import 'package:did/models/dynamic_credential/dynamic_credential.dart';
 import 'package:did/models/dynamic_credential/proof.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_event.dart';
 import 'package:did/providers/share_document/repo/share_document_repo.dart';
 import 'package:did/providers/share_document/share_document_bloc.dart';
 import 'package:did/providers/share_document/share_document_event.dart';
@@ -24,7 +24,7 @@ import '../../../../theme.dart';
 void sharePQBottomModal(
   BuildContext context,
   int i,
-  Verified sessionState,
+  SessionBloc sessionBloc,
   TextEditingController dateController,
 ) =>
     bottomSheet(
@@ -36,22 +36,22 @@ void sharePQBottomModal(
             create: (context) => ShareDocumentBloc(
               repo: context.read<ShareDocumentRepo>(),
               credential: DynamicCredential(
-                context: sessionState.patientQuestionnaires[i].context,
-                id: sessionState.patientQuestionnaires[i].id,
-                type: sessionState.patientQuestionnaires[i].type,
-                credentialSubject:
-                    sessionState.patientQuestionnaires[i].credentialSubject,
-                issuer: sessionState.patientQuestionnaires[i].issuer,
+                context: sessionBloc.state.patientQuestionnaires[i].context,
+                id: sessionBloc.state.patientQuestionnaires[i].id,
+                type: sessionBloc.state.patientQuestionnaires[i].type,
+                credentialSubject: sessionBloc
+                    .state.patientQuestionnaires[i].credentialSubject,
+                issuer: sessionBloc.state.patientQuestionnaires[i].issuer,
                 issuanceDate:
-                    sessionState.patientQuestionnaires[i].issuanceDate,
+                    sessionBloc.state.patientQuestionnaires[i].issuanceDate,
                 proof: Proof(
-                    type: sessionState.patientQuestionnaires[i].proof.type,
-                    signatureValue: sessionState
-                        .patientQuestionnaires[i].proof.signatureValue,
-                    verificationMethod: sessionState
+                    type: sessionBloc.state.patientQuestionnaires[i].proof.type,
+                    signatureValue: sessionBloc
+                        .state.patientQuestionnaires[i].proof.signatureValue,
+                    verificationMethod: sessionBloc.state
                         .patientQuestionnaires[i].proof.verificationMethod),
               ),
-              id: sessionState.identity.doc.id,
+              id: sessionBloc.state.identity!.doc.id,
             ),
             child: Builder(
               builder: (context) {
@@ -221,9 +221,9 @@ void sharePQBottomModal(
                             child: TextButton(
                               onPressed: () {
                                 Navigator.of(context).pop();
-                                context
-                                    .read<SessionCubit>()
-                                    .deletePQ(i, sessionState);
+                                context.read<SessionBloc>().add(
+                                      DeletePQ(index: i),
+                                    );
                               },
                               child: Text(
                                 L.of(context).delete,

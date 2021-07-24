@@ -26,8 +26,8 @@ class CredentialDetailsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final credential =
-        context.watch<Verified>().personalDataVc.credentialSubject;
-    final sessionState = context.watch<Verified>();
+        context.watch<SessionState>().personalDataVc!.credentialSubject;
+    final sessionState = context.watch<SessionState>();
     return BlocBuilder<UpdatePersonalBloc, UpdatePersonalState>(
         builder: (context, state) {
       return Credential(
@@ -214,7 +214,8 @@ class CredentialDetailsView extends StatelessWidget {
                 ),
                 Text(
                   DateFormat.yMMMd().add_jm().format(
-                        DateTime.parse(sessionState.personalDataVc.issuanceDate)
+                        DateTime.parse(
+                                sessionState.personalDataVc!.issuanceDate)
                             .toLocal(),
                       ),
                   style: Theme.of(context).textTheme.bodyText2!.copyWith(

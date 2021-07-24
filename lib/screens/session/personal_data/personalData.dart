@@ -1,4 +1,4 @@
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/update_personal_data/repository/update_personal_data_repo.dart';
 import 'package:did/providers/update_personal_data/update_personal_bloc.dart';
@@ -18,10 +18,7 @@ class PersonalData extends StatefulWidget {
 class _PersonalDataState extends State<PersonalData> {
   @override
   Widget build(BuildContext context) {
-    final credential =
-        context.watch<Verified>().personalDataVc.credentialSubject;
-    final identity = context.watch<Verified>().identity;
-    final sessionState = context.watch<Verified>();
+    final sessionState = context.watch<SessionState>();
     return SafeArea(
       child: Scaffold(
         body: CustomScrollView(
@@ -58,21 +55,30 @@ class _PersonalDataState extends State<PersonalData> {
                   create: (context) => UpdatePersonalDataRepo(),
                   child: BlocProvider<UpdatePersonalBloc>(
                     create: (context) => UpdatePersonalBloc(
+                      sessionBloc: context.read<SessionBloc>(),
                       repo: context.read<UpdatePersonalDataRepo>(),
-                      sessionCubit: context.read<SessionCubit>(),
-                      sessionState: sessionState,
-                      id: identity.doc.id,
-                      firstName: credential.firstName,
-                      lastName: credential.lastName,
-                      email: credential.email,
-                      phoneNumber: credential.phoneNumber,
-                      dateOfBirth: credential.dateOfBirth,
-                      sex: credential.sex,
-                      address: credential.address.street,
-                      city: credential.address.city,
-                      locationState: credential.address.state,
-                      postalCode: credential.address.postalCode,
-                      country: credential.address.country,
+                      id: sessionState.identity!.doc.id,
+                      firstName: sessionState
+                          .personalDataVc!.credentialSubject.firstName,
+                      lastName: sessionState
+                          .personalDataVc!.credentialSubject.lastName,
+                      email:
+                          sessionState.personalDataVc!.credentialSubject.email,
+                      phoneNumber: sessionState
+                          .personalDataVc!.credentialSubject.phoneNumber,
+                      dateOfBirth: sessionState
+                          .personalDataVc!.credentialSubject.dateOfBirth,
+                      sex: sessionState.personalDataVc!.credentialSubject.sex,
+                      address: sessionState
+                          .personalDataVc!.credentialSubject.address.street,
+                      city: sessionState
+                          .personalDataVc!.credentialSubject.address.city,
+                      locationState: sessionState
+                          .personalDataVc!.credentialSubject.address.state,
+                      postalCode: sessionState
+                          .personalDataVc!.credentialSubject.address.postalCode,
+                      country: sessionState
+                          .personalDataVc!.credentialSubject.address.country,
                     ),
                     child: CredentialDetailsView(),
                   ),

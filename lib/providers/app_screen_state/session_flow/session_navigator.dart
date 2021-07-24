@@ -6,8 +6,7 @@ import 'package:did/screens/session/manage_app/manage_app.dart';
 import "package:flutter/material.dart";
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'session_cubit.dart';
-import 'session_state.dart';
+import 'session_bloc.dart';
 
 class SessionNavigator extends StatefulWidget {
   @override
@@ -37,7 +36,6 @@ class _SessionNavigatorState extends State<SessionNavigator> {
 
   @override
   Widget build(BuildContext context) {
-    final Verified sessionState = context.watch<Verified>();
     return WillPopScope(
       onWillPop: () async {
         final isFirstRouteInCurrentTab =
@@ -57,8 +55,7 @@ class _SessionNavigatorState extends State<SessionNavigator> {
         child: BlocProvider<CreatePQBloc>(
           create: (context) => CreatePQBloc(
             repo: CreatePQRepository(),
-            sessionCubit: context.read<SessionCubit>(),
-            sessionState: sessionState,
+            sessionBloc: context.read<SessionBloc>(),
           ),
           child: Scaffold(
             body: Stack(

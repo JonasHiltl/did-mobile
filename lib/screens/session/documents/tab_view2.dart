@@ -14,7 +14,7 @@ class TabView2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final sessionState = context.watch<Verified>();
+    final sessionState = context.watch<SessionState>();
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
       child: Column(

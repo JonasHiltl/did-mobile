@@ -2,7 +2,9 @@ import 'package:device_preview/device_preview.dart';
 import 'package:device_preview/plugins.dart';
 import 'package:did/providers/app_screen_state/app_navigator.dart';
 import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
+import 'package:did/providers/app_screen_state/session_flow/repo/session_repo.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_event.dart';
 import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart';
 import "package:did/screens/auth/introduction/introduction.dart";
 import 'package:did/theme.dart';
@@ -42,7 +44,8 @@ class MyApp extends StatelessWidget {
       providers: [
         RepositoryProvider(create: (context) => CreateDidRepository()),
         RepositoryProvider(create: (context) => CommonBackendRepo()),
-        RepositoryProvider(create: (context) => RetrieveDocumentRepo())
+        RepositoryProvider(create: (context) => RetrieveDocumentRepo()),
+        RepositoryProvider(create: (context) => SessionRepo()),
       ],
       child: MultiBlocProvider(
         providers: [
@@ -53,15 +56,17 @@ class MyApp extends StatelessWidget {
               useTouchID: getUseTouchID(),
             ),
           ),
-          BlocProvider<SessionCubit>(
-            create: (context) => SessionCubit(
-              CommonBackendRepo(),
-              appSettingsBloc: context.read<AppSettingsBloc>(),
-            ),
+          BlocProvider<SessionBloc>(
+            create: (context) => SessionBloc(
+              repo: context.read<SessionRepo>(),
+              appSettingsState: context.read<AppSettingsBloc>().state,
+            )..add(
+                AttemptGettingSavedState(),
+              ),
           ),
           BlocProvider<AuthCubit>(
             create: (context) => AuthCubit(
-              context.read<SessionCubit>(),
+              context.read<SessionBloc>(),
             ),
           ),
           BlocProvider<CreateDidBloc>(

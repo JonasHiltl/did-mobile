@@ -13,7 +13,7 @@ class Step1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final credential =
-        context.watch<Verified>().personalDataVc.credentialSubject;
+        context.watch<SessionState>().personalDataVc?.credentialSubject;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -47,7 +47,7 @@ class Step1 extends StatelessWidget {
             Row(children: [
               Expanded(
                 child: UniversalTextField(
-                  initialValue: credential.firstName,
+                  initialValue: credential!.firstName,
                   prefixText: L.of(context).firstName,
                   readOnly: true,
                   textColor: Theme.of(context)

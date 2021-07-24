@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../data/secure_storage.dart';
@@ -15,8 +15,7 @@ class UpdatePersonalBloc
   //I'm passing these values inside the class to define the initial values of the already created VC to update them afterwards
   UpdatePersonalBloc({
     required this.repo,
-    required this.sessionCubit,
-    required this.sessionState,
+    required this.sessionBloc,
     required this.id,
     required this.firstName,
     required this.lastName,
@@ -44,8 +43,7 @@ class UpdatePersonalBloc
         ));
 
   final UpdatePersonalDataRepo repo;
-  final SessionCubit sessionCubit;
-  final Verified sessionState;
+  final SessionBloc sessionBloc;
   final SecureStorage secureStorage = SecureStorage();
 
   final String id;
@@ -117,8 +115,7 @@ class UpdatePersonalBloc
           yield state.copyWith(formStatus: const InitialFormStatus());
 
           // launch the session flow with the returned Did object
-          final newSessionState = sessionState.copyWith(personalDataVc: res);
-          sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
+          sessionBloc.add(ChangePersonalDataVc(personalDataVc: res));
         }
       } catch (e) {
         print(e);

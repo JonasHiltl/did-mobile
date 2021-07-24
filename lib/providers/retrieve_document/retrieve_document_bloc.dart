@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:did/data/secure_storage.dart';
 import 'package:did/models/received_patient_questionnaire/received_patient_questionnaire.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
-import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_bloc.dart';
+import 'package:did/providers/app_screen_state/session_flow/session_event.dart';
 import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart';
 import 'package:did/providers/retrieve_document/retrieve_document_event.dart';
 import 'package:did/providers/retrieve_document/retrieve_document_state.dart';
@@ -13,13 +13,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class RetrieveDocumentBloc
     extends Bloc<RetrieveDocumentEvent, RetrieveDocumentState> {
   final RetrieveDocumentRepo repo;
-  final SessionCubit sessionCubit;
-  final Verified sessionState;
+  final SessionBloc sessionBloc;
   final SecureStorage secureStorage = SecureStorage();
 
   RetrieveDocumentBloc({
-    required this.sessionCubit,
-    required this.sessionState,
+    required this.sessionBloc,
     required this.repo,
   }) : super(RetrieveDocumentState());
 
@@ -36,8 +34,9 @@ class RetrieveDocumentBloc
           yield state.copyWith(retrieveStatus: const InitialRetrieveStatus());
           yield state.copyWith(annLink: "", othersPublicKey: "");
         } else if (res is ReceivedPatientQuestionnaire) {
-          if (sessionState.receivedPatientQuestionnaires.isNotEmpty) {
-            final documentsList = sessionState.receivedPatientQuestionnaires;
+          if (sessionBloc.state.receivedPatientQuestionnaires.isNotEmpty) {
+            final documentsList =
+                sessionBloc.state.receivedPatientQuestionnaires;
             documentsList.add(res);
 
             secureStorage.write(
@@ -45,15 +44,18 @@ class RetrieveDocumentBloc
               jsonEncode(documentsList),
             );
 
-            final newSessionState = sessionState.copyWith(
-                receivedPatientQuestionnaires: documentsList);
-            sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
+            sessionBloc.add(ChangeReceivedPatientQuestionnaires(
+                receivedPatientQuestionnaires: documentsList));
           } else {
-            final newSessionState =
-                sessionState.copyWith(receivedPatientQuestionnaires: [res]);
             await secureStorage.write(
-                "received_patient_questionnaires", jsonEncode([res]));
-            sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
+              "received_patient_questionnaires",
+              jsonEncode([res]),
+            );
+            sessionBloc.add(
+              ChangeReceivedPatientQuestionnaires(
+                receivedPatientQuestionnaires: [res],
+              ),
+            );
           }
           yield state.copyWith(retrieveStatus: RetrieveSuccess());
           yield state.copyWith(retrieveStatus: const InitialRetrieveStatus());

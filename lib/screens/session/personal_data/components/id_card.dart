@@ -11,7 +11,7 @@ class IdCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final credential =
-        context.watch<Verified>().personalDataVc.credentialSubject;
+        context.watch<SessionState>().personalDataVc!.credentialSubject;
     return Container(
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -131,11 +131,12 @@ class IdCard extends StatelessWidget {
                     ),
                     Text(
                       DateFormat('MM/yy').format(
-                        DateTime.parse(context
-                                .watch<Verified>()
-                                .personalDataVc
-                                .issuanceDate)
-                            .toLocal(),
+                        DateTime.parse(
+                          context
+                              .watch<SessionState>()
+                              .personalDataVc!
+                              .issuanceDate,
+                        ).toLocal(),
                       ),
                       style: const TextStyle(
                         color: Colors.white,
