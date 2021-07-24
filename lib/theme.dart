@@ -37,6 +37,10 @@ final appTheme = {
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Colors.white,
     ),
+    dialogBackgroundColor: const Color(0xFFf7fbff),
+    dialogTheme: const DialogTheme(
+      elevation: 18,
+    ),
     bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF3861FB),
@@ -293,6 +297,10 @@ final appTheme = {
     ),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       backgroundColor: Color(0xFF141414),
+    ),
+    dialogBackgroundColor: const Color(0xFF141414),
+    dialogTheme: const DialogTheme(
+      elevation: 18,
     ),
     textTheme: TextTheme(
       headline1: TextStyle(

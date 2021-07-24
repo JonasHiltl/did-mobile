@@ -560,6 +560,26 @@ class L {
     );
   }
 
+  /// `Document successfully received`
+  String get receiveDocSuccessMessage {
+    return Intl.message(
+      'Document successfully received',
+      name: 'receiveDocSuccessMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Failed to receive the document`
+  String get receiveDocErrorMessage {
+    return Intl.message(
+      'Failed to receive the document',
+      name: 'receiveDocErrorMessage',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Do you want to set an expiration date to your shared document?`
   String get shareDocExpiryDate {
     return Intl.message(
@@ -595,6 +615,26 @@ class L {
     return Intl.message(
       'Expiration Time',
       name: 'expirationTime',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receiving ...`
+  String get receivingTitle {
+    return Intl.message(
+      'Receiving ...',
+      name: 'receivingTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verifying Authenticity. The Document will be ready in just a moment!`
+  String get receivingText {
+    return Intl.message(
+      'Verifying Authenticity. The Document will be ready in just a moment!',
+      name: 'receivingText',
       desc: '',
       args: [],
     );
@@ -655,6 +695,16 @@ class L {
     return Intl.message(
       'You have not received a document yet!',
       name: 'noDocReceived',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You have not created your own documents yet!`
+  String get noOwnDocs {
+    return Intl.message(
+      'You have not created your own documents yet!',
+      name: 'noOwnDocs',
       desc: '',
       args: [],
     );

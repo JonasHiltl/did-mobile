@@ -49,7 +49,7 @@ class TabView2 extends StatelessWidget {
                 PageTransition(
                   type: PageTransitionType.bottomToTop,
                   curve: Curves.easeInOut,
-                  child: ReceivedPQDocumentFolder(),
+                  child: const ReceivedPQDocumentFolder(),
                 ),
               ),
             ),

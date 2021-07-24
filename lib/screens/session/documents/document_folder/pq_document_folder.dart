@@ -1,6 +1,7 @@
 import 'package:did/custom_icons/quader_font.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/screens/session/documents/components/document_card.dart';
 import 'package:did/screens/session/documents/detailed_bottom_modals/pq_detailed_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -134,146 +135,41 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                               child: Padding(
                                 padding: const EdgeInsets.all(6.0),
                                 child: segmentedControlGroupValue! > 1
-                                    ? Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Icon(
-                                                Icons.assignment,
-                                                color: Theme.of(context)
-                                                    .primaryColor,
-                                                size: 30,
-                                              ),
-                                              IconButton(
-                                                padding:
-                                                    const EdgeInsets.all(0.0),
-                                                visualDensity:
-                                                    VisualDensity.compact,
-                                                onPressed: () =>
-                                                    sharePQBottomModal(
-                                                  context,
-                                                  i,
-                                                  sessionState,
-                                                  dateController,
-                                                ),
-                                                icon:
-                                                    const Icon(Icons.more_vert),
-                                              )
-                                            ],
-                                          ),
-                                          Text(
-                                            sessionState
-                                                .patientQuestionnaires[i]
-                                                .credentialSubject
-                                                .documentName,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyText1,
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                          Text(
-                                            DateFormat.yMMMd().format(
-                                                DateTime.parse(sessionState
-                                                        .patientQuestionnaires[
-                                                            i]
-                                                        .issuanceDate)
-                                                    .toLocal()),
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodyText2!
-                                                .copyWith(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .onBackground
-                                                      .withOpacity(0.5),
-                                                ),
-                                            overflow: TextOverflow.ellipsis,
-                                          ),
-                                        ],
+                                    ? VerticalDocumentCard(
+                                        icon: Icons.assignment,
+                                        title: sessionState
+                                            .patientQuestionnaires[i]
+                                            .credentialSubject
+                                            .documentName,
+                                        subtitle: DateFormat.yMMMd().format(
+                                            DateTime.parse(sessionState
+                                                    .patientQuestionnaires[i]
+                                                    .issuanceDate)
+                                                .toLocal()),
+                                        onPressed: () => sharePQBottomModal(
+                                          context,
+                                          i,
+                                          sessionState,
+                                          dateController,
+                                        ),
                                       )
-                                    : Row(
-                                        children: [
-                                          Icon(
-                                            Icons.assignment,
-                                            color:
-                                                Theme.of(context).primaryColor,
-                                            size: segmentedControlGroupValue ==
-                                                    1
-                                                ? 30
-                                                : segmentedControlGroupValue ==
-                                                        2
-                                                    ? 28
-                                                    : 24,
-                                          ),
-                                          if (segmentedControlGroupValue == 1)
-                                            const SizedBox(
-                                              width: kSmallPadding,
-                                            ),
-                                          if (segmentedControlGroupValue == 2)
-                                            const SizedBox(
-                                              width: 2,
-                                            ),
-                                          Expanded(
-                                            child: Wrap(
-                                              runAlignment:
-                                                  WrapAlignment.center,
-                                              alignment:
-                                                  WrapAlignment.spaceBetween,
-                                              crossAxisAlignment:
-                                                  WrapCrossAlignment.center,
-                                              children: [
-                                                Text(
-                                                  sessionState
-                                                      .patientQuestionnaires[i]
-                                                      .credentialSubject
-                                                      .documentName,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyText1,
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                                Text(
-                                                  DateFormat.yMMMd().format(
-                                                      DateTime.parse(sessionState
-                                                              .patientQuestionnaires[
-                                                                  i]
-                                                              .issuanceDate)
-                                                          .toLocal()),
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .bodyText2!
-                                                      .copyWith(
-                                                        color: Theme.of(context)
-                                                            .colorScheme
-                                                            .onBackground
-                                                            .withOpacity(0.5),
-                                                      ),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          IconButton(
-                                            padding: const EdgeInsets.all(0.0),
-                                            visualDensity:
-                                                VisualDensity.compact,
-                                            onPressed: () => sharePQBottomModal(
-                                              context,
-                                              i,
-                                              sessionState,
-                                              dateController,
-                                            ),
-                                            icon: const Icon(Icons.more_vert),
-                                          )
-                                        ],
+                                    : HorizontalDocumentCard(
+                                        icon: Icons.assignment,
+                                        title: sessionState
+                                            .patientQuestionnaires[i]
+                                            .credentialSubject
+                                            .documentName,
+                                        subtitle: DateFormat.yMMMd().format(
+                                            DateTime.parse(sessionState
+                                                    .patientQuestionnaires[i]
+                                                    .issuanceDate)
+                                                .toLocal()),
+                                        onPressed: () => sharePQBottomModal(
+                                          context,
+                                          i,
+                                          sessionState,
+                                          dateController,
+                                        ),
                                       ),
                               ),
                             ),

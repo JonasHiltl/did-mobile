@@ -33,6 +33,8 @@ class RetrieveDocumentBloc
         if (res == null) {
           yield state.copyWith(
               retrieveStatus: RetrieveFailed("No Document returned!"));
+          yield state.copyWith(retrieveStatus: const InitialRetrieveStatus());
+          yield state.copyWith(annLink: "", othersPublicKey: "");
         } else if (res is SharedPatientQuestionnaire) {
           if (sessionState.sharedPatientQuestionnaires.isNotEmpty) {
             final documentsList = sessionState.sharedPatientQuestionnaires;
@@ -61,6 +63,7 @@ class RetrieveDocumentBloc
         print(e);
         yield state.copyWith(retrieveStatus: RetrieveFailed(e.toString()));
         yield state.copyWith(retrieveStatus: const InitialRetrieveStatus());
+        yield state.copyWith(annLink: "", othersPublicKey: "");
       }
     }
     if (event is ChangeAnnLink) {

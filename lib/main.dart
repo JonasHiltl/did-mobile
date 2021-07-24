@@ -4,7 +4,6 @@ import 'package:did/providers/app_screen_state/app_navigator.dart';
 import 'package:did/providers/app_screen_state/auth_flow/auth_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart';
-import 'package:did/providers/retrieve_document/retrieve_document_bloc.dart';
 import "package:did/screens/auth/introduction/introduction.dart";
 import 'package:did/theme.dart';
 import 'package:flutter/foundation.dart';
@@ -29,8 +28,9 @@ void main() async {
   runApp(
     /* DevicePreview(
       plugins: const [FileExplorerPlugin(), ScreenshotPlugin()],
-      builder: (context) =>  */MyApp(),
-      /* enabled: !kReleaseMode,
+      builder: (context) =>  */
+    MyApp(),
+    /* enabled: !kReleaseMode,
     ), */
   );
 }
@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
               useTouchID: getUseTouchID(),
             ),
           ),
-          // the session cubit needs to be above the AuthCubit because the AuthCubit depends on sessionCubit
           BlocProvider<SessionCubit>(
             create: (context) => SessionCubit(
               CommonBackendRepo(),

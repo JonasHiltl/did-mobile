@@ -53,11 +53,16 @@
   "createPQErrorMessage": "Erstellung deines Patientenfragebogen fehlgeschlagen",
   "shareDocErrorMessage": "Dokumentenaustausch fehlgeschlagen ",
   "shareDocSuccessMessage": "Dokument ist jetzt abrufbar ",
+  "receiveDocSuccessMessage": "Dokument erfolgreich empfangen",
+  "receiveDocErrorMessage": "Das Dokument konnte nicht empfangen werden",
+
 
   "shareDocExpiryDate": "Möchtest du ein Ablaufdatum für dein geteiltes Dokument festlegen?",
   "noExpiry": "Keine Beschränkung",
   "expirationDate": "Ablaufdatum",
   "expirationTime": "Ablaufzeit",
+  "receivingTitle": "Empfangen ...",
+  "receivingText": "Überprüfung der Authentizität. Das Dokument ist in wenigen Augenblicken verfügbar!",
 
   "noCountriesFound": "Keine Länder gefunden",
   "noAllergiesAddedYet": "Noch keine Allergie hinzugefügt",
@@ -65,6 +70,7 @@
   "noMedicationAddedYet": "Noch kein Medikament hinzugefügt",
   "noMedicationAdded": "Kein Medikament hinzugefügt",
   "noDocReceived": "Du hast noch kein Dokument erhalten!",
+  "noOwnDocs": "Du hast noch keine eigenen Dokumente erstellt!",
   "introductionAction": "Digitale Identität erstellen",
 
   "back": "Zurück",

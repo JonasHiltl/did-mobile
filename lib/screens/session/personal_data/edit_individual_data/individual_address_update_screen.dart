@@ -77,13 +77,15 @@ class _IndividualAddressUpdateScreenState
               listener: (context, state) {
                 if (state.formStatus is SubmissionSuccess) {
                   showSuccessNoti(
-                      message: L.of(context).updateSuccessAddress,
-                      context: context);
+                    message: L.of(context).updateSuccessAddress,
+                    context: context,
+                  );
                   Navigator.pop(context);
                 } else if (state.formStatus is SubmissionFailed) {
                   showErrorNoti(
-                      message: L.of(context).updateErrorMessage,
-                      context: context);
+                    message: L.of(context).updateErrorMessage,
+                    context: context,
+                  );
                 }
               },
               builder: (context, state) {

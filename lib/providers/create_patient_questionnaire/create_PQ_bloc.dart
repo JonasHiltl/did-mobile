@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:did/data/secure_storage.dart';
 import 'package:did/models/allergy/allergy.dart';
 import 'package:did/models/medication/medication.dart';
-import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -77,18 +76,7 @@ class CreatePQBloc extends Bloc<CreatePQEvent, CreatePQState> {
         } else {
           // if list of PQ's already exist add new PQ
           if (await secureStorage.contains("patient_questionnaire")) {
-            final encodedPQ = await secureStorage.read("patient_questionnaire");
-            final decodedPQ = jsonDecode(encodedPQ.toString()) as List<dynamic>;
-
-            // convert saved list of patient questionnaires to List<PatientQuestionnaireVc> and add newly created one
-            final List<PatientQuestionnaireVc> listPQ = [];
-            decodedPQ
-                .map(
-                  (e) => listPQ.add(
-                    PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>),
-                  ),
-                )
-                .toList();
+            final listPQ = sessionState.patientQuestionnaires;
             listPQ.add(res);
 
             secureStorage.write("patient_questionnaire", jsonEncode(listPQ));

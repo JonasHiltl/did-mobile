@@ -1,3 +1,4 @@
+import 'package:did/global_components/empty.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/screens/session/documents/components/document_folder_preview.dart';
 import 'package:did/theme.dart';
@@ -29,62 +30,70 @@ class TabView1 extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(
-              kMediumPadding,
-              kSmallPadding,
-              0,
-              kSmallPadding,
+          if (sessionState.sharedPatientQuestionnaires.isEmpty) ...[
+            const SizedBox(
+              height: kMediumPadding + kSmallPadding,
             ),
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: Row(
-                children: <Widget>[
-                  if (sessionState.patientQuestionnaires.isNotEmpty)
+            Empty(
+              text: L.of(context).noOwnDocs,
+            )
+          ] else
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                kMediumPadding,
+                kSmallPadding,
+                0,
+                kSmallPadding,
+              ),
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
+                child: Row(
+                  children: <Widget>[
+                    if (sessionState.patientQuestionnaires.isNotEmpty)
+                      DocumentFolderPreview(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        icon: Icon(
+                          Icons.assignment,
+                          color: Theme.of(context).primaryColor,
+                          size: 26,
+                        ),
+                        title: L.of(context).patientQuestionnaires,
+                        items: sessionState.patientQuestionnaires.length,
+                        onTap: () => Navigator.push(
+                          context,
+                          PageTransition(
+                            type: PageTransitionType.bottomToTop,
+                            curve: Curves.easeInOut,
+                            child: const PQDocumentFolder(),
+                          ),
+                        ),
+                      ),
+                    const SizedBox(
+                      width: kSmallPadding,
+                    ),
                     DocumentFolderPreview(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      icon: Icon(
-                        Icons.assignment,
-                        color: Theme.of(context).primaryColor,
+                      backgroundColor: Colors.red,
+                      icon: const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
                         size: 26,
                       ),
-                      title: L.of(context).patientQuestionnaires,
-                      items: sessionState.patientQuestionnaires.length,
+                      title: "Test",
+                      items: 3,
                       onTap: () => Navigator.push(
                         context,
                         PageTransition(
                           type: PageTransitionType.bottomToTop,
                           curve: Curves.easeInOut,
-                          child: PQDocumentFolder(),
+                          child: const PQDocumentFolder(),
                         ),
                       ),
                     ),
-                  const SizedBox(
-                    width: kSmallPadding,
-                  ),
-                  DocumentFolderPreview(
-                    backgroundColor: Colors.red,
-                    icon: const Icon(
-                      Icons.favorite,
-                      color: Colors.red,
-                      size: 26,
-                    ),
-                    title: "Test",
-                    items: 3,
-                    onTap: () => Navigator.push(
-                      context,
-                      PageTransition(
-                        type: PageTransitionType.bottomToTop,
-                        curve: Curves.easeInOut,
-                        child: PQDocumentFolder(),
-                      ),
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
         ],
       ),
     );

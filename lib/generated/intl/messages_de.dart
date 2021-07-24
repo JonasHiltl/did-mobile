@@ -144,6 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kein Medikament hinzugefügt"),
         "noMedicationAddedYet": MessageLookupByLibrary.simpleMessage(
             "Noch kein Medikament hinzugefügt"),
+        "noOwnDocs": MessageLookupByLibrary.simpleMessage(
+            "Du hast noch keine eigenen Dokumente erstellt!"),
         "ownDocs": MessageLookupByLibrary.simpleMessage("Eigene Dokumente"),
         "patientQuestionnaire":
             MessageLookupByLibrary.simpleMessage("Patientenfragebogen"),
@@ -157,10 +159,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "pluralMedication": MessageLookupByLibrary.simpleMessage("Medikamente"),
         "postalCode": MessageLookupByLibrary.simpleMessage("Postleitzahl"),
         "profile": MessageLookupByLibrary.simpleMessage("Profil"),
+        "receiveDocErrorMessage": MessageLookupByLibrary.simpleMessage(
+            "Das Dokument konnte nicht empfangen werden"),
+        "receiveDocSuccessMessage": MessageLookupByLibrary.simpleMessage(
+            "Dokument erfolgreich empfangen"),
         "receivedDocs":
             MessageLookupByLibrary.simpleMessage("Empfangene Dokumente"),
         "receivedPatientQuestionnaire": MessageLookupByLibrary.simpleMessage(
             "Empfangene Patientenfragebogen"),
+        "receivingText": MessageLookupByLibrary.simpleMessage(
+            "Überprüfung der Authentizität. Das Dokument ist in wenigen Augenblicken verfügbar!"),
+        "receivingTitle": MessageLookupByLibrary.simpleMessage("Empfangen ..."),
         "residence": MessageLookupByLibrary.simpleMessage("Wohnadresse"),
         "scanMessage": MessageLookupByLibrary.simpleMessage(
             "Nachdem ein gültiger Code erkannt wurde, wird das Dokument angefordert"),

@@ -30,7 +30,7 @@ class DocumentFolderPreview extends StatelessWidget {
           color: backgroundColor,
           borderRadius: BorderRadius.circular(6),
         ),
-        child: Row(
+        child: Wrap(
           children: [
             Container(
               padding: const EdgeInsets.all(kSmallPadding),
@@ -52,6 +52,7 @@ class DocumentFolderPreview extends StatelessWidget {
                       .textTheme
                       .headline6!
                       .copyWith(color: Colors.white),
+                  overflow: TextOverflow.ellipsis,
                 ),
                 Text(
                   items == 1

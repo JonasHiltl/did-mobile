@@ -97,7 +97,9 @@ class _Page2State extends State<Page2>
                                             dateOfBirth: date),
                                       );
                                   dateController.text =
-                                      DateFormat.yMMMd().format(date);
+                                      DateFormat.yMMMd().format(
+                                    date.toLocal(),
+                                  );
                                 },
                                 currentTime: context
                                         .read<CreateDidBloc>()
