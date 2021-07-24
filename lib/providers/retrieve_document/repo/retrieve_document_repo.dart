@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:did/models/shared_patient_questionnaire/shared_patient_questionnaire.dart';
+import 'package:did/models/received_patient_questionnaire/received_patient_questionnaire.dart';
 import 'package:http/http.dart' as http;
 
 class RetrieveDocumentRepo {
@@ -22,7 +22,7 @@ class RetrieveDocumentRepo {
       if (parsedRes["presentation"]["verifiableCredential"]["type"][1] ==
           "patientQuestionnaireCredential") {
         final sharedPatientQuestionnair =
-            SharedPatientQuestionnaire.fromJson(parsedRes);
+            ReceivedPatientQuestionnaire.fromJson(parsedRes);
         return sharedPatientQuestionnair;
       }
     } else {

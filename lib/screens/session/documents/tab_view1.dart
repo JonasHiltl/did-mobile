@@ -30,7 +30,7 @@ class TabView1 extends StatelessWidget {
               style: Theme.of(context).textTheme.headline5,
             ),
           ),
-          if (sessionState.sharedPatientQuestionnaires.isEmpty) ...[
+          if (sessionState.patientQuestionnaires.isEmpty) ...[
             const SizedBox(
               height: kMediumPadding + kSmallPadding,
             ),

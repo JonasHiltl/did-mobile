@@ -4,7 +4,7 @@ import 'package:did/data/secure_storage.dart';
 import 'package:did/models/did/identity.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
-import 'package:did/models/shared_patient_questionnaire/shared_patient_questionnaire.dart';
+import 'package:did/models/received_patient_questionnaire/received_patient_questionnaire.dart';
 import 'package:did/providers/app_settings/app_settings_bloc.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -87,18 +87,18 @@ class SessionCubit extends Cubit<SessionState> {
     return listPQ;
   }
 
-  Future<List<SharedPatientQuestionnaire>> getListSharedPQ() async {
+  Future<List<ReceivedPatientQuestionnaire>> getListReceivedPQ() async {
     final encodedDocuments =
-        await secureStorage.read("shared_patient_questionnaires");
+        await secureStorage.read("received_patient_questionnaires");
     final decodedDocuments = jsonDecode(
       encodedDocuments.toString(),
     ) as List<dynamic>;
 
     // convert saved list of patient questionnaires to List<PatientQuestionnaireVc>
-    final List<SharedPatientQuestionnaire> listSharedPQ = [];
+    final List<ReceivedPatientQuestionnaire> listSharedPQ = [];
     decodedDocuments.map((e) {
       listSharedPQ.add(
-        SharedPatientQuestionnaire.fromJson(e as Map<String, dynamic>),
+        ReceivedPatientQuestionnaire.fromJson(e as Map<String, dynamic>),
       );
     }).toList();
     return listSharedPQ;
@@ -116,9 +116,9 @@ class SessionCubit extends Cubit<SessionState> {
           listPQ = await getListPQ();
         }
 
-        List<SharedPatientQuestionnaire> listSharedPQ = [];
-        if (await secureStorage.contains("shared_patient_questionnaires")) {
-          listSharedPQ = await getListSharedPQ();
+        List<ReceivedPatientQuestionnaire> listSharedPQ = [];
+        if (await secureStorage.contains("received_patient_questionnaires")) {
+          listSharedPQ = await getListReceivedPQ();
         }
 
         if (await commonBackendRepo.verifyDid(identity.doc.id)) {
@@ -131,7 +131,7 @@ class SessionCubit extends Cubit<SessionState> {
                   identity: identity,
                   personalDataVc: personalDataVc,
                   patientQuestionnaires: listPQ,
-                  sharedPatientQuestionnaires: listSharedPQ,
+                  receivedPatientQuestionnaires: listSharedPQ,
                 ),
               );
             }
@@ -142,7 +142,7 @@ class SessionCubit extends Cubit<SessionState> {
                 identity: identity,
                 personalDataVc: personalDataVc,
                 patientQuestionnaires: listPQ,
-                sharedPatientQuestionnaires: listSharedPQ,
+                receivedPatientQuestionnaires: listSharedPQ,
               ),
             );
           }
@@ -167,6 +167,7 @@ class SessionCubit extends Cubit<SessionState> {
   void showUnverified() => emit(
         Unverified(),
       );
+
   void showSession(Identity identity, PersonalDataVc personalDataVc) {
     emit(
       Verified(identity: identity, personalDataVc: personalDataVc),
@@ -179,7 +180,7 @@ class SessionCubit extends Cubit<SessionState> {
         identity: verified.identity,
         personalDataVc: verified.personalDataVc,
         patientQuestionnaires: verified.patientQuestionnaires,
-        sharedPatientQuestionnaires: verified.sharedPatientQuestionnaires,
+        receivedPatientQuestionnaires: verified.receivedPatientQuestionnaires,
       ),
     );
   }
@@ -192,17 +193,7 @@ class SessionCubit extends Cubit<SessionState> {
   }
 
   Future<void> deletePQ(int index, Verified verified) async {
-    final encodedPQ = await secureStorage.read("patient_questionnaire");
-    final decodedPQ = jsonDecode(
-      encodedPQ.toString(),
-    ) as List<dynamic>;
-
-    final List<PatientQuestionnaireVc> listPQ = [];
-    decodedPQ.map((e) {
-      listPQ.add(
-        PatientQuestionnaireVc.fromJson(e as Map<String, dynamic>),
-      );
-    }).toList();
+    final listPQ = verified.patientQuestionnaires;
 
     listPQ.removeAt(index);
 
@@ -213,9 +204,29 @@ class SessionCubit extends Cubit<SessionState> {
 
     emit(
       Verified(
-          identity: verified.identity,
-          personalDataVc: verified.personalDataVc,
-          patientQuestionnaires: listPQ),
+        identity: verified.identity,
+        personalDataVc: verified.personalDataVc,
+        patientQuestionnaires: listPQ,
+        receivedPatientQuestionnaires: verified.receivedPatientQuestionnaires,
+      ),
+    );
+  }
+
+  Future<void> deleteReceivedPQ(int index, Verified verified) async {
+    final listReceivedPQ = verified.receivedPatientQuestionnaires;
+
+    listReceivedPQ.removeAt(index);
+
+    secureStorage.write(
+        "received_patient_questionnaires", jsonEncode(listReceivedPQ));
+
+    emit(
+      Verified(
+        identity: verified.identity,
+        personalDataVc: verified.personalDataVc,
+        patientQuestionnaires: verified.patientQuestionnaires,
+        receivedPatientQuestionnaires: listReceivedPQ,
+      ),
     );
   }
 }

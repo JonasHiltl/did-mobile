@@ -3,20 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 
 import './patient_questionnaire_presentation.dart';
 
-part 'shared_patient_questionnaire.g.dart';
+part 'received_patient_questionnaire.g.dart';
 
 @JsonSerializable(explicitToJson: true)
-class SharedPatientQuestionnaire {
+class ReceivedPatientQuestionnaire {
   final PatientQuestionnairePresentation presentation;
   final AccessVc accessVc;
 
-  SharedPatientQuestionnaire({
+  ReceivedPatientQuestionnaire({
     required this.presentation,
     required this.accessVc,
   });
 
-  factory SharedPatientQuestionnaire.fromJson(Map<String, dynamic> data) =>
-      _$SharedPatientQuestionnaireFromJson(data);
+  factory ReceivedPatientQuestionnaire.fromJson(Map<String, dynamic> data) =>
+      _$ReceivedPatientQuestionnaireFromJson(data);
 
-  Map<String, dynamic> toJson() => _$SharedPatientQuestionnaireToJson(this);
+  Map<String, dynamic> toJson() => _$ReceivedPatientQuestionnaireToJson(this);
 }

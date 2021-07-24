@@ -27,7 +27,7 @@ class TabView2 extends StatelessWidget {
           const SizedBox(
             height: kMediumPadding,
           ),
-          if (sessionState.sharedPatientQuestionnaires.isEmpty) ...[
+          if (sessionState.receivedPatientQuestionnaires.isEmpty) ...[
             const SizedBox(
               height: kMediumPadding,
             ),
@@ -36,14 +36,14 @@ class TabView2 extends StatelessWidget {
             )
           ] else
             DocumentFolderPreview(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Colors.teal.shade400,
               icon: Icon(
                 Icons.assignment,
-                color: Theme.of(context).primaryColor,
+                color: Colors.teal.shade400,
                 size: 26,
               ),
               title: L.of(context).receivedPatientQuestionnaire,
-              items: sessionState.sharedPatientQuestionnaires.length,
+              items: sessionState.receivedPatientQuestionnaires.length,
               onTap: () => Navigator.push(
                 context,
                 PageTransition(

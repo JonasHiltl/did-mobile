@@ -136,7 +136,11 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                 padding: const EdgeInsets.all(6.0),
                                 child: segmentedControlGroupValue! > 1
                                     ? VerticalDocumentCard(
-                                        icon: Icons.assignment,
+                                        icon: Icon(
+                                          Icons.assessment,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 30,
+                                        ),
                                         title: sessionState
                                             .patientQuestionnaires[i]
                                             .credentialSubject
@@ -154,7 +158,11 @@ class _PQDocumentFolderState extends State<PQDocumentFolder> {
                                         ),
                                       )
                                     : HorizontalDocumentCard(
-                                        icon: Icons.assignment,
+                                        icon: Icon(
+                                          Icons.assessment,
+                                          color: Theme.of(context).primaryColor,
+                                          size: 30,
+                                        ),
                                         title: sessionState
                                             .patientQuestionnaires[i]
                                             .credentialSubject

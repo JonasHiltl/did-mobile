@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:did/data/secure_storage.dart';
-import 'package:did/models/shared_patient_questionnaire/shared_patient_questionnaire.dart';
+import 'package:did/models/received_patient_questionnaire/received_patient_questionnaire.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_cubit.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/providers/retrieve_document/repo/retrieve_document_repo.dart';
@@ -35,24 +35,24 @@ class RetrieveDocumentBloc
               retrieveStatus: RetrieveFailed("No Document returned!"));
           yield state.copyWith(retrieveStatus: const InitialRetrieveStatus());
           yield state.copyWith(annLink: "", othersPublicKey: "");
-        } else if (res is SharedPatientQuestionnaire) {
-          if (sessionState.sharedPatientQuestionnaires.isNotEmpty) {
-            final documentsList = sessionState.sharedPatientQuestionnaires;
+        } else if (res is ReceivedPatientQuestionnaire) {
+          if (sessionState.receivedPatientQuestionnaires.isNotEmpty) {
+            final documentsList = sessionState.receivedPatientQuestionnaires;
             documentsList.add(res);
 
             secureStorage.write(
-              "shared_patient_questionnaires",
+              "received_patient_questionnaires",
               jsonEncode(documentsList),
             );
 
             final newSessionState = sessionState.copyWith(
-                sharedPatientQuestionnaires: documentsList);
+                receivedPatientQuestionnaires: documentsList);
             sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
           } else {
             final newSessionState =
-                sessionState.copyWith(sharedPatientQuestionnaires: [res]);
+                sessionState.copyWith(receivedPatientQuestionnaires: [res]);
             await secureStorage.write(
-                "shared_patient_questionnaires", jsonEncode([res]));
+                "received_patient_questionnaires", jsonEncode([res]));
             sessionCubit.startSessionWithVerifiedStateObj(newSessionState);
           }
           yield state.copyWith(retrieveStatus: RetrieveSuccess());

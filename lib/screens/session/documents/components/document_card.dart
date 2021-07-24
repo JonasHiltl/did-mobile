@@ -11,7 +11,7 @@ class HorizontalDocumentCard extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
-  final IconData? icon;
+  final Icon icon;
   final String title;
   final String subtitle;
   final VoidCallback? onPressed;
@@ -20,7 +20,7 @@ class HorizontalDocumentCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(icon, color: Theme.of(context).primaryColor, size: 30),
+        icon,
         const SizedBox(
           width: kSmallPadding,
         ),
@@ -68,7 +68,7 @@ class VerticalDocumentCard extends StatelessWidget {
     required this.onPressed,
   }) : super(key: key);
 
-  final IconData? icon;
+  final Icon icon;
   final String title;
   final String subtitle;
   final VoidCallback? onPressed;
@@ -82,11 +82,7 @@ class VerticalDocumentCard extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(
-              icon,
-              color: Theme.of(context).primaryColor,
-              size: 30,
-            ),
+            icon,
             IconButton(
               padding: const EdgeInsets.all(0.0),
               visualDensity: VisualDensity.compact,

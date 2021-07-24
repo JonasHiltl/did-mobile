@@ -1,5 +1,6 @@
 import 'package:did/custom_icons/quader_font.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
+import 'package:did/screens/session/documents/components/delete_received_pq_bottom_modal.dart';
 import 'package:did/screens/session/documents/components/document_card.dart';
 import 'package:did/screens/session/documents/detailed_bottom_modals/pq_detailed_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
@@ -82,7 +83,7 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                 ),
               ),
             ),
-            if (sessionState.sharedPatientQuestionnaires.isNotEmpty)
+            if (sessionState.receivedPatientQuestionnaires.isNotEmpty)
               SliverPadding(
                 padding: const EdgeInsets.symmetric(
                   horizontal: kMediumPadding,
@@ -110,7 +111,7 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                                   (MediaQuery.of(context).size.height / 1.85),
                   children: <Widget>[
                     for (var i = 0;
-                        i < sessionState.sharedPatientQuestionnaires.length;
+                        i < sessionState.receivedPatientQuestionnaires.length;
                         i++)
                       Card(
                         child: InkWell(
@@ -123,13 +124,22 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                               i: i,
                             ),
                           ),
+                          onLongPress: () => receivedPqBottomModal(
+                            context,
+                            i,
+                            sessionState,
+                          ),
                           child: Padding(
                             padding: const EdgeInsets.all(6.0),
                             child: segmentedControlGroupValue! > 1
                                 ? VerticalDocumentCard(
-                                    icon: Icons.assignment,
+                                    icon: Icon(
+                                      Icons.assignment,
+                                      color: Colors.teal.shade400,
+                                      size: 30,
+                                    ),
                                     title: sessionState
-                                        .sharedPatientQuestionnaires[i]
+                                        .receivedPatientQuestionnaires[i]
                                         .presentation
                                         .verifiableCredential
                                         .credentialSubject
@@ -137,19 +147,26 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                                     subtitle: DateFormat.yMMMd().format(
                                       DateTime.parse(
                                         sessionState
-                                            .sharedPatientQuestionnaires[i]
+                                            .receivedPatientQuestionnaires[i]
                                             .presentation
                                             .verifiableCredential
                                             .issuanceDate,
                                       ).toLocal(),
                                     ),
-                                    // TODO: create detailed bottom sheet for the shared patient questionnaries
-                                    onPressed: () {},
+                                    onPressed: () => receivedPqBottomModal(
+                                      context,
+                                      i,
+                                      sessionState,
+                                    ),
                                   )
                                 : HorizontalDocumentCard(
-                                    icon: Icons.assignment,
+                                    icon: Icon(
+                                      Icons.assignment,
+                                      color: Colors.teal.shade400,
+                                      size: 30,
+                                    ),
                                     title: sessionState
-                                        .sharedPatientQuestionnaires[i]
+                                        .receivedPatientQuestionnaires[i]
                                         .presentation
                                         .verifiableCredential
                                         .credentialSubject
@@ -157,14 +174,17 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                                     subtitle: DateFormat.yMMMd().format(
                                       DateTime.parse(
                                         sessionState
-                                            .sharedPatientQuestionnaires[i]
+                                            .receivedPatientQuestionnaires[i]
                                             .presentation
                                             .verifiableCredential
                                             .issuanceDate,
                                       ).toLocal(),
                                     ),
-                                    // TODO: create detailed bottom sheet for the shared patient questionnaries
-                                    onPressed: () {},
+                                    onPressed: () => receivedPqBottomModal(
+                                      context,
+                                      i,
+                                      sessionState,
+                                    ),
                                   ),
                           ),
                         ),
