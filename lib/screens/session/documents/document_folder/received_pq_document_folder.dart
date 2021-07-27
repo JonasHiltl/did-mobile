@@ -2,9 +2,10 @@ import 'package:did/custom_icons/quader_font.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_state.dart';
 import 'package:did/screens/session/documents/components/delete_received_pq_bottom_modal.dart';
 import 'package:did/screens/session/documents/components/document_card.dart';
-import 'package:did/screens/session/documents/detailed_bottom_modals/pq_detailed_bottom_sheet.dart';
+import 'package:did/screens/session/documents/detailed_bottom_sheets/received_pq_bottom_sheet.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:intl/intl.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -83,112 +84,102 @@ class _ReceivedPQDocumentFolderState extends State<ReceivedPQDocumentFolder> {
                 ),
               ),
             ),
-            if (sessionState.receivedPatientQuestionnaires.isNotEmpty)
-              SliverPadding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: kMediumPadding,
-                  vertical: kSmallPadding,
-                ),
-                sliver: SliverGrid.count(
-                  mainAxisSpacing: kSmallPadding,
-                  crossAxisCount: segmentedControlGroupValue ?? 1,
-                  childAspectRatio: MediaQuery.of(context).size.width >= 480
-                      ? segmentedControlGroupValue == 1
-                          ? MediaQuery.of(context).size.width /
-                              (MediaQuery.of(context).size.height / 14)
-                          : segmentedControlGroupValue == 2
-                              ? MediaQuery.of(context).size.width /
-                                  (MediaQuery.of(context).size.height / 6.9)
-                              : MediaQuery.of(context).size.width /
-                                  (MediaQuery.of(context).size.height / 4.6)
-                      : segmentedControlGroupValue == 1
-                          ? MediaQuery.of(context).size.width /
-                              (MediaQuery.of(context).size.height / 10)
-                          : segmentedControlGroupValue == 2
-                              ? MediaQuery.of(context).size.width /
-                                  (MediaQuery.of(context).size.height / 2.9)
-                              : MediaQuery.of(context).size.width /
-                                  (MediaQuery.of(context).size.height / 1.85),
+            // drei in einer Reihe crossAxisCount: 3 staggeredTileBuilder: 1
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: kMediumPadding - kSmallPadding / 2,
+              ),
+              sliver: SliverToBoxAdapter(
+                child: Wrap(
+                  alignment: WrapAlignment.spaceBetween,
                   children: <Widget>[
                     for (var i = 0;
                         i < sessionState.receivedPatientQuestionnaires.length;
                         i++)
-                      Card(
-                        child: InkWell(
-                          // TODO: create detailed bottom sheet for the shared patient questionnaries
-                          onTap: () => showModalBottomSheet(
-                            context: context,
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            builder: (context) => PQDetailedBottomSheet(
-                              i: i,
+                      SizedBox(
+                        width: segmentedControlGroupValue == 1
+                            ? double.infinity
+                            : segmentedControlGroupValue == 2
+                                ? MediaQuery.of(context).size.width / 2 -
+                                    (kMediumPadding - kSmallPadding / 2)
+                                : MediaQuery.of(context).size.width / 3 -
+                                    (kMediumPadding - kSmallPadding),
+                        child: Card(
+                          margin: const EdgeInsets.fromLTRB(
+                            kSmallPadding / 2,
+                            0,
+                            kSmallPadding / 2,
+                            kSmallPadding,
+                          ),
+                          child: InkWell(
+                            // TODO: create detailed bottom sheet for the shared patient questionnaries
+                            onTap: () => showModalBottomSheet(
+                              context: context,
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              builder: (context) =>
+                                  ReceivedPQDetailedBottomSheet(
+                                i: i,
+                              ),
                             ),
-                          ),
-                          onLongPress: () => receivedPqBottomModal(
-                            context,
-                            i,
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(6.0),
-                            child: segmentedControlGroupValue! > 1
-                                ? VerticalDocumentCard(
-                                    icon: Icon(
-                                      Icons.assignment,
-                                      color: Colors.teal.shade400,
-                                      size: 30,
+                            onLongPress: () => receivedPqBottomModal(
+                              context,
+                              i,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(6.0),
+                              child: segmentedControlGroupValue! > 1 &&
+                                      MediaQuery.of(context).size.width <= 480
+                                  ? VerticalDocumentCard(
+                                      icon: Icon(
+                                        Icons.assignment,
+                                        color: Colors.teal.shade400,
+                                        size: 30,
+                                      ),
+                                      title:
+                                          "${sessionState.receivedPatientQuestionnaires[i].presentation.verifiableCredential.credentialSubject.firstName} ${sessionState.receivedPatientQuestionnaires[i].presentation.verifiableCredential.credentialSubject.lastName}",
+                                      subtitle: DateFormat.yMMMd().format(
+                                        DateTime.parse(
+                                          sessionState
+                                              .receivedPatientQuestionnaires[i]
+                                              .accessVc
+                                              .issuanceDate,
+                                        ).toLocal(),
+                                      ),
+                                      onPressed: () => receivedPqBottomModal(
+                                        context,
+                                        i,
+                                      ),
+                                    )
+                                  : HorizontalDocumentCard(
+                                      icon: Icon(
+                                        Icons.assignment,
+                                        color: Colors.teal.shade400,
+                                        size: 30,
+                                      ),
+                                      title:
+                                          "${sessionState.receivedPatientQuestionnaires[i].presentation.verifiableCredential.credentialSubject.firstName} ${sessionState.receivedPatientQuestionnaires[i].presentation.verifiableCredential.credentialSubject.lastName}",
+                                      subtitle: DateFormat.yMMMd().format(
+                                        DateTime.parse(
+                                          sessionState
+                                              .receivedPatientQuestionnaires[i]
+                                              .accessVc
+                                              .issuanceDate,
+                                        ).toLocal(),
+                                      ),
+                                      onPressed: () => receivedPqBottomModal(
+                                        context,
+                                        i,
+                                      ),
                                     ),
-                                    title: sessionState
-                                        .receivedPatientQuestionnaires[i]
-                                        .presentation
-                                        .verifiableCredential
-                                        .credentialSubject
-                                        .documentName,
-                                    subtitle: DateFormat.yMMMd().format(
-                                      DateTime.parse(
-                                        sessionState
-                                            .receivedPatientQuestionnaires[i]
-                                            .presentation
-                                            .verifiableCredential
-                                            .issuanceDate,
-                                      ).toLocal(),
-                                    ),
-                                    onPressed: () => receivedPqBottomModal(
-                                      context,
-                                      i,
-                                    ),
-                                  )
-                                : HorizontalDocumentCard(
-                                    icon: Icon(
-                                      Icons.assignment,
-                                      color: Colors.teal.shade400,
-                                      size: 30,
-                                    ),
-                                    title: sessionState
-                                        .receivedPatientQuestionnaires[i]
-                                        .presentation
-                                        .verifiableCredential
-                                        .credentialSubject
-                                        .documentName,
-                                    subtitle: DateFormat.yMMMd().format(
-                                      DateTime.parse(
-                                        sessionState
-                                            .receivedPatientQuestionnaires[i]
-                                            .presentation
-                                            .verifiableCredential
-                                            .issuanceDate,
-                                      ).toLocal(),
-                                    ),
-                                    onPressed: () => receivedPqBottomModal(
-                                      context,
-                                      i,
-                                    ),
-                                  ),
+                            ),
                           ),
                         ),
                       ),
                   ],
                 ),
               ),
+            ),
           ],
         ),
       ),

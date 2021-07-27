@@ -41,6 +41,7 @@ final appTheme = {
     dialogTheme: const DialogTheme(
       elevation: 18,
     ),
+    dividerColor: Colors.black38,
     bottomSheetTheme: const BottomSheetThemeData(backgroundColor: Colors.white),
     colorScheme: const ColorScheme.light(
       primary: Color(0xFF3861FB),
@@ -302,6 +303,7 @@ final appTheme = {
     dialogTheme: const DialogTheme(
       elevation: 18,
     ),
+    dividerColor: Colors.white24,
     textTheme: TextTheme(
       headline1: TextStyle(
         color: Colors.white.withOpacity(0.9),

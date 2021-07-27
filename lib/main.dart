@@ -14,7 +14,6 @@ import "package:flutter_localizations/flutter_localizations.dart";
 import "package:flutter_bloc/flutter_bloc.dart";
 import "package:flutter/services.dart";
 
-import 'data/common_backend_repo.dart';
 import "generated/l10n.dart";
 import 'providers/app_settings/app_settings_bloc.dart';
 import 'providers/app_settings/app_settings_state.dart';
@@ -43,7 +42,6 @@ class MyApp extends StatelessWidget {
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider(create: (context) => CreateDidRepository()),
-        RepositoryProvider(create: (context) => CommonBackendRepo()),
         RepositoryProvider(create: (context) => RetrieveDocumentRepo()),
         RepositoryProvider(create: (context) => SessionRepo()),
       ],

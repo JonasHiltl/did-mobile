@@ -30,6 +30,7 @@ class _ManageAppState extends State<ManageApp> {
           floating: true,
           elevation: 0.0,
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          centerTitle: true,
           title: Text(
             "Manage App",
             style: TextStyle(color: Theme.of(context).colorScheme.onBackground),

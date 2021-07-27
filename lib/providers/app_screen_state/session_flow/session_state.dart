@@ -5,10 +5,12 @@
 // receivedPatientQuestionnaires
 
 import 'package:did/models/did/identity.dart';
+import 'package:did/models/file_type_data/file_type_data.dart';
 import 'package:did/models/patient_questionnaire/patient_questionnaire.dart';
 import 'package:did/models/personal_data_vc/personal_data_vc.dart';
 import 'package:did/models/received_patient_questionnaire/received_patient_questionnaire.dart';
 import 'package:did/providers/app_screen_state/session_flow/session_status.dart';
+import 'package:flutter/material.dart';
 
 class SessionState {
   SessionState({
@@ -24,10 +26,30 @@ class SessionState {
   List<PatientQuestionnaireVc> patientQuestionnaires;
   List<ReceivedPatientQuestionnaire> receivedPatientQuestionnaires;
   final SessionStatus sessionStatus;
+  // TODO: implement getter for percentage between List of doc
+
+  List<FileTypeData> get getFileTypeData => [
+        FileTypeData(
+          "Patient Questionnaire",
+          patientQuestionnaires.length /
+              (patientQuestionnaires.length +
+                  receivedPatientQuestionnaires.length) *
+              100,
+          const Color(0xFF3861FB),
+        ),
+        FileTypeData(
+          "Received Patient Questionnaire",
+          receivedPatientQuestionnaires.length /
+              (receivedPatientQuestionnaires.length +
+                  patientQuestionnaires.length) *
+              100,
+          Colors.teal.shade400,
+        ),
+      ];
+  // pQPercent
+  // receivedPQPercent
 
   SessionState clear() => SessionState(
-        identity: null,
-        personalDataVc: null,
         patientQuestionnaires: [],
         receivedPatientQuestionnaires: [],
         sessionStatus: Unverified(),

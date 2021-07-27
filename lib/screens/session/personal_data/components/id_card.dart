@@ -52,8 +52,8 @@ class IdCard extends StatelessWidget {
                   VerticalDivider(
                     color: Colors.white.withOpacity(0.6),
                     thickness: 2,
-                    indent: 4,
-                    endIndent: 4,
+                    indent: 3,
+                    endIndent: 3,
                   ),
                   Text(
                     "LOGO",

@@ -193,7 +193,6 @@ class CredentialDetailsView extends StatelessWidget {
           const Padding(
             padding: EdgeInsets.all(kSmallPadding),
             child: Divider(
-              color: Colors.black38,
               height: 1,
               thickness: 0.6,
             ),

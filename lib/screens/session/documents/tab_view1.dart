@@ -34,8 +34,10 @@ class TabView1 extends StatelessWidget {
             const SizedBox(
               height: kMediumPadding + kSmallPadding,
             ),
-            Empty(
-              text: L.of(context).noOwnDocs,
+            Center(
+              child: Empty(
+                text: L.of(context).noOwnDocs,
+              ),
             )
           ] else
             Padding(
@@ -71,24 +73,6 @@ class TabView1 extends StatelessWidget {
                       ),
                     const SizedBox(
                       width: kSmallPadding,
-                    ),
-                    DocumentFolderPreview(
-                      backgroundColor: Colors.red,
-                      icon: const Icon(
-                        Icons.favorite,
-                        color: Colors.red,
-                        size: 26,
-                      ),
-                      title: "Test",
-                      items: 3,
-                      onTap: () => Navigator.push(
-                        context,
-                        PageTransition(
-                          type: PageTransitionType.bottomToTop,
-                          curve: Curves.easeInOut,
-                          child: const PQDocumentFolder(),
-                        ),
-                      ),
                     ),
                   ],
                 ),

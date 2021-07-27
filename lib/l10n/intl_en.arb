@@ -21,12 +21,18 @@
   "symptom": "Symptom",
   "symptoms": "Symptoms",
   "condition": "Condition",
+  "conditions": "Conditions",
   "frequency": "Frequency",
   "dose": "Dose",
   "issued": "Issued ",
   "cancel": "Cancel",
+  "sharer": "Shared by",
+
   "pluralMedication": "Medication",
   "personalInfoVC": "Personal Information Credential",
+  "accessVC": "Access right",
+  "expiresAt": "Expires at: ",
+  "unrestrictedAccess": "Unrestricted Access",
 
   "patientQuestionnaire": "Patient Questionnaire",
   "patientQuestionnaires": "Patient Questionnaires",

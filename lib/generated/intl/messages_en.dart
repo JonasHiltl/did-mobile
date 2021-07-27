@@ -21,6 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accessVC": MessageLookupByLibrary.simpleMessage("Access right"),
         "activateFingerprint":
             MessageLookupByLibrary.simpleMessage("Activate Fingerprint"),
         "activateTouchID":
@@ -41,6 +42,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Change Language"),
         "city": MessageLookupByLibrary.simpleMessage("City"),
         "condition": MessageLookupByLibrary.simpleMessage("Condition"),
+        "conditions": MessageLookupByLibrary.simpleMessage("Conditions"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
             "Are you sure to irrevocably delete all of your data?"),
         "country": MessageLookupByLibrary.simpleMessage("Country"),
@@ -88,6 +90,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Expiration Date"),
         "expirationTime":
             MessageLookupByLibrary.simpleMessage("Expiration Time"),
+        "expiresAt": MessageLookupByLibrary.simpleMessage("Expires at: "),
         "female": MessageLookupByLibrary.simpleMessage("Female"),
         "fingerprint": MessageLookupByLibrary.simpleMessage("Fingerprint"),
         "fingerprintText": MessageLookupByLibrary.simpleMessage(
@@ -188,6 +191,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Document is now retrievable"),
         "sharemessage": MessageLookupByLibrary.simpleMessage(
             "Scan the resulting QR Code to retrieve the document."),
+        "sharer": MessageLookupByLibrary.simpleMessage("Shared by"),
         "sharing": MessageLookupByLibrary.simpleMessage("Sharing"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Sex"),
         "skip": MessageLookupByLibrary.simpleMessage("Skip"),
@@ -198,6 +202,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "touchIDText": MessageLookupByLibrary.simpleMessage(
             "Enable Touch ID to secure access to the App?"),
         "touchId": MessageLookupByLibrary.simpleMessage("Touch ID"),
+        "unrestrictedAccess":
+            MessageLookupByLibrary.simpleMessage("Unrestricted Access"),
         "updateAddress": MessageLookupByLibrary.simpleMessage("Update Address"),
         "updateCity": MessageLookupByLibrary.simpleMessage("Update City"),
         "updateCountry": MessageLookupByLibrary.simpleMessage("Update Country"),

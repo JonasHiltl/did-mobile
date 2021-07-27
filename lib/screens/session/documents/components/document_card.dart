@@ -26,7 +26,6 @@ class HorizontalDocumentCard extends StatelessWidget {
         ),
         Expanded(
           child: Wrap(
-            runAlignment: WrapAlignment.center,
             alignment: WrapAlignment.spaceBetween,
             crossAxisAlignment: WrapCrossAlignment.center,
             children: [
@@ -95,6 +94,9 @@ class VerticalDocumentCard extends StatelessWidget {
           title,
           style: Theme.of(context).textTheme.bodyText1,
           overflow: TextOverflow.ellipsis,
+        ),
+        const SizedBox(
+          height: 4,
         ),
         Text(
           subtitle,

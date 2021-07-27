@@ -20,14 +20,20 @@
   "medication": "Medikament",
   "symptom": "Symptom",
   "symptoms": "Symptome",
-  "condition": "Beschwerden",
+  "condition": "Beschwerde",
+  "conditions": "Beschwerden",
   "frequency": "Häufigkeit",
   "dose": "Dosis",
   "issued": "Erstellt am ",
   "cancel": "Abbrechen",
+  "sharer": "Freigeber",
 
   "pluralMedication": "Medikamente",
   "personalInfoVC": "Persönliche Informationen Credential",
+  "accessVC": "Zugriffsrecht",
+  "expiresAt": "Abgelaufen am: ",
+  "unrestrictedAccess": "Unbeschränkter Zugriff",
+
 
   "patientQuestionnaire": "Patientenfragebogen",
   "patientQuestionnaires": "Patientenfragebogen",

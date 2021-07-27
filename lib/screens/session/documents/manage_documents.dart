@@ -110,29 +110,32 @@ class ManageDocuments extends StatelessWidget {
                                 ),
                               ),
                             )
-                          : bottomSheet(context: context, content: [
-                              SizedBox(
-                                width: double.infinity,
-                                child: TextButton(
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                    Navigator.push(
-                                      context,
-                                      PageTransition(
-                                        type: PageTransitionType.bottomToTop,
-                                        curve: Curves.easeInOut,
-                                        child: CreatePatientQuestionnaire(),
-                                      ),
-                                    );
-                                  },
-                                  child: Text(
-                                      L.of(context).patientQuestionnaire,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodyText1),
+                          : bottomSheet(
+                              context: context,
+                              content: [
+                                SizedBox(
+                                  width: double.infinity,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                      Navigator.push(
+                                        context,
+                                        PageTransition(
+                                          type: PageTransitionType.bottomToTop,
+                                          curve: Curves.easeInOut,
+                                          child: CreatePatientQuestionnaire(),
+                                        ),
+                                      );
+                                    },
+                                    child: Text(
+                                        L.of(context).patientQuestionnaire,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodyText1),
+                                  ),
                                 ),
-                              ),
-                            ]),
+                              ],
+                            ),
                     ),
                   ],
                 ),

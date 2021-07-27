@@ -21,6 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "accessVC": MessageLookupByLibrary.simpleMessage("Zugriffsrecht"),
         "activateFingerprint":
             MessageLookupByLibrary.simpleMessage("Fingerabdruck aktivieren"),
         "activateTouchID":
@@ -42,7 +43,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "changeLanguage":
             MessageLookupByLibrary.simpleMessage("Sprache ändern"),
         "city": MessageLookupByLibrary.simpleMessage("Stadt"),
-        "condition": MessageLookupByLibrary.simpleMessage("Beschwerden"),
+        "condition": MessageLookupByLibrary.simpleMessage("Beschwerde"),
+        "conditions": MessageLookupByLibrary.simpleMessage("Beschwerden"),
         "confirmDataDeletion": MessageLookupByLibrary.simpleMessage(
             "Bist du sicher, dass du alle Daten unwiderruflich löschen willst?"),
         "country": MessageLookupByLibrary.simpleMessage("Land"),
@@ -87,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exampleSneezing": MessageLookupByLibrary.simpleMessage("Bsp. Niesen"),
         "expirationDate": MessageLookupByLibrary.simpleMessage("Ablaufdatum"),
         "expirationTime": MessageLookupByLibrary.simpleMessage("Ablaufzeit"),
+        "expiresAt": MessageLookupByLibrary.simpleMessage("Abgelaufen am: "),
         "female": MessageLookupByLibrary.simpleMessage("Weiblich"),
         "fingerprint": MessageLookupByLibrary.simpleMessage("Fingerabdruck"),
         "fingerprintText": MessageLookupByLibrary.simpleMessage(
@@ -186,6 +189,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Dokument ist jetzt abrufbar "),
         "sharemessage": MessageLookupByLibrary.simpleMessage(
             "Scanne den entstehenden QR-Code, um das Dokument abzurufen."),
+        "sharer": MessageLookupByLibrary.simpleMessage("Freigeber"),
         "sharing": MessageLookupByLibrary.simpleMessage("Teilen"),
         "simpleSex": MessageLookupByLibrary.simpleMessage("Geschlecht"),
         "skip": MessageLookupByLibrary.simpleMessage("Überspringen"),
@@ -196,6 +200,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "touchIDText": MessageLookupByLibrary.simpleMessage(
             "Touch ID aktivieren, um den Zugriff auf die App zu sichern?"),
         "touchId": MessageLookupByLibrary.simpleMessage("Touch ID"),
+        "unrestrictedAccess":
+            MessageLookupByLibrary.simpleMessage("Unbeschränkter Zugriff"),
         "updateAddress":
             MessageLookupByLibrary.simpleMessage("Adresse aktualisieren"),
         "updateCity":

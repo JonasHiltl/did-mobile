@@ -4,8 +4,13 @@ import 'package:flutter/rendering.dart';
 class Credential extends StatelessWidget {
   final List<Widget> children;
   final String title;
+  final Color? highlightColor;
 
-  const Credential({required this.children, required this.title});
+  const Credential({
+    required this.children,
+    required this.title,
+    this.highlightColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +26,7 @@ class Credential extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(6),
                       topRight: Radius.circular(6)),
-                  color: Theme.of(context).primaryColor,
+                  color: highlightColor ?? Theme.of(context).primaryColor,
                   image: const DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage("assets/images/dot_pattern_light_50.png"),
@@ -49,21 +54,6 @@ class Credential extends StatelessWidget {
               children: children,
             ),
           ),
-          /* Container(
-            margin: const EdgeInsets.only(
-              top: 50,
-            ),
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.surface,
-              borderRadius: const BorderRadius.only(
-                topLeft: Radius.circular(6),
-                topRight: Radius.circular(6),
-              ),
-            ),
-            child: Wrap(
-              children: children,
-            ),
-          ), */
         ],
       ),
     );

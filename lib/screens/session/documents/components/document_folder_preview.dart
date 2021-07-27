@@ -31,6 +31,7 @@ class DocumentFolderPreview extends StatelessWidget {
           borderRadius: BorderRadius.circular(6),
         ),
         child: Wrap(
+          crossAxisAlignment: WrapCrossAlignment.center,
           children: [
             Container(
               padding: const EdgeInsets.all(kSmallPadding),

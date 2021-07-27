@@ -31,8 +31,10 @@ class TabView2 extends StatelessWidget {
             const SizedBox(
               height: kMediumPadding,
             ),
-            Empty(
-              text: L.of(context).noDocReceived,
+            Center(
+              child: Empty(
+                text: L.of(context).noDocReceived,
+              ),
             )
           ] else
             DocumentFolderPreview(

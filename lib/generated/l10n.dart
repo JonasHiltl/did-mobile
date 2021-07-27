@@ -270,6 +270,16 @@ class L {
     );
   }
 
+  /// `Conditions`
+  String get conditions {
+    return Intl.message(
+      'Conditions',
+      name: 'conditions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Frequency`
   String get frequency {
     return Intl.message(
@@ -310,6 +320,16 @@ class L {
     );
   }
 
+  /// `Shared by`
+  String get sharer {
+    return Intl.message(
+      'Shared by',
+      name: 'sharer',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Medication`
   String get pluralMedication {
     return Intl.message(
@@ -325,6 +345,36 @@ class L {
     return Intl.message(
       'Personal Information Credential',
       name: 'personalInfoVC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access right`
+  String get accessVC {
+    return Intl.message(
+      'Access right',
+      name: 'accessVC',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Expires at: `
+  String get expiresAt {
+    return Intl.message(
+      'Expires at: ',
+      name: 'expiresAt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unrestricted Access`
+  String get unrestrictedAccess {
+    return Intl.message(
+      'Unrestricted Access',
+      name: 'unrestrictedAccess',
       desc: '',
       args: [],
     );
